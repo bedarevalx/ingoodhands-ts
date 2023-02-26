@@ -1,0 +1,42 @@
+.sign-in-form {
+  border: 1px solid #00000012;
+  border-radius: 5px;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 50px;
+  position: relative;
+  width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    padding: 5%;
+    padding-top: 16px;
+  }
+
+  @media screen and (max-width: 450px) {
+    padding: 5%;
+  }
+
+  &__header {
+    max-width: 350px;
+    font-size: 22px;
+    margin-bottom: 32px;
+    font-weight: 600;
+    @media screen and (max-width: 1024px) {
+      text-align: center;
+    }
+  }
+
+  &__header {
+    margin-bottom: 22px;
+  }
+
+  &__sign-in.MuiButtonBase-root {
+    color: white;
+    width: 100%;
+    background: $color-primary;
+    margin-top: 12px;
+    &:hover {
+      background: $hover-primary;
+    }
+  }
+}

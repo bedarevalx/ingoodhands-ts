@@ -1,7 +1,13 @@
 import React from 'react';
+import { SignInForm } from '../../features/Auth';
+import LogoLayout from '../../layouts/LogoLayout';
 
 const SignInPage = () => {
-  return <div>SignInPage</div>;
+  return (
+    <LogoLayout>
+      <SignInForm />
+    </LogoLayout>
+  );
 };
 
 export default SignInPage;

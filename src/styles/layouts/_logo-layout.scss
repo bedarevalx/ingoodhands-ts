@@ -1,0 +1,31 @@
+.logo-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    margin: auto;
+    height: 60px;
+    width: 270px;
+    @media screen and (max-width: 1024px) {
+      top: 10px;
+      left: 50%;
+      transform: translate(-50%, -120%);
+      width: 300px;
+    }
+  }
+  &__container {
+    display: flex;
+    flex: 1 1;
+    height: 100%;
+    padding-top: 8vh;
+  }
+  &__main {
+    position: relative;
+    width: 100%;
+  }
+  &__footer {
+  }
+}

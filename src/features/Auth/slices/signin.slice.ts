@@ -1,25 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from '../../../axios/axios';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export const fetchUserProfile = createAsyncThunk<
-  string,
-  { rejectValue: string }
->('garantee/createPlacecount', async function (_, { rejectWithValue }) {
-  try {
-    const response = await axios.post('/api/placecount');
-    if (response.status !== 201) {
-      alert('Something went wrong!');
-      return rejectWithValue('Server error!');
-    }
-    const data = response.data;
-    alert('Success!');
-
-    return data;
-  } catch (error) {
-    alert('server error!!');
-    return rejectWithValue('Server error!');
-  }
-});
 interface IErrors {
   auth: string;
 }
@@ -37,7 +17,7 @@ const initialState: IAuthState = {
   },
 };
 
-export const authSlice = createSlice({
+export const signinSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -68,6 +48,5 @@ export const {
   authenticatePending,
   authenticateSuccess,
   authenticateError,
-} = authSlice.actions;
-export const reducer = authSlice.reducer;
-// export authSlice.reducer;
+} = signinSlice.actions;
+export const reducer = signinSlice.reducer;

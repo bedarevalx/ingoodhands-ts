@@ -1,0 +1,85 @@
+.MuiButtonBase-root.button {
+  font-size: 15px;
+  text-transform: none;
+  height: 40px;
+  white-space: nowrap;
+  font-family: 'HouschkaPro', sans-serif;
+  color: white;
+
+  &.MuiButton-contained {
+    background-color: $color-accent;
+    border-radius: 40px;
+
+    &:hover {
+      background-color: rgba($color-accent, 0.8);
+    }
+
+    &:disabled {
+      background-color: #c2c1c1;
+    }
+  }
+
+  &_secondary.MuiButton-contained {
+    background-color: $color-secondary;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: rgba($color-secondary, 0.8);
+    }
+
+    &:disabled {
+      background-color: #c2c1c1;
+    }
+  }
+
+  &_blue.MuiButton-contained {
+    background-color: $color-seventh;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: rgba($color-seventh, 0.8);
+    }
+
+    &:disabled {
+      background-color: #c2c1c1;
+    }
+  }
+
+  &_transparent.MuiButton-text {
+    color: black;
+
+    &:hover {
+      color: rgba(black, 0.8);
+    }
+  }
+
+  &_outlined.MuiButtonBase-root.MuiButton-root {
+    border-radius: 4px;
+    color: black;
+    border: 1px solid black;
+    height: 37px;
+    min-width: 120px;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &_white {
+    border-radius: 12px;
+    height: 56px;
+    background-color: white;
+    color: $color-accent;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  &_square.MuiButtonBase-root.MuiButton-root {
+    border-radius: 4px;
+  }
+}

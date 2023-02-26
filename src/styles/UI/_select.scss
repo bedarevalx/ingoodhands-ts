@@ -1,0 +1,16 @@
+.select {
+  margin-bottom: 16px;
+
+  & .MuiSelect-select.MuiSelect-outlined.MuiInputBase-input {
+    background-color: white;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    width: 100%;
+  }
+}

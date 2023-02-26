@@ -1,6 +1,23 @@
 @import 'constants';
 @import 'colors';
 @import 'reset';
-@import 'fonts';
+// @import 'fonts';
 @import 'general';
 @import 'mixins';
+
+//UI
+@import './UI/input';
+@import './UI/button';
+@import './UI/select';
+
+//pages
+
+//components
+@import './components/sign-up-form';
+@import './components/sign-in-form';
+@import './components/footer';
+@import './components/container.scss';
+
+//layouts
+@import './layouts/header-layout';
+@import './layouts/logo-layout';

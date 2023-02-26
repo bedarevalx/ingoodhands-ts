@@ -1,7 +1,13 @@
 import React from 'react';
+import { SignUpForm } from '../../features/Auth';
+import LogoLayout from '../../layouts/LogoLayout';
 
 const SignUpPage = () => {
-  return <div>SignUpPage</div>;
+  return (
+    <LogoLayout>
+      <SignUpForm />
+    </LogoLayout>
+  );
 };
 
 export default SignUpPage;
