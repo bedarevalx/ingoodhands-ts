@@ -5,7 +5,11 @@ interface IHeaderProps {
 }
 
 const Header = (props: IHeaderProps) => {
-  return <header className='header'>index</header>;
+  return (
+    <header className='header'>
+      <div className='container header__container'>index</div>
+    </header>
+  );
 };
 
 export default Header;

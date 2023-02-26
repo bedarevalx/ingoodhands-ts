@@ -1,7 +1,10 @@
 import React from 'react';
+import HeaderLayout from '../../layouts/HeaderLayout';
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <HeaderLayout classNames={['home-page__container']}>HomePage</HeaderLayout>
+  );
 };
 
 export default HomePage;
