@@ -9,3 +9,22 @@ export interface IAlertUI {
   message: string;
   type: AlertTypes | string;
 }
+
+export interface ICity {
+  id: string;
+  name: string;
+  isActive: boolean;
+}
+
+export interface ICategory {
+  id: string;
+  name: string;
+  icon: string;
+  isActive: boolean;
+}
+
+export interface IAppSelectItem<T> {
+  id: number | string;
+  title: string;
+  value: T | string;
+}

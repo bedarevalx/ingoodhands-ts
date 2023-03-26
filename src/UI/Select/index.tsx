@@ -9,11 +9,13 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 // import { AdPriceUnitTypes } from '../../types/ad.types';
 // import { useTranslation } from 'react-i18next';
 import { GenderTypes } from '../../types/general.types';
+import { IAppSelectItem, ICity } from '../../interfaces/general.interfaces';
+import { useErros } from '../../hooks/useErrors';
 
 interface ISelectProps {
   classNames: string[];
   value?: string;
-  //   options?: IAppSelectItem<string | AdPriceUnitTypes | GenderTypes>[];
+  options?: IAppSelectItem<string | ICity>[];
   onChange?: (event: SelectChangeEvent) => void;
   size?: 'small' | 'medium';
   variant?: 'standard' | 'outlined';
@@ -21,14 +23,19 @@ interface ISelectProps {
   placeholder?: string;
   label?: string;
   open?: boolean;
+  error?: string;
+  helperText?: string;
 }
 
 // Не предполагается что компонент динамический
 const Select = (props: ISelectProps) => {
+  const e = useErros();
+
   return (
     <div className={classNamesParser('select', props.classNames)}>
       {props.label && <span className='select__label'>{props.label}</span>}
       <MUISelect
+        error={!!props.error}
         placeholder={props.placeholder}
         disabled={props?.disabled}
         variant={props.variant}
@@ -36,14 +43,21 @@ const Select = (props: ISelectProps) => {
         onChange={props.onChange}
         size={props.size || 'small'}
         open={props.open}
-        className='select__select'>
-        <MenuItem value={0} selected={true}>
+        className={`select__select ${props?.value === '-1' && 'placeholder'}`}>
+        <MenuItem value={'-1'} selected disabled>
           {props.placeholder}
         </MenuItem>
-        {/* {props.options?.map((item) => (
-          <MenuItem key={item.id} value={item.value}></MenuItem>
-        ))} */}
+        {props.options?.map((item) => (
+          <MenuItem key={item.id} value={item.id}>
+            {item.title}
+          </MenuItem>
+        ))}
       </MUISelect>
+      {!!props.helperText && !props.error && (
+        <span className='helper-text'>{props.helperText}</span>
+      )}
+
+      {!!props.error && <span className='input__error'>{e(props.error)}</span>}
     </div>
   );
 };

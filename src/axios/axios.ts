@@ -3,12 +3,13 @@ import { refreshToken } from '../api/in-good-hands.api';
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_DOMAIN_ADDRESS,
-  withCredentials: true,
+  // withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  if ('Authorization' in config.headers) return config;
-  config.headers.Authorization = `Bearer ${localStorage['access_token']}`;
+  const accessToken = localStorage.accessToken;
+  if ('Authorization' in config.headers || !accessToken) return config;
+  config.headers.Authorization = `Bearer ${accessToken}`;
   return config;
 });
 

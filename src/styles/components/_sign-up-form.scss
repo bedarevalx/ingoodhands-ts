@@ -35,8 +35,16 @@
     width: 100%;
     background: $color-primary;
     margin-top: 12px;
+    margin-bottom: 16px;
     &:hover {
       background: $hover-primary;
     }
+  }
+
+  &__have-account {
+    text-align: center;
+  }
+  &__link {
+    color: $color-primary;
   }
 }

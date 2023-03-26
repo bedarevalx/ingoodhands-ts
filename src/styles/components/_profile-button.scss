@@ -1,0 +1,53 @@
+.profile-button {
+  &__button {
+    color: white;
+    margin-right: 16px !important;
+  }
+
+  &__button-icon {
+    font-size: 24px !important;
+    fill: white;
+  }
+
+  &__menu {
+    & .MuiPaper-root.MuiPaper-elevation {
+      padding: 0 12px;
+      min-width: 200px;
+      border-radius: 12px;
+    }
+  }
+
+  &__sign-out {
+    margin-top: 14px;
+    height: 32px !important;
+    width: 100%;
+    font-size: 14px !important;
+    background-color: $color-primary !important;
+  }
+
+  &__menu-item.MuiButtonBase-root.MuiMenuItem-root {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 4px;
+  }
+
+  &__item-icon {
+    fill: #9ea9b7 !important;
+    padding: 2px;
+    background-color: #eff1f4;
+    border-radius: 2px;
+    margin-right: 8px;
+  }
+
+  &_mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &__mobile-icon {
+    fill: white !important;
+    font-size: 24px !important;
+  }
+}

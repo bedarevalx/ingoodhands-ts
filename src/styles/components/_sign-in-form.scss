@@ -8,12 +8,12 @@
   width: 100%;
 
   @media screen and (max-width: 1024px) {
-    padding: 5%;
+    padding: 50px;
     padding-top: 16px;
   }
 
   @media screen and (max-width: 450px) {
-    padding: 5%;
+    padding: 20px;
   }
 
   &__header {
@@ -35,8 +35,17 @@
     width: 100%;
     background: $color-primary;
     margin-top: 12px;
+    margin-bottom: 16px;
     &:hover {
       background: $hover-primary;
     }
+  }
+  &__signup {
+  }
+  &__no-account {
+    text-align: center;
+  }
+  &__link {
+    color: $color-primary;
   }
 }

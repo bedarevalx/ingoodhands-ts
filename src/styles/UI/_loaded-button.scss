@@ -1,0 +1,7 @@
+.loaded-button {
+  position: relative;
+  &__spinner {
+    position: absolute;
+    top: calc(50% - 12px);
+  }
+}

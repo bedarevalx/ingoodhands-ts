@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from '../../../axios/axios';
+import { IUser } from '../../../interfaces/auth.interfaces';
+import { IAddressResponse } from '../../../interfaces/responses.interfaces';
 
 export const fetchUserProfile = createAsyncThunk<
   string,
@@ -27,6 +29,7 @@ interface IAuthState {
   isLoading: boolean;
   isAuthenticate: boolean;
   errors: IErrors;
+  user: IUser;
 }
 
 const initialState: IAuthState = {
@@ -34,6 +37,17 @@ const initialState: IAuthState = {
   isAuthenticate: false,
   errors: {
     auth: '',
+  },
+  user: {
+    email: '',
+    name: '',
+    isBanned: false,
+    isEmailVerified: false,
+    id: '',
+    idCity: '',
+    isAdmin: false,
+    phoneNumber: '',
+    addresses: [],
   },
 };
 
@@ -44,17 +58,35 @@ export const authSlice = createSlice({
     authenticatePending: (state) => {
       state.isLoading = true;
     },
-    authenticateSuccess: (state, action: PayloadAction<string>) => {
+    authenticateFullfilled: (state) => {
       state.isAuthenticate = true;
       state.isLoading = false;
     },
-    authenticateError: (state, action: PayloadAction<string>) => {
+    authenticateRejected: (state, action: PayloadAction<string>) => {
       state.errors.auth = action.payload;
       state.isAuthenticate = false;
       state.isLoading = false;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
+    },
+    setUser: (state, action: PayloadAction<IUser>) => {
+      state.user = action.payload;
+    },
+    signOut: (state) => {
+      state.isLoading = false;
+      state.isAuthenticate = false;
+      state.user = {
+        email: '',
+        name: '',
+        isBanned: false,
+        isEmailVerified: false,
+        id: '',
+        idCity: '',
+        isAdmin: false,
+        phoneNumber: '',
+        addresses: [],
+      };
     },
     setAuthenticate: (state, action: PayloadAction<boolean>) => {
       state.isAuthenticate = action.payload;
@@ -66,8 +98,10 @@ export const {
   setLoading,
   setAuthenticate,
   authenticatePending,
-  authenticateSuccess,
-  authenticateError,
+  authenticateFullfilled,
+  authenticateRejected,
+  setUser,
+  signOut,
 } = authSlice.actions;
 export const reducer = authSlice.reducer;
 // export authSlice.reducer;

@@ -9,6 +9,8 @@
 @import './UI/input';
 @import './UI/button';
 @import './UI/select';
+@import './UI/spinner';
+@import './UI/loaded-button';
 
 //pages
 
@@ -17,8 +19,10 @@
 @import './components/sign-in-form';
 @import './components/footer';
 @import './components/header';
-
-@import './components/container.scss';
+@import './components/container';
+@import './components/fullscreen-spinner';
+@import './components//password-indicator';
+@import './components/profile-button';
 
 //layouts
 @import './layouts/header-layout';

@@ -1,6 +1,6 @@
 export const ROUTES = {
-  SIGNIN: 'signin',
-  SIGNUP: 'signup',
+  SIGNIN: 'sign-in',
+  SIGNUP: 'sign-up',
   PROFILE: 'profile',
   EDIT: 'edit',
   ADMIN: 'admin',

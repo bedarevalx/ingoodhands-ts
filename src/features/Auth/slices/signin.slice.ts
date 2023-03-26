@@ -1,19 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IErrorUI } from '../../../interfaces/general.interfaces';
 
 interface IErrors {
-  auth: string;
+  email: string;
+  password: string;
+  signIn: string;
 }
 interface IAuthState {
   isLoading: boolean;
-  isAuthenticate: boolean;
   errors: IErrors;
+  email: string;
+  password: string;
 }
 
 const initialState: IAuthState = {
   isLoading: false,
-  isAuthenticate: false,
+  email: '',
+  password: '',
   errors: {
-    auth: '',
+    email: '',
+    password: '',
+    signIn: '',
   },
 };
 
@@ -21,32 +28,48 @@ export const signinSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    authenticatePending: (state) => {
-      state.isLoading = true;
+    setPassword: (state, action: PayloadAction<string>) => {
+      state.password = action.payload;
     },
-    authenticateSuccess: (state, action: PayloadAction<string>) => {
-      state.isAuthenticate = true;
-      state.isLoading = false;
-    },
-    authenticateError: (state, action: PayloadAction<string>) => {
-      state.errors.auth = action.payload;
-      state.isAuthenticate = false;
-      state.isLoading = false;
+    setEmail: (state, action: PayloadAction<string>) => {
+      state.email = action.payload;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
-    setAuthenticate: (state, action: PayloadAction<boolean>) => {
-      state.isAuthenticate = action.payload;
+
+    setError: (state, action: PayloadAction<IErrorUI>) => {
+      state.errors[action.payload.type as keyof IErrors] =
+        action.payload.message;
+    },
+    signInPending: (state) => {
+      state.isLoading = true;
+    },
+    signInFullfilled: (state) => {
+      state.isLoading = false;
+    },
+    signInRejected: (state, action: PayloadAction<string>) => {
+      state.isLoading = false;
+      state.errors.signIn = action.payload;
+    },
+    clearValues: (state) => {
+      state.isLoading = false;
+      state.email = '';
+      state.password = '';
+      state.errors.email = '';
+      state.errors.password = '';
     },
   },
 });
 
 export const {
   setLoading,
-  setAuthenticate,
-  authenticatePending,
-  authenticateSuccess,
-  authenticateError,
+  setError,
+  setPassword,
+  setEmail,
+  signInFullfilled,
+  signInPending,
+  signInRejected,
+  clearValues,
 } = signinSlice.actions;
 export const reducer = signinSlice.reducer;
