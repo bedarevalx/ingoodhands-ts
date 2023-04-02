@@ -1,3 +1,5 @@
+import { AdsStatusTypes } from '../types/general.types';
+
 export interface ICityResponse {
   id: string;
   name: string;
@@ -49,7 +51,43 @@ export interface IAddressResponse {
   id: string;
   id_city: string;
   id_user: string;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
   title: string;
+}
+export interface IGetAdsResponse {
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
+  data: IAdPreviewResponse[];
+}
+
+export interface IGetAdsData {}
+
+interface IAdPreviewResponse {
+  address: {
+    latitude: string;
+    longitude: string;
+    title: string;
+  };
+  category_title: string;
+  city_title: string;
+  date: string;
+  description: string;
+  id: string;
+  image_set: string[];
+  status: AdsStatusTypes;
+  title: string;
+  view_count: number;
+}
+
+export interface IForwardGeocodingResponse {
+  suggestions: {
+    data: {
+      geo_lat: number;
+      geo_lon: number;
+    };
+    value: string;
+  }[];
 }

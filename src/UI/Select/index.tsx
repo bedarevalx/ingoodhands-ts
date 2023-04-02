@@ -9,13 +9,18 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 // import { AdPriceUnitTypes } from '../../types/ad.types';
 // import { useTranslation } from 'react-i18next';
 import { GenderTypes } from '../../types/general.types';
-import { IAppSelectItem, ICity } from '../../interfaces/general.interfaces';
+import {
+  IAppSelectItem,
+  ICategory,
+  ICity,
+} from '../../interfaces/general.interfaces';
 import { useErros } from '../../hooks/useErrors';
+import { IUserAddress } from '../../interfaces/auth.interfaces';
 
 interface ISelectProps {
-  classNames: string[];
+  classNames?: string[];
   value?: string;
-  options?: IAppSelectItem<string | ICity>[];
+  options?: IAppSelectItem<string | ICity | ICategory | IUserAddress>[];
   onChange?: (event: SelectChangeEvent) => void;
   size?: 'small' | 'medium';
   variant?: 'standard' | 'outlined';

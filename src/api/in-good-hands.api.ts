@@ -1,15 +1,17 @@
-import axios from '../axios/axios';
+import axios from '../axios/in-good-hands.axios';
+import { ICreatePost } from '../interfaces/ads.interfaces';
 import { IUserSignIn, IUserSignUp } from '../interfaces/auth.interfaces';
 import {
   ICategoryResponse,
   ICityResponse,
+  IGetAdsResponse,
   IGetProfileResponse,
   ITokenResponse,
 } from '../interfaces/responses.interfaces';
 
 export const refreshToken = async () => {
   const refreshToken = localStorage['refresh_token'];
-  const accessToken = '123';
+  const accessToken = localStorage['access_token'];
   return { accessToken, refreshToken };
 };
 
@@ -34,4 +36,12 @@ export const getCategories = async () => {
 
 export const getUserProfile = async () => {
   return await axios.get<IGetProfileResponse>('/api/auth/user-profile');
+};
+
+export const fetchAds = async () => {
+  return await axios.get<IGetAdsResponse>('/api/all_posts');
+};
+
+export const createAd = async (body: ICreatePost) => {
+  return await axios.post('/api/create_post', body);
 };

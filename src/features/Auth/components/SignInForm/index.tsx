@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { SignInController } from '../../controllers/sign-in.controller';
 import LoadedButton from '../../../../UI/LoadedButton';
-import SignInBg from '../../../../assets/vector/signup-bg3.svg';
+import SignInBg from '../../../../assets/vector/signup-bg.svg';
 
 export const SignInForm = () => {
   const dispatch = useAppDispatch();

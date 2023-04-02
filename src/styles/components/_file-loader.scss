@@ -1,0 +1,32 @@
+.file-loader {
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px dashed $color-primary;
+  text-align: center;
+  padding: 12px 0;
+  transition: 0.12s ease-in-out;
+
+  @include hover-active {
+    border: 1px dashed darken($color-primary, 5%);
+    background: lighten($color-primary, 40%);
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__image-icon.MuiSvgIcon-fontSizeMedium {
+    color: $color-primary;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 12px;
+  }
+  &__instruction {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  &__max-count {
+    opacity: 0.5;
+  }
+}

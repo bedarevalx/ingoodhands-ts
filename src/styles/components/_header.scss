@@ -1,5 +1,5 @@
 .header {
-  background-color: #fff;
+  background-color: $color-primary;
   box-shadow: 0 1px 1px #0000001a;
   height: 57px;
   position: -webkit-sticky;
@@ -15,5 +15,23 @@
   }
   &__logo {
     width: 150px;
+    cursor: pointer;
+  }
+  &__profile-button {
+    & .MuiButtonBase-root {
+      color: white;
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__place-ad.MuiButtonBase-root {
+    background: white;
+    @include color-hover(white);
   }
 }

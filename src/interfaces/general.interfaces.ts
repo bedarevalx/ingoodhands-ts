@@ -12,13 +12,21 @@ export interface IAlertUI {
 
 export interface ICity {
   id: string;
-  name: string;
+  value: string;
+  title: string;
   isActive: boolean;
+}
+
+export interface IAddress {
+  title: string;
+  latitude: number;
+  longitude: number;
 }
 
 export interface ICategory {
   id: string;
-  name: string;
+  value: string;
+  title: string;
   icon: string;
   isActive: boolean;
 }

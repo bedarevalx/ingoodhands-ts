@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from '../axios/axios';
+import axios from '../axios/in-good-hands.axios';
 import { ICategory, ICity } from '../interfaces/general.interfaces';
 
 // export const fetchUserProfile = createAsyncThunk<

@@ -8,19 +8,13 @@ import { Link } from 'react-router-dom';
 import LoadedButton from '../../../../UI/LoadedButton';
 import MaskedInput from '../../../../UI/MaskedInput';
 import PasswordIndicator from '../PasswordIndicator';
-import SignUpBg from '../../../../assets/vector/signup-bg3.svg';
+import SignUpBg from '../../../../assets/vector/signup-bg.svg';
 
 export const SignUpForm = () => {
   const dispatch = useAppDispatch();
   const signUp = useAppSelector((state) => state.signUp);
   const controller = new SignUpController(dispatch);
   const app = useAppSelector((state) => state.app);
-
-  const cityOptions = app.cities.map((city) => ({
-    id: city.id,
-    title: city.name,
-    value: city.id,
-  }));
 
   useEffect(() => {
     return () => {
@@ -70,7 +64,7 @@ export const SignUpForm = () => {
         placeholder='Выберите ваш город'
         classNames={['sign-up-form__select']}
         onChange={controller.onCityChange}
-        options={cityOptions}
+        options={app.cities}
         error={signUp.errors.city}
       />
       <Input

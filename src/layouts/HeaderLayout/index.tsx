@@ -5,7 +5,7 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 
 interface IHeaderLayoutProps {
   children: ReactNode;
-  classNames: string[];
+  classNames?: string[];
 }
 
 const HeaderLayout = (props: IHeaderLayoutProps) => {

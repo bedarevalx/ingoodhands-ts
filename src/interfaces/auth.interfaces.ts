@@ -40,5 +40,13 @@ export interface IUser {
   idCity: string;
   isAdmin: boolean;
   phoneNumber: string;
-  addresses: IAddressResponse[];
+  addresses: IUserAddress[];
+}
+
+export interface IUserAddress {
+  id: string;
+  title: string;
+  value: string;
+  latitude: number;
+  longitude: number;
 }

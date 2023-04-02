@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from '../../../axios/axios';
+import axios from '../../../axios/in-good-hands.axios';
 import { IUser } from '../../../interfaces/auth.interfaces';
 import { IAddressResponse } from '../../../interfaces/responses.interfaces';
 

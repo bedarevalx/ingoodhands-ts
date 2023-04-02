@@ -1,0 +1,25 @@
+.photo-preview {
+  max-width: 200px;
+  transition: $default-transition;
+  &__photo {
+    object-fit: fill;
+    width: 100%;
+  }
+  &:hover {
+    .photo-preview__delete-btn {
+      opacity: 1;
+    }
+    .photo-preview__main-btn {
+      opacity: 1;
+    }
+  }
+  &__delete-btn {
+    opacity: 0;
+  }
+  &__delete-icon {
+  }
+
+  &__main-btn {
+    opacity: 0;
+  }
+}

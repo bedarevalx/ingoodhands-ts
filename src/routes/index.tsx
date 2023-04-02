@@ -3,30 +3,21 @@ import App from '../app';
 // import PrivateRoute from '../components/PrivateRoute';
 // import { GROUP_NAMES } from '../constants/groups';
 import { lazy, Suspense } from 'react';
-import HomePage from '../pages/HomePage';
+// import HomePage from '../pages/HomePage';
 import { ROUTES } from '../constants/routes';
 import PrivateRoute from '../hoc/PrivateRoute';
-import SignUpPage from '../pages/SignUpPage';
-import SignInPage from '../pages/SignInPage';
+// import SignUpPage from '../pages/SignUpPage';
+// import SignInPage from '../pages/SignInPage';
+// import EditAdvertPage from '../pages/EditAdvertPage';
 // import Ad from '../pages/Ad';
 // import AdsListPage from '../pages/Ads';
 // import FullscreenSpinner from '../components/FullscreenSpinner';
 // import ConfirmEmailPage from '../pages/ConfirmEmail';
 
-// const AdCategoryPage = lazy(() => import('../pages/AdCategory'));
-// const EditAd = lazy(() => import('../pages/EditAd'));
-// const AdsPage = lazy(() => import('../pages/NewAds'));
-// const Home = lazy(() => import('../pages/Home'));
-// const SignInPage = lazy(() => import('../pages/SignIn'));
-// const SignUpPage = lazy(() => import('../pages/SignUp'));
-// const NotFoundPage = lazy(() => import('../pages/404'));
-// const UserAdsPage = lazy(() => import('../pages/UserAds'));
-// const FavoritesPage = lazy(() => import('../pages/Favorites'));
-// const NotificationPage = lazy(() => import('../pages/Notification'));
-// const MessagesPreviewPage = lazy(() => import('../pages/MessagesPreview'));
-// const MessagesPage = lazy(() => import('../pages/Messages'));
-// const ProfileSettingsPage = lazy(() => import('../pages/ProfileSettings'));
-// const AdsSearchPage = lazy(() => import('../pages/AdsSearch'));
+const EditAdvertPage = lazy(() => import('../pages/EditAdvertPage'));
+const HomePage = lazy(() => import('../pages/HomePage'));
+const SignInPage = lazy(() => import('../pages/SignInPage'));
+const SignUpPage = lazy(() => import('../pages/SignUpPage'));
 
 const Loading = () => <div>Loading</div>;
 
@@ -88,6 +79,10 @@ export const routes = createBrowserRouter([
       {
         path: ROUTES.SIGNIN,
         element: <PrivateRoute children={<SignInPage />} reverseAuth />,
+      },
+      {
+        path: ROUTES.NEW_AD,
+        element: <PrivateRoute children={<EditAdvertPage />} />,
       },
       {
         path: ROUTES.SIGNUP,

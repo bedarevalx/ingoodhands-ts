@@ -1,0 +1,52 @@
+.edit-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 24px;
+  margin-bottom: 40px;
+
+  &__title {
+    margin-bottom: 18px;
+  }
+
+  &__address-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  &__address-select {
+    width: 100%;
+    margin: 0;
+  }
+  &__description {
+    margin-bottom: 16px;
+  }
+
+  &__address-picker.MuiButtonBase-root.MuiIconButton-root {
+    background-color: $color-substrate;
+  }
+
+  &__block-title {
+    margin-bottom: 4px;
+  }
+  &__publish-wrapper {
+    margin-top: 22px;
+    text-align: center;
+  }
+  &__publish.MuiButtonBase-root {
+    padding: 0 50px;
+    margin-left: auto;
+    background-color: $color-primary;
+    color: white;
+    @include color-hover($color-primary);
+  }
+  &__file-loader {
+    margin-bottom: 16px;
+  }
+  &__photo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}

@@ -103,8 +103,7 @@ const ProfileButton = (props: IProfileButtonProps) => {
           <div>
             <MenuItem
               className='profile-button__menu-item'
-              onClick={handleProfile}
-              style={{ marginBottom: 8 }}>
+              onClick={handleProfile}>
               <SettingsOutlinedIcon className='profile-button__item-icon' />
               {'Мой профиль'}
             </MenuItem>

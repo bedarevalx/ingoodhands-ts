@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { refreshToken } from '../api/in-good-hands.api';
+import { apiDomain } from '../configs/app.config';
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_DOMAIN_ADDRESS,
+  baseURL: apiDomain,
   // withCredentials: true,
 });
 

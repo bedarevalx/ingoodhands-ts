@@ -11,6 +11,9 @@
 @import './UI/select';
 @import './UI/spinner';
 @import './UI/loaded-button';
+@import './UI/textarea';
+@import './UI/modal';
+@import './UI/auto-complete';
 
 //pages
 
@@ -23,6 +26,12 @@
 @import './components/fullscreen-spinner';
 @import './components//password-indicator';
 @import './components/profile-button';
+@import './components/ad-preview';
+@import './components/ad-preview-list';
+@import './components/edit-form';
+@import './components/address-picker';
+@import './components/file-loader';
+@import './components/photo-preview';
 
 //layouts
 @import './layouts/header-layout';

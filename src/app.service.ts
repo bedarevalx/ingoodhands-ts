@@ -3,6 +3,7 @@
 // import { AppDispatch, RootState } from '../../../store';
 
 import { getCategories, getCities } from './api/in-good-hands.api';
+import { ICategory, ICity } from './interfaces/general.interfaces';
 import { ICityResponse } from './interfaces/responses.interfaces';
 import { AppDispatch, RootState } from './store';
 import { setCategories, setCities, setIsLoading } from './store/app.slice';
@@ -75,8 +76,19 @@ export class AppService {
     () => async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         //fetch cities, categories
-        const cities = await this.getCities();
-        const categories = await this.getCategories();
+        const resCities = await this.getCities();
+        const resCategories = await this.getCategories();
+        const categories: ICategory[] = resCategories.map((category) => ({
+          title: category.name,
+          value: category.id,
+          ...category,
+        }));
+        const cities: ICity[] = resCities.map((city) => ({
+          id: city.id,
+          isActive: city.isActive,
+          title: city.name,
+          value: city.id,
+        }));
         dispatch(setCities(cities));
         dispatch(setCategories(categories));
         dispatch(setIsLoading(false));

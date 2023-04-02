@@ -12,7 +12,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 interface IInputProps {
-  classNames: string[];
+  classNames?: string[];
   error?: string;
   onInput?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;

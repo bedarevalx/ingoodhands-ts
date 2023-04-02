@@ -3,6 +3,7 @@ export const ROUTES = {
   SIGNUP: 'sign-up',
   PROFILE: 'profile',
   EDIT: 'edit',
+  NEW_AD: 'new-ad',
   ADMIN: 'admin',
   CONFIRM_EMAIL: 'email-confirm',
 };

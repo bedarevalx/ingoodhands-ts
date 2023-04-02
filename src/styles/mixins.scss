@@ -5,3 +5,18 @@
   -webkit-line-clamp: $lines;
   -webkit-box-orient: vertical;
 }
+
+@mixin color-hover($prev-color: black) {
+  &:hover {
+    background-color: darken($prev-color, 5%);
+  }
+}
+
+@mixin hover-active {
+  &:hover {
+    @content;
+  }
+  &:active {
+    @content;
+  }
+}

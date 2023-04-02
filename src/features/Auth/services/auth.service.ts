@@ -110,7 +110,13 @@ export class AuthService {
         email: response.data.email,
         name: response.data.name,
         id: response.data.id,
-        addresses: response.data.addresses,
+        addresses: response.data.addresses.map((address) => ({
+          title: address.title,
+          id: address.id,
+          value: address.id,
+          longitude: address.longitude,
+          latitude: address.latitude,
+        })),
       } as IUser;
       this.dispatch(setUser(user));
       this.dispatch(authenticateFullfilled());

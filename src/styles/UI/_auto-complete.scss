@@ -1,0 +1,22 @@
+.auto-complete {
+  width: 100%;
+  & .MuiInputBase-root.MuiOutlinedInput-root {
+    background-color: white;
+    border-radius: 50px;
+  }
+
+  &_square {
+    & .MuiInputBase-root.MuiOutlinedInput-root {
+      background-color: white;
+      border-radius: 0px;
+    }
+  }
+
+  & .MuiAutocomplete-popper.MuiAutocomplete-popperDisablePortal {
+    transform: translate(0, 48px) !important;
+  }
+
+  .input {
+    margin: 0;
+  }
+}
