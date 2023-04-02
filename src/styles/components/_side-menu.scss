@@ -1,0 +1,22 @@
+.side-menu {
+  &__list {
+    padding: 0;
+    list-style: none;
+  }
+  &__menu-item {
+    margin-bottom: 8px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    @include hover-active {
+      color: $color-primary;
+    }
+  }
+  &__menu-selected {
+    color: $color-primary;
+  }
+}

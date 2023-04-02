@@ -2,12 +2,12 @@ import React from 'react';
 import HeaderLayout from '../../layouts/HeaderLayout';
 import SideMenu from '../../components/SideMenu';
 
-const ProfilePage = () => {
+const MyAdsPage = () => {
   return (
-    <HeaderLayout classNames={['profile-page__container']}>
-      <SideMenu currentMenu='profile' />
+    <HeaderLayout classNames={['my-ads-page__container']}>
+      <SideMenu currentMenu='profile/my-ads' />
     </HeaderLayout>
   );
 };
 
-export default React.memo(ProfilePage);
+export default React.memo(MyAdsPage);

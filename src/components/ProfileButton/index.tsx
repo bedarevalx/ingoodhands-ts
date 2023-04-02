@@ -9,6 +9,7 @@ import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
 import { classNamesParser } from '../../helpers/classNamesParser';
 import { AuthService } from '../../features/Auth';
 import { useAppDispatch } from '../../hooks/useRedux';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 interface IProfileButtonProps {
   classNames?: string[];
@@ -40,28 +41,28 @@ const ProfileButton = (props: IProfileButtonProps) => {
 
   const handleMyAds = () => {
     onMenuClose();
-    navigate('/user-ads', {
-      state: {},
-    });
-  };
-
-  const handleMessages = () => {
-    onMenuClose();
-    navigate('/messages', {
+    navigate('/profile/my-ads', {
       state: {},
     });
   };
 
   const handleFavorites = () => {
     onMenuClose();
-    navigate('/favorites', {
+    navigate('/profile/favorites', {
+      state: {},
+    });
+  };
+
+  const handleReviews = () => {
+    onMenuClose();
+    navigate('/profile/reviews', {
       state: {},
     });
   };
 
   const handleProfile = () => {
     onMenuClose();
-    navigate('/profile-settings', {
+    navigate('/profile', {
       state: {},
     });
   };
@@ -116,8 +117,14 @@ const ProfileButton = (props: IProfileButtonProps) => {
             <MenuItem
               className='profile-button__menu-item'
               onClick={handleFavorites}>
-              <GradeOutlinedIcon className='profile-button__item-icon' />
+              <FavoriteBorderIcon className='profile-button__item-icon' />
               {'Избранное'}
+            </MenuItem>{' '}
+            <MenuItem
+              className='profile-button__menu-item'
+              onClick={handleReviews}>
+              <GradeOutlinedIcon className='profile-button__item-icon' />
+              {'Мои отзывы'}
             </MenuItem>
           </div>
         )}

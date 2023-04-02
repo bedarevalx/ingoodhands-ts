@@ -18,6 +18,10 @@ const EditAdvertPage = lazy(() => import('../pages/EditAdvertPage'));
 const HomePage = lazy(() => import('../pages/HomePage'));
 const SignInPage = lazy(() => import('../pages/SignInPage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));
+const ProfilePage = lazy(() => import('../pages/ProfilePage'));
+const ReviewsPage = lazy(() => import('../pages/ReviewsPage'));
+const MyAdsPage = lazy(() => import('../pages/MyAdsPage'));
+const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
 
 const Loading = () => <div>Loading</div>;
 
@@ -38,44 +42,28 @@ export const routes = createBrowserRouter([
           </Suspense>
         ),
       },
-      //   {
-      //     path: GROUP_NAMES.NEW_ADS,
-      //     element: <Outlet />,
-      //     children: [
-      //       {
-      //         index: true,
-      //         element: <PrivateRoute children={<AdsPage />} />,
-      //       },
-      //       {
-      //         path: ':group',
-      //         element: <Outlet />,
-      //         children: [
-      //           {
-      //             index: true,
-      //             element: <PrivateRoute children={<AdCategoryPage />} />,
-      //           },
-      //           {
-      //             path: ':subGroup',
-      //             element: <Outlet />,
-      //             children: [
-      //               {
-      //                 index: true,
-      //                 element: <PrivateRoute children={<EditAd />} />,
-      //               },
-      //               {
-      //                 path: 'preview/:id',
-      //                 element: <PrivateRoute children={<Ad />} />,
-      //               },
-      //               {
-      //                 path: 'edit/:id',
-      //                 element: <PrivateRoute children={<EditAd />} />,
-      //               },
-      //             ],
-      //           },
-      //         ],
-      //       },
-      //     ],
-      //   },
+      {
+        path: ROUTES.PROFILE,
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: <PrivateRoute children={<ProfilePage />} />,
+          },
+          {
+            path: ROUTES.MY_ADS,
+            element: <PrivateRoute children={<MyAdsPage />} />,
+          },
+          {
+            path: ROUTES.REVIEWS,
+            element: <PrivateRoute children={<ReviewsPage />} />,
+          },
+          {
+            path: ROUTES.FAVORTIES,
+            element: <PrivateRoute children={<FavoritesPage />} />,
+          },
+        ],
+      },
       {
         path: ROUTES.SIGNIN,
         element: <PrivateRoute children={<SignInPage />} reverseAuth />,
