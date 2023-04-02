@@ -6,6 +6,7 @@ import { lazy, Suspense } from 'react';
 // import HomePage from '../pages/HomePage';
 import { ROUTES } from '../constants/routes';
 import PrivateRoute from '../hoc/PrivateRoute';
+import FullscreenSpinner from '../components/FullscreenSpinner';
 // import SignUpPage from '../pages/SignUpPage';
 // import SignInPage from '../pages/SignInPage';
 // import EditAdvertPage from '../pages/EditAdvertPage';
@@ -29,7 +30,7 @@ export const routes = createBrowserRouter([
   {
     path: '/',
     element: (
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<FullscreenSpinner />}>
         <App />
       </Suspense>
     ),
@@ -37,7 +38,7 @@ export const routes = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<FullscreenSpinner />}>
             <HomePage />
           </Suspense>
         ),

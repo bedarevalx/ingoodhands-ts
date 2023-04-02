@@ -7,8 +7,8 @@ interface IProfileMenuItem {
 }
 
 export const ProfileMenuMocks: IProfileMenuItem[] = [
-  { id: 5, value: 'profile', text: 'Мой профиль' },
-  { id: 1, value: 'profile/my-ads', text: 'Мои объявления' },
-  { id: 2, value: 'profile/reviews', text: 'Мои отзывы' },
-  { id: 4, value: 'profile/favorites', text: 'Избранное' },
+  { id: 1, value: 'profile', text: 'Мой профиль' },
+  { id: 2, value: 'profile/my-ads', text: 'Мои объявления' },
+  { id: 3, value: 'profile/favorites', text: 'Избранное' },
+  { id: 4, value: 'profile/reviews', text: 'Мои отзывы' },
 ];
