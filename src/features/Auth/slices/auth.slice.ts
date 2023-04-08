@@ -91,6 +91,9 @@ export const authSlice = createSlice({
     setAuthenticate: (state, action: PayloadAction<boolean>) => {
       state.isAuthenticate = action.payload;
     },
+    updateEmailConfirm: (state, action: PayloadAction<boolean>) => {
+      state.user.isEmailVerified = action.payload;
+    },
   },
 });
 
@@ -102,6 +105,7 @@ export const {
   authenticateRejected,
   setUser,
   signOut,
+  updateEmailConfirm,
 } = authSlice.actions;
 export const reducer = authSlice.reducer;
 // export authSlice.reducer;

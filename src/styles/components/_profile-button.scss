@@ -1,7 +1,9 @@
 .profile-button {
-  &__button {
+  &__button.MuiButtonBase-root {
     color: white;
     margin-right: 16px !important;
+    display: flex;
+    align-items: center;
   }
 
   &__button-icon {

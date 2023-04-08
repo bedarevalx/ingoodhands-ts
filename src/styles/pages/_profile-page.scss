@@ -1,0 +1,13 @@
+.profile-page {
+  &__wrapper {
+    display: flex;
+  }
+  &__side-menu {
+    flex-basis: 25%;
+    flex-shrink: 0;
+  }
+  &__profile-info {
+    flex-basis: 75%;
+    min-width: 250px;
+  }
+}

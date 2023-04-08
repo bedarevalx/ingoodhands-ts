@@ -1,0 +1,38 @@
+.confirm-email-form {
+  position: relative;
+  &__instruction {
+    opacity: 0.5;
+    text-align: center;
+    margin-top: 22px;
+  }
+  &__close-btn.MuiButtonBase-root {
+    position: absolute;
+    right: -10px;
+    top: -12px;
+  }
+  &__send-wrapper {
+    width: 100%;
+    text-align: center;
+    margin-top: 22px;
+  }
+  &__send-code.MuiButtonBase-root {
+    color: white;
+    background: $color-primary;
+    padding: 8px 8px;
+    @include color-hover($color-primary);
+  }
+  &__code-sended {
+    margin-top: 22px;
+    margin-bottom: 12px;
+    opacity: 0.6;
+  }
+  &__alert {
+    margin-top: 16px;
+  }
+  &__check-code.MuiButtonBase-root {
+    color: white;
+    background: $color-primary;
+    padding: 8px 22px;
+    @include color-hover($color-primary);
+  }
+}

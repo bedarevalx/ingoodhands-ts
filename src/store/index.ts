@@ -4,6 +4,7 @@ import { adsReducer } from '../features/AdvertList';
 import { appReducer } from './app.slice';
 import { editAdReducer } from '../features/EditAdvert';
 import { geoReducer } from '../features/SearchMap';
+import { profileReducer } from '../features/Profile';
 export const store = configureStore({
   reducer: {
     app: appReducer,
@@ -13,6 +14,7 @@ export const store = configureStore({
     ads: adsReducer,
     editAd: editAdReducer,
     geo: geoReducer,
+    profile: profileReducer,
   },
 });
 

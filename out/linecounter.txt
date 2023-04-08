@@ -1,0 +1,454 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2023-04-07 00:31:11
+count workspace : /Users/bedarevalx/Desktop/Projects/ingoodhands
+total files : 197
+total code lines : 39591
+total comment lines : 386
+total blank lines : 494
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .ts|           1942|            120|            188|    4.9|
+   |           .tsx|           1553|             27|            154|    3.9|
+   |          .scss|            864|             73|            103|    2.2|
+   |           .svg|             25|              0|              0|  0.063|
+   |          .json|          35071|              0|             11|     89|
+   |               |             24|              1|              5|  0.061|
+   |            .md|             26|              6|             20|  0.066|
+   |           .txt|              6|            121|             13|  0.015|
+   |          .html|             21|             23|              0|  0.053|
+   |         .local|              3|              1|              0| 0.0076|
+   |         .cache|             36|              0|              0|  0.091|
+   |            .js|              9|             13|              0|  0.023|
+   |           .map|             10|              0|              0|  0.025|
+   |           .css|              1|              1|              0| 0.0025|
+   -------------------------------------------------------------------------
+.env.local, code is 3, comment is 1, blank is 0.
+.firebase/hosting.YnVpbGQ.cache, code is 36, comment is 0, blank is 0.
+.firebaserc, code is 5, comment is 0, blank is 0.
+.gitignore, code is 19, comment is 1, blank is 5.
+build/asset-manifest.json, code is 35, comment is 0, blank is 1.
+build/favicon.ico, it is a binary file.
+build/index.html, code is 1, comment is 0, blank is 0.
+build/logo192.png, it is a binary file.
+build/logo512.png, it is a binary file.
+build/manifest.json, code is 25, comment is 0, blank is 0.
+build/robots.txt, code is 3, comment is 1, blank is 0.
+build/static/css/main.f625c1f2.css, code is 1, comment is 1, blank is 0.
+build/static/css/main.f625c1f2.css.map, code is 1, comment is 0, blank is 0.
+build/static/js/256.c705d629.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/256.c705d629.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/478.bccfc1a0.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/478.bccfc1a0.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/483.5110dfc2.chunk.js, code is 1, comment is 3, blank is 0.
+build/static/js/483.5110dfc2.chunk.js.LICENSE.txt, code is 0, comment is 1, blank is 0.
+build/static/js/483.5110dfc2.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/523.29b9c0df.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/523.29b9c0df.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/526.b686a563.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/526.b686a563.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/606.94d8f1f0.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/606.94d8f1f0.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/639.e37a9390.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/639.e37a9390.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/943.74100743.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/943.74100743.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/main.ab009608.js, code is 1, comment is 3, blank is 0.
+build/static/js/main.ab009608.js.LICENSE.txt, code is 0, comment is 118, blank is 13.
+build/static/js/main.ab009608.js.map, code is 1, comment is 0, blank is 0.
+build/static/media/HouschkaPro-Bold.6643b2f0d5436e52362d.otf, it is a binary file.
+build/static/media/HouschkaPro-DemiBold.359a75dd09c9388cfaae.otf, it is a binary file.
+build/static/media/HouschkaPro-Light.bc6e5fc84bd265004d53.otf, it is a binary file.
+build/static/media/HouschkaPro-Medium.62ca250e334a8ec2b7b9.otf, it is a binary file.
+build/static/media/logo-white.742dd9ea65216bd3050368986df6bca0.svg, code is 4, comment is 0, blank is 0.
+build/static/media/logo.dbea6f84e4a30ae508904195f66ededf.svg, code is 4, comment is 0, blank is 0.
+build/static/media/signup-bg.01955c236123827ee1e2e51af6d40e1f.svg, code is 1, comment is 0, blank is 0.
+custom.d.ts, code is 12, comment is 0, blank is 0.
+firebase.json, code is 15, comment is 0, blank is 1.
+package-lock.json, code is 34885, comment is 0, blank is 4.
+package.json, code is 61, comment is 0, blank is 3.
+public/favicon.ico, it is a binary file.
+public/index.html, code is 20, comment is 23, blank is 0.
+public/logo192.png, it is a binary file.
+public/logo512.png, it is a binary file.
+public/manifest.json, code is 25, comment is 0, blank is 0.
+public/robots.txt, code is 3, comment is 1, blank is 0.
+README.md, code is 26, comment is 6, blank is 20.
+src/api/dadata.api.ts, code is 21, comment is 0, blank is 2.
+src/api/in-good-hands.api.ts, code is 39, comment is 0, blank is 8.
+src/app.service.ts, code is 48, comment is 77, blank is 7.
+src/app.tsx, code is 30, comment is 2, blank is 5.
+src/assets/fonts/HouschkaPro-Bold.otf, it is a binary file.
+src/assets/fonts/HouschkaPro-DemiBold.otf, it is a binary file.
+src/assets/fonts/HouschkaPro-Light.otf, it is a binary file.
+src/assets/fonts/HouschkaPro-Medium.otf, it is a binary file.
+src/assets/vector/header-bg.svg, code is 1, comment is 0, blank is 0.
+src/assets/vector/logo-white.svg, code is 4, comment is 0, blank is 0.
+src/assets/vector/logo.svg, code is 4, comment is 0, blank is 0.
+src/assets/vector/logo2.svg, code is 4, comment is 0, blank is 0.
+src/assets/vector/signup-bg.svg, code is 1, comment is 0, blank is 0.
+src/assets/vector/signup-bg2.svg, code is 1, comment is 0, blank is 0.
+src/assets/vector/signup-bg3.svg, code is 1, comment is 0, blank is 0.
+src/axios/dadata.axios.ts, code is 12, comment is 1, blank is 3.
+src/axios/in-good-hands.axios.ts, code is 31, comment is 1, blank is 4.
+src/components/Footer/index.tsx, code is 14, comment is 0, blank is 3.
+src/components/FullscreenSpinner/index.tsx, code is 10, comment is 0, blank is 2.
+src/components/Header/index.tsx, code is 46, comment is 1, blank is 5.
+src/components/ProfileButton/index.tsx, code is 131, comment is 0, blank is 12.
+src/components/SideMenu/index.tsx, code is 32, comment is 0, blank is 3.
+src/components/SkeletonLoader/index.tsx, code is 7, comment is 0, blank is 2.
+src/configs/app.config.ts, code is 4, comment is 0, blank is 0.
+src/constants/app.ts, code is 5, comment is 0, blank is 0.
+src/constants/errors.ts, code is 3, comment is 0, blank is 0.
+src/constants/regexs.ts, code is 8, comment is 1, blank is 0.
+src/constants/routes.ts, code is 12, comment is 0, blank is 0.
+src/features/Admin/admin.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/Admin/admin.service.ts, code is 0, comment is 0, blank is 0.
+src/features/Admin/index.ts, code is 0, comment is 0, blank is 0.
+src/features/AdvertList/admin.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/AdvertList/admin.service.ts, code is 0, comment is 0, blank is 0.
+src/features/AdvertList/components/AdPreview/index.tsx, code is 27, comment is 0, blank is 3.
+src/features/AdvertList/components/AdPreviewList/index.tsx, code is 27, comment is 0, blank is 2.
+src/features/AdvertList/controllers/ads.controller.ts, code is 27, comment is 0, blank is 2.
+src/features/AdvertList/index.ts, code is 2, comment is 0, blank is 1.
+src/features/AdvertList/services/ads.service.ts, code is 45, comment is 0, blank is 5.
+src/features/AdvertList/slices/ads.slice.ts, code is 45, comment is 1, blank is 4.
+src/features/Auth/components/PasswordIndicator/index.tsx, code is 13, comment is 0, blank is 3.
+src/features/Auth/components/SignInForm/index.tsx, code is 62, comment is 1, blank is 3.
+src/features/Auth/components/SignUpForm/index.tsx, code is 102, comment is 0, blank is 3.
+src/features/Auth/controllers/auth.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/controllers/sign-in.controller.ts, code is 138, comment is 0, blank is 15.
+src/features/Auth/controllers/sign-up.controller.ts, code is 255, comment is 8, blank is 21.
+src/features/Auth/helpers/validator.ts, code is 23, comment is 0, blank is 4.
+src/features/Auth/index.ts, code is 6, comment is 0, blank is 1.
+src/features/Auth/services/auth.service.ts, code is 122, comment is 0, blank is 8.
+src/features/Auth/services/signin.service.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/services/signup.service.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/slices/auth.slice.ts, code is 101, comment is 1, blank is 5.
+src/features/Auth/slices/signin.slice.ts, code is 70, comment is 0, blank is 5.
+src/features/Auth/slices/signup.slice.ts, code is 117, comment is 0, blank is 5.
+src/features/EditAdvert/components/EditForm/index.tsx, code is 108, comment is 0, blank is 5.
+src/features/EditAdvert/components/FileLoader/index.tsx, code is 85, comment is 2, blank is 8.
+src/features/EditAdvert/components/ImageLoader/index.tsx, code is 11, comment is 0, blank is 3.
+src/features/EditAdvert/components/PhotoPreview/index.tsx, code is 16, comment is 0, blank is 2.
+src/features/EditAdvert/controllers/edit-ad.controller.ts, code is 76, comment is 0, blank is 13.
+src/features/EditAdvert/index.tsx, code is 2, comment is 0, blank is 1.
+src/features/EditAdvert/services/edit-ad.service.ts, code is 84, comment is 3, blank is 7.
+src/features/EditAdvert/slices/edit-ad.slice.ts, code is 95, comment is 1, blank is 4.
+src/features/Profile/index.ts, code is 0, comment is 0, blank is 0.
+src/features/Profile/profile.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/Profile/profile.service.ts, code is 0, comment is 0, blank is 0.
+src/features/SearchMap/components/AddressPicker/index.tsx, code is 129, comment is 4, blank is 12.
+src/features/SearchMap/controllers/geo.controller.ts, code is 32, comment is 0, blank is 5.
+src/features/SearchMap/index.tsx, code is 3, comment is 0, blank is 0.
+src/features/SearchMap/services/geo.service.ts, code is 41, comment is 0, blank is 4.
+src/features/SearchMap/slices/geo.slice.ts, code is 56, comment is 1, blank is 4.
+src/helpers/blobToBase64.ts, code is 7, comment is 0, blank is 0.
+src/helpers/classNamesParser.ts, code is 3, comment is 0, blank is 0.
+src/helpers/compressor.ts, code is 32, comment is 0, blank is 3.
+src/helpers/errorsParser.ts, code is 0, comment is 0, blank is 0.
+src/helpers/fileLoaderHelper.ts, code is 48, comment is 0, blank is 4.
+src/hoc/LoaderHoc.tsx, code is 10, comment is 0, blank is 3.
+src/hoc/PrivateRoute.tsx, code is 22, comment is 0, blank is 5.
+src/hooks/useDebounce.ts, code is 19, comment is 0, blank is 6.
+src/hooks/useErrors.ts, code is 9, comment is 0, blank is 3.
+src/hooks/useRedux.ts, code is 4, comment is 0, blank is 1.
+src/index.tsx, code is 15, comment is 3, blank is 3.
+src/interfaces/ads.interfaces.ts, code is 22, comment is 1, blank is 3.
+src/interfaces/auth.interfaces.ts, code is 42, comment is 4, blank is 6.
+src/interfaces/general.interfaces.ts, code is 32, comment is 0, blank is 6.
+src/interfaces/geo.interfaces.ts, code is 15, comment is 0, blank is 2.
+src/interfaces/responses.interfaces.ts, code is 83, comment is 0, blank is 10.
+src/layouts/HeaderLayout/index.tsx, code is 24, comment is 0, blank is 3.
+src/layouts/LogoLayout/index.tsx, code is 27, comment is 0, blank is 4.
+src/mocks/profile-menu.mocks.ts, code is 12, comment is 0, blank is 2.
+src/pages/AdminPage/index.tsx, code is 0, comment is 0, blank is 0.
+src/pages/EditAdvertPage/index.tsx, code is 14, comment is 0, blank is 3.
+src/pages/FavoritesPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/HomePage/index.tsx, code is 21, comment is 0, blank is 5.
+src/pages/MyAdsPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/ProfilePage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/ReviewsPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/SignInPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/SignUpPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/routes/index.tsx, code is 81, comment is 10, blank is 3.
+src/store/app.slice.ts, code is 37, comment is 19, blank is 4.
+src/store/index.ts, code is 19, comment is 0, blank is 1.
+src/styles/colors.scss, code is 12, comment is 0, blank is 0.
+src/styles/components/_ad-preview-list.scss, code is 11, comment is 36, blank is 5.
+src/styles/components/_ad-preview.scss, code is 40, comment is 26, blank is 3.
+src/styles/components/_address-picker.scss, code is 87, comment is 3, blank is 13.
+src/styles/components/_container.scss, code is 6, comment is 0, blank is 0.
+src/styles/components/_edit-form.scss, code is 46, comment is 0, blank is 5.
+src/styles/components/_file-loader.scss, code is 29, comment is 0, blank is 3.
+src/styles/components/_footer.scss, code is 7, comment is 0, blank is 0.
+src/styles/components/_fullscreen-spinner.scss, code is 7, comment is 0, blank is 0.
+src/styles/components/_header.scss, code is 35, comment is 0, blank is 2.
+src/styles/components/_password-indicator.scss, code is 14, comment is 0, blank is 0.
+src/styles/components/_photo-preview.scss, code is 24, comment is 0, blank is 1.
+src/styles/components/_profile-button.scss, code is 47, comment is 0, blank is 7.
+src/styles/components/_side-menu.scss, code is 21, comment is 0, blank is 1.
+src/styles/components/_sign-in-form.scss, code is 46, comment is 0, blank is 5.
+src/styles/components/_sign-up-form.scss, code is 44, comment is 0, blank is 6.
+src/styles/constants.scss, code is 5, comment is 1, blank is 1.
+src/styles/fonts.scss, code is 22, comment is 0, blank is 3.
+src/styles/general.scss, code is 6, comment is 0, blank is 0.
+src/styles/index.scss, code is 31, comment is 4, blank is 4.
+src/styles/layouts/_header-layout.scss, code is 17, comment is 0, blank is 0.
+src/styles/layouts/_logo-layout.scss, code is 31, comment is 0, blank is 1.
+src/styles/mixins.scss, code is 20, comment is 0, blank is 2.
+src/styles/pages/_new-ad-page.scss, code is 0, comment is 0, blank is 0.
+src/styles/reset.scss, code is 7, comment is 0, blank is 0.
+src/styles/UI/_auto-complete.scss, code is 19, comment is 0, blank is 3.
+src/styles/UI/_button.scss, code is 68, comment is 1, blank is 16.
+src/styles/UI/_input.scss, code is 79, comment is 1, blank is 14.
+src/styles/UI/_loaded-button.scss, code is 7, comment is 0, blank is 0.
+src/styles/UI/_modal.scss, code is 40, comment is 0, blank is 4.
+src/styles/UI/_select.scss, code is 19, comment is 0, blank is 4.
+src/styles/UI/_spinner.scss, code is 0, comment is 0, blank is 0.
+src/styles/UI/_textarea.scss, code is 17, comment is 1, blank is 0.
+src/types/general.types.ts, code is 15, comment is 0, blank is 0.
+src/types/profileMenu.types.ts, code is 5, comment is 0, blank is 0.
+src/UI/AutoComplete/index.tsx, code is 80, comment is 0, blank is 6.
+src/UI/Button/index.tsx, code is 20, comment is 0, blank is 2.
+src/UI/Input/index.tsx, code is 87, comment is 0, blank is 5.
+src/UI/LoadedButton/index.tsx, code is 28, comment is 0, blank is 2.
+src/UI/MaskedInput/index.tsx, code is 70, comment is 0, blank is 4.
+src/UI/Modal/index.tsx, code is 20, comment is 0, blank is 3.
+src/UI/Select/index.tsx, code is 61, comment is 4, blank is 5.
+src/UI/Spinner/index.tsx, code is 27, comment is 0, blank is 6.
+src/UI/TextArea/index.tsx, code is 25, comment is 0, blank is 3.
+src/utils/errors.ts, code is 8, comment is 1, blank is 0.
+tsconfig.json, code is 25, comment is 0, blank is 2.
+===============================================================================
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2023-04-07 00:47:24
+count workspace : /Users/bedarevalx/Desktop/Projects/ingoodhands
+total files : 197
+total code lines : 39591
+total comment lines : 386
+total blank lines : 494
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |           .tsx|           1553|             27|            154|    3.9|
+   |            .ts|           1942|            120|            188|    4.9|
+   |           .svg|             25|              0|              0|  0.063|
+   |          .scss|            864|             73|            103|    2.2|
+   |          .json|          35071|              0|             11|     89|
+   |               |             24|              1|              5|  0.061|
+   |            .md|             26|              6|             20|  0.066|
+   |           .txt|              6|            121|             13|  0.015|
+   |          .html|             21|             23|              0|  0.053|
+   |           .map|             10|              0|              0|  0.025|
+   |            .js|              9|             13|              0|  0.023|
+   |         .local|              3|              1|              0| 0.0076|
+   |           .css|              1|              1|              0| 0.0025|
+   |         .cache|             36|              0|              0|  0.091|
+   -------------------------------------------------------------------------
+.env.local, code is 3, comment is 1, blank is 0.
+.firebase/hosting.YnVpbGQ.cache, code is 36, comment is 0, blank is 0.
+.firebaserc, code is 5, comment is 0, blank is 0.
+.gitignore, code is 19, comment is 1, blank is 5.
+build/asset-manifest.json, code is 35, comment is 0, blank is 1.
+build/favicon.ico, it is a binary file.
+build/index.html, code is 1, comment is 0, blank is 0.
+build/logo192.png, it is a binary file.
+build/logo512.png, it is a binary file.
+build/manifest.json, code is 25, comment is 0, blank is 0.
+build/robots.txt, code is 3, comment is 1, blank is 0.
+build/static/css/main.f625c1f2.css, code is 1, comment is 1, blank is 0.
+build/static/css/main.f625c1f2.css.map, code is 1, comment is 0, blank is 0.
+build/static/js/256.c705d629.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/256.c705d629.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/478.bccfc1a0.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/478.bccfc1a0.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/483.5110dfc2.chunk.js, code is 1, comment is 3, blank is 0.
+build/static/js/483.5110dfc2.chunk.js.LICENSE.txt, code is 0, comment is 1, blank is 0.
+build/static/js/483.5110dfc2.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/523.29b9c0df.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/523.29b9c0df.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/526.b686a563.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/526.b686a563.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/606.94d8f1f0.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/606.94d8f1f0.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/639.e37a9390.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/639.e37a9390.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/943.74100743.chunk.js, code is 1, comment is 1, blank is 0.
+build/static/js/943.74100743.chunk.js.map, code is 1, comment is 0, blank is 0.
+build/static/js/main.ab009608.js, code is 1, comment is 3, blank is 0.
+build/static/js/main.ab009608.js.LICENSE.txt, code is 0, comment is 118, blank is 13.
+build/static/js/main.ab009608.js.map, code is 1, comment is 0, blank is 0.
+build/static/media/HouschkaPro-Bold.6643b2f0d5436e52362d.otf, it is a binary file.
+build/static/media/HouschkaPro-DemiBold.359a75dd09c9388cfaae.otf, it is a binary file.
+build/static/media/HouschkaPro-Light.bc6e5fc84bd265004d53.otf, it is a binary file.
+build/static/media/HouschkaPro-Medium.62ca250e334a8ec2b7b9.otf, it is a binary file.
+build/static/media/logo-white.742dd9ea65216bd3050368986df6bca0.svg, code is 4, comment is 0, blank is 0.
+build/static/media/logo.dbea6f84e4a30ae508904195f66ededf.svg, code is 4, comment is 0, blank is 0.
+build/static/media/signup-bg.01955c236123827ee1e2e51af6d40e1f.svg, code is 1, comment is 0, blank is 0.
+custom.d.ts, code is 12, comment is 0, blank is 0.
+firebase.json, code is 15, comment is 0, blank is 1.
+package-lock.json, code is 34885, comment is 0, blank is 4.
+package.json, code is 61, comment is 0, blank is 3.
+public/favicon.ico, it is a binary file.
+public/index.html, code is 20, comment is 23, blank is 0.
+public/logo192.png, it is a binary file.
+public/logo512.png, it is a binary file.
+public/manifest.json, code is 25, comment is 0, blank is 0.
+public/robots.txt, code is 3, comment is 1, blank is 0.
+README.md, code is 26, comment is 6, blank is 20.
+src/api/dadata.api.ts, code is 21, comment is 0, blank is 2.
+src/api/in-good-hands.api.ts, code is 39, comment is 0, blank is 8.
+src/app.service.ts, code is 48, comment is 77, blank is 7.
+src/app.tsx, code is 30, comment is 2, blank is 5.
+src/assets/fonts/HouschkaPro-Bold.otf, it is a binary file.
+src/assets/fonts/HouschkaPro-DemiBold.otf, it is a binary file.
+src/assets/fonts/HouschkaPro-Light.otf, it is a binary file.
+src/assets/fonts/HouschkaPro-Medium.otf, it is a binary file.
+src/assets/vector/header-bg.svg, code is 1, comment is 0, blank is 0.
+src/assets/vector/logo-white.svg, code is 4, comment is 0, blank is 0.
+src/assets/vector/logo.svg, code is 4, comment is 0, blank is 0.
+src/assets/vector/logo2.svg, code is 4, comment is 0, blank is 0.
+src/assets/vector/signup-bg.svg, code is 1, comment is 0, blank is 0.
+src/assets/vector/signup-bg2.svg, code is 1, comment is 0, blank is 0.
+src/assets/vector/signup-bg3.svg, code is 1, comment is 0, blank is 0.
+src/axios/dadata.axios.ts, code is 12, comment is 1, blank is 3.
+src/axios/in-good-hands.axios.ts, code is 31, comment is 1, blank is 4.
+src/components/Footer/index.tsx, code is 14, comment is 0, blank is 3.
+src/components/FullscreenSpinner/index.tsx, code is 10, comment is 0, blank is 2.
+src/components/Header/index.tsx, code is 46, comment is 1, blank is 5.
+src/components/ProfileButton/index.tsx, code is 131, comment is 0, blank is 12.
+src/components/SideMenu/index.tsx, code is 32, comment is 0, blank is 3.
+src/components/SkeletonLoader/index.tsx, code is 7, comment is 0, blank is 2.
+src/configs/app.config.ts, code is 4, comment is 0, blank is 0.
+src/constants/app.ts, code is 5, comment is 0, blank is 0.
+src/constants/errors.ts, code is 3, comment is 0, blank is 0.
+src/constants/regexs.ts, code is 8, comment is 1, blank is 0.
+src/constants/routes.ts, code is 12, comment is 0, blank is 0.
+src/features/Admin/admin.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/Admin/admin.service.ts, code is 0, comment is 0, blank is 0.
+src/features/Admin/index.ts, code is 0, comment is 0, blank is 0.
+src/features/AdvertList/admin.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/AdvertList/admin.service.ts, code is 0, comment is 0, blank is 0.
+src/features/AdvertList/components/AdPreview/index.tsx, code is 27, comment is 0, blank is 3.
+src/features/AdvertList/components/AdPreviewList/index.tsx, code is 27, comment is 0, blank is 2.
+src/features/AdvertList/controllers/ads.controller.ts, code is 27, comment is 0, blank is 2.
+src/features/AdvertList/index.ts, code is 2, comment is 0, blank is 1.
+src/features/AdvertList/services/ads.service.ts, code is 45, comment is 0, blank is 5.
+src/features/AdvertList/slices/ads.slice.ts, code is 45, comment is 1, blank is 4.
+src/features/Auth/components/PasswordIndicator/index.tsx, code is 13, comment is 0, blank is 3.
+src/features/Auth/components/SignInForm/index.tsx, code is 62, comment is 1, blank is 3.
+src/features/Auth/components/SignUpForm/index.tsx, code is 102, comment is 0, blank is 3.
+src/features/Auth/controllers/auth.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/controllers/sign-in.controller.ts, code is 138, comment is 0, blank is 15.
+src/features/Auth/controllers/sign-up.controller.ts, code is 255, comment is 8, blank is 21.
+src/features/Auth/helpers/validator.ts, code is 23, comment is 0, blank is 4.
+src/features/Auth/index.ts, code is 6, comment is 0, blank is 1.
+src/features/Auth/services/auth.service.ts, code is 122, comment is 0, blank is 8.
+src/features/Auth/services/signin.service.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/services/signup.service.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/slices/auth.slice.ts, code is 101, comment is 1, blank is 5.
+src/features/Auth/slices/signin.slice.ts, code is 70, comment is 0, blank is 5.
+src/features/Auth/slices/signup.slice.ts, code is 117, comment is 0, blank is 5.
+src/features/EditAdvert/components/EditForm/index.tsx, code is 108, comment is 0, blank is 5.
+src/features/EditAdvert/components/FileLoader/index.tsx, code is 85, comment is 2, blank is 8.
+src/features/EditAdvert/components/ImageLoader/index.tsx, code is 11, comment is 0, blank is 3.
+src/features/EditAdvert/components/PhotoPreview/index.tsx, code is 16, comment is 0, blank is 2.
+src/features/EditAdvert/controllers/edit-ad.controller.ts, code is 76, comment is 0, blank is 13.
+src/features/EditAdvert/index.tsx, code is 2, comment is 0, blank is 1.
+src/features/EditAdvert/services/edit-ad.service.ts, code is 84, comment is 3, blank is 7.
+src/features/EditAdvert/slices/edit-ad.slice.ts, code is 95, comment is 1, blank is 4.
+src/features/Profile/index.ts, code is 0, comment is 0, blank is 0.
+src/features/Profile/profile.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/Profile/profile.service.ts, code is 0, comment is 0, blank is 0.
+src/features/SearchMap/components/AddressPicker/index.tsx, code is 129, comment is 4, blank is 12.
+src/features/SearchMap/controllers/geo.controller.ts, code is 32, comment is 0, blank is 5.
+src/features/SearchMap/index.tsx, code is 3, comment is 0, blank is 0.
+src/features/SearchMap/services/geo.service.ts, code is 41, comment is 0, blank is 4.
+src/features/SearchMap/slices/geo.slice.ts, code is 56, comment is 1, blank is 4.
+src/helpers/blobToBase64.ts, code is 7, comment is 0, blank is 0.
+src/helpers/classNamesParser.ts, code is 3, comment is 0, blank is 0.
+src/helpers/compressor.ts, code is 32, comment is 0, blank is 3.
+src/helpers/errorsParser.ts, code is 0, comment is 0, blank is 0.
+src/helpers/fileLoaderHelper.ts, code is 48, comment is 0, blank is 4.
+src/hoc/LoaderHoc.tsx, code is 10, comment is 0, blank is 3.
+src/hoc/PrivateRoute.tsx, code is 22, comment is 0, blank is 5.
+src/hooks/useDebounce.ts, code is 19, comment is 0, blank is 6.
+src/hooks/useErrors.ts, code is 9, comment is 0, blank is 3.
+src/hooks/useRedux.ts, code is 4, comment is 0, blank is 1.
+src/index.tsx, code is 15, comment is 3, blank is 3.
+src/interfaces/ads.interfaces.ts, code is 22, comment is 1, blank is 3.
+src/interfaces/auth.interfaces.ts, code is 42, comment is 4, blank is 6.
+src/interfaces/general.interfaces.ts, code is 32, comment is 0, blank is 6.
+src/interfaces/geo.interfaces.ts, code is 15, comment is 0, blank is 2.
+src/interfaces/responses.interfaces.ts, code is 83, comment is 0, blank is 10.
+src/layouts/HeaderLayout/index.tsx, code is 24, comment is 0, blank is 3.
+src/layouts/LogoLayout/index.tsx, code is 27, comment is 0, blank is 4.
+src/mocks/profile-menu.mocks.ts, code is 12, comment is 0, blank is 2.
+src/pages/AdminPage/index.tsx, code is 0, comment is 0, blank is 0.
+src/pages/EditAdvertPage/index.tsx, code is 14, comment is 0, blank is 3.
+src/pages/FavoritesPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/HomePage/index.tsx, code is 21, comment is 0, blank is 5.
+src/pages/MyAdsPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/ProfilePage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/ReviewsPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/SignInPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/SignUpPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/routes/index.tsx, code is 81, comment is 10, blank is 3.
+src/store/app.slice.ts, code is 37, comment is 19, blank is 4.
+src/store/index.ts, code is 19, comment is 0, blank is 1.
+src/styles/colors.scss, code is 12, comment is 0, blank is 0.
+src/styles/components/_ad-preview-list.scss, code is 11, comment is 36, blank is 5.
+src/styles/components/_ad-preview.scss, code is 40, comment is 26, blank is 3.
+src/styles/components/_address-picker.scss, code is 87, comment is 3, blank is 13.
+src/styles/components/_container.scss, code is 6, comment is 0, blank is 0.
+src/styles/components/_edit-form.scss, code is 46, comment is 0, blank is 5.
+src/styles/components/_file-loader.scss, code is 29, comment is 0, blank is 3.
+src/styles/components/_footer.scss, code is 7, comment is 0, blank is 0.
+src/styles/components/_fullscreen-spinner.scss, code is 7, comment is 0, blank is 0.
+src/styles/components/_header.scss, code is 35, comment is 0, blank is 2.
+src/styles/components/_password-indicator.scss, code is 14, comment is 0, blank is 0.
+src/styles/components/_photo-preview.scss, code is 24, comment is 0, blank is 1.
+src/styles/components/_profile-button.scss, code is 47, comment is 0, blank is 7.
+src/styles/components/_side-menu.scss, code is 21, comment is 0, blank is 1.
+src/styles/components/_sign-in-form.scss, code is 46, comment is 0, blank is 5.
+src/styles/components/_sign-up-form.scss, code is 44, comment is 0, blank is 6.
+src/styles/constants.scss, code is 5, comment is 1, blank is 1.
+src/styles/fonts.scss, code is 22, comment is 0, blank is 3.
+src/styles/general.scss, code is 6, comment is 0, blank is 0.
+src/styles/index.scss, code is 31, comment is 4, blank is 4.
+src/styles/layouts/_header-layout.scss, code is 17, comment is 0, blank is 0.
+src/styles/layouts/_logo-layout.scss, code is 31, comment is 0, blank is 1.
+src/styles/mixins.scss, code is 20, comment is 0, blank is 2.
+src/styles/pages/_new-ad-page.scss, code is 0, comment is 0, blank is 0.
+src/styles/reset.scss, code is 7, comment is 0, blank is 0.
+src/styles/UI/_auto-complete.scss, code is 19, comment is 0, blank is 3.
+src/styles/UI/_button.scss, code is 68, comment is 1, blank is 16.
+src/styles/UI/_input.scss, code is 79, comment is 1, blank is 14.
+src/styles/UI/_loaded-button.scss, code is 7, comment is 0, blank is 0.
+src/styles/UI/_modal.scss, code is 40, comment is 0, blank is 4.
+src/styles/UI/_select.scss, code is 19, comment is 0, blank is 4.
+src/styles/UI/_spinner.scss, code is 0, comment is 0, blank is 0.
+src/styles/UI/_textarea.scss, code is 17, comment is 1, blank is 0.
+src/types/general.types.ts, code is 15, comment is 0, blank is 0.
+src/types/profileMenu.types.ts, code is 5, comment is 0, blank is 0.
+src/UI/AutoComplete/index.tsx, code is 80, comment is 0, blank is 6.
+src/UI/Button/index.tsx, code is 20, comment is 0, blank is 2.
+src/UI/Input/index.tsx, code is 87, comment is 0, blank is 5.
+src/UI/LoadedButton/index.tsx, code is 28, comment is 0, blank is 2.
+src/UI/MaskedInput/index.tsx, code is 70, comment is 0, blank is 4.
+src/UI/Modal/index.tsx, code is 20, comment is 0, blank is 3.
+src/UI/Select/index.tsx, code is 61, comment is 4, blank is 5.
+src/UI/Spinner/index.tsx, code is 27, comment is 0, blank is 6.
+src/UI/TextArea/index.tsx, code is 25, comment is 0, blank is 3.
+src/utils/errors.ts, code is 8, comment is 1, blank is 0.
+tsconfig.json, code is 25, comment is 0, blank is 2.
+===============================================================================

@@ -10,7 +10,6 @@ interface ISideMenuProps {
 }
 
 const SideMenu = (props: ISideMenuProps) => {
-  const handleMenuClick = (target: string) => {};
   return (
     <aside className={classNamesParser('side-menu', props.classNames)}>
       <ul className='side-menu__list'>

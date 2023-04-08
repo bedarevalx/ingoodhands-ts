@@ -4,10 +4,10 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 import Spinner from '../Spinner';
 
 interface ILoadedButtonProps {
-  classNames: string[];
+  classNames?: string[];
   label: string;
   isLoading: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 const LoadedButton = (props: ILoadedButtonProps) => {
   return (

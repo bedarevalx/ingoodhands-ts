@@ -1,6 +1,7 @@
 import axios from '../axios/in-good-hands.axios';
 import { ICreatePost } from '../interfaces/ads.interfaces';
 import { IUserSignIn, IUserSignUp } from '../interfaces/auth.interfaces';
+import { ICheckCodeBody } from '../interfaces/profile.interfaces';
 import {
   ICategoryResponse,
   ICityResponse,
@@ -44,4 +45,12 @@ export const fetchAds = async () => {
 
 export const createAd = async (body: ICreatePost) => {
   return await axios.post('/api/create_post', body);
+};
+
+export const sendConfirmEmail = async () => {
+  return await axios.get('/api/sent_code');
+};
+
+export const checkConfirmEmailCode = async (body: ICheckCodeBody) => {
+  return await axios.post('/api/check_code', body);
 };

@@ -90,7 +90,9 @@ const ProfileButton = (props: IProfileButtonProps) => {
           startIcon={
             <PersonOutlineIcon className='profile-button__button-icon' />
           }>
-          {props.isAuthenticate && props.userName ? props.userName : 'Войти'}
+          <span>
+            {props.isAuthenticate && props.userName ? props.userName : 'Войти'}
+          </span>
         </Button>
       )}
       <Menu

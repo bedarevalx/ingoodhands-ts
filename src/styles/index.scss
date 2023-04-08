@@ -16,6 +16,7 @@
 @import './UI/auto-complete';
 
 //pages
+@import './pages/profile-page';
 
 //components
 @import './components/sign-up-form';
@@ -33,6 +34,8 @@
 @import './components/file-loader';
 @import './components/photo-preview';
 @import './components/side-menu';
+@import './components/profile-info';
+@import './components/confirm-email';
 
 //layouts
 @import './layouts/header-layout';
