@@ -37,10 +37,16 @@ export interface IUser {
   isBanned: boolean;
   isEmailVerified: boolean;
   id: string;
-  idCity: string;
+  city: IUserCity;
   isAdmin: boolean;
   phoneNumber: string;
   addresses: IUserAddress[];
+}
+
+export interface IUserCity {
+  id: number;
+  name: string;
+  isActive: boolean;
 }
 
 export interface IUserAddress {

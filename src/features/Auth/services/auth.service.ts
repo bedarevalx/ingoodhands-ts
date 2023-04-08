@@ -104,7 +104,11 @@ export class AuthService {
       const user = {
         isBanned: response.data.blocked_admin,
         isEmailVerified: !!response.data.email_verified_at,
-        idCity: response.data.id_city,
+        city: {
+          id: response.data.city.id,
+          name: response.data.city.name,
+          isActive: response.data.city.is_active,
+        },
         isAdmin: response.data.is_admin,
         phoneNumber: response.data.phone_number,
         email: response.data.email,

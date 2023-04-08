@@ -21,10 +21,16 @@ export interface IGetProfileResponse {
   email: string;
   email_verified_at: string;
   id: string;
-  id_city: string;
+  city: IUserCity;
   is_admin: boolean;
   name: string;
   phone_number: string;
+}
+
+export interface IUserCity {
+  id: number;
+  name: string;
+  is_active: boolean;
 }
 
 export interface ITokenResponse {

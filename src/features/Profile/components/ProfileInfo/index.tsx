@@ -19,7 +19,6 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
   const { user } = useAppSelector((state) => state.auth);
   const profile = useAppSelector((state) => state.profile);
   const app = useAppSelector((state) => state.app);
-  const cityName = app.cities.find((city) => city.id === user.idCity)?.title;
   const profileController = new ProfileController(dispatch, navigate);
 
   return (
@@ -61,7 +60,7 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
         <div className='profile-info__city-block'>
           <p className='profile-info__block-title'>Город</p>
         </div>
-        <p>{cityName}</p>
+        <p>{user.city.name}</p>
       </div>
       <Modal
         classNames={['profile-info__confirm-modal']}
