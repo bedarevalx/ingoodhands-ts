@@ -17,6 +17,9 @@
 
 //pages
 @import './pages/profile-page';
+@import './pages/my-ads-page';
+@import './pages/reviews-page';
+@import './pages/favorites-page';
 
 //components
 @import './components/sign-up-form';
@@ -36,6 +39,7 @@
 @import './components/side-menu';
 @import './components/profile-info';
 @import './components/confirm-email';
+@import './components/user-ad';
 
 //layouts
 @import './layouts/header-layout';

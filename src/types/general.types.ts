@@ -6,10 +6,10 @@ export type InputTypes =
   | 'gender'
   | 'password'
   | 'email';
-export type GenderTypes = 'male' | 'female' | string;
 export type AdsStatusTypes =
   | 'active'
   | 'review'
   | 'closed'
   | 'banned'
-  | 'unknown';
+  | 'pending'
+  | 'rejected';

@@ -8,7 +8,6 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 // import { IAppSelectItem } from '../../interfaces/appSelect.interfaces';
 // import { AdPriceUnitTypes } from '../../types/ad.types';
 // import { useTranslation } from 'react-i18next';
-import { GenderTypes } from '../../types/general.types';
 import {
   IAppSelectItem,
   ICategory,

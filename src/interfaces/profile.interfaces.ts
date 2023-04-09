@@ -1,6 +1,12 @@
 import { AppDispatch } from '../store';
+import { AdsStatusTypes } from '../types/general.types';
+import { ICategory } from './general.interfaces';
 
 export interface IProfileController {
+  dispatch: AppDispatch;
+}
+
+export interface IMyAdsController {
   dispatch: AppDispatch;
 }
 
@@ -13,4 +19,18 @@ export interface IEditProfileBody {
   email: string;
   phone_number: string;
   id_city: string;
+}
+
+export interface IMyAd {
+  title: string;
+  address: string;
+  category: ICategory;
+  city: string;
+  date: string;
+  imagePath: string;
+  status: AdsStatusTypes;
+  viewCount: number;
+  likeCount: number;
+  description: string;
+  id: number;
 }

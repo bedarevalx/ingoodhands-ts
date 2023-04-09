@@ -1,11 +1,18 @@
 import React from 'react';
 import HeaderLayout from '../../layouts/HeaderLayout';
 import SideMenu from '../../components/SideMenu';
+import { MyAdsList } from '../../features/Profile';
 
 const MyAdsPage = () => {
   return (
     <HeaderLayout classNames={['my-ads-page__container']}>
-      <SideMenu currentMenu='profile/my-ads' />
+      <div className='my-ads-page__wrapper'>
+        <SideMenu
+          currentMenu='profile/my-ads'
+          classNames={['my-ads-page__side-menu']}
+        />
+        <MyAdsList classNames={['my-ads-page__list']} />
+      </div>
     </HeaderLayout>
   );
 };

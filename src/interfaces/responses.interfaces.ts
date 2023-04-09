@@ -27,6 +27,28 @@ export interface IGetProfileResponse {
   phone_number: string;
 }
 
+export interface IGetUserPostsResponse {
+  data: IUserPostResponse[];
+  page: number;
+  per_page: number;
+  total: number;
+  total_page: number;
+}
+
+export interface IUserPostResponse {
+  id: number;
+  title: string;
+  address: IAddressResponse;
+  category: ICategoryResponse;
+  city: IUserCity;
+  date: string;
+  description: string;
+  image_set: string[];
+  status: AdsStatusTypes;
+  view_count: number;
+  like_count: number;
+}
+
 export interface IUserCity {
   id: number;
   name: string;
@@ -54,9 +76,9 @@ export interface IUserSignUpResponse {
 }
 
 export interface IAddressResponse {
-  id: string;
-  id_city: string;
-  id_user: string;
+  id?: string;
+  id_city?: string;
+  id_user?: string;
   latitude: number;
   longitude: number;
   title: string;

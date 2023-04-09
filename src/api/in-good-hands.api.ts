@@ -11,6 +11,7 @@ import {
   ICityResponse,
   IGetAdsResponse,
   IGetProfileResponse,
+  IGetUserPostsResponse,
   ITokenResponse,
 } from '../interfaces/responses.interfaces';
 
@@ -63,4 +64,8 @@ export const checkConfirmEmailCode = async (body: ICheckCodeBody) => {
 
 export const editProfile = async (body: IEditProfileBody) => {
   return await axios.patch<IGetProfileResponse>('/api/change_user_info', body);
+};
+
+export const getUserPosts = async () => {
+  return await axios.get<IGetUserPostsResponse>('/api/my_posts');
 };
