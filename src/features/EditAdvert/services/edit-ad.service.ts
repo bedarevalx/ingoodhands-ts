@@ -28,29 +28,6 @@ export class EditAdService {
     this.dispatch = dispatch;
   }
 
-  fetchAds = () => async (dispatch: AppDispatch, getState: () => RootState) => {
-    try {
-      //   dispatch(fetchAdsPending());
-
-      const response = await fetchAds();
-      console.log(response);
-
-      const ads: IAdPreview[] = response.data.data.map((ad) => ({
-        id: ad.id,
-        title: ad.title,
-        descripton: ad.description,
-        imagePath: ad.image_set[0],
-        date: ad.date,
-        city: ad.city_title,
-      }));
-
-      //   dispatch(fetchAdsFullfilled(ads));
-    } catch (e: any) {
-      console.error(e);
-      //   dispatch(fetchAdsRejected(e?.response?.data?.message) || 'default_error');
-    }
-  };
-
   onCreateAd =
     () => async (dispatch: AppDispatch, getState: () => RootState) => {
       try {

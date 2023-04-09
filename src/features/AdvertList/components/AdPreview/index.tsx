@@ -5,11 +5,12 @@ interface IAdPreviewProps {
   title: string;
   description: string;
   date: string;
+  loadMoreCallback: ((el: HTMLDivElement) => void) | null;
 }
 
 const AdPreview = (props: IAdPreviewProps) => {
   return (
-    <div className='ad-preview'>
+    <div className='ad-preview' ref={props.loadMoreCallback}>
       {/* <div className='ad-preview__image-container'> */}
       <img
         src={props.imagePath}

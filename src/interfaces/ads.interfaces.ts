@@ -1,4 +1,5 @@
 import { AppDispatch } from '../store';
+import { SortByTypes, SortTypeTypes } from '../types/ads.types';
 import { IAuthService } from './auth.interfaces';
 import { IAddress } from './general.interfaces';
 
@@ -23,4 +24,13 @@ export interface ICreatePost {
   address: IAddress;
   id_city: string;
   description?: string;
+}
+
+export interface IFetchAdParams {
+  title: string;
+  id_category: string;
+  id_city: string;
+  sortBy: SortByTypes;
+  sortType: SortTypeTypes;
+  page: number;
 }

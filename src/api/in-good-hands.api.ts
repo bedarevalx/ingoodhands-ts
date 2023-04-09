@@ -1,5 +1,6 @@
 import axios from '../axios/in-good-hands.axios';
-import { ICreatePost } from '../interfaces/ads.interfaces';
+import { parseQueryParams } from '../helpers/parseQueryParams';
+import { ICreatePost, IFetchAdParams } from '../interfaces/ads.interfaces';
 import { IUserSignIn, IUserSignUp } from '../interfaces/auth.interfaces';
 import {
   ICheckCodeBody,
@@ -43,8 +44,9 @@ export const getUserProfile = async () => {
   return await axios.get<IGetProfileResponse>('/api/auth/user-profile');
 };
 
-export const fetchAds = async () => {
-  return await axios.get<IGetAdsResponse>('/api/all_posts');
+export const fetchAds = async (params: IFetchAdParams) => {
+  const query = parseQueryParams(params);
+  return await axios.get<IGetAdsResponse>(`/api/all_posts?${query}`);
 };
 
 export const createAd = async (body: ICreatePost) => {

@@ -8,11 +8,9 @@ import HeaderLayout from '../../layouts/HeaderLayout';
 const HomePage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const controller = new AdsController(dispatch, navigate);
+  const controller = new AdsController(dispatch);
 
   useEffect(() => {
-    console.log('effect');
-
     controller.fetchAds();
   }, []);
 
