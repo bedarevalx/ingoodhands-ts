@@ -14,10 +14,10 @@ import {
 } from '../interfaces/responses.interfaces';
 
 export const refreshToken = async () => {
-  const refreshToken = localStorage['refresh_token'];
-  const accessToken = localStorage['access_token'];
-  axios.post('/api/auth/refresh', { refresh_token: refreshToken });
-  return { accessToken, refreshToken };
+  const refreshToken = localStorage['refreshToken'];
+  return await axios.post<ITokenResponse>('/api/auth/refresh', {
+    refresh_token: refreshToken,
+  });
 };
 
 export const fetchUser = async () => {

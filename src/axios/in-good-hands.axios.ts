@@ -22,8 +22,9 @@ axiosInstance.interceptors.response.use(
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      const { accessToken: access, refreshToken: refresh } =
-        await refreshToken();
+      const response = await refreshToken();
+      const access = response.data.access_token;
+      const refresh = response.data.refresh_token;
       localStorage.token = access;
       localStorage.refresh = refresh;
       originalRequest.headers.Authorization = 'Bearer ' + access;
