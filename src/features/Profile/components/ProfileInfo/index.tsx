@@ -7,7 +7,12 @@ import { ProfileController } from '../../controllers/profile.controller';
 import { useNavigate } from 'react-router-dom';
 import ConfirmEmailForm from '../ConfirmEmailForm';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import { Tooltip } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import Input from '../../../../UI/Input';
+import LoadedButton from '../../../../UI/LoadedButton';
+import Select from '../../../../UI/Select';
+import MaskedInput from '../../../../UI/MaskedInput';
 
 interface IProfileInfoProps {
   classNames?: string[];
@@ -24,13 +29,37 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
   return (
     <section className={classNamesParser('profile-info', props.classNames)}>
       <h3 className='profile-info__title'>Ваш профиль</h3>
-      <div className='profile-info__block'>
-        <div className='profile-info__name-block'>
+      <div
+        className={`profile-info__block ${
+          profile.isEditing ? ' profile-info__block-editing' : ''
+        }`}>
+        <div className={'profile-info__name-block'}>
           <p className='profile-info__block-title'>Имя</p>
         </div>
-        <p>{user.name}</p>
+        <div className='profile-info__block-content'>
+          {!profile.isEditing ? (
+            <>
+              <p>{user.name}</p>
+              <IconButton
+                className='profile-info__edit-btn'
+                onClick={profileController.handleEdit}>
+                <EditIcon />
+              </IconButton>
+            </>
+          ) : (
+            <Input
+              value={profile.nameInput}
+              variant='standard'
+              onInput={profileController.handleNameChange}
+              classNames={['profile-info__edit-input']}
+            />
+          )}
+        </div>
       </div>
-      <div className='profile-info__block'>
+      <div
+        className={`profile-info__block ${
+          profile.isEditing ? ' profile-info__block-editing' : ''
+        }`}>
         <div className=' profile-info__email-block'>
           <p className='profile-info__block-title'>Электронная почта</p>
           {user.isEmailVerified ? (
@@ -46,22 +75,96 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
             </Button>
           )}
         </div>
-        <p>{user.email}</p>
+        <div className='profile-info__block-content'>
+          {!profile.isEditing ? (
+            <>
+              <p>{user.email}</p>
+              <IconButton
+                className='profile-info__edit-btn'
+                onClick={profileController.handleEdit}>
+                <EditIcon />
+              </IconButton>
+            </>
+          ) : (
+            <Input
+              variant='standard'
+              value={profile.emailInput}
+              onInput={profileController.handleEmailChange}
+              classNames={['profile-info__edit-input']}
+            />
+          )}
+        </div>
       </div>
 
-      <div className='profile-info__block'>
+      <div
+        className={`profile-info__block ${
+          profile.isEditing ? ' profile-info__block-editing' : ''
+        }`}>
         <div className='profile-info__phone-block'>
           <p className='profile-info__block-title'>Номер телефона</p>
         </div>
-        <p>{user.phoneNumber}</p>
+        <div className='profile-info__block-content'>
+          {!profile.isEditing ? (
+            <>
+              <p>{user.phoneNumber}</p>
+              <IconButton
+                className='profile-info__edit-btn'
+                onClick={profileController.handleEdit}>
+                <EditIcon />
+              </IconButton>
+            </>
+          ) : (
+            <MaskedInput
+              mask='+7 (999) 999-9999'
+              variant='standard'
+              value={profile.phoneInput}
+              onInput={profileController.handlePhoneChange}
+              classNames={['profile-info__edit-input']}
+            />
+          )}
+        </div>
       </div>
 
-      <div className='profile-info__block'>
+      <div
+        className={`profile-info__block ${
+          profile.isEditing ? ' profile-info__block-editing' : ''
+        }`}>
         <div className='profile-info__city-block'>
           <p className='profile-info__block-title'>Город</p>
         </div>
-        <p>{user.city.name}</p>
+        <div className='profile-info__block-content'>
+          {!profile.isEditing ? (
+            <>
+              <p>{user.city.name}</p>
+              <IconButton
+                className='profile-info__edit-btn'
+                onClick={profileController.handleEdit}>
+                <EditIcon />
+              </IconButton>
+            </>
+          ) : (
+            <Select
+              variant='standard'
+              options={app.cities}
+              value={profile.citySelect}
+              onChange={profileController.handleCityChange}
+              placeholder='Выберите город'
+              classNames={['profile-info__edit-input']}
+            />
+          )}
+        </div>
       </div>
+      {profile.isEditing && (
+        <div className='profile-info__edit-buttons'>
+          <Button onClick={profileController.handleEdit}>Отменить</Button>
+          <LoadedButton
+            label='Сохранить'
+            isLoading={profile.loaders.isEditSending}
+            onClick={profileController.handleSave}
+          />
+        </div>
+      )}
+
       <Modal
         classNames={['profile-info__confirm-modal']}
         handleClose={profileController.handleCloseConfirmEmail}

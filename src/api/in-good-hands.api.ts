@@ -1,7 +1,10 @@
 import axios from '../axios/in-good-hands.axios';
 import { ICreatePost } from '../interfaces/ads.interfaces';
 import { IUserSignIn, IUserSignUp } from '../interfaces/auth.interfaces';
-import { ICheckCodeBody } from '../interfaces/profile.interfaces';
+import {
+  ICheckCodeBody,
+  IEditProfileBody,
+} from '../interfaces/profile.interfaces';
 import {
   ICategoryResponse,
   ICityResponse,
@@ -53,4 +56,8 @@ export const sendConfirmEmail = async () => {
 
 export const checkConfirmEmailCode = async (body: ICheckCodeBody) => {
   return await axios.post('/api/check_code', body);
+};
+
+export const editProfile = async (body: IEditProfileBody) => {
+  return await axios.patch<IGetProfileResponse>('/api/change_user_info', body);
 };

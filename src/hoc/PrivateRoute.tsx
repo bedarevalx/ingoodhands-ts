@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../hooks/useRedux';
 import HomePage from '../pages/HomePage';
+import FullscreenSpinner from '../components/FullscreenSpinner';
 
 interface IPrivateProps {
   children: JSX.Element;
@@ -16,7 +17,7 @@ const PrivateRoute = (props: IPrivateProps) => {
   }
 
   return auth?.isAuthenticate ? (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={<FullscreenSpinner />}>
       {props.children}
     </React.Suspense>
   ) : (

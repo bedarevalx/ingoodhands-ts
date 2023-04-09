@@ -5,7 +5,10 @@ import {
   IUserSignIn,
   IUserSignUp,
 } from '../../../interfaces/auth.interfaces';
-import { ITokenResponse } from '../../../interfaces/responses.interfaces';
+import {
+  IGetProfileResponse,
+  ITokenResponse,
+} from '../../../interfaces/responses.interfaces';
 import { AppDispatch, RootState } from '../../../store';
 import {
   authenticatePending,
@@ -97,24 +100,22 @@ export class AuthService {
     }
   };
 
-  fetchUserProfile = async () => {
+  setUserProfile = async (userInfo: IGetProfileResponse) => {
     try {
-      this.dispatch(authenticatePending());
-      const response = await getUserProfile();
       const user = {
-        isBanned: response.data.blocked_admin,
-        isEmailVerified: !!response.data.email_verified_at,
+        isBanned: userInfo.blocked_admin,
+        isEmailVerified: !!userInfo.email_verified_at,
         city: {
-          id: response.data.city.id,
-          name: response.data.city.name,
-          isActive: response.data.city.is_active,
+          id: userInfo.city.id,
+          name: userInfo.city.name,
+          isActive: userInfo.city.is_active,
         },
-        isAdmin: response.data.is_admin,
-        phoneNumber: response.data.phone_number,
-        email: response.data.email,
-        name: response.data.name,
-        id: response.data.id,
-        addresses: response.data.addresses.map((address) => ({
+        isAdmin: userInfo.is_admin,
+        phoneNumber: userInfo.phone_number,
+        email: userInfo.email,
+        name: userInfo.name,
+        id: userInfo.id,
+        addresses: userInfo.addresses.map((address) => ({
           title: address.title,
           id: address.id,
           value: address.id,
@@ -123,6 +124,16 @@ export class AuthService {
         })),
       } as IUser;
       this.dispatch(setUser(user));
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  };
+
+  fetchUserProfile = async () => {
+    try {
+      this.dispatch(authenticatePending());
+      const response = await getUserProfile();
+      this.setUserProfile(response.data);
       this.dispatch(authenticateFullfilled());
     } catch (e: any) {
       console.log(e);

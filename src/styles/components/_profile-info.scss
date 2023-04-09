@@ -4,26 +4,60 @@
   }
   &__block {
     margin-bottom: 16px;
+    max-width: 700px;
+    background: #f9f9f9;
+    padding: 8px;
+    border-radius: 4px;
+    &:hover {
+      & .profile-info__edit-btn {
+        opacity: 1;
+      }
+    }
+  }
+  &__block-editing {
+    padding-bottom: 0px;
+    height: 58px;
   }
   &__block-title {
     font-size: 18px;
     font-weight: 600;
   }
 
+  &__block-content {
+    position: relative;
+    p {
+      position: relative;
+      margin-top: 8px;
+    }
+  }
+
+  &__edit-input {
+    & .MuiInputBase-root {
+      background-color: #f9f9f9;
+    }
+  }
+
+  &__edit-btn.MuiButtonBase-root {
+    position: absolute;
+    right: 0;
+    top: -24px;
+    opacity: 0;
+    transition: $default-transition;
+    @media screen and (max-width: $media-sm) {
+      opacity: 1;
+    }
+  }
+
   &__email-block {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 8px;
   }
   &__name-block {
-    margin-bottom: 8px;
   }
   &__phone-block {
-    margin-bottom: 8px;
   }
   &__city-block {
-    margin-bottom: 8px;
   }
   &__confirm-button.MuiButtonBase-root {
     padding: 0px 8px;

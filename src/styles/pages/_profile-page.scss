@@ -1,13 +1,19 @@
 .profile-page {
   &__wrapper {
     display: flex;
+    gap: 16px;
   }
   &__side-menu {
-    flex-basis: 25%;
+    flex-basis: 30%;
     flex-shrink: 0;
+    @media screen and (max-width: $media-sm) {
+      display: none;
+    }
   }
   &__profile-info {
-    flex-basis: 75%;
-    min-width: 250px;
+    flex-basis: 70%;
+    @media screen and (max-width: $media-sm) {
+      flex-basis: 100%;
+    }
   }
 }

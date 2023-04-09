@@ -6,6 +6,7 @@ import { IAddressResponse } from '../../../interfaces/responses.interfaces';
 interface ILoaders {
   isEmailSending: boolean;
   isCodeChecking: boolean;
+  isEditSending: boolean;
 }
 interface IModalsOpened {
   isConfirmModalVisible: boolean;
@@ -26,6 +27,11 @@ interface IProfileState {
   modalsVisible: IModalsOpened;
   loaders: ILoaders;
   errors: IErrors;
+  isEditing: boolean;
+  nameInput: string;
+  emailInput: string;
+  phoneInput: string;
+  citySelect: string;
 }
 
 const modalsVisible: IModalsOpened = {
@@ -41,16 +47,22 @@ const errors: IErrors = {
 const loaders: ILoaders = {
   isEmailSending: false,
   isCodeChecking: false,
+  isEditSending: false,
 };
 const initialState: IProfileState = {
   isLoading: true,
   error: '',
   emailCode: '',
   ads: [],
+  isConfirmEmailSended: false,
+  isEditing: false,
   modalsVisible: { ...modalsVisible },
   loaders: { ...loaders },
-  isConfirmEmailSended: false,
   errors: { ...errors },
+  nameInput: '',
+  emailInput: '',
+  phoneInput: '',
+  citySelect: '',
 };
 
 export const profileSlice = createSlice({
@@ -95,6 +107,38 @@ export const profileSlice = createSlice({
     setEmailCode: (state, action: PayloadAction<string>) => {
       state.emailCode = action.payload;
     },
+    setIsEditing: (state, action: PayloadAction<boolean>) => {
+      state.isEditing = action.payload;
+    },
+    setNameInput: (state, action: PayloadAction<string>) => {
+      state.nameInput = action.payload;
+    },
+    setEmailInput: (state, action: PayloadAction<string>) => {
+      state.emailInput = action.payload;
+    },
+    setCitySelect: (state, action: PayloadAction<string>) => {
+      state.citySelect = action.payload;
+    },
+    setPhoneInput: (state, action: PayloadAction<string>) => {
+      state.phoneInput = action.payload;
+    },
+    startEditing: (state, action: PayloadAction<IUser>) => {
+      state.emailInput = action.payload.email;
+      state.phoneInput = action.payload.phoneNumber;
+      state.nameInput = action.payload.name;
+      state.citySelect = String(action.payload.city.id);
+    },
+    editPending: (state) => {
+      state.loaders.isEditSending = true;
+    },
+    editFulfilled: (state) => {
+      state.loaders.isEditSending = false;
+      state.isEditing = false;
+    },
+    editRejected: (state, action: PayloadAction<string>) => {
+      state.loaders.isEditSending = false;
+      state.errors.editProfileError = action.payload;
+    },
   },
 });
 
@@ -110,5 +154,14 @@ export const {
   checkCodePending,
   checkCodeRejected,
   setEmailCode,
+  setIsEditing,
+  setNameInput,
+  setCitySelect,
+  setEmailInput,
+  setPhoneInput,
+  startEditing,
+  editFulfilled,
+  editRejected,
+  editPending,
 } = profileSlice.actions;
 export const reducer = profileSlice.reducer;

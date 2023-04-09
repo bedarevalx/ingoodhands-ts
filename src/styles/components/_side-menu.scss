@@ -1,22 +1,45 @@
 .side-menu {
   &__list {
-    padding: 0;
+    // padding: 8px 0px;
     list-style: none;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    max-width: 250px;
   }
   &__menu-item {
-    margin-bottom: 8px;
+    // margin-bottom: 8px;
+    padding: 12px 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    transition: $default-transition;
+    color: black;
+    @include hover-active {
+      color: $color-primary;
+      padding-right: 4px;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__next-icon {
+    margin-left: auto;
   }
 
   &__link {
     text-decoration: none;
-    color: black;
+    // color: black;
     font-size: 18px;
     font-weight: 600;
-    @include hover-active {
-      color: $color-primary;
-    }
+    // @include hover-active {
+    //   color: $color-primary;
+    // }
   }
   &__menu-selected {
+    // padding-right: 4px;
     color: $color-primary;
   }
 }

@@ -13,7 +13,13 @@ import { ProfileService } from '../services/profile.service';
 import {
   closeConfirmModal,
   openConfirmModal,
+  setCitySelect,
   setEmailCode,
+  setEmailInput,
+  setIsEditing,
+  setNameInput,
+  setPhoneInput,
+  startEditing,
 } from '../slices/profile.slice';
 
 export class ProfileController implements IProfileController {
@@ -46,5 +52,31 @@ export class ProfileController implements IProfileController {
 
   handleCodeChange = (value: string) => {
     this.dispatch(setEmailCode(value));
+  };
+
+  handleEdit = () => {
+    const { user } = this.getState().auth;
+    const profile = this.getState().profile;
+    const isStartEditing = !profile.isEditing;
+    isStartEditing && this.dispatch(startEditing(user));
+    this.dispatch(setIsEditing(isStartEditing ? true : false));
+  };
+
+  handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    this.dispatch(setNameInput(e.target.value));
+  };
+  handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
+    this.dispatch(setPhoneInput(e.target.value));
+  };
+  handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    this.dispatch(setEmailInput(e.target.value));
+  };
+
+  handleCityChange = (e: SelectChangeEvent) => {
+    this.dispatch(setCitySelect(e.target.value));
+  };
+
+  handleSave = () => {
+    this.dispatch(this.profileService.editProfile());
   };
 }
