@@ -16,6 +16,7 @@ import {
 export const refreshToken = async () => {
   const refreshToken = localStorage['refresh_token'];
   const accessToken = localStorage['access_token'];
+  axios.post('/api/auth/refresh', { refresh_token: refreshToken });
   return { accessToken, refreshToken };
 };
 

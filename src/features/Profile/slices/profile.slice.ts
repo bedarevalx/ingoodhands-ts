@@ -134,6 +134,9 @@ export const profileSlice = createSlice({
     editFulfilled: (state) => {
       state.loaders.isEditSending = false;
       state.isEditing = false;
+      state.isConfirmEmailSended = false;
+      state.errors.checkCodeError = '';
+      state.emailCode = '';
     },
     editRejected: (state, action: PayloadAction<string>) => {
       state.loaders.isEditSending = false;
