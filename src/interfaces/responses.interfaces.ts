@@ -32,7 +32,7 @@ export interface IGetUserPostsResponse {
   page: number;
   per_page: number;
   total: number;
-  total_page: number;
+  total_pages: number;
 }
 
 export interface IUserPostResponse {

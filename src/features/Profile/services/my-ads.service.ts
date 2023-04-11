@@ -51,9 +51,9 @@ export class MyAdsService {
 
   getMyAds = () => async (dispatch: AppDispatch, getState: () => RootState) => {
     try {
+      const myAds = getState().myAds;
       dispatch(fetchMyAdsPending());
-      const response = await getUserPosts();
-
+      const response = await getUserPosts(myAds.page);
       const userAds: IMyAd[] = response.data.data.map((ad) => ({
         title: ad.title,
         address: ad.address.title,
@@ -73,7 +73,9 @@ export class MyAdsService {
         status: ad.status,
         description: ad.description,
       }));
-      dispatch(setTotalPages(response.data.total_page));
+      console.log(response.data);
+
+      dispatch(setTotalPages(response.data.total_pages));
       dispatch(fetchMyAdsFulfilled(userAds));
     } catch (error: any) {
       console.error(error);

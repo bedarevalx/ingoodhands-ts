@@ -66,6 +66,8 @@ export const editProfile = async (body: IEditProfileBody) => {
   return await axios.patch<IGetProfileResponse>('/api/change_user_info', body);
 };
 
-export const getUserPosts = async () => {
-  return await axios.get<IGetUserPostsResponse>('/api/my_posts');
+export const getUserPosts = async (page: number) => {
+  const query = parseQueryParams({ page });
+
+  return await axios.get<IGetUserPostsResponse>(`/api/my_posts?${query}`);
 };

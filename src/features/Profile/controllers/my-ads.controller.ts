@@ -25,6 +25,7 @@ import {
   startEditing,
 } from '../slices/profile.slice';
 import { MyAdsService } from '../services/my-ads.service';
+import { setPage } from '../slices/my-ads.slice';
 
 export class MyAdsController implements IMyAdsController {
   dispatch: AppDispatch;
@@ -39,5 +40,10 @@ export class MyAdsController implements IMyAdsController {
 
   getMyAds = () => {
     this.dispatch(this.myAdsService.getMyAds());
+  };
+
+  handlePageChange = (_: any, page: number) => {
+    this.dispatch(setPage(page));
+    this.getMyAds();
   };
 }

@@ -41,6 +41,7 @@ export const MyAdsList = (props: IMyAdsListProps) => {
           <Pagination
             page={myAds.page}
             count={myAds.totalPages}
+            onChange={myAdsController.handlePageChange}
             className='my-ads-list__pagination'
           />
         </div>
