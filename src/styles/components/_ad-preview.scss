@@ -32,8 +32,13 @@
     top: -4px;
     right: 0;
     padding: 0;
+    transition: $default-transition;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
-  &__favorite-icon.MuiSvgIcon-root {
+  &__favorite-icon.favorited.MuiSvgIcon-root {
+    fill: red;
   }
   &__title {
     font-weight: 600;

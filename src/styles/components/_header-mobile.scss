@@ -1,0 +1,43 @@
+.header-mobile {
+  background-color: $color-primary;
+  box-shadow: 0 1px 1px #0000001a;
+  height: 57px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  &__container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__logo {
+    width: 150px;
+    cursor: pointer;
+  }
+  &__profile-button {
+    & .MuiButtonBase-root {
+      color: white;
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+    .MuiSvgIcon-root {
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  &__menu-btn.MuiButtonBase-root {
+    padding: 0;
+  }
+  &__menu-icon.MuiSvgIcon-root {
+    position: relative;
+    right: 4px;
+    height: 32px;
+    width: 32px;
+    fill: white;
+  }
+}

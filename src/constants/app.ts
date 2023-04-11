@@ -3,3 +3,10 @@ export const APP_CONSTANTS = {
   MIN_PHONE_NUMBER_LENGTH: 17,
   MAX_PHOTO_COUNT: 5,
 };
+
+export const MEDIA = {
+  XSM: 480,
+  SM: 768,
+  MD: 1024,
+  LG: 1200,
+};

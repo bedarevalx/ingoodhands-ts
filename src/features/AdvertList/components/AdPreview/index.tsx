@@ -44,8 +44,9 @@ const AdPreview = (props: IAdPreviewProps) => {
           onClick={handleAddToFavorite}
           className='ad-preview__favorite-btn'>
           <FavoriteIcon
-            className='ad-preview__favorite-icon'
-            color={props.isFavorite ? 'error' : 'action'}
+            className={`ad-preview__favorite-icon ${
+              props.isFavorite ? 'favorited' : ''
+            }`}
           />
         </IconButton>
       </div>
