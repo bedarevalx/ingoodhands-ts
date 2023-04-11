@@ -1,21 +1,10 @@
 import {
   checkConfirmEmailCode,
   editProfile,
-  fetchAds,
-  getUserProfile,
   sendConfirmEmail,
-  signIn,
-  signUp,
 } from '../../../api/in-good-hands.api';
-import { IAdPreview } from '../../../interfaces/ads.interfaces';
-import {
-  IAuthService,
-  IUser,
-  IUserSignIn,
-  IUserSignUp,
-} from '../../../interfaces/auth.interfaces';
+
 import { IEditProfileBody } from '../../../interfaces/profile.interfaces';
-import { ITokenResponse } from '../../../interfaces/responses.interfaces';
 import { AppDispatch, RootState } from '../../../store';
 import { AuthService } from '../../Auth';
 import { updateEmailConfirm } from '../../Auth/slices/auth.slice';

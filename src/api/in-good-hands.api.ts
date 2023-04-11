@@ -5,6 +5,7 @@ import { IUserSignIn, IUserSignUp } from '../interfaces/auth.interfaces';
 import {
   ICheckCodeBody,
   IEditProfileBody,
+  IUserAd,
 } from '../interfaces/profile.interfaces';
 import {
   ICategoryResponse,
@@ -13,10 +14,10 @@ import {
   IGetFavoritesResponse,
   IGetProfileResponse,
   IGetUserPostsResponse,
-  IListReponse,
   ITokenResponse,
   IUserPostResponse,
 } from '../interfaces/responses.interfaces';
+import { IListResponse } from '../interfaces/general.interfaces';
 
 export const refreshToken = async () => {
   const refreshToken = localStorage['refreshToken'];
@@ -54,7 +55,9 @@ export const getFavoritePostsId = async () => {
 
 export const fetchAds = async (params: IFetchAdParams) => {
   const query = parseQueryParams(params);
-  return await axios.get<IGetAdsResponse>(`/api/all_posts?${query}`);
+  return await axios.get<IListResponse<IUserPostResponse>>(
+    `/api/all_posts?${query}`,
+  );
 };
 
 export const createAd = async (body: ICreatePost) => {
@@ -80,7 +83,7 @@ export const getUserPosts = async (page: number) => {
 
 export const getFavorites = async (page: number) => {
   const query = parseQueryParams({ page });
-  return await axios.get<IListReponse<IUserPostResponse>>(
+  return await axios.get<IListResponse<IUserPostResponse>>(
     `/api/all_favorite_posts?${query}`,
   );
 };

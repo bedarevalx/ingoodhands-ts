@@ -21,7 +21,7 @@ const PrivateRoute = (props: IPrivateProps) => {
       {props.children}
     </React.Suspense>
   ) : (
-    <HomePage />
+    <Navigate to={'/sign-up'} />
   );
 };
 

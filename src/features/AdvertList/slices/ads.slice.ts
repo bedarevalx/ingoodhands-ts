@@ -1,7 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IAdPreview } from '../../../interfaces/ads.interfaces';
-import { IUser } from '../../../interfaces/auth.interfaces';
-import { IAddressResponse } from '../../../interfaces/responses.interfaces';
+
 import { SortByTypes, SortTypeTypes } from '../../../types/ads.types';
 
 interface IAuthState {

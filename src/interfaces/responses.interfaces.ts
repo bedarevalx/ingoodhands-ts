@@ -35,14 +35,6 @@ export interface IGetUserPostsResponse {
   total_pages: number;
 }
 
-export interface IListReponse<T> {
-  page: number;
-  per_page: number;
-  total: number;
-  total_pages: number;
-  data: T[];
-}
-
 export interface IGetFavoritesResponse<T> {}
 
 export interface IUserPostResponse {

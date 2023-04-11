@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react';
 import Input from '../../../../UI/Input';
-import Button from '../../../../UI/Button';
-import Select from '../../../../UI/Select';
-// import { SignUpController } from '../../controllers/signin.controller';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import { Link, useNavigate } from 'react-router-dom';
-import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { SignInController } from '../../controllers/sign-in.controller';
 import LoadedButton from '../../../../UI/LoadedButton';
 import SignInBg from '../../../../assets/vector/signup-bg.svg';

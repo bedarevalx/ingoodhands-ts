@@ -12,6 +12,7 @@ interface IAdPreviewProps {
   handleAddToFavorite: (id: number) => void;
   handleRemoveFromFavorite: (id: number) => void;
   isFavorite?: boolean;
+  city: string;
 }
 
 const AdPreview = (props: IAdPreviewProps) => {
@@ -24,13 +25,16 @@ const AdPreview = (props: IAdPreviewProps) => {
 
   return (
     <div className='ad-preview' ref={props.loadMoreCallback}>
-      {/* <div className='ad-preview__image-container'> */}
-      <img
-        src={props.imagePath}
-        alt='photo image'
-        className='ad-preview__image'
-      />
-      {/* </div> */}
+      <div className='ad-preview__image-container'>
+        <div className='ad-preview__city-wrapper'>
+          <span className='ad-prevew__city'>{props.city}</span>
+        </div>
+        <img
+          src={props.imagePath}
+          alt='photo image'
+          className='ad-preview__image'
+        />
+      </div>
       <div className='ad-preview__info'>
         <h3 className='ad-preview__title'>{props.title || 'Нет заголовка'}</h3>
         <p className='ad-preview__description'>

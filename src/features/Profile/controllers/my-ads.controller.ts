@@ -1,9 +1,4 @@
-import {
-  IAuthService,
-  ISignInController,
-} from '../../../interfaces/auth.interfaces';
 import { AppDispatch, RootState, store } from '../../../store';
-import { ChangeEvent } from 'react';
 import { IMyAdsController } from '../../../interfaces/profile.interfaces';
 import { MyAdsService } from '../services/my-ads.service';
 import { clearState, setPage } from '../slices/my-ads.slice';

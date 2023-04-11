@@ -1,13 +1,4 @@
-import {
-  IAuthService,
-  ISignInController,
-} from '../../../interfaces/auth.interfaces';
 import { AppDispatch, RootState, store } from '../../../store';
-import { ChangeEvent } from 'react';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { SelectChangeEvent } from '@mui/material';
-import { APP_CONSTANTS } from '../../../constants/app';
-import { IAdsController } from '../../../interfaces/ads.interfaces';
 import { IFavoritesController } from '../../../interfaces/profile.interfaces';
 import { FavoritesService } from '../services/favorites.service';
 import {

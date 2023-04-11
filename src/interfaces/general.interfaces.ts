@@ -36,3 +36,11 @@ export interface IAppSelectItem<T> {
   title: string;
   value: T | string;
 }
+
+export interface IListResponse<T> {
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
+  data: T[];
+}

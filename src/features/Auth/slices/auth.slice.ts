@@ -1,27 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from '../../../axios/in-good-hands.axios';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from '../../../interfaces/auth.interfaces';
-import { IAddressResponse } from '../../../interfaces/responses.interfaces';
 
-export const fetchUserProfile = createAsyncThunk<
-  string,
-  { rejectValue: string }
->('garantee/createPlacecount', async function (_, { rejectWithValue }) {
-  try {
-    const response = await axios.post('/api/placecount');
-    if (response.status !== 201) {
-      alert('Something went wrong!');
-      return rejectWithValue('Server error!');
-    }
-    const data = response.data;
-    alert('Success!');
-
-    return data;
-  } catch (error) {
-    alert('server error!!');
-    return rejectWithValue('Server error!');
-  }
-});
 interface IErrors {
   auth: string;
 }

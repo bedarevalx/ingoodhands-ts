@@ -1,13 +1,8 @@
-import {
-  IAuthService,
-  ISignInController,
-} from '../../../interfaces/auth.interfaces';
 import { AppDispatch, RootState, store } from '../../../store';
 import { ChangeEvent } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { SelectChangeEvent } from '@mui/material';
-import { APP_CONSTANTS } from '../../../constants/app';
-import { IAdsController } from '../../../interfaces/ads.interfaces';
+
 import { IProfileController } from '../../../interfaces/profile.interfaces';
 import { ProfileService } from '../services/profile.service';
 import {

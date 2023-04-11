@@ -1,9 +1,7 @@
 import React from 'react';
-import Modal from '../../../../UI/Modal';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { Alert, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import Button from '../../../../UI/Button';
 import LoadedButton from '../../../../UI/LoadedButton';
 import { MuiOtpInput } from 'mui-one-time-password-input';
 

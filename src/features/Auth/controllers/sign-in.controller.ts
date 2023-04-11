@@ -1,11 +1,8 @@
-import {
-  IAuthService,
-  ISignInController,
-} from '../../../interfaces/auth.interfaces';
+import { ISignInController } from '../../../interfaces/auth.interfaces';
 import { AppDispatch, RootState, store } from '../../../store';
 import { ChangeEvent } from 'react';
 import Validator from '../helpers/validator';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { NavigateFunction } from 'react-router-dom';
 import {
   setEmail,
   setError,

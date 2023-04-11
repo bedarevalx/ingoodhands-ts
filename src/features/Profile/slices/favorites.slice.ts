@@ -1,7 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IAdPreview } from '../../../interfaces/ads.interfaces';
-import { IUser } from '../../../interfaces/auth.interfaces';
-import { IAddressResponse } from '../../../interfaces/responses.interfaces';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { IUserAd } from '../../../interfaces/profile.interfaces';
 
 interface IMyAdsState {

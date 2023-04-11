@@ -5,7 +5,6 @@ import Spinner from '../../../../UI/Spinner';
 import AdPreview from '../AdPreview';
 import { useInfiniteScroll } from '../../../../hooks/useInfiniteScroll';
 import { AdsController } from '../../controllers/ads.controller';
-import { FavoritesService } from '../../../Profile';
 
 interface IAdPreviewListProps {
   classNames?: string[];
@@ -36,6 +35,7 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
             description={ad.descripton}
             imagePath={ad.imagePath}
             date={ad.date}
+            city={ad.city}
             loadMoreCallback={
               i === ads.ads.length - 1 ? loadMoreCallback : null
             }

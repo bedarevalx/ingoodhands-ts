@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import Button from '../../../../UI/Button';

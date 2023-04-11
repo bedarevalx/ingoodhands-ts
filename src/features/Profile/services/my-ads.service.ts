@@ -1,47 +1,13 @@
-import {
-  checkConfirmEmailCode,
-  editProfile,
-  fetchAds,
-  getUserPosts,
-  getUserProfile,
-  sendConfirmEmail,
-  signIn,
-  signUp,
-} from '../../../api/in-good-hands.api';
-import { IAdPreview } from '../../../interfaces/ads.interfaces';
-import {
-  IAuthService,
-  IUser,
-  IUserSignIn,
-  IUserSignUp,
-} from '../../../interfaces/auth.interfaces';
-import {
-  IEditProfileBody,
-  IUserAd,
-} from '../../../interfaces/profile.interfaces';
-import { ITokenResponse } from '../../../interfaces/responses.interfaces';
+import { getUserPosts } from '../../../api/in-good-hands.api';
+
+import { IUserAd } from '../../../interfaces/profile.interfaces';
 import { AppDispatch, RootState } from '../../../store';
-import { AuthService } from '../../Auth';
-import { updateEmailConfirm } from '../../Auth/slices/auth.slice';
 import {
   fetchMyAdsFulfilled,
   fetchMyAdsPending,
   fetchMyAdsRejected,
-  setPage,
   setTotalPages,
 } from '../slices/my-ads.slice';
-import {
-  checkCodeFullfiled,
-  checkCodePending,
-  checkCodeRejected,
-  closeConfirmModal,
-  editFulfilled,
-  editPending,
-  editRejected,
-  sendEmailFullfilled,
-  sendEmailPending,
-  sendEmailRejected,
-} from '../slices/profile.slice';
 
 export class MyAdsService {
   dispatch: AppDispatch;

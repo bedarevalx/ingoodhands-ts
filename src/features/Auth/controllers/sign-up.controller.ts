@@ -2,13 +2,9 @@ import {
   IAuthService,
   ISignUpController,
 } from '../../../interfaces/auth.interfaces';
-// import { IAuthService } from '../interfaces/auth.interfaces';
 import { AppDispatch, RootState, store } from '../../../store';
-// import { AuthService } from '../services/auth.service';
-// import { UserService } from '../services/user.service';
 import { ChangeEvent, FocusEvent } from 'react';
 import Validator from '../helpers/validator';
-import { NavigateFunction } from 'react-router-dom';
 import {
   clearValues,
   setCity,

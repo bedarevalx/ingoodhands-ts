@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
-import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
 import { classNamesParser } from '../../helpers/classNamesParser';
 import { AuthService } from '../../features/Auth';
