@@ -11,9 +11,12 @@
     }
   }
   &__list {
+    height: 100%;
     flex-basis: 70%;
+    flex-direction: column;
     @media screen and (max-width: $media-sm) {
       flex-basis: 100%;
     }
+    display: flex;
   }
 }

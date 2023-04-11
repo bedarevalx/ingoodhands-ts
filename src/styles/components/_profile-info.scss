@@ -1,6 +1,5 @@
 .profile-info {
   &__title {
-    margin-bottom: 18px;
   }
   &__block {
     margin-bottom: 16px;
@@ -75,5 +74,27 @@
     color: green;
     width: 16px;
     height: 16px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  &__edit.MuiButtonBase-root {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 32px;
+    color: white;
+    background: $color-primary;
+    padding: 0 8px;
+    @include color-hover($color-primary);
+  }
+  &__edit-icon.MuiSvgIcon-root {
+    width: 20px;
+    height: 20px;
   }
 }

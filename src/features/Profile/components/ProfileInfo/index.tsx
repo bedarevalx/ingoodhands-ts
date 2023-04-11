@@ -28,7 +28,13 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
 
   return (
     <section className={classNamesParser('profile-info', props.classNames)}>
-      <h3 className='profile-info__title'>Ваш профиль</h3>
+      <div className='profile-info__header'>
+        <h3 className='profile-info__title'>Мой профиль</h3>
+        <Button classNames={['profile-info__edit']}>
+          <EditIcon className='profile-info__edit-icon' />
+          <span>Редактировать</span>
+        </Button>
+      </div>
       <div
         className={`profile-info__block ${
           profile.isEditing ? ' profile-info__block-editing' : ''
