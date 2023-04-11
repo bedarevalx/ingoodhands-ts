@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { fetchAds } from '../../../api/in-good-hands.api';
 import { IAdPreview } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState } from '../../../store';
@@ -46,16 +47,18 @@ export class AdsService {
         }
         console.log(response.data.data);
 
-        const ads: IAdPreview[] = response.data.data.map((ad) => ({
-          id: ad.id,
-          title: ad.title,
-          descripton: ad.description,
-          imagePath: ad.image_set[0],
-          date: ad.created_at,
-          city: ad.city.name,
-          //TODO: фикс
-          isFavorite: false,
-        }));
+        const ads: IAdPreview[] = response.data.data.map((ad) => {
+          return {
+            id: ad.id,
+            title: ad.title,
+            descripton: ad.description,
+            imagePath: ad.image_set[0],
+            date: moment(ad.created_at).locale('ru').format('DD MMMM YYYY'),
+            city: ad.city.name,
+            //TODO: фикс
+            isFavorite: false,
+          };
+        });
         console.log(ads);
 
         dispatch(fetchAdsFullfilled(ads));

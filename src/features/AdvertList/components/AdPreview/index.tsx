@@ -40,10 +40,16 @@ const AdPreview = (props: IAdPreviewProps) => {
         <p className='ad-preview__description'>
           {props.description || 'Нет описания'}
         </p>
+        <IconButton
+          onClick={handleAddToFavorite}
+          className='ad-preview__favorite-btn'>
+          <FavoriteIcon
+            className='ad-preview__favorite-icon'
+            color={props.isFavorite ? 'error' : 'action'}
+          />
+        </IconButton>
       </div>
-      <IconButton onClick={handleAddToFavorite}>
-        <FavoriteIcon color={props.isFavorite ? 'error' : 'action'} />
-      </IconButton>
+      <p className='ad-preview__date'>{props.date}</p>
     </div>
   );
 };

@@ -1,6 +1,4 @@
 .ad-preview {
-  //   min-width: 128px;
-  //   position: relative;
   position: relative;
   background-color: white;
   width: 100%;
@@ -10,7 +8,6 @@
 
   &__image-container {
     position: relative;
-    //height: 100%;
     max-height: 300px;
     overflow: hidden;
     border-radius: 12px;
@@ -28,14 +25,28 @@
   }
   &__info {
     flex-basis: 20%;
+    position: relative;
   }
-  &__favorite-btn {
+  &__favorite-btn.MuiButtonBase-root {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    padding: 0;
   }
-  &__favorite-icon {
+  &__favorite-icon.MuiSvgIcon-root {
   }
   &__title {
+    font-weight: 600;
+    margin-bottom: 8px;
     overflow-wrap: break-word;
     @include text-truncate(1);
+  }
+  &__description {
+    font-size: 16px;
+    opacity: 0.6;
+    margin-bottom: 12px;
+    overflow-wrap: break-word;
+    @include text-truncate(2);
   }
   &__city-wrapper {
     top: 0;
@@ -44,6 +55,13 @@
     background: white;
     border-radius: 0 0 12px 0;
     padding: 8px;
+  }
+  &__date {
+    font-size: 12px;
+    opacity: 0.5;
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
   }
   &__city {
   }
