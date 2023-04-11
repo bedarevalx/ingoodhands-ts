@@ -9,12 +9,13 @@ import { SelectChangeEvent } from '@mui/material';
 import { APP_CONSTANTS } from '../../../constants/app';
 import { IAdsController } from '../../../interfaces/ads.interfaces';
 import { IFavoritesController } from '../../../interfaces/profile.interfaces';
-import { clearState, setPage } from '../slices/my-ads.slice';
 import { FavoritesService } from '../services/favorites.service';
 import {
   removeFavoriteById,
   setError,
   setFavoriteById,
+  setPage,
+  clearState,
 } from '../slices/favorites.slice';
 
 export class FavoritesController implements IFavoritesController {
