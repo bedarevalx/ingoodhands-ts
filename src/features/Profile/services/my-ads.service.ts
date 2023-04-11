@@ -17,7 +17,7 @@ import {
 } from '../../../interfaces/auth.interfaces';
 import {
   IEditProfileBody,
-  IMyAd,
+  IUserAd,
 } from '../../../interfaces/profile.interfaces';
 import { ITokenResponse } from '../../../interfaces/responses.interfaces';
 import { AppDispatch, RootState } from '../../../store';
@@ -54,7 +54,7 @@ export class MyAdsService {
       const myAds = getState().myAds;
       dispatch(fetchMyAdsPending());
       const response = await getUserPosts(myAds.page);
-      const userAds: IMyAd[] = response.data.data.map((ad) => ({
+      const userAds: IUserAd[] = response.data.data.map((ad) => ({
         title: ad.title,
         address: ad.address.title,
         city: ad.city.name,
@@ -72,6 +72,7 @@ export class MyAdsService {
         id: ad.id,
         status: ad.status,
         description: ad.description,
+        isFavorited: false,
       }));
       console.log(response.data);
 

@@ -16,6 +16,10 @@ export const MyAdsList = (props: IMyAdsListProps) => {
   const myAdsController = new MyAdsController(dispatch);
   useEffect(() => {
     myAdsController.getMyAds();
+
+    return () => {
+      myAdsController.clearValues();
+    };
   }, []);
 
   return (
@@ -23,6 +27,9 @@ export const MyAdsList = (props: IMyAdsListProps) => {
       <h3 className='my-ads-list__title'>Мои объявления</h3>
       <div className='my-ads-list__list'>
         {myAds.isLoading && <Spinner />}
+        {!myAds.isLoading && myAds.ads.length === 0 ? (
+          <p>У вас нет созданных объявлений</p>
+        ) : null}
         {!myAds.isLoading &&
           myAds.ads.map((ad) => (
             <UserAd
@@ -35,6 +42,8 @@ export const MyAdsList = (props: IMyAdsListProps) => {
               imagePath={ad.imagePath}
               placeName={ad.address}
               state={ad.status}
+              variant={'my-ads'}
+              isFavorited={false}
             />
           ))}
         <div className='my-ads-list__pagination-wrapper'>

@@ -5,6 +5,7 @@ import Spinner from '../../../../UI/Spinner';
 import AdPreview from '../AdPreview';
 import { useInfiniteScroll } from '../../../../hooks/useInfiniteScroll';
 import { AdsController } from '../../controllers/ads.controller';
+import { FavoritesService } from '../../../Profile';
 
 interface IAdPreviewListProps {
   classNames?: string[];
@@ -22,6 +23,7 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
     ads.ads,
     ads.page,
   );
+
   return (
     <div className={classNamesParser('ad-preview-list', props.classNames)}>
       {ads.isLoading && <Spinner />}
@@ -29,6 +31,7 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
         {ads.ads?.map((ad, i) => (
           <AdPreview
             key={ad.id}
+            id={ad.id}
             title={ad.title}
             description={ad.descripton}
             imagePath={ad.imagePath}
@@ -36,6 +39,9 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
             loadMoreCallback={
               i === ads.ads.length - 1 ? loadMoreCallback : null
             }
+            handleAddToFavorite={adsController.addToFavorites}
+            handleRemoveFromFavorite={adsController.removeFromFavorites}
+            isFavorite={ad.isFavorite}
           />
         ))}
       </div>

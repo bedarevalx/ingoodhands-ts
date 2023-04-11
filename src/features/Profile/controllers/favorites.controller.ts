@@ -5,49 +5,43 @@ import {
 import { AppDispatch, RootState, store } from '../../../store';
 import { ChangeEvent } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { SelectChangeEvent } from '@mui/material';
+import { APP_CONSTANTS } from '../../../constants/app';
+import { IAdsController } from '../../../interfaces/ads.interfaces';
+import { IFavoritesController } from '../../../interfaces/profile.interfaces';
+import { clearState, setPage } from '../slices/my-ads.slice';
+import { FavoritesService } from '../services/favorites.service';
 import {
   removeFavoriteById,
   setError,
   setFavoriteById,
-  setLoading,
-} from '../slices/ads.slice';
-import { SelectChangeEvent } from '@mui/material';
-import { APP_CONSTANTS } from '../../../constants/app';
-import { IAdsController } from '../../../interfaces/ads.interfaces';
-import { AdsService } from '../services/ads.service';
-import { FavoritesService } from '../../Profile';
+} from '../slices/favorites.slice';
 
-export class AdsController implements IAdsController {
+export class FavoritesController implements IFavoritesController {
   dispatch: AppDispatch;
   getState: () => RootState;
-  adsService: AdsService;
   favoritesService: FavoritesService;
 
   constructor(dispatch: AppDispatch) {
     this.dispatch = dispatch;
     this.getState = store.getState;
-    this.adsService = new AdsService(dispatch);
     this.favoritesService = new FavoritesService(dispatch);
   }
-  fetchAds = () => {
-    const ads = this.getState().ads;
-    this.dispatch(
-      this.adsService.fetchAds(
-        ads.page,
-        ads.title,
-        ads.sortBy,
-        ads.sortType,
-        ads.idCity,
-        ads.idCategory,
-      ),
-    );
+
+  getMyAds = () => {
+    this.dispatch(this.favoritesService.getFavorites());
   };
 
-  setIsLoading = (isLoading: boolean) => {
-    this.dispatch(setLoading(isLoading));
+  handlePageChange = (_: any, page: number) => {
+    this.dispatch(setPage(page));
+    this.getMyAds();
   };
 
-  addToFavorites = (id: number) => {
+  clearValues = () => {
+    this.dispatch(clearState());
+  };
+
+  setFavorited = (id: number) => {
     try {
       this.dispatch(setFavoriteById(id));
       this.dispatch(this.favoritesService.addToFavorites(id));
@@ -57,13 +51,21 @@ export class AdsController implements IAdsController {
     }
   };
 
-  removeFromFavorites = (id: number) => {
+  setUnFavorited = (id: number) => {
     try {
       this.dispatch(removeFavoriteById(id));
       this.dispatch(this.favoritesService.removeFromFavorites(id));
     } catch (error: any) {
       this.dispatch(removeFavoriteById(id));
       this.dispatch(setError(error.message));
+    }
+  };
+
+  handleFavoriteClick = (id: number, isFavorited: boolean) => {
+    if (isFavorited) {
+      this.setUnFavorited(id);
+    } else {
+      this.setFavorited(id);
     }
   };
 }

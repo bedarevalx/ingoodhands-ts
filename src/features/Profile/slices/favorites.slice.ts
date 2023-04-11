@@ -4,12 +4,6 @@ import { IUser } from '../../../interfaces/auth.interfaces';
 import { IAddressResponse } from '../../../interfaces/responses.interfaces';
 import { IUserAd } from '../../../interfaces/profile.interfaces';
 
-interface IErrors {
-  checkCodeError: string;
-  sendCodeError: string;
-  editProfileError: string;
-}
-
 interface IMyAdsState {
   isLoading: boolean;
   error: string;
@@ -26,20 +20,20 @@ const initialState: IMyAdsState = {
   totalPages: 0,
 };
 
-export const myAdsSlice = createSlice({
-  name: 'my-ads',
+export const favoritesSlice = createSlice({
+  name: 'favorites',
   initialState,
   reducers: {
-    fetchMyAdsPending: (state) => {
+    fetchFavoritesPending: (state) => {
       state.isLoading = true;
       state.error = '';
     },
-    fetchMyAdsFulfilled: (state, action: PayloadAction<IUserAd[]>) => {
+    fetchFavoritesFulfilled: (state, action: PayloadAction<IUserAd[]>) => {
       state.isLoading = false;
       state.ads = action.payload;
       state.error = '';
     },
-    fetchMyAdsRejected: (state, action: PayloadAction<string>) => {
+    fetchFavoritesRejected: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
@@ -49,7 +43,27 @@ export const myAdsSlice = createSlice({
     setTotalPages: (state, action: PayloadAction<number>) => {
       state.totalPages = action.payload;
     },
-
+    setFavoriteById: (state, action: PayloadAction<number>) => {
+      state.ads = state.ads.map((ad) => {
+        if (ad.id === action.payload) {
+          return { ...ad, isFavorited: true };
+        } else {
+          return ad;
+        }
+      });
+    },
+    removeFavoriteById: (state, action: PayloadAction<number>) => {
+      state.ads = state.ads.map((ad) => {
+        if (ad.id === action.payload) {
+          return { ...ad, isFavorited: false };
+        } else {
+          return ad;
+        }
+      });
+    },
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
     clearState: (state) => {
       state.page = 1;
       state.totalPages = 0;
@@ -61,11 +75,14 @@ export const myAdsSlice = createSlice({
 });
 
 export const {
-  fetchMyAdsFulfilled,
-  fetchMyAdsPending,
-  fetchMyAdsRejected,
+  fetchFavoritesFulfilled,
+  fetchFavoritesPending,
+  fetchFavoritesRejected,
   setPage,
   setTotalPages,
   clearState,
-} = myAdsSlice.actions;
-export const reducer = myAdsSlice.reducer;
+  setFavoriteById,
+  removeFavoriteById,
+  setError,
+} = favoritesSlice.actions;
+export const reducer = favoritesSlice.reducer;

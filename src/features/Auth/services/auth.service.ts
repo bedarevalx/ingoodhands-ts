@@ -1,4 +1,9 @@
-import { getUserProfile, signIn, signUp } from '../../../api/in-good-hands.api';
+import {
+  getFavoritePostsId,
+  getUserProfile,
+  signIn,
+  signUp,
+} from '../../../api/in-good-hands.api';
 import {
   IAuthService,
   IUser,
@@ -100,7 +105,10 @@ export class AuthService {
     }
   };
 
-  setUserProfile = async (userInfo: IGetProfileResponse) => {
+  setUserProfile = async (
+    userInfo: IGetProfileResponse,
+    // favoriteIds: number[],
+  ) => {
     try {
       const user = {
         isBanned: userInfo.blocked_admin,
@@ -115,6 +123,7 @@ export class AuthService {
         email: userInfo.email,
         name: userInfo.name,
         id: userInfo.id,
+        // favoriteIds,
         addresses: userInfo.addresses.map((address) => ({
           title: address.title,
           id: address.id,
@@ -133,7 +142,11 @@ export class AuthService {
     try {
       this.dispatch(authenticatePending());
       const response = await getUserProfile();
-      this.setUserProfile(response.data);
+      // const favoriteIdResponse = await getFavoritePostsId();
+      this.setUserProfile(
+        response.data,
+        //  favoriteIdResponse.data
+      );
       this.dispatch(authenticateFullfilled());
     } catch (e: any) {
       console.log(e);

@@ -35,6 +35,16 @@ export interface IGetUserPostsResponse {
   total_pages: number;
 }
 
+export interface IListReponse<T> {
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
+  data: T[];
+}
+
+export interface IGetFavoritesResponse<T> {}
+
 export interface IUserPostResponse {
   id: number;
   title: string;
@@ -47,6 +57,8 @@ export interface IUserPostResponse {
   status: AdsStatusTypes;
   view_count: number;
   like_count: number;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface IUserCity {
@@ -103,7 +115,7 @@ interface IAdPreviewResponse {
   city_title: string;
   date: string;
   description: string;
-  id: string;
+  id: number;
   image_set: string[];
   status: AdsStatusTypes;
   title: string;

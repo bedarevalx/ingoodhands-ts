@@ -10,9 +10,12 @@ import {
   ICategoryResponse,
   ICityResponse,
   IGetAdsResponse,
+  IGetFavoritesResponse,
   IGetProfileResponse,
   IGetUserPostsResponse,
+  IListReponse,
   ITokenResponse,
+  IUserPostResponse,
 } from '../interfaces/responses.interfaces';
 
 export const refreshToken = async () => {
@@ -45,6 +48,10 @@ export const getUserProfile = async () => {
   return await axios.get<IGetProfileResponse>('/api/auth/user-profile');
 };
 
+export const getFavoritePostsId = async () => {
+  return await axios.get<number[]>('/api/all_favorite_posts_id');
+};
+
 export const fetchAds = async (params: IFetchAdParams) => {
   const query = parseQueryParams(params);
   return await axios.get<IGetAdsResponse>(`/api/all_posts?${query}`);
@@ -68,6 +75,22 @@ export const editProfile = async (body: IEditProfileBody) => {
 
 export const getUserPosts = async (page: number) => {
   const query = parseQueryParams({ page });
-
   return await axios.get<IGetUserPostsResponse>(`/api/my_posts?${query}`);
+};
+
+export const getFavorites = async (page: number) => {
+  const query = parseQueryParams({ page });
+  return await axios.get<IListReponse<IUserPostResponse>>(
+    `/api/all_favorite_posts?${query}`,
+  );
+};
+
+export const addToFavorite = async (adId: number) => {
+  const query = parseQueryParams({ id_post: adId });
+  return await axios.post(`/api/add_post_to_favorive?${query}`);
+};
+
+export const removeFromFavorite = async (adId: number) => {
+  const query = parseQueryParams({ id_post: adId });
+  return await axios.delete(`/api/delete_post_from_favorite?${query}`);
 };

@@ -9,12 +9,13 @@ export interface IAdsController {
 }
 
 export interface IAdPreview {
-  id: string;
+  id: number;
   title: string;
   city: string;
   imagePath: string;
   descripton: string;
   date: string;
+  isFavorite: boolean;
 }
 
 export interface ICreatePost {

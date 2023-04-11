@@ -54,6 +54,9 @@ export const adsSlice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
     clearAds: (state) => {
       state.ads = [];
       state.page = 1;
@@ -61,6 +64,24 @@ export const adsSlice = createSlice({
     },
     setIsLastPage: (state, action: PayloadAction<boolean>) => {
       state.isLastPage = action.payload;
+    },
+    setFavoriteById: (state, action: PayloadAction<number>) => {
+      state.ads = state.ads.map((ad) => {
+        if (ad.id === action.payload) {
+          return { ...ad, isFavorite: true };
+        } else {
+          return ad;
+        }
+      });
+    },
+    removeFavoriteById: (state, action: PayloadAction<number>) => {
+      state.ads = state.ads.map((ad) => {
+        if (ad.id === action.payload) {
+          return { ...ad, isFavorite: false };
+        } else {
+          return ad;
+        }
+      });
     },
     clearFilters: (state) => {
       state.title = '';
@@ -81,7 +102,10 @@ export const {
   setPage,
   setAds,
   clearAds,
+  setError,
   clearFilters,
   setIsLastPage,
+  setFavoriteById,
+  removeFavoriteById,
 } = adsSlice.actions;
 export const reducer = adsSlice.reducer;

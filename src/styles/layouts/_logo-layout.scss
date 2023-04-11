@@ -6,12 +6,12 @@
   &__logo {
     cursor: pointer;
     position: absolute;
-    top: 0;
+    top: 20px;
     margin: auto;
     height: 60px;
     width: 270px;
     @media screen and (max-width: 1024px) {
-      top: 10px;
+      top: 0;
       left: 50%;
       transform: translate(-50%, -120%);
       width: 300px;
@@ -21,7 +21,7 @@
     display: flex;
     flex: 1 1;
     height: 100%;
-    padding-top: 8vh;
+    padding-top: 100px;
   }
   &__main {
     position: relative;

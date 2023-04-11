@@ -63,6 +63,8 @@ export class AdsService {
           imagePath: ad.image_set[0],
           date: ad.date,
           city: ad.city_title,
+          //TODO: фикс
+          isFavorite: false,
         }));
 
         dispatch(fetchAdsFullfilled(ads));

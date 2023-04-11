@@ -4,28 +4,9 @@ import {
 } from '../../../interfaces/auth.interfaces';
 import { AppDispatch, RootState, store } from '../../../store';
 import { ChangeEvent } from 'react';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { SelectChangeEvent } from '@mui/material';
-import { APP_CONSTANTS } from '../../../constants/app';
-import { IAdsController } from '../../../interfaces/ads.interfaces';
-import {
-  IMyAdsController,
-  IProfileController,
-} from '../../../interfaces/profile.interfaces';
-import { ProfileService } from '../services/profile.service';
-import {
-  closeConfirmModal,
-  openConfirmModal,
-  setCitySelect,
-  setEmailCode,
-  setEmailInput,
-  setIsEditing,
-  setNameInput,
-  setPhoneInput,
-  startEditing,
-} from '../slices/profile.slice';
+import { IMyAdsController } from '../../../interfaces/profile.interfaces';
 import { MyAdsService } from '../services/my-ads.service';
-import { setPage } from '../slices/my-ads.slice';
+import { clearState, setPage } from '../slices/my-ads.slice';
 
 export class MyAdsController implements IMyAdsController {
   dispatch: AppDispatch;
@@ -45,5 +26,9 @@ export class MyAdsController implements IMyAdsController {
   handlePageChange = (_: any, page: number) => {
     this.dispatch(setPage(page));
     this.getMyAds();
+  };
+
+  clearValues = () => {
+    this.dispatch(clearState());
   };
 }
