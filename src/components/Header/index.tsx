@@ -6,6 +6,7 @@ import Button from '../../UI/Button';
 import ProfileButton from '../ProfileButton';
 import { ReactComponent as Logo } from '../../assets/vector/logo-white.svg';
 import HeaderBg from '../../assets/vector/header-bg.svg';
+import { classNamesParser } from '../../helpers/classNamesParser';
 
 interface IHeaderProps {
   classNames: string[];
@@ -26,7 +27,8 @@ const Header = (props: IHeaderProps) => {
   };
   return (
     <header
-      className='header'
+      className={classNamesParser('header', props.classNames)}
+
       // style={{ backgroundImage: `url('${HeaderBg}')`, backgroundSize: '' }}
     >
       <div className='container header__container'>

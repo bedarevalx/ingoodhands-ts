@@ -14,4 +14,18 @@
   }
   &__footer {
   }
+
+  &__header {
+    display: flex;
+    @media screen and (max-width: $media-sm) {
+      display: none;
+    }
+  }
+
+  &__mobile-header {
+    display: none;
+    @media screen and (max-width: $media-sm) {
+      display: flex;
+    }
+  }
 }

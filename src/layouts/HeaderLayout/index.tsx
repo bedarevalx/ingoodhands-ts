@@ -13,14 +13,12 @@ interface IHeaderLayoutProps {
 
 const HeaderLayout = (props: IHeaderLayoutProps) => {
   const matchSm = useMediaQuery(`(max-width:${MEDIA.SM}px`);
+  console.log(matchSm);
 
   return (
     <div className='header-layout'>
-      {matchSm ? (
-        <MobileHeader classNames={['header-layout__mobile-header']} />
-      ) : (
-        <Header classNames={['header-layout__header']} />
-      )}
+      <MobileHeader classNames={['header-layout__mobile-header']} />
+      <Header classNames={['header-layout__header']} />
       <div
         className={classNamesParser(
           'container header-layout__container',

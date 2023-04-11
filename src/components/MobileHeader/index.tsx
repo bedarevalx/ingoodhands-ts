@@ -7,6 +7,7 @@ import Button from '../../UI/Button';
 import { ReactComponent as Logo } from '../../assets/vector/logo-mobile.svg';
 import { IconButton } from '@mui/material';
 import AppsIcon from '@mui/icons-material/Apps';
+import { classNamesParser } from '../../helpers/classNamesParser';
 
 interface IMobileHeaderProps {
   classNames?: string[];
@@ -26,7 +27,7 @@ export const MobileHeader = (props: IMobileHeaderProps) => {
   };
   return (
     <header
-      className='header-mobile'
+      className={classNamesParser('header-mobile', props.classNames)}
       // style={{ backgroundImage: `url('${HeaderBg}')`, backgroundSize: '' }}
     >
       <div className='container header-mobile__container'>
