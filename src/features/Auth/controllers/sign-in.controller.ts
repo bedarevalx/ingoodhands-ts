@@ -45,12 +45,9 @@ export class SignInController implements ISignInController {
 
     for (const [key, value] of Object.entries(errors)) {
       if (value && key !== 'signIn') {
-        console.log(key);
-
         result = true;
       }
     }
-    console.log(result);
 
     return result;
   };

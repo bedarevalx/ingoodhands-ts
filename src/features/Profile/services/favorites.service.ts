@@ -45,7 +45,6 @@ export class FavoritesService {
         const favorites = getState().favorites;
         dispatch(fetchFavoritesPending());
         const response = await getFavorites(favorites.page);
-        console.log(response);
 
         const userAds: IUserAd[] = response.data.data.map((ad) => {
           return {
@@ -65,8 +64,6 @@ export class FavoritesService {
             isFavorited: true,
           };
         });
-
-        console.log(userAds);
 
         dispatch(setTotalPages(response.data.total_pages));
         dispatch(fetchFavoritesFulfilled(userAds));

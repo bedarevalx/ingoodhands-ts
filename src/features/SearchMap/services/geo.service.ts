@@ -6,8 +6,6 @@ export class GeoService {
   searchByAddress =
     (value: string) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
-      console.log(value);
-
       const response = await forwardGeocoding({ query: value });
       const findedAddressses = response.data.suggestions.map(
         (suggestion, i) => ({
@@ -27,9 +25,6 @@ export class GeoService {
         lat: latitude,
         lon: longitude,
       });
-      console.log(
-        response.data.suggestions.map((suggestion) => suggestion.value),
-      );
 
       const findedAddress = response.data.suggestions[0];
       if (findedAddress) {

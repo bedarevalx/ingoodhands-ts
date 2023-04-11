@@ -40,7 +40,6 @@ const FileLoader = (props: IFileLoaderProps) => {
         if (file.type.match(/image.*/))
           compressedFiles.push(await fileLoader.getCompressedBase64(file));
       }
-      console.log(compressedFiles);
 
       props.onLoadFiles && props.onLoadFiles(compressedFiles);
     }

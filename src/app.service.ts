@@ -9,50 +9,6 @@ import { AppDispatch, RootState } from './store';
 import { setCategories, setCities, setIsLoading } from './store/app.slice';
 
 export class AppService {
-  //   signUp = () => async (dispatch: AppDispatch, getState: () => RootState) => {
-  //     try {
-  //       // dispatch(signUpPending());
-
-  //       const rootState: RootState = getState();
-  //       const user: IUserSignUp = {
-  //         name: rootState.signUp.name,
-  //         email: rootState.signUp.email,
-  //         password: rootState.signUp.password,
-  //         phone_number: rootState.signUp.phoneNumber,
-  //         id_city: rootState.signUp.city,
-  //       };
-  //       const response = await signUp(user);
-  //       console.log(response);
-  //       // const userCredentials = await signInWithEmailAndPassword(
-  //       //   this.auth,
-  //       //   rootState.signUp.email,
-  //       //   rootState.signUp.password,
-  //       // );
-  //       // const profileResponse = await getUserProfile();
-  //       // await sendEmailVerification(userCredentials.user);
-  //       // localStorage.email = user.email;
-  //       // dispatch(signUpSuccess());
-  //     } catch (e: any) {
-  //       // console.log(e);
-  //       // dispatch(
-  //       //   signUpError({
-  //       //     type: 'signUp',
-  //       //     message: e?.response?.data?.toLowerCase() || 'some_error',
-  //       //   }),
-  //       // );
-  //     }
-  //   };
-
-  //   getCities =
-  //     () => async (dispatch: AppDispatch, getState: () => RootState) => {
-  //       try {
-  //         const response = await getCities();
-  //         console.log(response);
-  //       } catch (e: any) {
-  //         console.log(e);
-  //       }
-  //     };
-
   getCities = async () => {
     const response = await getCities();
     return response?.data?.map((item) => ({

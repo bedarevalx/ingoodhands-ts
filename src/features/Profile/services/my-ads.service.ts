@@ -40,7 +40,6 @@ export class MyAdsService {
         description: ad.description,
         isFavorited: false,
       }));
-      console.log(response.data);
 
       dispatch(setTotalPages(response.data.total_pages));
       dispatch(fetchMyAdsFulfilled(userAds));

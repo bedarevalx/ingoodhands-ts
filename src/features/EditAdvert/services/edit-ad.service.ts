@@ -61,7 +61,6 @@ export class EditAdService {
           address: address,
         };
         const response = await createAd(body);
-        console.log(response);
         this.dispatch(createAdFulfilled());
       } catch (error: any) {
         console.log(error);

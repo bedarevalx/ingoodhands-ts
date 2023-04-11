@@ -68,7 +68,6 @@ export class ProfileService {
           phone_number: profile.phoneInput,
         };
         const response = await editProfile(newUserInfo);
-        console.log(response);
 
         this.authService.setUserProfile(response.data);
         dispatch(editFulfilled());

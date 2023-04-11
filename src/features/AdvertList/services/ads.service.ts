@@ -45,7 +45,6 @@ export class AdsService {
           dispatch(setIsLastPage(false));
           dispatch(setPage(adsState.page + 1));
         }
-        console.log(response.data.data);
 
         const ads: IAdPreview[] = response.data.data.map((ad) => {
           return {
@@ -59,7 +58,6 @@ export class AdsService {
             isFavorite: false,
           };
         });
-        console.log(ads);
 
         dispatch(fetchAdsFullfilled(ads));
       } catch (e: any) {
