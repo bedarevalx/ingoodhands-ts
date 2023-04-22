@@ -36,7 +36,7 @@
   }
 
   &__city-icon-wrapper {
-    width: 64px;
+    min-width: 64px;
     height: 64px;
     background: $color-substrate;
     border-radius: 6px;

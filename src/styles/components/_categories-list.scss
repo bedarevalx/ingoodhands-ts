@@ -1,2 +1,43 @@
 .categories-list {
+  &__list {
+    margin-top: 24px;
+  }
+
+  &__category {
+    display: flex;
+    margin-bottom: 12px;
+    align-items: center;
+    max-width: 600px;
+  }
+
+  &__category-icon {
+    font-size: 40px;
+  }
+
+  &__category-info {
+    margin-left: 12px;
+    width: 100%;
+    align-items: center;
+  }
+
+  &__category-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: -8px;
+  }
+
+  &__category-activity {
+    opacity: 0.6;
+  }
+
+  &__category-icon-wrapper {
+    min-width: 64px;
+    height: 64px;
+    background: $color-substrate;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
