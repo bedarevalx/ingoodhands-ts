@@ -1,4 +1,6 @@
 .cities-list {
+  max-width: 600px;
+
   &__list {
     margin-top: 24px;
   }
@@ -7,7 +9,6 @@
     display: flex;
     margin-bottom: 12px;
     align-items: center;
-    max-width: 600px;
   }
 
   &__city-icon-wrapper {
@@ -43,5 +44,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

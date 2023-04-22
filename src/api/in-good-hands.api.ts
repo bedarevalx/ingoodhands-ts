@@ -18,6 +18,12 @@ import {
   IUserPostResponse,
 } from '../interfaces/responses.interfaces';
 import { IListResponse } from '../interfaces/general.interfaces';
+import {
+  ICreateCategoryBody,
+  ICreateCityBody,
+  IEditCategoryBody,
+  IEditCityBody,
+} from '../interfaces/admin.interfaces';
 
 export const refreshToken = async () => {
   const refreshToken = localStorage['refreshToken'];
@@ -96,4 +102,37 @@ export const addToFavorite = async (adId: number) => {
 export const removeFromFavorite = async (adId: number) => {
   const query = parseQueryParams({ id_post: adId });
   return await axios.delete(`/api/delete_post_from_favorite?${query}`);
+};
+
+export const createCategory = async (body: ICreateCategoryBody) => {
+  return await axios.post('/api/admin/create_category', body);
+};
+export const createCity = async (body: ICreateCityBody) => {
+  return await axios.post('/api/admin/create_city', body);
+};
+
+export const editCity = async (body: IEditCityBody) => {
+  return await axios.patch('/api/admin/change_city', body);
+};
+
+export const editCategory = async (body: IEditCategoryBody) => {
+  return await axios.patch('/api/admin/change_category', body);
+};
+
+export const deleteCity = async (id: number) => {
+  const query = parseQueryParams({ id_city: id });
+  return await axios.delete(`/api/admin/delete_city?` + query);
+};
+
+export const deleteCategory = async (id: number) => {
+  const query = parseQueryParams({ id_category: id });
+  return await axios.delete(`/api/admin/delete_category?` + query);
+};
+
+export const getAllCities = async () => {
+  return await axios.get<ICityResponse[]>('/api/admin/all_cities');
+};
+
+export const getAllCategories = async () => {
+  return await axios.get<ICategoryResponse[]>('/api/admin/all_categories');
 };

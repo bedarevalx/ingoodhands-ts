@@ -15,7 +15,7 @@ export interface IAlertUI {
 }
 
 export interface ICity {
-  id: string;
+  id: number;
   value: string;
   title: string;
   isActive: boolean;
@@ -28,7 +28,7 @@ export interface IAddress {
 }
 
 export interface ICategory {
-  id: string;
+  id: number;
   value: string;
   title: string;
   icon: string;

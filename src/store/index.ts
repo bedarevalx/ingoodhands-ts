@@ -9,6 +9,7 @@ import {
   profileReducer,
   favoritesReducer,
 } from '../features/Profile';
+import { categoriesReducer, citiesReducer } from '../features/Admin';
 export const store = configureStore({
   reducer: {
     app: appReducer,
@@ -21,6 +22,8 @@ export const store = configureStore({
     profile: profileReducer,
     myAds: myAdsReducer,
     favorites: favoritesReducer,
+    cities: citiesReducer,
+    categories: categoriesReducer,
   },
 });
 

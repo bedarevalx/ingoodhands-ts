@@ -1,0 +1,30 @@
+.category-add-modal {
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__confirm-btn.MuiButtonBase-root {
+    background: $color-primary;
+    color: white;
+    @include color-hover($color-primary);
+    padding: 0 20px;
+  }
+  &__modal {
+    & .modal__container {
+      padding: 20px 40px;
+    }
+  }
+
+  &__buttons-wrapper {
+    width: 100%;
+    display: flex;
+    margin-top: 24px;
+    justify-content: space-between;
+  }
+
+  &__cancel-btn.MuiButtonBase-root {
+    color: black;
+    background: $color-substrate;
+    padding: 0 20px;
+    @include color-hover($color-substrate);
+  }
+}

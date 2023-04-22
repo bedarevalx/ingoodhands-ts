@@ -1,6 +1,7 @@
 import { IconButton } from '@mui/material';
 import React from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import RequiredRole from '../../../../hoc/RequiredRole';
 
 interface IAdPreviewProps {
   id: number;
@@ -40,15 +41,17 @@ const AdPreview = (props: IAdPreviewProps) => {
         <p className='ad-preview__description'>
           {props.description || 'Нет описания'}
         </p>
-        <IconButton
-          onClick={handleAddToFavorite}
-          className='ad-preview__favorite-btn'>
-          <FavoriteIcon
-            className={`ad-preview__favorite-icon ${
-              props.isFavorite ? 'favorited' : ''
-            }`}
-          />
-        </IconButton>
+        <RequiredRole>
+          <IconButton
+            onClick={handleAddToFavorite}
+            className='ad-preview__favorite-btn'>
+            <FavoriteIcon
+              className={`ad-preview__favorite-icon ${
+                props.isFavorite ? 'favorited' : ''
+              }`}
+            />
+          </IconButton>
+        </RequiredRole>
       </div>
       <p className='ad-preview__date'>{props.date}</p>
     </div>

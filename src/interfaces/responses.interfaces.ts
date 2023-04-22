@@ -1,14 +1,14 @@
 import { AdsStatusTypes, UserPrivilegeTypes } from '../types/general.types';
 
 export interface ICityResponse {
-  id: string;
+  id: number;
   name: string;
   sotring: number;
   is_active: boolean;
 }
 
 export interface ICategoryResponse {
-  id: string;
+  id: number;
   name: string;
   is_active: boolean;
   icon: string;

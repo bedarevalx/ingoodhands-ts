@@ -23,10 +23,9 @@ const SideMenu = (props: ISideMenuProps) => {
       <div className=''>
         <ul className='side-menu__list'>
           {props?.menuItems?.map((menu) => (
-            <RequiredRole role={menu.role}>
+            <RequiredRole role={menu.role} key={menu.value}>
               <li
                 className={`side-menu__menu-item`}
-                key={menu.value}
                 onClick={() => handleNavigate(menu.value)}>
                 <span
                   className={`side-menu__link ${

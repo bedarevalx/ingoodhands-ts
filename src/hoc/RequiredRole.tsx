@@ -8,13 +8,17 @@ interface IRequiredRoleProps {
 }
 
 const RequiredRole = (props: IRequiredRoleProps) => {
-  const { user } = useAppSelector((state) => state.auth);
+  const auth = useAppSelector((state) => state.auth);
+
+  if (!auth.isAuthenticate) {
+    return null;
+  }
 
   if (!props.role) {
     return props.children;
   }
 
-  if (user.privileges.includes(props.role)) {
+  if (auth.user.privileges.includes(props.role)) {
     return props.children;
   } else {
     return null;
