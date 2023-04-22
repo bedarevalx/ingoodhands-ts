@@ -1,4 +1,8 @@
-import { AlertTypes, InputTypes } from '../types/general.types';
+import {
+  AlertTypes,
+  InputTypes,
+  UserPrivilegeTypes,
+} from '../types/general.types';
 
 export interface IErrorUI {
   message: string;
@@ -49,4 +53,5 @@ export interface IMenuItem<T> {
   id: number;
   value: T;
   text: string;
+  role?: UserPrivilegeTypes;
 }

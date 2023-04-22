@@ -5,5 +5,5 @@ interface IAdminPanelProps {
 }
 
 export const AdminPanel = (props: IAdminPanelProps) => {
-  return <div>index</div>;
+  return <div className='admin-panel'>Категория город</div>;
 };

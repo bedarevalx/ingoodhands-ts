@@ -2,17 +2,18 @@ import React from 'react';
 import HeaderLayout from '../../layouts/HeaderLayout';
 import SideMenu from '../../components/SideMenu';
 import { AdminMenuMocks } from '../../mocks/admin-menu.mocks';
+import { CitiesList } from '../../features/Admin';
 
 const CitiesPage = () => {
   return (
-    <HeaderLayout classNames={['profile-page__container']}>
-      <div className='profile-page__wrapper'>
+    <HeaderLayout classNames={['cities-page__container']}>
+      <div className='cities-page__wrapper'>
         <SideMenu
           currentMenu='admin/cities'
-          classNames={['profile-page__side-menu']}
+          classNames={['cities-page__side-menu']}
           menuItems={AdminMenuMocks}
         />
-        {/* <AdminInfo classNames={['profile-page__profile-info']} /> */}
+        <CitiesList classNames={['cities-page__list']} />
       </div>
     </HeaderLayout>
   );

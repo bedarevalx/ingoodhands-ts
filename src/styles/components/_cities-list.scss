@@ -1,0 +1,47 @@
+.cities-list {
+  &__list {
+    margin-top: 24px;
+  }
+
+  &__city {
+    display: flex;
+    margin-bottom: 12px;
+    align-items: center;
+    max-width: 600px;
+  }
+
+  &__city-icon-wrapper {
+  }
+
+  &__city-icon.MuiSvgIcon-root {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__city-info {
+    margin-left: 12px;
+    width: 100%;
+    align-items: center;
+  }
+
+  &__city-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: -8px;
+  }
+
+  &__city-activity {
+    opacity: 0.6;
+  }
+
+  &__city-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background: $color-substrate;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

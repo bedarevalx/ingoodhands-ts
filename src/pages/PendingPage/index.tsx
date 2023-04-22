@@ -5,11 +5,11 @@ import { AdminMenuMocks } from '../../mocks/admin-menu.mocks';
 
 const PendingPage = () => {
   return (
-    <HeaderLayout classNames={['profile-page__container']}>
-      <div className='profile-page__wrapper'>
+    <HeaderLayout classNames={['pending-page__container']}>
+      <div className='pending-page__wrapper'>
         <SideMenu
           currentMenu='admin/pending'
-          classNames={['profile-page__side-menu']}
+          classNames={['pending-page__side-menu']}
           menuItems={AdminMenuMocks}
         />
         {/* <AdminInfo classNames={['profile-page__profile-info']} /> */}

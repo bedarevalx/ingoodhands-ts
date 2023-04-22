@@ -9,6 +9,8 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 import { AuthService } from '../../features/Auth';
 import { useAppDispatch } from '../../hooks/useRedux';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import RequiredRole from '../../hoc/RequiredRole';
+import BuildIcon from '@mui/icons-material/Build';
 
 interface IProfileButtonProps {
   classNames?: string[];
@@ -62,6 +64,13 @@ const ProfileButton = (props: IProfileButtonProps) => {
   const handleProfile = () => {
     onMenuClose();
     navigate('/profile', {
+      state: {},
+    });
+  };
+
+  const handleAdminPanel = () => {
+    onMenuClose();
+    navigate('/admin', {
       state: {},
     });
   };
@@ -127,6 +136,14 @@ const ProfileButton = (props: IProfileButtonProps) => {
               <GradeOutlinedIcon className='profile-button__item-icon' />
               {'Мои отзывы'}
             </MenuItem>
+            <RequiredRole role='moderator'>
+              <MenuItem
+                className='profile-button__menu-item'
+                onClick={handleAdminPanel}>
+                <BuildIcon className='profile-button__item-icon' />
+                {'Админ панель'}
+              </MenuItem>
+            </RequiredRole>
           </div>
         )}
         <Button

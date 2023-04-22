@@ -2,17 +2,18 @@ import React from 'react';
 import HeaderLayout from '../../layouts/HeaderLayout';
 import SideMenu from '../../components/SideMenu';
 import { AdminMenuMocks } from '../../mocks/admin-menu.mocks';
+import { CategoriesList } from '../../features/Admin';
 
 const CategoriesPage = () => {
   return (
-    <HeaderLayout classNames={['profile-page__container']}>
-      <div className='profile-page__wrapper'>
+    <HeaderLayout classNames={['categories-page__container']}>
+      <div className='categories-page__wrapper'>
         <SideMenu
           currentMenu='admin/categories'
-          classNames={['profile-page__side-menu']}
+          classNames={['categories-page__side-menu']}
           menuItems={AdminMenuMocks}
         />
-        {/* <AdminInfo classNames={['profile-page__profile-info']} /> */}
+        <CategoriesList classNames={['categories-page__list']} />
       </div>
     </HeaderLayout>
   );

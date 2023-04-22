@@ -20,6 +20,10 @@
 @import './pages/my-ads-page';
 @import './pages/reviews-page';
 @import './pages/favorites-page';
+@import './pages/pending-page';
+@import './pages/categories-page';
+@import './pages/cities-page';
+@import './pages/users-page';
 
 //components
 @import './components/sign-up-form';
@@ -43,6 +47,8 @@
 @import './components/my-ads-list';
 @import './components/favorites-list';
 @import './components/header-mobile';
+@import './components/categories-list';
+@import './components/cities-list';
 
 //layouts
 @import './layouts/header-layout';

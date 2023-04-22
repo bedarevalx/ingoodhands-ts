@@ -5,6 +5,7 @@ import { ProfileMenuMocks } from '../../mocks/profile-menu.mocks';
 import { Link, useNavigate } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { IMenuItem } from '../../interfaces/general.interfaces';
+import RequiredRole from '../../hoc/RequiredRole';
 
 interface ISideMenuProps {
   currentMenu: ProfilePageMenuTypes | AdminMenuTypes;
@@ -22,26 +23,28 @@ const SideMenu = (props: ISideMenuProps) => {
       <div className=''>
         <ul className='side-menu__list'>
           {props?.menuItems?.map((menu) => (
-            <li
-              className={`side-menu__menu-item`}
-              key={menu.value}
-              onClick={() => handleNavigate(menu.value)}>
-              <span
-                className={`side-menu__link ${
-                  props.currentMenu === menu.value
-                    ? 'side-menu__menu-selected'
-                    : ''
-                }`}>
-                {menu.text}
-              </span>
-              <NavigateNextIcon
-                className={`side-menu__next-icon ${
-                  props.currentMenu === menu.value
-                    ? 'side-menu__menu-selected'
-                    : ''
-                }`}
-              />
-            </li>
+            <RequiredRole role={menu.role}>
+              <li
+                className={`side-menu__menu-item`}
+                key={menu.value}
+                onClick={() => handleNavigate(menu.value)}>
+                <span
+                  className={`side-menu__link ${
+                    props.currentMenu === menu.value
+                      ? 'side-menu__menu-selected'
+                      : ''
+                  }`}>
+                  {menu.text}
+                </span>
+                <NavigateNextIcon
+                  className={`side-menu__next-icon ${
+                    props.currentMenu === menu.value
+                      ? 'side-menu__menu-selected'
+                      : ''
+                  }`}
+                />
+              </li>
+            </RequiredRole>
           ))}
         </ul>
       </div>
