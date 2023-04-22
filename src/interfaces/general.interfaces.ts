@@ -44,3 +44,9 @@ export interface IListResponse<T> {
   total_pages: number;
   data: T[];
 }
+
+export interface IMenuItem<T> {
+  id: number;
+  value: T;
+  text: string;
+}

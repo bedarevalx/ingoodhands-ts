@@ -1,4 +1,4 @@
-import { AdsStatusTypes } from '../types/general.types';
+import { AdsStatusTypes, UserPrivilegeTypes } from '../types/general.types';
 
 export interface ICityResponse {
   id: string;
@@ -23,6 +23,7 @@ export interface IGetProfileResponse {
   id: string;
   city: IUserCity;
   is_admin: boolean;
+  permissions: UserPrivilegeTypes[];
   name: string;
   phone_number: string;
 }

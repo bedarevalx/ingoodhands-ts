@@ -24,6 +24,12 @@ const ReviewsPage = lazy(() => import('../pages/ReviewsPage'));
 const MyAdsPage = lazy(() => import('../pages/MyAdsPage'));
 const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
 
+const AdminPage = lazy(() => import('../pages/AdminPage'));
+const PendingPage = lazy(() => import('../pages/PendingPage'));
+const UsersPage = lazy(() => import('../pages/UsersPage'));
+const CitiesPage = lazy(() => import('../pages/CitiesPage'));
+const CategoriesPage = lazy(() => import('../pages/CategoriesPage'));
+
 const Loading = () => <div>Loading</div>;
 
 export const routes = createBrowserRouter([
@@ -84,6 +90,60 @@ export const routes = createBrowserRouter([
             <div>CONFIRM EMAIL</div>
           </Suspense>
         ),
+      },
+      {
+        path: ROUTES.ADMIN,
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: (
+              <PrivateRoute
+                requiredRole={'moderator'}
+                children={<AdminPage />}
+              />
+            ),
+          },
+          {
+            path: ROUTES.PENDING,
+            element: (
+              <PrivateRoute
+                requiredRole={'moderator'}
+                children={<PendingPage />}
+              />
+            ),
+          },
+          {
+            path: ROUTES.CATEGORIES,
+            element: (
+              <PrivateRoute
+                requiredRole={'admin'}
+                children={<CategoriesPage />}
+              />
+            ),
+          },
+          {
+            path: ROUTES.CITIES,
+            element: (
+              <PrivateRoute requiredRole={'admin'} children={<CitiesPage />} />
+            ),
+          },
+          // {
+          //   path: ROUTES.MODERATION,
+          //   element: (
+          //     <PrivateRoute
+          //       requiredRole={'moderator'}
+          //       children={<PendingPage />}
+          //     />
+          //   ),
+          // },
+          {
+            path: ROUTES.USERS,
+            element: (
+              <PrivateRoute requiredRole={'admin'} children={<UsersPage />} />
+            ),
+          },
+        ],
       },
       {
         path: '*',

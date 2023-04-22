@@ -1,4 +1,5 @@
 import { AppDispatch } from '../store';
+import { UserPrivilegeTypes } from '../types/general.types';
 import { IAddressResponse } from './responses.interfaces';
 // import { IAuthService } from './auth.interfaces';
 // import { UserService } from '../services/user.service';
@@ -39,6 +40,7 @@ export interface IUser {
   id: string;
   city: IUserCity;
   isAdmin: boolean;
+  privileges: UserPrivilegeTypes[];
   phoneNumber: string;
   addresses: IUserAddress[];
 }

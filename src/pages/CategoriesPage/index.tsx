@@ -1,22 +1,21 @@
 import React from 'react';
 import HeaderLayout from '../../layouts/HeaderLayout';
 import SideMenu from '../../components/SideMenu';
-import { ProfileInfo } from '../../features/Profile';
-import { ProfileMenuMocks } from '../../mocks/profile-menu.mocks';
+import { AdminMenuMocks } from '../../mocks/admin-menu.mocks';
 
-const ProfilePage = () => {
+const CategoriesPage = () => {
   return (
     <HeaderLayout classNames={['profile-page__container']}>
       <div className='profile-page__wrapper'>
         <SideMenu
-          currentMenu='profile'
+          currentMenu='admin/categories'
           classNames={['profile-page__side-menu']}
-          menuItems={ProfileMenuMocks}
+          menuItems={AdminMenuMocks}
         />
-        <ProfileInfo classNames={['profile-page__profile-info']} />
+        {/* <AdminInfo classNames={['profile-page__profile-info']} /> */}
       </div>
     </HeaderLayout>
   );
 };
 
-export default React.memo(ProfilePage);
+export default React.memo(CategoriesPage);

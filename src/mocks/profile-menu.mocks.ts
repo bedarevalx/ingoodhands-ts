@@ -1,12 +1,7 @@
-import { ProfilePageMenuTypes } from '../types/profileMenu.types';
+import { IMenuItem } from '../interfaces/general.interfaces';
+import { ProfilePageMenuTypes } from '../types/menu.types';
 
-interface IProfileMenuItem {
-  id: number;
-  value: ProfilePageMenuTypes;
-  text: string;
-}
-
-export const ProfileMenuMocks: IProfileMenuItem[] = [
+export const ProfileMenuMocks: IMenuItem<ProfilePageMenuTypes>[] = [
   { id: 1, value: 'profile', text: 'Мой профиль' },
   { id: 2, value: 'profile/my-ads', text: 'Мои объявления' },
   { id: 3, value: 'profile/favorites', text: 'Избранное' },

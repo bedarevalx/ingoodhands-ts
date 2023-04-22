@@ -119,6 +119,7 @@ export class AuthService {
           isActive: userInfo.city.is_active,
         },
         isAdmin: userInfo.is_admin,
+        privileges: userInfo.permissions,
         phoneNumber: userInfo.phone_number,
         email: userInfo.email,
         name: userInfo.name,

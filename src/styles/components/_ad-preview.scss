@@ -11,10 +11,16 @@
     max-height: 300px;
     overflow: hidden;
     border-radius: 12px;
-    background-color: #c2c1c1;
+    // background-color: #c2c1c1;
     margin-bottom: 10px;
-    aspect-ratio: 8/9;
     width: 100%;
+    display: flex;
+    &:before {
+      display: block;
+      content: '';
+      width: 100%;
+      padding-top: (9 / 8) * 100%;
+    }
   }
 
   &__image {
@@ -22,10 +28,19 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    position: absolute;
+    z-index: 0;
+    flex: 1 0 auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
   }
+
   &__info {
     flex-basis: 20%;
     position: relative;
+    word-break: break-all;
   }
   &__favorite-btn.MuiButtonBase-root {
     position: absolute;
@@ -54,12 +69,11 @@
     @include text-truncate(2);
   }
   &__city-wrapper {
-    top: 0;
-    left: 0;
     position: absolute;
     background: white;
     border-radius: 0 0 12px 0;
     padding: 8px;
+    z-index: 2;
   }
   &__date {
     font-size: 12px;

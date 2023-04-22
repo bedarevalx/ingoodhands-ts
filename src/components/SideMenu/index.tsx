@@ -1,13 +1,15 @@
 import React from 'react';
-import { ProfilePageMenuTypes } from '../../types/profileMenu.types';
+import { AdminMenuTypes, ProfilePageMenuTypes } from '../../types/menu.types';
 import { classNamesParser } from '../../helpers/classNamesParser';
 import { ProfileMenuMocks } from '../../mocks/profile-menu.mocks';
 import { Link, useNavigate } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { IMenuItem } from '../../interfaces/general.interfaces';
 
 interface ISideMenuProps {
-  currentMenu: ProfilePageMenuTypes;
+  currentMenu: ProfilePageMenuTypes | AdminMenuTypes;
   classNames?: string[];
+  menuItems: IMenuItem<ProfilePageMenuTypes | AdminMenuTypes>[];
 }
 
 const SideMenu = (props: ISideMenuProps) => {
@@ -19,7 +21,7 @@ const SideMenu = (props: ISideMenuProps) => {
     <aside className={classNamesParser('side-menu', props.classNames)}>
       <div className=''>
         <ul className='side-menu__list'>
-          {ProfileMenuMocks.map((menu) => (
+          {props?.menuItems?.map((menu) => (
             <li
               className={`side-menu__menu-item`}
               key={menu.value}

@@ -13,3 +13,5 @@ export type AdsStatusTypes =
   | 'banned'
   | 'pending'
   | 'rejected';
+
+export type UserPrivilegeTypes = 'moderator' | 'admin';
