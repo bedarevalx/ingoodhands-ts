@@ -17,7 +17,7 @@ interface IAuthState {
 }
 
 const initialState: IAuthState = {
-  isLoading: true,
+  isLoading: false,
   error: '',
   ads: [],
   title: '',

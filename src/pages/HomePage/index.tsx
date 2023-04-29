@@ -10,9 +10,9 @@ const HomePage = () => {
   const navigate = useNavigate();
   const controller = new AdsController(dispatch);
 
-  useEffect(() => {
-    controller.fetchAds();
-  }, []);
+  // useEffect(() => {
+  //   controller.fetchAds();
+  // }, []);
 
   return (
     <HeaderLayout classNames={['home-page__container']}>

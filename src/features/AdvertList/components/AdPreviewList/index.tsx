@@ -5,6 +5,8 @@ import Spinner from '../../../../UI/Spinner';
 import AdPreview from '../AdPreview';
 import { useInfiniteScroll } from '../../../../hooks/useInfiniteScroll';
 import { AdsController } from '../../controllers/ads.controller';
+import SkeletonLoader from '../../../../components/SkeletonLoader';
+import { Skeleton } from '@mui/material';
 
 interface IAdPreviewListProps {
   classNames?: string[];
@@ -25,7 +27,6 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
 
   return (
     <div className={classNamesParser('ad-preview-list', props.classNames)}>
-      {ads.isLoading && <Spinner />}
       <div className='ad-preview-list__grid-container'>
         {ads.ads?.map((ad, i) => (
           <AdPreview
@@ -36,14 +37,24 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
             imagePath={ad.imagePath}
             date={ad.date}
             city={ad.city}
-            loadMoreCallback={
-              i === ads.ads.length - 1 ? loadMoreCallback : null
-            }
+            loadMoreCallback={null}
             handleAddToFavorite={adsController.addToFavorites}
             handleRemoveFromFavorite={adsController.removeFromFavorites}
             isFavorite={ad.isFavorite}
           />
         ))}
+        {!ads.isLastPage &&
+          new Array(10).fill(null).map((_: any, i: number) => (
+            <div
+              className='ad-preview-list__skeleton-wrapper'
+              ref={i === 1 ? loadMoreCallback : null}>
+              <Skeleton
+                className='ad-preview-list__skeleton'
+                width={'100%'}
+                height={'100%'}
+              />
+            </div>
+          ))}
       </div>
     </div>
   );

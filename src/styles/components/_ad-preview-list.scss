@@ -54,4 +54,23 @@
     //   grid-row-gap: 40px;
     // }
   }
+
+  &__skeleton-wrapper {
+    height: 100%;
+    display: flex;
+    position: relative;
+    &::before {
+      display: block;
+      content: '';
+      padding-top: (9 / 8) * 100%;
+    }
+  }
+  &__skeleton.MuiSkeleton-root {
+    border-radius: 16px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform-origin: 0;
+    transform: none;
+  }
 }
