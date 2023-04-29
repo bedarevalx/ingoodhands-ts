@@ -1,4 +1,5 @@
 import { AdsStatusTypes, UserPrivilegeTypes } from '../types/general.types';
+import { IAddress } from './general.interfaces';
 
 export interface ICityResponse {
   id: number;
@@ -96,7 +97,31 @@ export interface IGetAdsResponse {
   data: IAdPreviewResponse[];
 }
 
-export interface IGetAdsData {}
+export interface IGetAdvertResponse {
+  address: IAddress;
+  post: IAdvertResponse;
+}
+
+export interface IOwnerAdResponse {
+  created_at: string;
+  id: number;
+  rating: number;
+  name: string;
+}
+
+export interface IAdvertResponse {
+  category: ICategoryResponse;
+  city: ICityResponse;
+  created_at: string;
+  description: string;
+  id: number;
+  image_set: string[];
+  status: AdsStatusTypes;
+  title: string;
+  updated_at: string;
+  view_count: number;
+  user: IOwnerAdResponse;
+}
 
 interface IAdPreviewResponse {
   address: {
@@ -123,4 +148,19 @@ export interface IForwardGeocodingResponse {
     };
     value: string;
   }[];
+}
+
+export interface ISearchUserResponse {
+  addresses: IAddressResponse[];
+  balance: number;
+  blocked_admin: boolean;
+  city: ICityResponse;
+  created_at: string;
+  email: string;
+  email_verified_at: null | string;
+  id: number;
+  name: string;
+  permissions: UserPrivilegeTypes[];
+  phone_number: string;
+  rating: number;
 }

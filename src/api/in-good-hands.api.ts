@@ -8,21 +8,26 @@ import {
   IUserAd,
 } from '../interfaces/profile.interfaces';
 import {
+  IAdvertResponse,
   ICategoryResponse,
   ICityResponse,
   IGetAdsResponse,
+  IGetAdvertResponse,
   IGetFavoritesResponse,
   IGetProfileResponse,
   IGetUserPostsResponse,
+  ISearchUserResponse,
   ITokenResponse,
   IUserPostResponse,
 } from '../interfaces/responses.interfaces';
 import { IListResponse } from '../interfaces/general.interfaces';
 import {
+  IAdsSearchParams,
   ICreateCategoryBody,
   ICreateCityBody,
   IEditCategoryBody,
   IEditCityBody,
+  IUserSearchParams,
 } from '../interfaces/admin.interfaces';
 
 export const refreshToken = async () => {
@@ -135,4 +140,23 @@ export const getAllCities = async () => {
 
 export const getAllCategories = async () => {
   return await axios.get<ICategoryResponse[]>('/api/admin/all_categories');
+};
+
+export const getPost = async (id: string) => {
+  const query = parseQueryParams({ id_post: id });
+  return await axios.get<IGetAdvertResponse>(`/api/get_post?${query}`);
+};
+
+export const searchAds = async (params: IAdsSearchParams) => {
+  const query = parseQueryParams(params);
+  return await axios.get<IListResponse<IAdvertResponse>>(
+    `/api/admin/get_all_posts?${query}`,
+  );
+};
+
+export const searchUsers = async (params: IUserSearchParams) => {
+  const query = parseQueryParams(params);
+  return await axios.get<IListResponse<ISearchUserResponse>>(
+    `/api/admin/get_all_users?${query}`,
+  );
 };

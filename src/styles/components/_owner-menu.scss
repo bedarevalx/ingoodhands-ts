@@ -1,0 +1,69 @@
+.owner-menu {
+  border-radius: 8px;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 12px 12px;
+  position: sticky;
+  max-height: 300px;
+  top: 70px;
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &__user-icon.MuiSvgIcon-root {
+    width: 38px;
+    height: 38px;
+  }
+
+  &__user-name {
+    font-size: 22px;
+  }
+  &__created-at {
+    opacity: 0.6;
+    font-size: 13px;
+  }
+
+  &__rating-wrapper {
+    margin-top: 18px;
+    text-align: center;
+  }
+  &__rating-value {
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+  &__view-count {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  &__view-icon.MuiSvgIcon-root {
+    width: 16px;
+    height: 16px;
+  }
+  &__view-count-value {
+    font-size: 12px;
+    position: relative;
+    top: 1px;
+  }
+  &__reviews-link {
+    color: $color-primary;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__get-contacts.MuiButtonBase-root {
+    margin-top: 24px;
+    width: 100%;
+    margin-left: auto;
+    margin-bottom: 12px;
+    background: $color-primary;
+    color: white;
+    @include color-hover($color-primary);
+  }
+}

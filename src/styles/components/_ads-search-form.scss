@@ -1,0 +1,33 @@
+.ads-search-form {
+  max-width: 600px;
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  &__search-param {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    @include color-hover(white);
+    padding: 0 6px;
+    border-radius: 4px;
+  }
+
+  &__search-wrapper {
+    display: flex;
+  }
+  &__search-input {
+    & .MuiInputBase-root {
+      border-radius: 4px 0 0 4px;
+    }
+  }
+
+  &__search-btn.MuiButtonBase-root {
+    border-radius: 0 4px 4px 0;
+    background: $color-primary;
+    color: white;
+    @include color-hover($color-primary);
+  }
+}

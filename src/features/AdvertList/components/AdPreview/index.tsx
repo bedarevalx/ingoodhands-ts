@@ -1,7 +1,8 @@
 import { IconButton } from '@mui/material';
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import RequiredRole from '../../../../hoc/RequiredRole';
+import { useNavigate } from 'react-router-dom';
 
 interface IAdPreviewProps {
   id: number;
@@ -17,15 +18,24 @@ interface IAdPreviewProps {
 }
 
 const AdPreview = (props: IAdPreviewProps) => {
-  const handleAddToFavorite = () => {
+  const navigate = useNavigate();
+  const handleAddToFavorite = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     const callback = props.isFavorite
       ? () => props.handleRemoveFromFavorite(props.id)
       : () => props.handleAddToFavorite(props.id);
     callback();
   };
 
+  const handleAdClick = () => {
+    navigate('/post/' + props.id);
+  };
+
   return (
-    <div className='ad-preview' ref={props.loadMoreCallback}>
+    <div
+      className='ad-preview'
+      ref={props.loadMoreCallback}
+      onClick={handleAdClick}>
       <div className='ad-preview__image-container'>
         <div className='ad-preview__city-wrapper'>
           <span className='ad-prevew__city'>{props.city}</span>

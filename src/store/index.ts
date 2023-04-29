@@ -9,7 +9,13 @@ import {
   profileReducer,
   favoritesReducer,
 } from '../features/Profile';
-import { categoriesReducer, citiesReducer } from '../features/Admin';
+import {
+  categoriesReducer,
+  citiesReducer,
+  adsSearchReducer,
+  userSearchReducer,
+} from '../features/Admin';
+import { advertReducer } from '../features/Advert';
 export const store = configureStore({
   reducer: {
     app: appReducer,
@@ -24,6 +30,9 @@ export const store = configureStore({
     favorites: favoritesReducer,
     cities: citiesReducer,
     categories: categoriesReducer,
+    advert: advertReducer,
+    adsSearch: adsSearchReducer,
+    userSearch: userSearchReducer,
   },
 });
 

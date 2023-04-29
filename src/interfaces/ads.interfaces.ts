@@ -1,11 +1,15 @@
 import { AppDispatch } from '../store';
 import { SortByTypes, SortTypeTypes } from '../types/ads.types';
+import { AdsStatusTypes } from '../types/general.types';
 import { IAuthService } from './auth.interfaces';
-import { IAddress } from './general.interfaces';
+import { IAddress, ICategory, ICity } from './general.interfaces';
 
 export interface IAdsController {
   dispatch: AppDispatch;
-  //   userService: UserService;
+}
+
+export interface IAdvertController {
+  dispatch: AppDispatch;
 }
 
 export interface IAdPreview {
@@ -34,4 +38,26 @@ export interface IFetchAdParams {
   sortBy: SortByTypes;
   sortType: SortTypeTypes;
   page: number;
+}
+
+export interface IAdvert {
+  category: ICategory;
+  city: ICity;
+  createdAt: string;
+  description: string;
+  id: number;
+  imageSet: string[];
+  status: AdsStatusTypes;
+  title: string;
+  updatedAt: string;
+  viewCount: number;
+  user: IAdvertOnwer;
+  address: IAddress;
+}
+
+export interface IAdvertOnwer {
+  name: string;
+  id: number;
+  rating: number;
+  createdAt: string;
 }

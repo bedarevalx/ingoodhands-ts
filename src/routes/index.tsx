@@ -7,30 +7,29 @@ import { lazy, Suspense } from 'react';
 import { ROUTES } from '../constants/routes';
 import PrivateRoute from '../hoc/PrivateRoute';
 import FullscreenSpinner from '../components/FullscreenSpinner';
-// import SignUpPage from '../pages/SignUpPage';
-// import SignInPage from '../pages/SignInPage';
-// import EditAdvertPage from '../pages/EditAdvertPage';
-// import Ad from '../pages/Ad';
-// import AdsListPage from '../pages/Ads';
-// import FullscreenSpinner from '../components/FullscreenSpinner';
-// import ConfirmEmailPage from '../pages/ConfirmEmail';
 
 const EditAdvertPage = lazy(() => import('../pages/EditAdvertPage'));
 const HomePage = lazy(() => import('../pages/HomePage'));
+
+//Auth Feature
 const SignInPage = lazy(() => import('../pages/SignInPage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));
+
+//Profile Feature
 const ProfilePage = lazy(() => import('../pages/ProfilePage'));
 const ReviewsPage = lazy(() => import('../pages/ReviewsPage'));
 const MyAdsPage = lazy(() => import('../pages/MyAdsPage'));
 const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
 
+const AdvertPage = lazy(() => import('../pages/AdvertPage'));
+
+//Admin Feature
 const AdminPage = lazy(() => import('../pages/AdminPage'));
 const PendingPage = lazy(() => import('../pages/PendingPage'));
 const UsersPage = lazy(() => import('../pages/UsersPage'));
 const CitiesPage = lazy(() => import('../pages/CitiesPage'));
 const CategoriesPage = lazy(() => import('../pages/CategoriesPage'));
-
-const Loading = () => <div>Loading</div>;
+const AdsSearchPage = lazy(() => import('../pages/AdsSearchPage'));
 
 export const routes = createBrowserRouter([
   {
@@ -84,9 +83,13 @@ export const routes = createBrowserRouter([
         element: <PrivateRoute children={<SignUpPage />} reverseAuth />,
       },
       {
+        path: `${ROUTES.POST}/:id`,
+        element: <AdvertPage />,
+      },
+      {
         path: ROUTES.CONFIRM_EMAIL,
         element: (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<FullscreenSpinner />}>
             <div>CONFIRM EMAIL</div>
           </Suspense>
         ),
@@ -127,6 +130,10 @@ export const routes = createBrowserRouter([
             element: (
               <PrivateRoute requiredRole={'admin'} children={<CitiesPage />} />
             ),
+          },
+          {
+            path: ROUTES.ADS_SEARCH,
+            element: <PrivateRoute children={<AdsSearchPage />} />,
           },
           // {
           //   path: ROUTES.MODERATION,

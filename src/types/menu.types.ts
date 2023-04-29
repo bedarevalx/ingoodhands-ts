@@ -8,4 +8,5 @@ export type AdminMenuTypes =
   | 'admin/pending'
   | 'admin/users'
   | 'admin/categories'
-  | 'admin/cities';
+  | 'admin/cities'
+  | 'admin/ads-search';

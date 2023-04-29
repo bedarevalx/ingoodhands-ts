@@ -1,0 +1,61 @@
+.ad-search-item {
+  border-radius: 4px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  position: relative;
+
+  &__image-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 82px;
+    min-width: 82px;
+    max-width: 82px;
+    width: 100%;
+    position: relative;
+  }
+  &__image {
+    border-radius: 4px;
+    cursor: pointer;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+  &__title {
+    line-height: 16px;
+    padding-right: 24px;
+    word-break: break-all;
+    font-weight: 600;
+    margin-bottom: 6px;
+    @include text-truncate(1);
+    @media screen and (max-width: $media-xsm) {
+      font-size: 15px;
+    }
+  }
+  &__description {
+    opacity: 0.5;
+    margin-bottom: 6px;
+    word-break: break-all;
+    font-size: 15px;
+    @include text-truncate(1);
+    @media screen and (max-width: $media-xsm) {
+      font-size: 14px;
+    }
+  }
+
+  &__date {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__more-btn.MuiButtonBase-root {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-60%);
+  }
+}

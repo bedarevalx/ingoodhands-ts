@@ -14,4 +14,6 @@ export const ROUTES = {
   USERS: 'users',
   CATEGORIES: 'categories',
   CITIES: 'cities',
+  POST: 'post',
+  ADS_SEARCH: 'ads-search',
 };

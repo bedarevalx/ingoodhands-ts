@@ -15,22 +15,12 @@
 @import './UI/modal';
 @import './UI/auto-complete';
 
-//pages
-@import './pages/profile-page';
-@import './pages/my-ads-page';
-@import './pages/reviews-page';
-@import './pages/favorites-page';
-@import './pages/pending-page';
-@import './pages/categories-page';
-@import './pages/cities-page';
-@import './pages/users-page';
-
 //components
+@import './components/container';
 @import './components/sign-up-form';
 @import './components/sign-in-form';
 @import './components/footer';
 @import './components/header';
-@import './components/container';
 @import './components/fullscreen-spinner';
 @import './components//password-indicator';
 @import './components/profile-button';
@@ -50,6 +40,27 @@
 @import './components/categories-list';
 @import './components/cities-list';
 @import './components/category-add-modal';
+@import './components/advert';
+@import './components/carousel';
+@import './components/owner-menu';
+@import './components/advert-map';
+@import './components/advert-pictures';
+@import './components/ads-search-form';
+@import './components/ad-search-item';
+@import './components/user-search-form';
+@import './components/user-search-item';
+
+//pages
+@import './pages/profile-page';
+@import './pages/my-ads-page';
+@import './pages/reviews-page';
+@import './pages/favorites-page';
+@import './pages/pending-page';
+@import './pages/categories-page';
+@import './pages/cities-page';
+@import './pages/users-page';
+@import './pages/advert-page';
+@import './pages/ads-search-page';
 
 //layouts
 @import './layouts/header-layout';

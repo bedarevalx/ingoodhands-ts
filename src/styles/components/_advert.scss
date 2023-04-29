@@ -1,0 +1,17 @@
+.advert {
+  &__main-info {
+    display: flex;
+    position: relative;
+    gap: 32px;
+    @media screen and(max-width: $media-sm) {
+      flex-direction: column;
+    }
+  }
+  &__advert-info {
+    width: 100%;
+  }
+  &__owner-menu {
+    width: 100%;
+    max-width: 300px;
+  }
+}
