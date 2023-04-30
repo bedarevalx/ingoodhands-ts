@@ -24,7 +24,7 @@ const initialState: IUserSearchSlice = {
   offset: 0,
   page: 1,
   totalPages: 0,
-  limit: 5,
+  limit: 6,
   error: '',
 };
 

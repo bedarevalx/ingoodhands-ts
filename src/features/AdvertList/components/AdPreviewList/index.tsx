@@ -47,12 +47,8 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
           new Array(10).fill(null).map((_: any, i: number) => (
             <div
               className='ad-preview-list__skeleton-wrapper'
-              ref={i === 1 ? loadMoreCallback : null}>
-              <Skeleton
-                className='ad-preview-list__skeleton'
-                width={'100%'}
-                height={'100%'}
-              />
+              ref={i === 0 ? loadMoreCallback : null}>
+              <Skeleton className='ad-preview-list__skeleton' />
             </div>
           ))}
       </div>

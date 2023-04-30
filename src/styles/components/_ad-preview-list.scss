@@ -62,7 +62,7 @@
     &::before {
       display: block;
       content: '';
-      padding-top: (9 / 8) * 100%;
+      padding-top: calc((9 / 8) * 100% + 55px);
     }
   }
   &__skeleton.MuiSkeleton-root {

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
-import { Menu, MenuItem, Pagination } from '@mui/material';
+import { Menu, MenuItem, Pagination, Skeleton } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { SearchController } from '../../controllers/search.controller';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
@@ -8,6 +8,7 @@ import Input from '../../../../UI/Input';
 import Button from '../../../../UI/Button';
 import LoadedButton from '../../../../UI/LoadedButton';
 import { AdSearchItem } from '../..';
+import FullscreenSpinner from '../../../../components/FullscreenSpinner';
 
 interface IAdsSearchFormProps {
   classNames?: string[];
@@ -65,6 +66,13 @@ export const AdsSearchForm = (props: IAdsSearchFormProps) => {
         />
       </div>
       <div className='ads-search-form__list'>
+        {searchState.isLoading &&
+          new Array(searchState.limit).fill(null).map((_: any) => (
+            <div className='ads-search-form__skeleton-wrapper'>
+              <Skeleton className='ads-search-form__skeleton' />
+            </div>
+          ))}
+
         {searchState.ads.length === 0 && !searchState.isLoading && (
           <p>Ничего не найдено</p>
         )}
@@ -80,11 +88,14 @@ export const AdsSearchForm = (props: IAdsSearchFormProps) => {
           />
         ))}
       </div>
-      <Pagination
-        page={searchState.page}
-        count={searchState.totalPages}
-        onChange={controller.handleChangeAdsPage}
-      />
+      <div className='ads-search-form__pagination'>
+        <Pagination
+          page={searchState.page}
+          count={searchState.totalPages}
+          onChange={controller.handleChangeAdsPage}
+        />
+      </div>
+
       <Menu
         anchorEl={anchorEl}
         open={open}

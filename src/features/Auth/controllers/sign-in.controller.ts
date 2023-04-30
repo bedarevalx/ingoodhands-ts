@@ -31,6 +31,7 @@ export class SignInController implements ISignInController {
     this.validateEmail(signIn.email);
     this.validatePassword(signIn.password);
     const isHasErrors = this.hasErrors();
+
     const isHasEmptyFields = this.hasEmptyFields();
     if (!isHasErrors && !isHasEmptyFields) {
       try {

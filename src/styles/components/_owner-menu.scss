@@ -18,6 +18,9 @@
 
   &__user-name {
     font-size: 22px;
+    word-break: break-all;
+    @include text-truncate(1);
+    padding-right: 27px;
   }
   &__created-at {
     opacity: 0.6;

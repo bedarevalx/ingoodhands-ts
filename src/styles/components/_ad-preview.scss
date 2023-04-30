@@ -58,6 +58,7 @@
   }
   &__title {
     font-weight: 600;
+    padding-right: 25px;
     margin-bottom: 8px;
     overflow-wrap: break-word;
     @include text-truncate(1);

@@ -15,6 +15,10 @@
     border-radius: 4px;
   }
 
+  &__list {
+    height: 576px;
+  }
+
   &__search-wrapper {
     display: flex;
   }
@@ -24,10 +28,27 @@
     }
   }
 
+  &__pagination {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
   &__search-btn.MuiButtonBase-root {
     border-radius: 0 4px 4px 0;
     background: $color-primary;
     color: white;
     @include color-hover($color-primary);
+  }
+  &__skeleton-wrapper {
+    height: 82px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  &__skeleton.MuiSkeleton-root {
+    position: absolute;
+    width: 100%;
+    min-height: 82px;
+    transform: none;
   }
 }
