@@ -11,6 +11,8 @@ import Button from '../../../../UI/Button';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { ReviewsModal } from '../..';
+import { useAppSelector } from '../../../../hooks/useRedux';
+import { useNavigate } from 'react-router-dom';
 
 interface IOwnerMenuProps {
   classNames?: string[];
@@ -25,7 +27,12 @@ interface IOwnerMenuProps {
 
 export const OwnerMenu = (props: IOwnerMenuProps) => {
   const [isReviewsOpened, setIsReviewsOpened] = useState(false);
+  const auth = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
   const handleGetPhoneNumber = async () => {
+    if (!auth.isAuthenticate) {
+      navigate('/sign-in');
+    }
     if (!!props.adId) {
       props.onGetContact();
     }
