@@ -37,7 +37,6 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
             imagePath={ad.imagePath}
             date={ad.date}
             city={ad.city}
-            loadMoreCallback={null}
             handleAddToFavorite={adsController.addToFavorites}
             handleRemoveFromFavorite={adsController.removeFromFavorites}
             isFavorite={ad.isFavorite}

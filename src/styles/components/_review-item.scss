@@ -1,0 +1,48 @@
+.review-item {
+  margin-bottom: 20px;
+  &__user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  &__image-wrapper {
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    opacity: 0.5;
+  }
+  &__image.MuiSvgIcon-root {
+    width: 48px;
+    height: 48px;
+  }
+  &__user {
+  }
+  &__username {
+    font-weight: 600;
+  }
+  &__rating-value {
+    display: flex;
+    align-items: center;
+  }
+  &__rating {
+    font-size: 15px;
+    position: relative;
+    top: 1px;
+    font-weight: 600;
+  }
+
+  &__star-icon.MuiSvgIcon-root {
+    width: 18px;
+    height: 18px;
+    fill: orange;
+  }
+
+  &__review-wrapper {
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &__review {
+  }
+}

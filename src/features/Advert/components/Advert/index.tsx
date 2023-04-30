@@ -60,6 +60,7 @@ export const Advert = () => {
             />
           </div>
           <AdvertMap
+            placeName={advert.address?.title}
             classNames={['advert__map']}
             latitude={advert.address?.latitude}
             longitude={advert.address?.longitude}

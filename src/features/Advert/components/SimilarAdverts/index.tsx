@@ -70,7 +70,6 @@ export const SimilarPosts = (props: ISimilarPostsProps) => {
               city={post.city}
               handleAddToFavorite={() => {}}
               handleRemoveFromFavorite={() => {}}
-              loadMoreCallback={null}
             />
           ))}
         </Slider>

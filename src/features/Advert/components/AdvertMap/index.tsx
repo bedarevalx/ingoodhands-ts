@@ -12,6 +12,7 @@ interface IAdvertMapProps {
   classNames?: string[];
   latitude?: number;
   longitude?: number;
+  placeName?: string;
 }
 
 const DEFAULT_VALUES = {
@@ -54,7 +55,9 @@ export const AdvertMap = (props: IAdvertMapProps) => {
             Нажмите Получить контакты, чтобы узнать адрес объявления
           </h4>
         </div>
-      ) : null}
+      ) : (
+        <div className='advert-map__place-name'>{props.placeName}</div>
+      )}
 
       <InteractiveMap
         ref={mapRef}

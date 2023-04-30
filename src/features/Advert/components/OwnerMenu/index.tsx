@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { IAdvertOnwer } from '../../../../interfaces/ads.interfaces';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
@@ -10,6 +10,7 @@ import { getContacts } from '../../../../api/in-good-hands.api';
 import Button from '../../../../UI/Button';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import { ReviewsModal } from '../..';
 
 interface IOwnerMenuProps {
   classNames?: string[];
@@ -23,10 +24,20 @@ interface IOwnerMenuProps {
 }
 
 export const OwnerMenu = (props: IOwnerMenuProps) => {
+  const [isReviewsOpened, setIsReviewsOpened] = useState(false);
   const handleGetPhoneNumber = async () => {
     if (!!props.adId) {
       props.onGetContact();
     }
+  };
+
+  const handleReviewsOpen = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsReviewsOpened(true);
+  };
+
+  const handleReviewsClose = () => {
+    setIsReviewsOpened(false);
   };
 
   return (
@@ -51,7 +62,10 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
         <div className='owner-menu__rating-value'>
           <h4>Рейтинг: {props.user?.rating.toFixed(1)}</h4>
         </div>
-        <a href='#' className='owner-menu__reviews-link'>
+        <a
+          href='#'
+          className='owner-menu__reviews-link'
+          onClick={handleReviewsOpen}>
           Все отзывы
         </a>
       </div>
@@ -86,6 +100,7 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
           label='Получить контакты'
         />
       )}
+      <ReviewsModal open={isReviewsOpened} handleClose={handleReviewsClose} />
     </div>
   );
 };

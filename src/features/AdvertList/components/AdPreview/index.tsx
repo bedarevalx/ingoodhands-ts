@@ -10,7 +10,6 @@ interface IAdPreviewProps {
   title: string;
   description: string;
   date: string;
-  loadMoreCallback: ((el: HTMLDivElement) => void) | null;
   handleAddToFavorite: (id: number) => void;
   handleRemoveFromFavorite: (id: number) => void;
   isFavorite?: boolean;
@@ -36,10 +35,7 @@ export const AdPreview = (props: IAdPreviewProps) => {
       to={'/post/' + props.id}
       target='_blank'
       style={{ textDecoration: 'none' }}>
-      <div
-        className='ad-preview'
-        ref={props.loadMoreCallback}
-        onClick={handleAdClick}>
+      <div className='ad-preview'>
         <div className='ad-preview__image-container'>
           <div className='ad-preview__city-wrapper'>
             <span className='ad-prevew__city'>{props.city}</span>
