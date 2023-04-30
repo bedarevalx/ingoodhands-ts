@@ -6,7 +6,9 @@ import { CategoriesList } from '../../features/Admin';
 
 const CategoriesPage = () => {
   return (
-    <HeaderLayout classNames={['categories-page__container']}>
+    <HeaderLayout
+      classNames={['categories-page__container']}
+      menuType='admin-panel'>
       <div className='categories-page__wrapper'>
         <SideMenu
           currentMenu='admin/categories'

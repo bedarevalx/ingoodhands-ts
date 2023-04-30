@@ -6,7 +6,7 @@ import { UserSearchForm } from '../../features/Admin';
 
 const UsersPage = () => {
   return (
-    <HeaderLayout classNames={['users-page__container']}>
+    <HeaderLayout classNames={['users-page__container']} menuType='admin-panel'>
       <div className='users-page__wrapper'>
         <SideMenu
           currentMenu='admin/users'

@@ -6,7 +6,9 @@ import { AdsSearchForm } from '../../features/Admin';
 
 const AdsSearchPage = () => {
   return (
-    <HeaderLayout classNames={['ads-search-page__container']}>
+    <HeaderLayout
+      classNames={['ads-search-page__container']}
+      menuType='admin-panel'>
       <div className='ads-search-page__wrapper'>
         <SideMenu
           currentMenu='admin/ads-search'

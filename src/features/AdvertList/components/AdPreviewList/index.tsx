@@ -2,7 +2,7 @@ import React from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import Spinner from '../../../../UI/Spinner';
-import AdPreview from '../AdPreview';
+import { AdPreview } from '../..';
 import { useInfiniteScroll } from '../../../../hooks/useInfiniteScroll';
 import { AdsController } from '../../controllers/ads.controller';
 import SkeletonLoader from '../../../../components/SkeletonLoader';

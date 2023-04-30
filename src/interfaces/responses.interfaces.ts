@@ -98,7 +98,12 @@ export interface IGetAdsResponse {
 }
 
 export interface IGetAdvertResponse {
-  address: IAddress;
+  address?: IAddress;
+  contacts?: {
+    address: IAddress;
+    email: string;
+    phone: string;
+  };
   post: IAdvertResponse;
 }
 
@@ -163,4 +168,9 @@ export interface ISearchUserResponse {
   permissions: UserPrivilegeTypes[];
   phone_number: string;
   rating: number;
+}
+
+export interface IContactResponse {
+  address: IAddress;
+  phone: string;
 }

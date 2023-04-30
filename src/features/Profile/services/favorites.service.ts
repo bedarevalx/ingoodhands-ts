@@ -51,7 +51,7 @@ export class FavoritesService {
             title: ad.title,
             city: ad.city.name,
             category: {
-              value: ad.category.id,
+              value: String(ad.category.id),
               title: ad.category.name,
               icon: ad.category.icon,
               id: ad.category.id,

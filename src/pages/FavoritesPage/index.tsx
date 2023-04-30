@@ -6,7 +6,7 @@ import { ProfileMenuMocks } from '../../mocks/profile-menu.mocks';
 
 const FavoritesPage = () => {
   return (
-    <HeaderLayout classNames={['favorites-page__container']}>
+    <HeaderLayout classNames={['favorites-page__container']} menuType='profile'>
       <div className='favorites-page__wrapper'>
         <SideMenu
           currentMenu='profile/favorites'

@@ -5,7 +5,9 @@ import { AdminMenuMocks } from '../../mocks/admin-menu.mocks';
 
 const AdminPage = () => {
   return (
-    <HeaderLayout classNames={['profile-page__container']}>
+    <HeaderLayout
+      classNames={['profile-page__container']}
+      menuType='admin-panel'>
       <div className='profile-page__wrapper'>
         <SideMenu
           currentMenu='admin'

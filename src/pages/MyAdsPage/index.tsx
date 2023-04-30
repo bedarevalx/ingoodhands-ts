@@ -6,7 +6,7 @@ import { ProfileMenuMocks } from '../../mocks/profile-menu.mocks';
 
 const MyAdsPage = () => {
   return (
-    <HeaderLayout classNames={['my-ads-page__container']}>
+    <HeaderLayout classNames={['my-ads-page__container']} menuType='profile'>
       <div className='my-ads-page__wrapper'>
         <SideMenu
           currentMenu='profile/my-ads'

@@ -5,10 +5,18 @@ import {
   ICategory,
   ICity,
 } from '../../../interfaces/general.interfaces';
-import { IAdvert, IAdvertOnwer } from '../../../interfaces/ads.interfaces';
+import {
+  IAdPreview,
+  IAdvert,
+  IAdvertOnwer,
+} from '../../../interfaces/ads.interfaces';
+import { IContactResponse } from '../../../interfaces/responses.interfaces';
 
 interface IAdvertState {
   isLoading: boolean;
+  isNumberLoading: boolean;
+  isSimilarPostsLoading: boolean;
+  similarPosts: IAdPreview[];
   title: string;
   description: string;
   createdAt: string;
@@ -17,14 +25,18 @@ interface IAdvertState {
   user: IAdvertOnwer | null;
   viewCount: number | null;
   imageSet: string[];
-  address: IAddress | null;
+  address?: IAddress;
   error: string;
   city: ICity | null;
   category: ICategory | null;
+  phoneNumber?: string;
 }
 
 const initialState: IAdvertState = {
   isLoading: true,
+  isNumberLoading: false,
+  isSimilarPostsLoading: true,
+  similarPosts: [],
   title: '',
   description: '',
   createdAt: '',
@@ -33,7 +45,6 @@ const initialState: IAdvertState = {
   imageSet: [],
   user: null,
   viewCount: null,
-  address: null,
   error: '',
   category: null,
   city: null,
@@ -60,6 +71,7 @@ export const advertSlice = createSlice({
       state.status = action.payload.status;
       state.createdAt = action.payload.createdAt;
       state.viewCount = action.payload.viewCount;
+      state.phoneNumber = action.payload.phoneNumber;
       state.error = '';
     },
     fetchPostRejected: (state, action: PayloadAction<string>) => {
@@ -67,6 +79,35 @@ export const advertSlice = createSlice({
       state.error = action.payload;
     },
     setPost: (state) => {},
+
+    fetchContactsPending: (state) => {
+      state.isNumberLoading = true;
+    },
+    fetchContactsFulFilled: (
+      state,
+      action: PayloadAction<IContactResponse>,
+    ) => {
+      state.isNumberLoading = false;
+      state.phoneNumber = action.payload.phone;
+      state.address = action.payload.address;
+    },
+    fetchContactsRejected: (state) => {
+      state.isNumberLoading = false;
+    },
+
+    fetchSimilarPostsPending: (state) => {
+      state.isSimilarPostsLoading = true;
+    },
+    fetchSimilarPostsFulFilled: (
+      state,
+      action: PayloadAction<IAdPreview[]>,
+    ) => {
+      state.isSimilarPostsLoading = false;
+      state.similarPosts = action.payload;
+    },
+    fetchSimilarPostsRejected: (state, action: PayloadAction<IAdPreview[]>) => {
+      state.isSimilarPostsLoading = false;
+    },
 
     clearState: (state) => {
       state.isLoading = true;
@@ -78,10 +119,11 @@ export const advertSlice = createSlice({
       state.imageSet = [];
       state.user = null;
       state.viewCount = null;
-      state.address = null;
+      state.address = undefined;
       state.error = '';
       state.category = null;
       state.city = null;
+      state.phoneNumber = undefined;
     },
   },
 });
@@ -91,5 +133,11 @@ export const {
   fetchPostPending,
   fetchPostRejected,
   clearState,
+  fetchContactsFulFilled,
+  fetchContactsPending,
+  fetchContactsRejected,
+  fetchSimilarPostsFulFilled,
+  fetchSimilarPostsPending,
+  fetchSimilarPostsRejected,
 } = advertSlice.actions;
 export const reducer = advertSlice.reducer;

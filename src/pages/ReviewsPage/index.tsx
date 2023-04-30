@@ -5,7 +5,7 @@ import { ProfileMenuMocks } from '../../mocks/profile-menu.mocks';
 
 const ReviewsPage = () => {
   return (
-    <HeaderLayout classNames={['reviews-page__container']}>
+    <HeaderLayout classNames={['reviews-page__container']} menuType='profile'>
       <SideMenu currentMenu='profile/reviews' menuItems={ProfileMenuMocks} />
     </HeaderLayout>
   );

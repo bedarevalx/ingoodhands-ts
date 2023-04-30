@@ -29,6 +29,14 @@ export class AdvertController implements IAdvertController {
     }
   };
 
+  getContacts = async () => {
+    this.dispatch(this.advertService.getContacts());
+  };
+
+  getSimilarPosts = async () => {
+    this.dispatch(this.advertService.getSimilarPosts());
+  };
+
   clearState = () => {
     try {
       this.dispatch(clearState());

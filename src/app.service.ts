@@ -36,14 +36,14 @@ export class AppService {
         const resCategories = await this.getCategories();
         const categories: ICategory[] = resCategories.map((category) => ({
           title: category.name,
-          value: category.id,
+          value: String(category.id),
           ...category,
         }));
         const cities: ICity[] = resCities.map((city) => ({
           id: city.id,
           isActive: city.isActive,
           title: city.name,
-          value: city.id,
+          value: String(city.id),
         }));
         dispatch(setCities(cities));
         dispatch(setCategories(categories));

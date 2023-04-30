@@ -8,7 +8,7 @@ interface IEditAdvertPageProps {
 
 const EditAdvertPage = (props: IEditAdvertPageProps) => {
   return (
-    <HeaderLayout>
+    <HeaderLayout menuType='profile'>
       <EditForm isEditing={props.isEditing} />
     </HeaderLayout>
   );

@@ -11,6 +11,7 @@ import {
   IAdvertResponse,
   ICategoryResponse,
   ICityResponse,
+  IContactResponse,
   IGetAdsResponse,
   IGetAdvertResponse,
   IGetFavoritesResponse,
@@ -159,4 +160,14 @@ export const searchUsers = async (params: IUserSearchParams) => {
   return await axios.get<IListResponse<ISearchUserResponse>>(
     `/api/admin/get_all_users?${query}`,
   );
+};
+
+export const getContacts = async (id: number) => {
+  const query = parseQueryParams({ id_post: id });
+  return await axios.get<IContactResponse>(`/api/get_contact?${query}`);
+};
+
+export const getSimilarPosts = async (id: number) => {
+  const query = parseQueryParams({ id_post: id });
+  return await axios.get<IUserPostResponse[]>(`/api/similar_posts?${query}`);
 };

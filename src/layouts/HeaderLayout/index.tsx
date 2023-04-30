@@ -9,6 +9,7 @@ import { MobileHeader } from '../../components/MobileHeader';
 interface IHeaderLayoutProps {
   children: ReactNode;
   classNames?: string[];
+  menuType?: 'profile' | 'admin-panel';
 }
 
 const HeaderLayout = (props: IHeaderLayoutProps) => {
@@ -17,7 +18,10 @@ const HeaderLayout = (props: IHeaderLayoutProps) => {
 
   return (
     <div className='header-layout'>
-      <MobileHeader classNames={['header-layout__mobile-header']} />
+      <MobileHeader
+        classNames={['header-layout__mobile-header']}
+        menuType={props.menuType}
+      />
       <Header classNames={['header-layout__header']} />
       <div
         className={classNamesParser(

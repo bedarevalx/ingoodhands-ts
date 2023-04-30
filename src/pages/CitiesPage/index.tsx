@@ -6,7 +6,9 @@ import { CitiesList } from '../../features/Admin';
 
 const CitiesPage = () => {
   return (
-    <HeaderLayout classNames={['cities-page__container']}>
+    <HeaderLayout
+      classNames={['cities-page__container']}
+      menuType='admin-panel'>
       <div className='cities-page__wrapper'>
         <SideMenu
           currentMenu='admin/cities'

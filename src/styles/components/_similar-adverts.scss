@@ -1,0 +1,35 @@
+.similar-adverts {
+  margin-bottom: 40px;
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  &__slider.slick-slider {
+    margin: 0 -18px;
+
+    @media screen and (max-width: $media-lg) {
+      margin: 0 -12px;
+    }
+
+    & .slick-slide > div {
+      margin: 0 18px;
+      @media screen and (max-width: $media-md) {
+        margin: 0 12px;
+      }
+
+      @media screen and (max-width: $media-lg) {
+        margin: 0 12px;
+      }
+    }
+  }
+  & .ad-preview {
+    height: 100%;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    &__description {
+      @include text-truncate(1);
+    }
+  }
+}

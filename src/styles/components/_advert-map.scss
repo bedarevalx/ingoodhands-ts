@@ -1,2 +1,30 @@
 .advert-map {
+  height: 400px;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 48px;
+  position: relative;
+
+  & .mapboxgl-canvas {
+    border-radius: 8px;
+  }
+
+  &__placeholder {
+    position: absolute;
+    z-index: 11;
+    width: 100%;
+    height: 100%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  &__helper {
+    text-align: center;
+    position: relative;
+    font-weight: 600;
+  }
 }

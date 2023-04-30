@@ -30,6 +30,7 @@ export const AdvertPictures = (props: IAdvertPicturesProps) => {
       <div className='advert-pictures__rest-pictures-wrapper'>
         {props.images.map((image) => (
           <div
+            key={image}
             className='advert-pictures__rest-image-container'
             onClick={() => handleImageClick(image)}>
             <img

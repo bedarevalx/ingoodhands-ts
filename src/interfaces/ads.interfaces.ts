@@ -52,7 +52,8 @@ export interface IAdvert {
   updatedAt: string;
   viewCount: number;
   user: IAdvertOnwer;
-  address: IAddress;
+  address?: IAddress;
+  phoneNumber?: string;
 }
 
 export interface IAdvertOnwer {

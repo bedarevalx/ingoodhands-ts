@@ -30,10 +30,6 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
     <section className={classNamesParser('profile-info', props.classNames)}>
       <div className='profile-info__header'>
         <h3 className='profile-info__title'>Мой профиль</h3>
-        <Button classNames={['profile-info__edit']}>
-          <EditIcon className='profile-info__edit-icon' />
-          <span>Редактировать</span>
-        </Button>
       </div>
       <div
         className={`profile-info__block ${
@@ -73,7 +69,6 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
               <VerifiedIcon className='profile-info__email-verified-icon' />
             </Tooltip>
           ) : (
-            // <div>Подтверждена</div>
             <Button
               classNames={['profile-info__confirm-button']}
               onClick={profileController.handleOpenConfirmEmail}>

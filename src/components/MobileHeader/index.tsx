@@ -11,6 +11,7 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 import { ProfileMenuMocks } from '../../mocks/profile-menu.mocks';
 import { AdminMenuMocks } from '../../mocks/admin-menu.mocks';
 import RequiredRole from '../../hoc/RequiredRole';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface IMobileHeaderProps {
   classNames?: string[];
@@ -37,6 +38,11 @@ export const MobileHeader = (props: IMobileHeaderProps) => {
 
   const handleCloseDrawer = () => {
     setIsDrawerOpened(false);
+  };
+
+  const handleLinkClick = (to: string) => {
+    navigate('/' + to);
+    handleCloseDrawer();
   };
   return (
     <header
@@ -65,16 +71,36 @@ export const MobileHeader = (props: IMobileHeaderProps) => {
         open={isDrawerOpened}
         onClose={handleCloseDrawer}>
         <div className='header-mobile__navigation-content'>
-          <ul className='hedare-mobile__links'>
+          <IconButton
+            className='header-mobile__navigation-close'
+            onClick={handleCloseDrawer}>
+            <CloseIcon className='header-mobile__close-icon' />
+          </IconButton>
+          <ul className='header-mobile__links'>
             {(props.menuType === 'profile'
               ? ProfileMenuMocks
               : AdminMenuMocks
             ).map((menu) => (
-              <RequiredRole role={menu.role}>
-                <li className='header-mobile__link'>{menu.text}</li>
+              <RequiredRole role={menu.role} key={menu.id}>
+                <li className='header-mobile__link-wrapper'>
+                  <Button
+                    classNames={['header-mobile__link']}
+                    onClick={() => handleLinkClick(menu.value)}>
+                    {menu.text}
+                  </Button>
+                </li>
               </RequiredRole>
             ))}
           </ul>
+          {props.menuType === 'profile' && (
+            <div className='header-mobile__place-ad-wrapper'>
+              <Button
+                classNames={['header-mobile__place-ad']}
+                onClick={() => handleLinkClick('new-ad')}>
+                Разместить объявление
+              </Button>
+            </div>
+          )}
         </div>
       </Drawer>
     </header>

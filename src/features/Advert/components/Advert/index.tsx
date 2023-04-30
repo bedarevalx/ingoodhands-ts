@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AdvertMap, AdvertPictures, Carousel, OwnerMenu } from '../..';
 import FullscreenSpinner from '../../../../components/FullscreenSpinner';
+import { SimilarPosts } from '../SimilarAdverts';
 
 export const Advert = () => {
   const dispatch = useAppDispatch();
@@ -13,10 +14,14 @@ export const Advert = () => {
   const advert = useAppSelector((state) => state.advert);
 
   useEffect(() => {
-    if (params.id) controller.getAdvertById(params.id);
-    else {
-      navigate('/404');
-    }
+    (async () => {
+      if (params.id) {
+        await controller.getAdvertById(params.id);
+        controller.getSimilarPosts();
+      } else {
+        navigate('/404');
+      }
+    })();
 
     return () => {
       controller.clearState();
@@ -41,12 +46,20 @@ export const Advert = () => {
               <p>{advert.address?.title}</p>
             </div>
             <OwnerMenu
+              adId={advert.id}
               classNames={['advert__owner-menu']}
               user={advert.user}
               viewCount={advert.viewCount}
+              phoneNumber={advert.phoneNumber}
+              onGetContact={controller.getContacts}
             />
           </div>
-          <AdvertMap classNames={['advert__map']} />
+          <AdvertMap
+            classNames={['advert__map']}
+            latitude={advert.address?.latitude}
+            longitude={advert.address?.longitude}
+          />
+          <SimilarPosts similarPosts={advert.similarPosts} />
         </>
       )}
     </div>

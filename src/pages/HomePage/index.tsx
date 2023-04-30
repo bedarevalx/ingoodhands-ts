@@ -15,7 +15,7 @@ const HomePage = () => {
   // }, []);
 
   return (
-    <HeaderLayout classNames={['home-page__container']}>
+    <HeaderLayout classNames={['home-page__container']} menuType='profile'>
       <AdPreviewList />
     </HeaderLayout>
   );

@@ -7,6 +7,8 @@ import { routes } from './routes';
 import 'moment/locale/ru';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles/index.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import moment from 'moment';
 
 const container = document.getElementById('root')!;
