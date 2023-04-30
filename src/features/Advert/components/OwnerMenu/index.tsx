@@ -3,10 +3,13 @@ import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { IAdvertOnwer } from '../../../../interfaces/ads.interfaces';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import moment from 'moment';
-import { Rating } from '@mui/material';
+import { IconButton, Rating } from '@mui/material';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import LoadedButton from '../../../../UI/LoadedButton';
 import { getContacts } from '../../../../api/in-good-hands.api';
+import Button from '../../../../UI/Button';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 interface IOwnerMenuProps {
   classNames?: string[];
@@ -15,6 +18,8 @@ interface IOwnerMenuProps {
   adId: number | null;
   phoneNumber?: string;
   onGetContact: () => void;
+  isLoading: boolean;
+  isOwner: boolean;
 }
 
 export const OwnerMenu = (props: IOwnerMenuProps) => {
@@ -23,6 +28,7 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
       props.onGetContact();
     }
   };
+
   return (
     <div className={classNamesParser('owner-menu', props.classNames)}>
       <div className='owner-menu__header'>
@@ -53,8 +59,24 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
         <RemoveRedEyeOutlinedIcon className='owner-menu__view-icon' />
         <span className='owner-menu__view-count-value'>{props.viewCount}</span>
       </div>
-      {!!props.phoneNumber ? (
-        <a href={`tel:${props.phoneNumber}`}>{props.phoneNumber}</a>
+      {props.isOwner ? (
+        <Button classNames={['owner-menu__get-contacts']}>
+          Редактировать объявление
+        </Button>
+      ) : !!props.phoneNumber ? (
+        <>
+          <div className='owner-menu__phone-number-wrapper'>
+            <a
+              href={`tel:${props.phoneNumber}`}
+              className='owner-menu__phone-number'>
+              <p>{props.phoneNumber}</p>
+            </a>
+          </div>
+          <Button classNames={['owner-menu__reserve']}>
+            <CalendarMonthIcon />
+            Забронировать
+          </Button>
+        </>
       ) : (
         <LoadedButton
           variant={'text'}

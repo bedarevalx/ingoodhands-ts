@@ -12,6 +12,9 @@ export const Advert = () => {
   const controller = new AdvertController(dispatch);
   const params = useParams();
   const advert = useAppSelector((state) => state.advert);
+  const { user } = useAppSelector((state) => state.auth);
+
+  const isOwner = String(advert.user?.id) === String(user.id);
 
   useEffect(() => {
     (async () => {
@@ -48,10 +51,12 @@ export const Advert = () => {
             <OwnerMenu
               adId={advert.id}
               classNames={['advert__owner-menu']}
+              isLoading={advert.isNumberLoading}
               user={advert.user}
               viewCount={advert.viewCount}
               phoneNumber={advert.phoneNumber}
               onGetContact={controller.getContacts}
+              isOwner={isOwner}
             />
           </div>
           <AdvertMap

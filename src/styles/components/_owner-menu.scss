@@ -33,7 +33,7 @@
   }
   &__rating-value {
     margin-top: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   &__view-count {
     position: absolute;
@@ -68,5 +68,32 @@
     background: $color-primary;
     color: white;
     @include color-hover($color-primary);
+  }
+
+  &__reserve.MuiButtonBase-root {
+    margin-top: 12px;
+    width: 100%;
+    margin-left: auto;
+    margin-bottom: 12px;
+    background: $color-primary;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    @include color-hover($color-primary);
+  }
+
+  &__phone-number-wrapper {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  &__phone-number {
+    color: $color-primary;
+    padding: 8px 12px;
+    text-decoration: none;
   }
 }

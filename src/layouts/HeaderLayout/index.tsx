@@ -14,7 +14,6 @@ interface IHeaderLayoutProps {
 
 const HeaderLayout = (props: IHeaderLayoutProps) => {
   const matchSm = useMediaQuery(`(max-width:${MEDIA.SM}px`);
-  console.log(matchSm);
 
   return (
     <div className='header-layout'>
