@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import { Button, Menu, MenuItem } from '@mui/material';
+import { Button, Menu, MenuItem, useMediaQuery } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
@@ -11,6 +11,7 @@ import { useAppDispatch } from '../../hooks/useRedux';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RequiredRole from '../../hoc/RequiredRole';
 import BuildIcon from '@mui/icons-material/Build';
+import { MEDIA } from '../../constants/app';
 
 interface IProfileButtonProps {
   classNames?: string[];
@@ -25,6 +26,7 @@ const ProfileButton = (props: IProfileButtonProps) => {
   const dispatch = useAppDispatch();
   const [anchorEl, setAnchorEl] = useState<any>(null);
   const [openMenu, setOpenMenu] = useState<any>(false);
+  const matchSm = useMediaQuery(`(max-width:${MEDIA.SM}px`);
   const authService = new AuthService(dispatch);
 
   const onProfileClick = (event: any) => {
@@ -118,24 +120,29 @@ const ProfileButton = (props: IProfileButtonProps) => {
               <SettingsOutlinedIcon className='profile-button__item-icon' />
               {'Мой профиль'}
             </MenuItem>
-            <MenuItem
-              className='profile-button__menu-item'
-              onClick={handleMyAds}>
-              <ListAltOutlinedIcon className='profile-button__item-icon' />
-              {'Мои объявления'}
-            </MenuItem>
-            <MenuItem
-              className='profile-button__menu-item'
-              onClick={handleFavorites}>
-              <FavoriteBorderIcon className='profile-button__item-icon' />
-              {'Избранное'}
-            </MenuItem>{' '}
-            <MenuItem
-              className='profile-button__menu-item'
-              onClick={handleReviews}>
-              <GradeOutlinedIcon className='profile-button__item-icon' />
-              {'Мои отзывы'}
-            </MenuItem>
+            {!matchSm && (
+              <>
+                <MenuItem
+                  className='profile-button__menu-item'
+                  onClick={handleMyAds}>
+                  <ListAltOutlinedIcon className='profile-button__item-icon' />
+                  {'Мои объявления'}
+                </MenuItem>
+                <MenuItem
+                  className='profile-button__menu-item'
+                  onClick={handleFavorites}>
+                  <FavoriteBorderIcon className='profile-button__item-icon' />
+                  {'Избранное'}
+                </MenuItem>{' '}
+                <MenuItem
+                  className='profile-button__menu-item'
+                  onClick={handleReviews}>
+                  <GradeOutlinedIcon className='profile-button__item-icon' />
+                  {'Мои отзывы'}
+                </MenuItem>
+              </>
+            )}
+
             <RequiredRole role='moderator'>
               <MenuItem
                 className='profile-button__menu-item'
