@@ -32,13 +32,15 @@ export const useInfiniteScroll = (
 
   const loadMoreCallback = useCallback(
     (el: HTMLDivElement) => {
+      console.log('observed');
+
       if (isLoading) return;
       if (observerRef.current) observerRef.current.disconnect();
 
       const option: IntersectionObserverInit = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1,
+        threshold: 0,
       };
       observerRef.current = new IntersectionObserver(handleObserver, option);
 

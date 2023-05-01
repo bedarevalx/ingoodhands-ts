@@ -19,7 +19,7 @@ export class AdsController implements IAdsController {
     this.dispatch = dispatch;
     this.getState = store.getState;
     this.adsService = new AdsService(dispatch);
-    this.favoritesService = new FavoritesService(dispatch);
+    this.favoritesService = new FavoritesService();
   }
   fetchAds = () => {
     const ads = this.getState().ads;
@@ -41,20 +41,16 @@ export class AdsController implements IAdsController {
 
   addToFavorites = (id: number) => {
     try {
-      this.dispatch(setFavoriteById(id));
       this.dispatch(this.favoritesService.addToFavorites(id));
     } catch (error: any) {
-      this.dispatch(removeFavoriteById(id));
       this.dispatch(setError(error.message));
     }
   };
 
   removeFromFavorites = (id: number) => {
     try {
-      this.dispatch(removeFavoriteById(id));
       this.dispatch(this.favoritesService.removeFromFavorites(id));
     } catch (error: any) {
-      this.dispatch(removeFavoriteById(id));
       this.dispatch(setError(error.message));
     }
   };

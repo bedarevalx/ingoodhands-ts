@@ -17,7 +17,7 @@ export class FavoritesController implements IFavoritesController {
   constructor(dispatch: AppDispatch) {
     this.dispatch = dispatch;
     this.getState = store.getState;
-    this.favoritesService = new FavoritesService(dispatch);
+    this.favoritesService = new FavoritesService();
   }
 
   getMyAds = () => {

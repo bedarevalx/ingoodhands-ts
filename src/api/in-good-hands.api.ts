@@ -171,3 +171,7 @@ export const getSimilarPosts = async (id: number) => {
   const query = parseQueryParams({ id_post: id });
   return await axios.get<IUserPostResponse[]>(`/api/similar_posts?${query}`);
 };
+
+export const getFavoritesId = async () => {
+  return await axios.get<number[]>(`/api/all_favorite_posts_id`);
+};

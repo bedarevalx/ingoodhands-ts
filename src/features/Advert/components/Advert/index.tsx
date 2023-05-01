@@ -5,6 +5,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AdvertMap, AdvertPictures, Carousel, OwnerMenu } from '../..';
 import FullscreenSpinner from '../../../../components/FullscreenSpinner';
 import { SimilarPosts } from '../SimilarAdverts';
+import { IconButton } from '@mui/material';
+import RequiredRole from '../../../../hoc/RequiredRole';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export const Advert = () => {
   const dispatch = useAppDispatch();
@@ -13,8 +16,10 @@ export const Advert = () => {
   const params = useParams();
   const advert = useAppSelector((state) => state.advert);
   const { user } = useAppSelector((state) => state.auth);
+  const favorites = useAppSelector((state) => state.favorites);
 
   const isOwner = String(advert.user?.id) === String(user.id);
+  const isFavorite = favorites.favoritesId.includes(Number(advert.id));
 
   useEffect(() => {
     (async () => {
@@ -45,8 +50,28 @@ export const Advert = () => {
           <div className='advert__main-info'>
             <div className='advert__advert-info'>
               <h2 className='advert__title'>{advert.title}</h2>
-              <p className='advert__title'>{advert.description}</p>
-              <p>{advert.address?.title}</p>
+              <h3 className='advert__sub-header'>Описание</h3>
+              <p className='advert__description'>{advert.description}</p>
+              <h3 className='advert__sub-header'>Категория</h3>
+              <p className='advert__category'>
+                {advert.category?.title} {advert.category?.icon}
+              </p>
+              <h3 className='advert__sub-header'>Город</h3>
+              <p className='advert__city'>{advert.city?.title}</p>
+              <h3 className='advert__sub-header'>Дата публикации</h3>
+              <p className='advert__city'>{advert.createdAt}</p>
+              <RequiredRole>
+                <IconButton
+                  // onClick={handleAddToFavorite}
+                  className='advert__favorite-btn'>
+                  <FavoriteIcon
+                    className={`advert__favorite-icon ${
+                      isFavorite ? 'favorited' : ''
+                    }`}
+                  />
+                </IconButton>
+              </RequiredRole>
+              <IconButton></IconButton>
             </div>
             <OwnerMenu
               adId={advert.id}

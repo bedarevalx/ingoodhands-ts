@@ -2,6 +2,7 @@ import moment from 'moment';
 import {
   addToFavorite,
   getFavorites,
+  getFavoritesId,
   removeFromFavorite,
 } from '../../../api/in-good-hands.api';
 import { IUserAd } from '../../../interfaces/profile.interfaces';
@@ -10,20 +11,19 @@ import {
   fetchFavoritesFulfilled,
   fetchFavoritesPending,
   fetchFavoritesRejected,
+  removeFavoriteById,
+  setFavoriteById,
+  setFavoritesId,
   setTotalPages,
 } from '../slices/favorites.slice';
 
 export class FavoritesService {
-  dispatch: AppDispatch;
-  constructor(dispatch: AppDispatch) {
-    this.dispatch = dispatch;
-  }
-
   addToFavorites =
     (id: number) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await addToFavorite(id);
+        dispatch(setFavoriteById(id));
       } catch (error: any) {
         console.error(error.message);
       }
@@ -34,8 +34,21 @@ export class FavoritesService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await removeFromFavorite(id);
+        dispatch(removeFavoriteById(id));
       } catch (error: any) {
         console.error(error.message);
+      }
+    };
+
+  getFavoritesId =
+    () => async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await getFavoritesId();
+        console.log(response);
+
+        dispatch(setFavoritesId(response.data));
+      } catch (error) {
+        console.log(error);
       }
     };
 

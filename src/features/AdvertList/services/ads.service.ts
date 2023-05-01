@@ -28,6 +28,7 @@ export class AdsService {
     ) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
+        const favoritesState = getState().favorites;
         const adsState = getState().ads;
         dispatch(fetchAdsPending());
 
@@ -55,7 +56,7 @@ export class AdsService {
             date: moment(ad.created_at).locale('ru').format('DD MMMM YYYY'),
             city: ad.city.name,
             //TODO: фикс
-            isFavorite: false,
+            isFavorite: favoritesState.favoritesId.includes(ad.id),
           };
         });
 

@@ -7,11 +7,52 @@
       flex-direction: column;
     }
   }
+  &__title {
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  &__sub-header {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  &__description {
+    margin-bottom: 18px;
+  }
+
+  &__category {
+    margin-bottom: 18px;
+    line-height: 12px;
+  }
+  &__city {
+    margin-bottom: 18px;
+  }
   &__advert-info {
     width: 100%;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding: 18px;
+    position: relative;
   }
   &__owner-menu {
     width: 100%;
     max-width: 300px;
+    @media screen and (max-width: $media-sm) {
+      max-width: unset;
+    }
+  }
+  &__favorite-btn.MuiButtonBase-root {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 0;
+    transition: $default-transition;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__favorite-icon.favorited.MuiSvgIcon-root {
+    fill: red;
   }
 }

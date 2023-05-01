@@ -15,6 +15,7 @@ import {
   ITokenResponse,
 } from '../../../interfaces/responses.interfaces';
 import { AppDispatch, RootState } from '../../../store';
+import { FavoritesService } from '../../Profile';
 import {
   authenticatePending,
   authenticateFullfilled,
@@ -35,8 +36,10 @@ import {
 
 export class AuthService {
   dispatch: AppDispatch;
+  favoritesService: FavoritesService;
   constructor(dispatch: AppDispatch) {
     this.dispatch = dispatch;
+    this.favoritesService = new FavoritesService();
   }
 
   signUp = () => async (dispatch: AppDispatch, getState: () => RootState) => {
@@ -143,7 +146,7 @@ export class AuthService {
     try {
       this.dispatch(authenticatePending());
       const response = await getUserProfile();
-      // const favoriteIdResponse = await getFavoritePostsId();
+      this.dispatch(this.favoritesService.getFavoritesId());
       this.setUserProfile(
         response.data,
         //  favoriteIdResponse.data

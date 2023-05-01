@@ -20,6 +20,7 @@ export const AdPreview = (props: IAdPreviewProps) => {
   const navigate = useNavigate();
   const handleAddToFavorite = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    e.preventDefault();
     const callback = props.isFavorite
       ? () => props.handleRemoveFromFavorite(props.id)
       : () => props.handleAddToFavorite(props.id);

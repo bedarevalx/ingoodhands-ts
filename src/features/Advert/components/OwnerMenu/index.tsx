@@ -99,13 +99,15 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
           </Button>
         </>
       ) : (
-        <LoadedButton
-          variant={'text'}
-          isLoading={false}
-          onClick={handleGetPhoneNumber}
-          classNames={['owner-menu__get-contacts']}
-          label='Получить контакты'
-        />
+        <div className='owner-menu__get-contact-wrapper'>
+          <LoadedButton
+            variant={'text'}
+            isLoading={false}
+            onClick={handleGetPhoneNumber}
+            classNames={['owner-menu__get-contacts']}
+            label='Получить контакты'
+          />
+        </div>
       )}
       <ReviewsModal open={isReviewsOpened} handleClose={handleReviewsClose} />
     </div>

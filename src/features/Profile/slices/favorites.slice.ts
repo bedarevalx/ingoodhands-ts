@@ -8,6 +8,7 @@ interface IMyAdsState {
   ads: IUserAd[];
   page: number;
   totalPages: number;
+  favoritesId: number[];
 }
 
 const initialState: IMyAdsState = {
@@ -16,6 +17,7 @@ const initialState: IMyAdsState = {
   ads: [],
   page: 1,
   totalPages: 0,
+  favoritesId: [],
 };
 
 export const favoritesSlice = createSlice({
@@ -35,6 +37,9 @@ export const favoritesSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    setFavoritesId: (state, action: PayloadAction<number[]>) => {
+      state.favoritesId = action.payload;
+    },
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
@@ -42,6 +47,7 @@ export const favoritesSlice = createSlice({
       state.totalPages = action.payload;
     },
     setFavoriteById: (state, action: PayloadAction<number>) => {
+      state.favoritesId.push(action.payload);
       state.ads = state.ads.map((ad) => {
         if (ad.id === action.payload) {
           return { ...ad, isFavorited: true };
@@ -51,6 +57,9 @@ export const favoritesSlice = createSlice({
       });
     },
     removeFavoriteById: (state, action: PayloadAction<number>) => {
+      state.favoritesId = state.favoritesId.filter(
+        (id) => id !== action.payload,
+      );
       state.ads = state.ads.map((ad) => {
         if (ad.id === action.payload) {
           return { ...ad, isFavorited: false };
@@ -81,6 +90,7 @@ export const {
   clearState,
   setFavoriteById,
   removeFavoriteById,
+  setFavoritesId,
   setError,
 } = favoritesSlice.actions;
 export const reducer = favoritesSlice.reducer;

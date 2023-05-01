@@ -14,6 +14,7 @@ interface IAdPreviewListProps {
 
 export const AdPreviewList = (props: IAdPreviewListProps) => {
   const ads = useAppSelector((state) => state.ads);
+  const favorites = useAppSelector((state) => state.favorites);
   const dispatch = useAppDispatch();
   const adsController = new AdsController(dispatch);
   const { loadMoreCallback } = useInfiniteScroll(
@@ -39,17 +40,19 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
             city={ad.city}
             handleAddToFavorite={adsController.addToFavorites}
             handleRemoveFromFavorite={adsController.removeFromFavorites}
-            isFavorite={ad.isFavorite}
+            isFavorite={favorites.favoritesId.includes(ad.id)}
           />
         ))}
-        {!ads.isLastPage &&
-          new Array(10).fill(null).map((_: any, i: number) => (
-            <div
-              className='ad-preview-list__skeleton-wrapper'
-              ref={i === 0 ? loadMoreCallback : null}>
-              <Skeleton className='ad-preview-list__skeleton' />
-            </div>
-          ))}
+        <>
+          {!ads.isLastPage &&
+            new Array(10).fill(null).map((_: any, i: number) => (
+              <div
+                className='ad-preview-list__skeleton-wrapper'
+                ref={i === 0 ? loadMoreCallback : null}>
+                <Skeleton className='ad-preview-list__skeleton' />
+              </div>
+            ))}
+        </>
       </div>
     </div>
   );
