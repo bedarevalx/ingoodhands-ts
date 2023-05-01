@@ -82,6 +82,9 @@ export const Advert = () => {
               phoneNumber={advert.phoneNumber}
               onGetContact={controller.getContacts}
               isOwner={isOwner}
+              reviews={advert.reviews}
+              getReviews={controller.getReviews}
+              isReviewsLoading={advert.isReviewsLoading}
             />
           </div>
           <AdvertMap

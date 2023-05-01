@@ -174,3 +174,18 @@ export interface IContactResponse {
   address: IAddress;
   phone: string;
 }
+
+export interface IReviewResponse {
+  id: number;
+  text: string;
+  score: number;
+  id_user_owner: number;
+  created_at: string;
+  id_reservation: number;
+  user_writer: {
+    id: number;
+    name: string;
+    created_at: string;
+    rating: number;
+  };
+}

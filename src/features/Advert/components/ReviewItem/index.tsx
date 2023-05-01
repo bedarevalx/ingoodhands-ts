@@ -4,6 +4,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import StarIcon from '@mui/icons-material/Star';
 interface IReviewItemProps {
   classNames?: string[];
+  writtenBy: string;
+  score: number;
+  text: string;
+  createdAt: string;
 }
 
 export const ReviewItem = (props: IReviewItemProps) => {
@@ -14,19 +18,15 @@ export const ReviewItem = (props: IReviewItemProps) => {
           <AccountCircleIcon className='review-item__image' />
         </div>
         <div className='review-item__user'>
-          <p className='review-item__username'>Алексей</p>
+          <p className='review-item__username'>{props.writtenBy}</p>
           <div className='review-item__rating-value'>
             <StarIcon className='review-item__star-icon' />
-            <span className='review-item__rating'>5</span>
+            <span className='review-item__rating'>{props.score}</span>
           </div>
         </div>
       </div>
       <div className='review-item__review-wrapper'>
-        <p className='review-item__review'>
-          Lorem Ipsum - это текст-"рыба", часто используемый в печати и
-          вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на
-          латинице с начала XVI века.
-        </p>
+        <p className='review-item__review'>{props.text}</p>
       </div>
     </div>
   );

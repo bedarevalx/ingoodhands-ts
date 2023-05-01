@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
-import { IAdvertOnwer } from '../../../../interfaces/ads.interfaces';
+import { IAdvertOnwer, IReview } from '../../../../interfaces/ads.interfaces';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import moment from 'moment';
 import { IconButton, Rating } from '@mui/material';
@@ -21,8 +21,11 @@ interface IOwnerMenuProps {
   adId: number | null;
   phoneNumber?: string;
   onGetContact: () => void;
+  getReviews: () => void;
   isLoading: boolean;
   isOwner: boolean;
+  isReviewsLoading: boolean;
+  reviews: IReview[];
 }
 
 export const OwnerMenu = (props: IOwnerMenuProps) => {
@@ -40,6 +43,11 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
 
   const handleReviewsOpen = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    console.log(props.reviews.length, props.user?.rating);
+
+    if (props.reviews.length === 0 && props.user?.rating !== 0) {
+      props.getReviews();
+    }
     setIsReviewsOpened(true);
   };
 
@@ -109,7 +117,12 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
           />
         </div>
       )}
-      <ReviewsModal open={isReviewsOpened} handleClose={handleReviewsClose} />
+      <ReviewsModal
+        reviews={props.reviews}
+        open={isReviewsOpened}
+        handleClose={handleReviewsClose}
+        isReviewsLoading={props.isReviewsLoading}
+      />
     </div>
   );
 };

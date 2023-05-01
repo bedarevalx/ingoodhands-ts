@@ -2,9 +2,14 @@ import moment from 'moment';
 import {
   getContacts,
   getPost,
+  getReviews,
   getSimilarPosts,
 } from '../../../api/in-good-hands.api';
-import { IAdPreview, IAdvert } from '../../../interfaces/ads.interfaces';
+import {
+  IAdPreview,
+  IAdvert,
+  IReview,
+} from '../../../interfaces/ads.interfaces';
 import { IContactResponse } from '../../../interfaces/responses.interfaces';
 import { AppDispatch, RootState } from '../../../store';
 import {
@@ -14,6 +19,8 @@ import {
   fetchSimilarPostsFulFilled,
   fetchSimilarPostsPending,
   fetchSimilarPostsRejected,
+  setReviews,
+  setReviewsLoading,
 } from '../slices/advert.slice';
 
 export class AdvertService {
@@ -94,6 +101,31 @@ export class AdvertService {
           dispatch(fetchSimilarPostsFulFilled(ads));
         }
       } catch (error) {
+        console.log(error);
+      }
+    };
+
+  getReviews =
+    () => async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const state = getState().advert;
+        if (!state.user?.id) {
+          return;
+        }
+        dispatch(setReviewsLoading(true));
+        const response = await getReviews(state.user?.id);
+        const reviews: IReview[] = response.data.map((review) => ({
+          id: review.id,
+          text: review.text,
+          score: review.score,
+          createdAt: review.created_at,
+          idReservation: review.id_reservation,
+          writenBy: review.user_writer.name,
+        }));
+        dispatch(setReviews(reviews));
+        dispatch(setReviewsLoading(false));
+      } catch (error) {
+        dispatch(setReviewsLoading(false));
         console.log(error);
       }
     };

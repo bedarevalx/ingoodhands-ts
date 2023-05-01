@@ -9,6 +9,7 @@ import {
   IAdPreview,
   IAdvert,
   IAdvertOnwer,
+  IReview,
 } from '../../../interfaces/ads.interfaces';
 import { IContactResponse } from '../../../interfaces/responses.interfaces';
 
@@ -16,6 +17,7 @@ interface IAdvertState {
   isLoading: boolean;
   isNumberLoading: boolean;
   isSimilarPostsLoading: boolean;
+  isReviewsLoading: boolean;
   similarPosts: IAdPreview[];
   title: string;
   description: string;
@@ -30,11 +32,13 @@ interface IAdvertState {
   city: ICity | null;
   category: ICategory | null;
   phoneNumber?: string;
+  reviews: IReview[];
 }
 
 const initialState: IAdvertState = {
   isLoading: true,
   isNumberLoading: false,
+  isReviewsLoading: false,
   isSimilarPostsLoading: true,
   similarPosts: [],
   title: '',
@@ -48,6 +52,7 @@ const initialState: IAdvertState = {
   error: '',
   category: null,
   city: null,
+  reviews: [],
 };
 
 export const advertSlice = createSlice({
@@ -109,6 +114,13 @@ export const advertSlice = createSlice({
       state.isSimilarPostsLoading = false;
     },
 
+    setReviewsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isReviewsLoading = action.payload;
+    },
+    setReviews: (state, action: PayloadAction<IReview[]>) => {
+      state.reviews = action.payload;
+    },
+
     clearState: (state) => {
       state.isLoading = true;
       state.title = '';
@@ -139,5 +151,8 @@ export const {
   fetchSimilarPostsFulFilled,
   fetchSimilarPostsPending,
   fetchSimilarPostsRejected,
+  setPost,
+  setReviews,
+  setReviewsLoading,
 } = advertSlice.actions;
 export const reducer = advertSlice.reducer;

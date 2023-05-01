@@ -62,3 +62,12 @@ export interface IAdvertOnwer {
   rating: number;
   createdAt: string;
 }
+
+export interface IReview {
+  id: number;
+  text: string;
+  score: number;
+  createdAt: string;
+  idReservation: number;
+  writenBy: string;
+}

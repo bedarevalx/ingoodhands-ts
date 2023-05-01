@@ -17,6 +17,7 @@ import {
   IGetFavoritesResponse,
   IGetProfileResponse,
   IGetUserPostsResponse,
+  IReviewResponse,
   ISearchUserResponse,
   ITokenResponse,
   IUserPostResponse,
@@ -174,4 +175,9 @@ export const getSimilarPosts = async (id: number) => {
 
 export const getFavoritesId = async () => {
   return await axios.get<number[]>(`/api/all_favorite_posts_id`);
+};
+
+export const getReviews = async (id: number) => {
+  const query = parseQueryParams({ id_user_owner: id });
+  return await axios.get<IReviewResponse[]>(`/api/get_user_reviews?${query}`);
 };
