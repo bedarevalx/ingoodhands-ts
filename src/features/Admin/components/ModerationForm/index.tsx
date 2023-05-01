@@ -56,7 +56,13 @@ export const ModerationForm = () => {
       </div>
       <div className='moderation-form__block'>
         <h4 className='moderation-form__block-header'>Фотографии</h4>
-        <img className='moderation-form'></img>
+        {moderation.imageSet.map((image) => (
+          <img
+            className='moderation-form__image'
+            src={image}
+            alt='moderation'
+          />
+        ))}
       </div>
 
       <div className='moderation-form__conclusion'></div>
