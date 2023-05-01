@@ -29,6 +29,7 @@ export interface ICreatePost {
   address: IAddress;
   id_city: string;
   description?: string;
+  show_email: boolean;
 }
 
 export interface IFetchAdParams {

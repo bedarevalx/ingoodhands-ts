@@ -59,6 +59,7 @@ export class EditAdService {
           image_set: editAd.images.map((image) => image.split(',')[1]),
           id_city: '1',
           address: address,
+          show_email: false,
         };
         const response = await createAd(body);
         this.dispatch(createAdFulfilled());
