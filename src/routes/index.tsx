@@ -30,6 +30,7 @@ const UsersPage = lazy(() => import('../pages/UsersPage'));
 const CitiesPage = lazy(() => import('../pages/CitiesPage'));
 const CategoriesPage = lazy(() => import('../pages/CategoriesPage'));
 const AdsSearchPage = lazy(() => import('../pages/AdsSearchPage'));
+const ModerationPage = lazy(() => import('../pages/ModerationPage'));
 
 export const routes = createBrowserRouter([
   {
@@ -133,17 +134,25 @@ export const routes = createBrowserRouter([
           },
           {
             path: ROUTES.ADS_SEARCH,
-            element: <PrivateRoute children={<AdsSearchPage />} />,
+            element: (
+              <PrivateRoute
+                children={
+                  <PrivateRoute requiredRole={'admin'}>
+                    <AdsSearchPage />
+                  </PrivateRoute>
+                }
+              />
+            ),
           },
-          // {
-          //   path: ROUTES.MODERATION,
-          //   element: (
-          //     <PrivateRoute
-          //       requiredRole={'moderator'}
-          //       children={<PendingPage />}
-          //     />
-          //   ),
-          // },
+          {
+            path: `${ROUTES.MODERATION}/:id`,
+            element: (
+              <PrivateRoute
+                requiredRole={'moderator'}
+                children={<ModerationPage />}
+              />
+            ),
+          },
           {
             path: ROUTES.USERS,
             element: (

@@ -35,8 +35,8 @@ export class AdsService {
         const response = await fetchAds({
           page,
           title,
-          sortBy,
-          sortType,
+          sort_by: sortBy,
+          sort_type: sortType,
           id_category: idCategory,
           id_city: idCity,
         });
@@ -55,7 +55,6 @@ export class AdsService {
             imagePath: ad.image_set[0],
             date: moment(ad.created_at).locale('ru').format('DD MMMM YYYY'),
             city: ad.city.name,
-            //TODO: фикс
             isFavorite: favoritesState.favoritesId.includes(ad.id),
           };
         });

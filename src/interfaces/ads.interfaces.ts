@@ -36,8 +36,8 @@ export interface IFetchAdParams {
   title: string;
   id_category: string;
   id_city: string;
-  sortBy: SortByTypes;
-  sortType: SortTypeTypes;
+  sort_by: SortByTypes;
+  sort_type: SortTypeTypes;
   page: number;
 }
 

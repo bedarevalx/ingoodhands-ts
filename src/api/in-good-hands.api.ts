@@ -1,6 +1,10 @@
 import axios from '../axios/in-good-hands.axios';
 import { parseQueryParams } from '../helpers/parseQueryParams';
-import { ICreatePost, IFetchAdParams } from '../interfaces/ads.interfaces';
+import {
+  IAdPreview,
+  ICreatePost,
+  IFetchAdParams,
+} from '../interfaces/ads.interfaces';
 import { IUserSignIn, IUserSignUp } from '../interfaces/auth.interfaces';
 import {
   ICheckCodeBody,
@@ -19,6 +23,7 @@ import {
   IGetUserPostsResponse,
   IReviewResponse,
   ISearchUserResponse,
+  IStartModerationResponse,
   ITokenResponse,
   IUserPostResponse,
 } from '../interfaces/responses.interfaces';
@@ -180,4 +185,18 @@ export const getFavoritesId = async () => {
 export const getReviews = async (id: number) => {
   const query = parseQueryParams({ id_user_owner: id });
   return await axios.get<IReviewResponse[]>(`/api/get_user_reviews?${query}`);
+};
+
+export const getPendingAds = async (limit: number, page: number) => {
+  const query = parseQueryParams({ limit, page });
+  return await axios.get<IListResponse<IUserPostResponse>>(
+    `/api/admin/get_pending_posts?${query}`,
+  );
+};
+
+export const startModeration = async (id: string) => {
+  return await axios.post<IStartModerationResponse>(
+    `/api/admin/start_checking`,
+    { id_post: id },
+  );
 };

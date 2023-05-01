@@ -9,15 +9,17 @@ interface IAdSearchItemProps {
   title: string;
   description: string;
   createdAt: string;
-  user: IAdvertOnwer;
-  status: AdsStatusTypes;
+  user?: IAdvertOnwer;
+  status?: AdsStatusTypes;
   imagePath: string;
   id: number;
+  variant: 'search' | 'pending';
+  handleClick?: () => void;
 }
 
 export const AdSearchItem = (props: IAdSearchItemProps) => {
   return (
-    <div className='ad-search-item'>
+    <div className='ad-search-item' onClick={props.handleClick}>
       <div className='ad-search-item__image-container'>
         <img
           src={props.imagePath}
@@ -28,14 +30,18 @@ export const AdSearchItem = (props: IAdSearchItemProps) => {
       <div className='ad-search-item__info'>
         <h4 className='ad-search-item__title'>{props.title}</h4>
         <p className='ad-search-item__description'>{props.description}</p>
-        <p className='ad-search-item__state'>{props.status}</p>
+        {props.variant === 'search' && (
+          <p className='ad-search-item__state'>{props.status}</p>
+        )}
         <p className='ad-search-item__date'>
           {moment(props.createdAt).format('DD MMMM YYYY')}
         </p>
       </div>
-      <IconButton className='ad-search-item__more-btn'>
-        <MoreVertIcon className='ad-search-item__more-icon' />
-      </IconButton>
+      {props.variant === 'search' && (
+        <IconButton className='ad-search-item__more-btn'>
+          <MoreVertIcon className='ad-search-item__more-icon' />
+        </IconButton>
+      )}
     </div>
   );
 };

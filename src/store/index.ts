@@ -14,6 +14,8 @@ import {
   citiesReducer,
   adsSearchReducer,
   userSearchReducer,
+  adminAdsReducer,
+  moderationReducer,
 } from '../features/Admin';
 import { advertReducer } from '../features/Advert';
 export const store = configureStore({
@@ -33,6 +35,8 @@ export const store = configureStore({
     advert: advertReducer,
     adsSearch: adsSearchReducer,
     userSearch: userSearchReducer,
+    adminAds: adminAdsReducer,
+    moderation: moderationReducer,
   },
 });
 

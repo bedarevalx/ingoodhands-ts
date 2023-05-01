@@ -2,6 +2,7 @@ import React from 'react';
 import HeaderLayout from '../../layouts/HeaderLayout';
 import SideMenu from '../../components/SideMenu';
 import { AdminMenuMocks } from '../../mocks/admin-menu.mocks';
+import { PendingList } from '../../features/Admin';
 
 const PendingPage = () => {
   return (
@@ -14,6 +15,7 @@ const PendingPage = () => {
           classNames={['pending-page__side-menu']}
           menuItems={AdminMenuMocks}
         />
+        <PendingList />
         {/* <AdminInfo classNames={['profile-page__profile-info']} /> */}
       </div>
     </HeaderLayout>

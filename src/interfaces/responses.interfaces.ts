@@ -126,6 +126,7 @@ export interface IAdvertResponse {
   updated_at: string;
   view_count: number;
   user: IOwnerAdResponse;
+  address?: IAddressResponse;
 }
 
 interface IAdPreviewResponse {
@@ -188,4 +189,9 @@ export interface IReviewResponse {
     created_at: string;
     rating: number;
   };
+}
+
+export interface IStartModerationResponse {
+  checking_id: number;
+  post: IAdvertResponse;
 }

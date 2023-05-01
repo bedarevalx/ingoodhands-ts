@@ -8,6 +8,10 @@ export interface ISearchController {
   dispatch: AppDispatch;
 }
 
+export interface IAdminAdsController {
+  dispatch: AppDispatch;
+}
+
 export interface ICreateCategoryBody {
   name: string;
   icon: string;

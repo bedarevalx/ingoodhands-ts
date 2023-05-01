@@ -85,6 +85,7 @@ export const AdsSearchForm = (props: IAdsSearchFormProps) => {
             imagePath={ad.imageSet[0]}
             id={ad.id}
             status={ad.status}
+            variant='search'
           />
         ))}
       </div>
