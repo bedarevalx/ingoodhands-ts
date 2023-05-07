@@ -9,7 +9,15 @@ interface IAdvertPicturesProps {
 
 export const AdvertPictures = (props: IAdvertPicturesProps) => {
   const [mainImage, setMainImage] = useState('');
+  const [isModalOpened, setIsModalOpened] = useState(false);
 
+  const handleModalClose = () => {
+    setIsModalOpened(false);
+  };
+
+  const handleModalOpen = () => {
+    setIsModalOpened(true);
+  };
   useEffect(() => {
     setMainImage(props.images[0]);
   }, [props.images]);
@@ -25,6 +33,7 @@ export const AdvertPictures = (props: IAdvertPicturesProps) => {
           src={mainImage}
           alt='image-post'
           className='advert-pictures__main-image'
+          onClick={handleModalOpen}
         />
       </div>
       <div className='advert-pictures__rest-pictures-wrapper'>
@@ -41,7 +50,11 @@ export const AdvertPictures = (props: IAdvertPicturesProps) => {
           </div>
         ))}
       </div>
-      <Carousel images={props.images} />
+      <Carousel
+        isOpen={isModalOpened}
+        handleClose={handleModalClose}
+        images={props.images}
+      />
     </div>
   );
 };
