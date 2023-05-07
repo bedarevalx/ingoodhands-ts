@@ -1,4 +1,5 @@
 import { searchAds, searchUsers } from '../../../api/in-good-hands.api';
+import { parseDate } from '../../../helpers/parseDate';
 import {
   IAdsSearchParams,
   ISearchedUser,
@@ -66,15 +67,15 @@ export class SearchService {
             longitude: 0,
             title: '',
           },
-          createdAt: ad.created_at,
-          updatedAt: ad.updated_at,
+          createdAt: parseDate(ad.created_at),
+          updatedAt: parseDate(ad.updated_at),
           imageSet: ad.image_set,
           status: ad.status,
           viewCount: ad.view_count,
           user: {
             name: ad.user.name,
             id: ad.user.id,
-            createdAt: ad.user.created_at,
+            createdAt: parseDate(ad.user.created_at),
             rating: ad.user.rating,
           },
         }));
@@ -113,7 +114,7 @@ export class SearchService {
           phoneNumber: user.phone_number,
           city: user.city.name,
           rating: user.rating,
-          createdAt: user.created_at,
+          createdAt: parseDate(user.created_at),
           isBanned: user.blocked_admin,
         }));
         dispatch(fetchSearchUsersFulfilled(users));

@@ -2,7 +2,6 @@ import React from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import StarIcon from '@mui/icons-material/Star';
-import moment from 'moment';
 interface IReviewItemProps {
   classNames?: string[];
   writtenBy: string;
@@ -24,9 +23,7 @@ export const ReviewItem = (props: IReviewItemProps) => {
             <StarIcon className='review-item__star-icon' />
             <span className='review-item__rating'>{props.score}</span>
           </div>
-          <span className='review-item__date'>
-            {moment(props.createdAt).format('DD MMMM YYYY')}
-          </span>
+          <span className='review-item__date'>{props.createdAt}</span>
         </div>
       </div>
       <div className='review-item__review-wrapper'>

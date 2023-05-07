@@ -1,7 +1,6 @@
 import React from 'react';
 import { IAdvertOnwer } from '../../../../interfaces/ads.interfaces';
 import { AdsStatusTypes } from '../../../../types/general.types';
-import moment from 'moment';
 import { IconButton } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
@@ -33,9 +32,7 @@ export const AdSearchItem = (props: IAdSearchItemProps) => {
         {props.variant === 'search' && (
           <p className='ad-search-item__state'>{props.status}</p>
         )}
-        <p className='ad-search-item__date'>
-          {moment(props.createdAt).format('DD MMMM YYYY')}
-        </p>
+        <p className='ad-search-item__date'>{props.createdAt}</p>
       </div>
       {props.variant === 'search' && (
         <IconButton className='ad-search-item__more-btn'>

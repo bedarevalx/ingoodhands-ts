@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { fetchAds } from '../../../api/in-good-hands.api';
 import { IAdPreview } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState } from '../../../store';
@@ -10,6 +9,7 @@ import {
   setIsLastPage,
   setPage,
 } from '../slices/ads.slice';
+import { parseDate } from '../../../helpers/parseDate';
 
 export class AdsService {
   dispatch: AppDispatch;
@@ -53,7 +53,7 @@ export class AdsService {
             title: ad.title,
             descripton: ad.description,
             imagePath: ad.image_set[0],
-            date: moment(ad.created_at).locale('ru').format('DD MMMM YYYY'),
+            date: parseDate(ad.created_at),
             city: ad.city.name,
             isFavorite: favoritesState.favoritesId.includes(ad.id),
           };

@@ -1,6 +1,5 @@
 import React from 'react';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import moment from 'moment';
 import { IconButton } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
@@ -25,9 +24,7 @@ export const UserSearchItem = (props: IUserSearchItemProps) => {
         <h4 className='user-search-item__email'>{props.email}</h4>
         <p className='user-search-item__phone-number'>{props.phoneNumber}</p>
         <p className='user-search-item__city'>{props.city}</p>
-        <p className='user-search-item__date'>
-          {moment(props.createdAt).format('DD MMMM YYYY')}
-        </p>
+        <p className='user-search-item__date'>{props.createdAt}</p>
       </div>
       <IconButton className='user-search-item__more-btn'>
         <MoreVertIcon className='user-search-item__more-icon' />

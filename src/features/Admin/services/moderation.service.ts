@@ -1,4 +1,5 @@
 import { startModeration } from '../../../api/in-good-hands.api';
+import { parseDate } from '../../../helpers/parseDate';
 import { IAdvert } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState } from '../../../store';
 import {
@@ -39,7 +40,7 @@ export class ModerationService {
             latitude: response.data.post?.address?.latitude || 0,
             longitude: response.data.post.address?.longitude || 0,
           },
-          createdAt: response.data.post.created_at,
+          createdAt: parseDate(response.data.post.created_at),
           status: response.data.post.status,
           updatedAt: response.data.post.updated_at,
           viewCount: response.data.post.view_count,

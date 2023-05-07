@@ -1,4 +1,3 @@
-import moment from 'moment';
 import {
   addToFavorite,
   getFavorites,
@@ -16,6 +15,7 @@ import {
   setFavoritesId,
   setTotalPages,
 } from '../slices/favorites.slice';
+import { parseDate } from '../../../helpers/parseDate';
 
 export class FavoritesService {
   addToFavorites =
@@ -70,7 +70,7 @@ export class FavoritesService {
               id: ad.category.id,
               isActive: ad.category.is_active,
             },
-            date: moment(ad.created_at).format('DD MMMM YYYY'),
+            date: parseDate(ad.created_at),
             imagePath: ad.image_set[0],
             id: ad.id,
             description: ad.description,

@@ -1,4 +1,3 @@
-import moment from 'moment';
 import {
   getContacts,
   getPost,
@@ -22,6 +21,7 @@ import {
   setReviews,
   setReviewsLoading,
 } from '../slices/advert.slice';
+import { parseDate } from '../../../helpers/parseDate';
 
 export class AdvertService {
   getAdvertById =
@@ -46,15 +46,15 @@ export class AdvertService {
           isActive: response.data.post.city.is_active,
         },
         address: response.data.address || response.data.contacts?.address,
-        createdAt: response.data.post.created_at,
-        updatedAt: response.data.post.updated_at,
+        createdAt: parseDate(response.data.post.created_at),
+        updatedAt: parseDate(response.data.post.updated_at),
         imageSet: response.data.post.image_set,
         status: response.data.post.status,
         viewCount: response.data.post.view_count,
         user: {
           name: response.data.post.user.name,
           id: response.data.post.user.id,
-          createdAt: response.data.post.user.created_at,
+          createdAt: parseDate(response.data.post.user.created_at),
           rating: response.data.post.user.rating,
         },
         phoneNumber: response.data.contacts?.phone,
@@ -92,7 +92,7 @@ export class AdvertService {
               title: ad.title,
               descripton: ad.description,
               imagePath: ad.image_set[0],
-              date: moment(ad.created_at).locale('ru').format('DD MMMM YYYY'),
+              date: parseDate(ad.created_at),
               city: ad.city.name,
               //TODO: фикс
               isFavorite: false,
@@ -118,7 +118,7 @@ export class AdvertService {
           id: review.id,
           text: review.text,
           score: review.score,
-          createdAt: review.created_at,
+          createdAt: parseDate(review.created_at),
           idReservation: review.id_reservation,
           writenBy: review.user_writer.name,
         }));

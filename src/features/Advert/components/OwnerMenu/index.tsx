@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { IAdvertOnwer, IReview } from '../../../../interfaces/ads.interfaces';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import moment from 'moment';
 import { IconButton, Rating } from '@mui/material';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import LoadedButton from '../../../../UI/LoadedButton';
@@ -62,8 +61,7 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
         <div className=''>
           <h3 className='owner-menu__user-name'>{props.user?.name}</h3>
           <p className='owner-menu__created-at'>
-            дата регистрации:{' '}
-            {moment(props.user?.createdAt).format('MMMM YYYY')}
+            дата регистрации: {props.user?.createdAt}
           </p>
         </div>
       </div>
