@@ -112,6 +112,14 @@
     fill: red;
   }
 
+  &__more-btn.MuiButtonBase-root {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    // padding: 0;
+    transition: $default-transition;
+  }
+
   &__date {
     position: absolute;
     bottom: 8px;
