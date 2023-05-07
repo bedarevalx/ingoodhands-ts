@@ -43,6 +43,7 @@ export interface IUser {
   privileges: UserPrivilegeTypes[];
   phoneNumber: string;
   addresses: IUserAddress[];
+  balance: number;
 }
 
 export interface IUserCity {

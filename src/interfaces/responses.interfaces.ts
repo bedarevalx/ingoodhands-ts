@@ -27,6 +27,7 @@ export interface IGetProfileResponse {
   permissions: UserPrivilegeTypes[];
   name: string;
   phone_number: string;
+  balance: number;
 }
 
 export interface IGetUserPostsResponse {

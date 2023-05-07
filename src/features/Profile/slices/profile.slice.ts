@@ -31,6 +31,7 @@ interface IProfileState {
   emailInput: string;
   phoneInput: string;
   citySelect: string;
+  balance: number;
 }
 
 const modalsVisible: IModalsOpened = {
@@ -62,6 +63,7 @@ const initialState: IProfileState = {
   emailInput: '',
   phoneInput: '',
   citySelect: '',
+  balance: 0,
 };
 
 export const profileSlice = createSlice({

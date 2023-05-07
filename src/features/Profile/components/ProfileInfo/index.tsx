@@ -13,7 +13,7 @@ import Input from '../../../../UI/Input';
 import LoadedButton from '../../../../UI/LoadedButton';
 import Select from '../../../../UI/Select';
 import MaskedInput from '../../../../UI/MaskedInput';
-
+import InfoIcon from '@mui/icons-material/Info';
 interface IProfileInfoProps {
   classNames?: string[];
 }
@@ -63,12 +63,16 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
           profile.isEditing ? ' profile-info__block-editing' : ''
         }`}>
         <div className=' profile-info__email-block'>
-          <p className='profile-info__block-title'>Электронная почта</p>
-          {user.isEmailVerified ? (
-            <Tooltip title='Ваша почта подтверждена'>
-              <VerifiedIcon className='profile-info__email-verified-icon' />
-            </Tooltip>
-          ) : (
+          <p className='profile-info__block-title'>
+            Электронная почта
+            {user.isEmailVerified && (
+              <Tooltip title='Ваша почта подтверждена'>
+                <VerifiedIcon className='profile-info__email-verified-icon' />
+              </Tooltip>
+            )}
+          </p>
+
+          {!user.isEmailVerified && (
             <Button
               classNames={['profile-info__confirm-button']}
               onClick={profileController.handleOpenConfirmEmail}>
@@ -153,6 +157,22 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
               classNames={['profile-info__edit-input']}
             />
           )}
+        </div>
+      </div>
+      <div className='profile-info__block'>
+        <div className='profile-info__balance-block'>
+          <p className='profile-info__block-title'>
+            Баллы{' '}
+            <Tooltip
+              title={
+                'Баллы используются для получения контактов пользователя, разместившего объявление. Для того, чтобы получить баллы, необходимо разместить объявление и подтвердить передачу вещей другому пользователю'
+              }>
+              <InfoIcon className='profile-info__info-icon' />
+            </Tooltip>
+          </p>
+        </div>
+        <div className='profile-info__block-content'>
+          <p>Кол-во баллов: {profile.balance}</p>
         </div>
       </div>
       {profile.isEditing && (

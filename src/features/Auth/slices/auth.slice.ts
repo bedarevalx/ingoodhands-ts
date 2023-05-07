@@ -28,6 +28,7 @@ const initialState: IAuthState = {
     phoneNumber: '',
     addresses: [],
     privileges: [],
+    balance: 0,
   },
 };
 
@@ -67,6 +68,7 @@ export const authSlice = createSlice({
         phoneNumber: '',
         addresses: [],
         privileges: [],
+        balance: 0,
       };
     },
     setAuthenticate: (state, action: PayloadAction<boolean>) => {

@@ -23,8 +23,8 @@ interface IUserAdProps {
   category?: ICategory;
   city?: string;
   isFavorited: boolean;
-  onEdit?: () => void;
-  onDelete?: () => void;
+  onEdit?: (id: number) => void;
+  onDelete?: (id: number) => void;
   handleFavoriteClick?: (id: number, isFavorited: boolean) => void;
 }
 
@@ -51,10 +51,12 @@ const UserAd = (props: IUserAdProps) => {
 
   const handleEdit = (event: React.MouseEvent<HTMLLIElement>) => {
     event.stopPropagation();
+    props.onEdit && props.onEdit(props.id);
   };
 
   const handleDelete = (event: React.MouseEvent<HTMLLIElement>) => {
     event.stopPropagation();
+    props.onDelete && props.onDelete(props.id);
   };
   return (
     <Link
