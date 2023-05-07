@@ -77,7 +77,17 @@ export const routes = createBrowserRouter([
       },
       {
         path: ROUTES.NEW_AD,
-        element: <PrivateRoute children={<EditAdvertPage />} />,
+        element: (
+          <PrivateRoute children={<EditAdvertPage key={'edit-page'} />} />
+        ),
+      },
+      {
+        path: `${ROUTES.EDIT}/:id`,
+        element: (
+          <PrivateRoute
+            children={<EditAdvertPage key={'new-ad-page'} isEditing={true} />}
+          />
+        ),
       },
       {
         path: ROUTES.SIGNUP,

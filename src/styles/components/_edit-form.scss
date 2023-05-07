@@ -2,6 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   margin-bottom: 40px;
+  height: 100%;
 
   &__title {
     margin-bottom: 18px;
@@ -44,8 +45,23 @@
     margin-bottom: 16px;
   }
   &__photo-wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 16px;
+    @media screen and (max-width: $media-sm) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 16px;
+      row-gap: 16px;
+    }
+  }
+  &__photo-preview {
+  }
+
+  &__loader {
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
   }
 }

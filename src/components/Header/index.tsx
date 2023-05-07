@@ -32,7 +32,9 @@ const Header = (props: IHeaderProps) => {
       // style={{ backgroundImage: `url('${HeaderBg}')`, backgroundSize: '' }}
     >
       <div className='container header__container'>
-        <Logo className='header__logo' onClick={handleLogoClick} />
+        <Link to={'/'}>
+          <Logo className='header__logo' onClick={handleLogoClick} />
+        </Link>
         <div className='header__buttons'>
           <ProfileButton
             classNames={['header__profile-button']}

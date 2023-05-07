@@ -16,9 +16,11 @@ interface IEditAdState {
   title: string;
   newAddress: IUserAddress | null;
   error: string;
+  isPostFetching: boolean;
 }
 
 const initialState: IEditAdState = {
+  isPostFetching: false,
   isLoading: false,
   isAddressSearchOpen: false,
   pickedAddress: '-1',
@@ -77,6 +79,19 @@ export const editAdSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    setFetchingPost: (state, action: PayloadAction<boolean>) => {
+      state.isPostFetching = action.payload;
+    },
+    deletePhoto: (state, action: PayloadAction<number>) => {
+      state.images = state.images.filter(
+        (_: any, i: number) => i !== action.payload,
+      );
+    },
+    clearState: (state: any) => {
+      for (const [key] of Object.entries(initialState)) {
+        state[key] = initialState[key as keyof {}];
+      }
+    },
   },
 });
 
@@ -95,6 +110,9 @@ export const {
   createAdFulfilled,
   createAdRejected,
   createAdPending,
+  setFetchingPost,
+  deletePhoto,
+  clearState,
 } = editAdSlice.actions;
 export const reducer = editAdSlice.reducer;
 // export authSlice.reducer;

@@ -82,6 +82,11 @@ export const createAd = async (body: ICreatePost) => {
   return await axios.post('/api/create_post', body);
 };
 
+export const editAd = async (body: ICreatePost, id: string) => {
+  const query = parseQueryParams({ id_post: id });
+  return await axios.patch(`/api/change_post?${query}`, body);
+};
+
 export const sendConfirmEmail = async () => {
   return await axios.get('/api/sent_code');
 };
@@ -200,3 +205,5 @@ export const startModeration = async (id: string) => {
     { id_post: id },
   );
 };
+
+export const getPostForEdit = async (id: string) => {};

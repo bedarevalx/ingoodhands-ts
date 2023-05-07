@@ -12,8 +12,11 @@ import { IAdsController } from '../../../interfaces/ads.interfaces';
 import { EditAdService } from '../services/edit-ad.service';
 import {
   addImages,
+  clearState,
+  deletePhoto,
   setCategory,
   setDescription,
+  setFetchingPost,
   setIsAddressSearchOpen,
   setNewAddress,
   setPickedAddress,
@@ -83,7 +86,55 @@ export class EditAdController implements IAdsController {
     );
   };
 
-  onCreateAd = () => {
-    this.dispatch(this.editAdService.onCreateAd());
+  getPost = async (id: string) => {
+    const user = this.getState().auth.user;
+    this.dispatch(setFetchingPost(true));
+    const post = await this.dispatch(this.editAdService.getPost(id, user.id));
+    if (!post) {
+      this.navigate('/404');
+      return;
+    }
+    this.dispatch(setTitle(post.title));
+    this.dispatch(setDescription(post.description));
+    this.dispatch(setCategory(String(post.category.id)));
+    this.dispatch(addImages(post.imageSet));
+    const userAddress = user.addresses.filter(
+      (address) => address.title === post.address?.title,
+    );
+    if (userAddress[0]) {
+      this.dispatch(setPickedAddress(userAddress[0].id));
+    } else {
+      if (post.address) {
+        this.dispatch(
+          setNewAddress({
+            title: post.address?.title,
+            value: post.address.title,
+            id: post.address.title,
+            latitude: post.address.latitude,
+            longitude: post.address.longitude,
+          }),
+        );
+        this.dispatch(setPickedAddress(post.address.title));
+      }
+    }
+    this.dispatch(setFetchingPost(false));
+  };
+
+  onCreateAd = async () => {
+    this.dispatch(
+      this.editAdService.onCreateAd(() => this.navigate('/profile/my-ads')),
+    );
+  };
+
+  onEditAd = (id: string) => {
+    this.dispatch(this.editAdService.onEditAd(id));
+  };
+
+  onPhotoDelete = (id: number) => {
+    this.dispatch(deletePhoto(id));
+  };
+
+  clearState = () => {
+    this.dispatch(clearState());
   };
 }

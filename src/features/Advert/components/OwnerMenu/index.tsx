@@ -54,6 +54,10 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
     setIsReviewsOpened(false);
   };
 
+  const handleEditClick = () => {
+    navigate('/edit/' + props.adId);
+  };
+
   return (
     <div className={classNamesParser('owner-menu', props.classNames)}>
       <div className='owner-menu__header'>
@@ -87,7 +91,9 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
         <span className='owner-menu__view-count-value'>{props.viewCount}</span>
       </div>
       {props.isOwner ? (
-        <Button classNames={['owner-menu__get-contacts']}>
+        <Button
+          classNames={['owner-menu__get-contacts']}
+          onClick={handleEditClick}>
           Редактировать объявление
         </Button>
       ) : !!props.phoneNumber ? (

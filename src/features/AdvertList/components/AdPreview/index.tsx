@@ -32,7 +32,10 @@ export const AdPreview = (props: IAdPreviewProps) => {
   };
 
   return (
-    <Link to={'/post/' + props.id} style={{ textDecoration: 'none' }}>
+    <Link
+      to={'/post/' + props.id}
+      target='_blank'
+      style={{ textDecoration: 'none' }}>
       <div className='ad-preview'>
         <div className='ad-preview__image-container'>
           <img

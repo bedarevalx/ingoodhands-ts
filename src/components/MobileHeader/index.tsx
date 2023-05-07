@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthService } from '../../features/Auth';
 import ProfileButton from '../ProfileButton';
 import Button from '../../UI/Button';
@@ -55,8 +55,9 @@ export const MobileHeader = (props: IMobileHeaderProps) => {
           onClick={handleOpenDrawer}>
           <AppsIcon className='header-mobile__menu-icon' />
         </IconButton>
-        <Logo className='header-mobile__logo' onClick={handleLogoClick} />
-
+        <Link to={'/'}>
+          <Logo className='header-mobile__logo' onClick={handleLogoClick} />
+        </Link>
         <ProfileButton
           classNames={['header-mobile__profile-button']}
           isAuthenticate={auth.isAuthenticate}
