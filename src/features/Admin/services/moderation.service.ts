@@ -48,7 +48,7 @@ export class ModerationService {
             name: response.data.post.user.name,
             id: response.data.post.user.id,
             rating: response.data.post.user.rating,
-            createdAt: response.data.post.user.created_at,
+            createdAt: parseDate(response.data.post.user.created_at),
           },
         };
 

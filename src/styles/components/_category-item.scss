@@ -1,0 +1,23 @@
+.category-item {
+  &__category-btn.MuiButtonBase-root {
+    text-transform: none;
+    white-space: nowrap;
+    padding: 0;
+    border: 0;
+    background: white;
+    color: black;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    @include color-hover(white);
+  }
+  &__icon {
+    font-size: 17px;
+  }
+  &__title {
+    font-weight: 500;
+    opacity: 0.6;
+  }
+}

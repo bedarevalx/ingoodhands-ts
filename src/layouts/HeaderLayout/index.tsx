@@ -5,11 +5,13 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 import { useMediaQuery } from '@mui/material';
 import { MEDIA } from '../../constants/app';
 import { MobileHeader } from '../../components/MobileHeader';
+import FiltersHeader from '../../components/FiltersHeader';
 
 interface IHeaderLayoutProps {
   children: ReactNode;
   classNames?: string[];
   menuType?: 'profile' | 'admin-panel';
+  subHeader?: ReactNode;
 }
 
 const HeaderLayout = (props: IHeaderLayoutProps) => {
@@ -22,6 +24,7 @@ const HeaderLayout = (props: IHeaderLayoutProps) => {
         menuType={props.menuType}
       />
       <Header classNames={['header-layout__header']} />
+      {props.subHeader}
       <div
         className={classNamesParser(
           'container header-layout__container',

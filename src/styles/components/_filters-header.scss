@@ -1,0 +1,101 @@
+.filters-header {
+  width: 100%;
+  position: sticky;
+  top: 57px;
+  z-index: 10;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+  background-color: $color-primary;
+  text-align: center;
+  &__title {
+    color: white;
+    font-weight: 600;
+    font-size: 50px;
+  }
+
+  &__sub-title {
+    color: white;
+    font-weight: 600;
+  }
+
+  &__categories-wrapper {
+    max-width: 800px;
+    padding: 0 24px;
+    overflow-y: hidden;
+    margin: 0 auto;
+    margin-top: 24px;
+  }
+
+  &__categories {
+    display: flex;
+    overflow-x: scroll;
+    align-items: center;
+    gap: 8px;
+    -webkit-scrollbar: 6px;
+    padding-bottom: 14px;
+
+    // ::-webkit-scrollbar-thumb {
+    //   background: white;
+    // }
+
+    // ::-webkit-scrollbar-track {
+    //   background: wheat;
+    // }
+  }
+  &__search-bar {
+    margin: 0 auto;
+    display: flex;
+    gap: 1px;
+    padding: 12px 24px;
+    padding-top: 0;
+    margin-top: 4px;
+  }
+  &__city-select.select {
+    max-width: 200px;
+    width: 100%;
+    margin-bottom: 0;
+    height: 40px;
+    & .MuiInputBase-root {
+      border-radius: 8px 0px 0px 8px;
+      border: 0;
+      height: 40px;
+      box-sizing: border-box;
+    }
+    & .MuiSelect-select {
+      border-radius: 8px 0px 0px 8px;
+      border: 0;
+      height: 40px;
+      box-sizing: border-box;
+    }
+
+    & .MuiOutlinedInput-notchedOutline {
+      border: 0;
+      height: 40px;
+    }
+  }
+
+  &__search-input.input {
+    margin-bottom: 0;
+    & .MuiInputBase-root {
+      border-radius: 0;
+    }
+    & .MuiOutlinedInput-notchedOutline {
+      border: 0;
+    }
+  }
+  &__search-btn.MuiButtonBase-root {
+    background: white;
+    border-radius: 0px 8px 8px 0px;
+    @include color-hover(white);
+    max-width: 100px;
+    width: 100%;
+  }
+}
+
+.filters-header.down {
+  top: -132px;
+}
+.filters-header__search-bar.container {
+  max-width: 1000px;
+}
