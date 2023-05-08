@@ -28,6 +28,7 @@ export interface IGetProfileResponse {
   name: string;
   phone_number: string;
   balance: number;
+  rating: number;
 }
 
 export interface IGetUserPostsResponse {

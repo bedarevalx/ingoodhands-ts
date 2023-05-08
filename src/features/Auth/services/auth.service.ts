@@ -128,6 +128,7 @@ export class AuthService {
         name: userInfo.name,
         id: userInfo.id,
         balance: userInfo.balance,
+        rating: userInfo.rating,
         // favoriteIds,
         addresses: userInfo.addresses.map((address) => ({
           title: address.title,

@@ -7,7 +7,7 @@ import { ProfileController } from '../../controllers/profile.controller';
 import { useNavigate } from 'react-router-dom';
 import ConfirmEmailForm from '../ConfirmEmailForm';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import { IconButton, Tooltip } from '@mui/material';
+import { IconButton, Rating, Tooltip } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import Input from '../../../../UI/Input';
 import LoadedButton from '../../../../UI/LoadedButton';
@@ -172,7 +172,16 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
           </p>
         </div>
         <div className='profile-info__block-content'>
-          <p>Кол-во баллов: {profile.balance}</p>
+          <p>Кол-во баллов: {user.balance}</p>
+        </div>
+      </div>
+      <div className='profile-info__block'>
+        <div className='profile-info__balance-block'>
+          <p className='profile-info__block-title'>Рейтинг</p>
+        </div>
+        <div className='profile-info__block-content'>
+          <Rating max={5} precision={0.1} value={user.rating} readOnly />
+          <p>Итоговый рейтинг: {user.rating}</p>
         </div>
       </div>
       {profile.isEditing && (

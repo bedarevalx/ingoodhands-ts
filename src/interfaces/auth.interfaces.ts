@@ -44,6 +44,7 @@ export interface IUser {
   phoneNumber: string;
   addresses: IUserAddress[];
   balance: number;
+  rating: number;
 }
 
 export interface IUserCity {
