@@ -62,6 +62,7 @@ export const SimilarPosts = (props: ISimilarPostsProps) => {
           prevArrow={false}>
           {props.similarPosts.map((post) => (
             <AdPreview
+              key={post.id}
               id={post.id}
               title={post.title}
               imagePath={post.imagePath}

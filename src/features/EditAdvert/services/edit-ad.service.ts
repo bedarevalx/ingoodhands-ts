@@ -102,7 +102,7 @@ export class EditAdService {
     };
 
   onEditAd =
-    (id: string) =>
+    (id: string, callback: () => void) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         dispatch(createAdPending());
@@ -136,9 +136,8 @@ export class EditAdService {
           show_email: false,
         };
         const response = await editAd(body, id);
-        console.log(response);
-
         this.dispatch(createAdFulfilled());
+        callback();
       } catch (error: any) {
         console.log(error);
         this.dispatch(createAdRejected(error.message));

@@ -23,6 +23,7 @@ import {
   setTitle,
 } from '../slices/edit-ad.slice';
 import { IPickedAddress } from '../../../interfaces/geo.interfaces';
+import { urlsToBase64 } from '../../../helpers/urlsToBase64';
 
 export class EditAdController implements IAdsController {
   dispatch: AppDispatch;
@@ -94,6 +95,10 @@ export class EditAdController implements IAdsController {
       this.navigate('/404');
       return;
     }
+    const images = post.imageSet.map((image) => {
+      console.log(image);
+    });
+    await urlsToBase64(post.imageSet);
     this.dispatch(setTitle(post.title));
     this.dispatch(setDescription(post.description));
     this.dispatch(setCategory(String(post.category.id)));
@@ -127,7 +132,9 @@ export class EditAdController implements IAdsController {
   };
 
   onEditAd = (id: string) => {
-    this.dispatch(this.editAdService.onEditAd(id));
+    this.dispatch(
+      this.editAdService.onEditAd(id, () => this.navigate('/profile/my-ads')),
+    );
   };
 
   onPhotoDelete = (id: number) => {

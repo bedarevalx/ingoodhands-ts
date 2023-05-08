@@ -8,6 +8,7 @@ import {
   myAdsReducer,
   profileReducer,
   favoritesReducer,
+  reviewsReducer,
 } from '../features/Profile';
 import {
   categoriesReducer,
@@ -37,6 +38,7 @@ export const store = configureStore({
     userSearch: userSearchReducer,
     adminAds: adminAdsReducer,
     moderation: moderationReducer,
+    reviews: reviewsReducer,
   },
 });
 

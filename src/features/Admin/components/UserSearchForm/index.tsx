@@ -64,6 +64,7 @@ export const UserSearchForm = (props: IUserSearchFormProps) => {
         )}
         {searchState.users.map((user) => (
           <UserSearchItem
+            key={user.id}
             email={user.email}
             name={user.name}
             city={user.city}

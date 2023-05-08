@@ -47,6 +47,7 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
           {!ads.isLastPage &&
             new Array(10).fill(null).map((_: any, i: number) => (
               <div
+                key={i}
                 className='ad-preview-list__skeleton-wrapper'
                 ref={i === 0 ? loadMoreCallback : null}>
                 <Skeleton className='ad-preview-list__skeleton' />

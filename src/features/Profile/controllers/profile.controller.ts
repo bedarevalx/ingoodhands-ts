@@ -74,4 +74,9 @@ export class ProfileController implements IProfileController {
   handleSave = () => {
     this.dispatch(this.profileService.editProfile());
   };
+
+  getMyReviews = () => {
+    this.dispatch(this.profileService.getMyReviews());
+  };
+  handleReviewsPageChange = () => {};
 }

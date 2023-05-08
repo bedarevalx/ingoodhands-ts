@@ -1,2 +1,22 @@
 .reviews-page {
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+  }
+  &__side-menu {
+    flex-basis: 30%;
+    flex-shrink: 0;
+    @media screen and (max-width: $media-sm) {
+      display: none;
+    }
+  }
+  &__list {
+    height: 100%;
+    flex-basis: 70%;
+    flex-direction: column;
+    @media screen and (max-width: $media-sm) {
+      flex-basis: 100%;
+    }
+    display: flex;
+  }
 }

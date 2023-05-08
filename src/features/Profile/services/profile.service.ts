@@ -1,8 +1,11 @@
 import {
   checkConfirmEmailCode,
   editProfile,
+  getReviews,
   sendConfirmEmail,
 } from '../../../api/in-good-hands.api';
+import { parseDate } from '../../../helpers/parseDate';
+import { IReview } from '../../../interfaces/ads.interfaces';
 
 import { IEditProfileBody } from '../../../interfaces/profile.interfaces';
 import { AppDispatch, RootState } from '../../../store';
@@ -20,6 +23,11 @@ import {
   sendEmailPending,
   sendEmailRejected,
 } from '../slices/profile.slice';
+import {
+  fetchReviewsFulfilled,
+  fetchReviewsPending,
+  fetchReviewsRejected,
+} from '../slices/reviews.slice';
 
 export class ProfileService {
   dispatch: AppDispatch;
@@ -74,6 +82,27 @@ export class ProfileService {
       } catch (error: any) {
         console.error(error);
         dispatch(editRejected(error.message));
+      }
+    };
+
+  getMyReviews =
+    () => async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        dispatch(fetchReviewsPending());
+        const user = getState().auth.user;
+        const response = await getReviews(Number(user.id));
+        const reviews: IReview[] = response.data.map((review) => ({
+          id: review.id,
+          text: review.text,
+          score: review.score,
+          createdAt: parseDate(review.created_at),
+          idReservation: review.id_reservation,
+          writenBy: review.user_writer.name,
+        }));
+        dispatch(fetchReviewsFulfilled(reviews));
+      } catch (error: any) {
+        console.log(error);
+        dispatch(fetchReviewsRejected(error));
       }
     };
 }

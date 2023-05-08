@@ -67,8 +67,8 @@ export const AdsSearchForm = (props: IAdsSearchFormProps) => {
       </div>
       <div className='ads-search-form__list'>
         {searchState.isLoading &&
-          new Array(searchState.limit).fill(null).map((_: any) => (
-            <div className='ads-search-form__skeleton-wrapper'>
+          new Array(searchState.limit).fill(null).map((_: any, id: number) => (
+            <div key={id} className='ads-search-form__skeleton-wrapper'>
               <Skeleton className='ads-search-form__skeleton' />
             </div>
           ))}
@@ -78,6 +78,7 @@ export const AdsSearchForm = (props: IAdsSearchFormProps) => {
         )}
         {searchState.ads.map((ad) => (
           <AdSearchItem
+            key={ad.id}
             title={ad.title}
             user={ad.user}
             description={ad.description}

@@ -31,7 +31,7 @@ export const Carousel = (props: ICarouselProps) => {
         slidesToScroll={1}
         className={'carousel__slider'}>
         {props.images.map((image) => (
-          <div className='carousel__image-wrapper'>
+          <div key={image} className='carousel__image-wrapper'>
             <img src={image} alt='post' className='carousel__image' />
           </div>
         ))}
