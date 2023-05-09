@@ -19,21 +19,40 @@
     font-weight: 600;
   }
 
+  &__title-wrapper {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 1000ms;
+    max-height: 68.5px;
+    overflow: hidden;
+    opacity: 1;
+  }
+
+  &__title-wrapper.hide {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 1000ms;
+    max-height: 0;
+    opacity: 0;
+  }
+
   &__categories-wrapper {
     max-width: 800px;
     padding: 0 24px;
     overflow-y: hidden;
     margin: 0 auto;
-    margin-top: 24px;
+    // margin-top: 24px;
   }
 
-  &__categories {
+  &__categories.MuiToggleButtonGroup-root {
     display: flex;
     overflow-x: scroll;
     align-items: center;
     gap: 8px;
     -webkit-scrollbar: 6px;
-    padding-bottom: 14px;
+    padding: 14px 0;
+    width: 100%;
+    border-radius: 0;
 
     // ::-webkit-scrollbar-thumb {
     //   background: white;
@@ -43,6 +62,41 @@
     //   background: wheat;
     // }
   }
+
+  &__category-btn.MuiButtonBase-root {
+    text-transform: none;
+    white-space: nowrap;
+    padding: 0;
+    border: 0;
+    background: white;
+    color: black;
+    border-radius: 16px !important;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    @include color-hover(white);
+    transition: $default-transition;
+  }
+
+  &__category-btn.MuiButtonBase-root.toggled {
+    color: $color-primary;
+    opacity: 1;
+    background-color: $color-primary;
+    color: white;
+    box-shadow: 0 0px 8px white;
+    & .filters-header__category-title {
+      opacity: 1;
+    }
+  }
+  &__category-icon {
+    font-size: 17px;
+  }
+  &__category-title {
+    font-weight: 500;
+    opacity: 0.6;
+  }
+
   &__search-bar {
     margin: 0 auto;
     display: flex;
@@ -94,7 +148,7 @@
 }
 
 .filters-header.down {
-  top: -132px;
+  top: -133.75px;
 }
 .filters-header__search-bar.container {
   max-width: 1000px;

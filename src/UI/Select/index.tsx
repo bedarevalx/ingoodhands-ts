@@ -48,9 +48,12 @@ const Select = (props: ISelectProps) => {
         size={props.size || 'small'}
         open={props.open}
         className={`select__select ${props?.value === '-1' && 'placeholder'}`}>
-        <MenuItem value={'-1'} selected disabled>
-          {props.placeholder}
-        </MenuItem>
+        {!!props.placeholder && (
+          <MenuItem value={'-1'} selected disabled>
+            {props.placeholder}
+          </MenuItem>
+        )}
+
         {props.options?.map((item) => (
           <MenuItem key={item.id} value={item.id}>
             {item.title}

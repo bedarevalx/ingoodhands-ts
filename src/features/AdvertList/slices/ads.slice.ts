@@ -22,7 +22,7 @@ const initialState: IAuthState = {
   ads: [],
   title: '',
   idCategory: '',
-  idCity: '',
+  idCity: '-1',
   sortBy: 'date',
   sortType: 'desc',
   page: 1,
@@ -63,6 +63,15 @@ export const adsSlice = createSlice({
     },
     setIsLastPage: (state, action: PayloadAction<boolean>) => {
       state.isLastPage = action.payload;
+    },
+    setCity: (state, action: PayloadAction<string>) => {
+      state.idCity = action.payload;
+    },
+    setCategory: (state, action: PayloadAction<string>) => {
+      state.idCategory = action.payload;
+    },
+    setTitle: (state, action: PayloadAction<string>) => {
+      state.title = action.payload;
     },
     setFavoriteById: (state, action: PayloadAction<number>) => {
       state.ads = state.ads.map((ad) => {
@@ -106,5 +115,8 @@ export const {
   setIsLastPage,
   setFavoriteById,
   removeFavoriteById,
+  setCategory,
+  setCity,
+  setTitle,
 } = adsSlice.actions;
 export const reducer = adsSlice.reducer;

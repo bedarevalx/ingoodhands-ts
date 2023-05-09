@@ -10,12 +10,13 @@ interface ICategoryItemProps {
 
 const CategoryItem = (props: ICategoryItemProps) => {
   return (
-    <div className='category-item'>
-      <ToggleButton value={props.id} className='category-item__category-btn'>
-        <span className='category-item__icon'>{props.icon}</span>
-        <span className='category-item__title'>{props.category}</span>
-      </ToggleButton>
-    </div>
+    <ToggleButton
+      key={props.id}
+      value={props.id}
+      className='category-item__category-btn'>
+      <span className='category-item__icon'>{props.icon}</span>
+      <span className='category-item__title'>{props.category}</span>
+    </ToggleButton>
   );
 };
 
