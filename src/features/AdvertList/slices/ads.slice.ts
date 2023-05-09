@@ -11,6 +11,7 @@ interface IAuthState {
   idCity: string;
   idCategory: string;
   sortBy: SortByTypes;
+  sortByTitle: string;
   sortType: SortTypeTypes;
   page: number;
   isLastPage: boolean;
@@ -24,6 +25,7 @@ const initialState: IAuthState = {
   idCategory: '',
   idCity: '-1',
   sortBy: 'date',
+  sortByTitle: 'дате публикации',
   sortType: 'desc',
   page: 1,
   isLastPage: false,
@@ -73,6 +75,16 @@ export const adsSlice = createSlice({
     setTitle: (state, action: PayloadAction<string>) => {
       state.title = action.payload;
     },
+    setSortType: (state, action: PayloadAction<SortTypeTypes>) => {
+      state.sortType = action.payload;
+    },
+    setSortBy: (
+      state,
+      action: PayloadAction<{ value: SortByTypes; title: string }>,
+    ) => {
+      state.sortBy = action.payload.value;
+      state.sortByTitle = action.payload.title;
+    },
     setFavoriteById: (state, action: PayloadAction<number>) => {
       state.ads = state.ads.map((ad) => {
         if (ad.id === action.payload) {
@@ -118,5 +130,7 @@ export const {
   setCategory,
   setCity,
   setTitle,
+  setSortBy,
+  setSortType,
 } = adsSlice.actions;
 export const reducer = adsSlice.reducer;

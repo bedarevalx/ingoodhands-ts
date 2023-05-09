@@ -9,6 +9,8 @@ import {
   setIsLastPage,
   setLoading,
   setPage,
+  setSortBy,
+  setSortType,
   setTitle,
 } from '../slices/ads.slice';
 import { IAdsController } from '../../../interfaces/ads.interfaces';
@@ -16,6 +18,7 @@ import { AdsService } from '../services/ads.service';
 import { FavoritesService } from '../../Profile';
 import { SelectChangeEvent } from '@mui/material';
 import { ChangeEvent } from 'react';
+import { SortByTypes } from '../../../types/ads.types';
 
 export class AdsController implements IAdsController {
   dispatch: AppDispatch;
@@ -87,6 +90,20 @@ export class AdsController implements IAdsController {
       this.dispatch(setCategory(String(id)));
     }
 
+    this.handleSearch();
+  };
+  handleChangeSortType = () => {
+    const ads = this.getState().ads;
+    this.dispatch(setSortType(ads.sortType === 'asc' ? 'desc' : 'asc'));
+    this.handleSearch();
+  };
+
+  handleSortByChange = (value: SortByTypes, title: string) => {
+    const ads = this.getState().ads;
+    if (value === ads.sortBy) {
+      return;
+    }
+    this.dispatch(setSortBy({ value, title }));
     this.handleSearch();
   };
 }

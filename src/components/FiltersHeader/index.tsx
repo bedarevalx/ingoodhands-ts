@@ -8,8 +8,15 @@ import { useAppSelector } from '../../hooks/useRedux';
 import CategoryItem from '../CategoryItem';
 import { AdsController } from '../../features/AdvertList/controllers/ads.controller';
 import { useDispatch } from 'react-redux';
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-
+import {
+  IconButton,
+  Menu,
+  MenuItem,
+  ToggleButton,
+  ToggleButtonGroup,
+} from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import SortIcon from '@mui/icons-material/Sort';
 interface IFiltersHeaderProps {
   classNames?: string[];
 }
@@ -20,21 +27,33 @@ const FiltersHeader = (props: IFiltersHeaderProps) => {
   const ads = useAppSelector((state) => state.ads);
   const controller = new AdsController(dispatch);
   const [isTitleVisible, setIsTitleVisible] = useState(true);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
   const { scrollDirection, scrollPosition, isScrollPositive } =
     useScrollDirection();
 
+  const handleMenuOpen = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+  const onDateParamClick = () => {
+    controller.handleSortByChange('date', 'дате публикации');
+    handleMenuClose();
+  };
+
+  const onViewCountParamClick = () => {
+    controller.handleSortByChange('view_count', 'просмотрам');
+    handleMenuClose();
+  };
   useEffect(() => {
     (async () => {
-      if (scrollPosition <= 0 && isScrollPositive) {
+      if (scrollPosition <= 0) {
         setIsTitleVisible(true);
         return;
       } else {
         setIsTitleVisible(false);
-        // await new Promise<void>((res) => {
-        //   setTimeout(() => {
-        //     res();
-        //   }, 1000);
-        // });
         return;
       }
     })();
@@ -109,8 +128,32 @@ const FiltersHeader = (props: IFiltersHeaderProps) => {
         </Button>
       </div>
       <div className='filters-header__sorting'>
-        <p>Сортировать по дате публикации</p>
+        <span>Сортировать по</span>
+        <span
+          className='filters-header__sorting-value'
+          onClick={handleMenuOpen}>
+          {ads.sortByTitle}
+          <ArrowDropDownIcon className='filters-header__dropdown-icon' />
+        </span>
+        <IconButton
+          className='filters-header__sort-btn'
+          onClick={controller.handleChangeSortType}>
+          <SortIcon
+            className={`filters-header__sort-icon ${
+              ads.sortType === 'asc' ? 'rotated' : ''
+            }`}
+          />
+        </IconButton>
       </div>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleMenuClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
+        <MenuItem onClick={onDateParamClick}>дате публикации</MenuItem>
+        <MenuItem onClick={onViewCountParamClick}>просмотрам</MenuItem>
+      </Menu>
     </div>
   );
 };
