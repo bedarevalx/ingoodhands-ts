@@ -48,17 +48,6 @@ const FiltersHeader = (props: IFiltersHeaderProps) => {
     controller.handleSortByChange('view_count', 'просмотрам');
     handleMenuClose();
   };
-  useEffect(() => {
-    (async () => {
-      if (scrollPosition <= 0) {
-        setIsTitleVisible(true);
-        return;
-      } else {
-        setIsTitleVisible(false);
-        return;
-      }
-    })();
-  }, [scrollPosition]);
 
   return (
     <div
@@ -68,7 +57,7 @@ const FiltersHeader = (props: IFiltersHeaderProps) => {
       )}>
       <div
         className={`filters-header__title-wrapper ${
-          isTitleVisible ? '' : 'hide'
+          scrollPosition <= 0 ? '' : 'hide'
         }`}>
         <h2 className='filters-header__title'>in good hands</h2>
         <h3 className='filters-header__sub-title'>
