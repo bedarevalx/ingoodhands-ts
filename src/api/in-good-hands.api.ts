@@ -123,6 +123,11 @@ export const removeFromFavorite = async (adId: number) => {
   return await axios.delete(`/api/delete_post_from_favorite?${query}`);
 };
 
+export const deletePost = async (adId: number) => {
+  const query = parseQueryParams({ id_post: adId });
+  return await axios.delete(`/api/delete_post?${query}`);
+};
+
 export const createCategory = async (body: ICreateCategoryBody) => {
   return await axios.post('/api/admin/create_category', body);
 };

@@ -23,6 +23,11 @@ export class MyAdsController implements IMyAdsController {
     this.getMyAds();
   };
 
+  handleDeletePost = (id: number) => {
+    this.dispatch(this.myAdsService.deletePost(id));
+    this.getMyAds();
+  };
+
   clearValues = () => {
     this.dispatch(clearState());
   };

@@ -1,4 +1,4 @@
-import { getUserPosts } from '../../../api/in-good-hands.api';
+import { deletePost, getUserPosts } from '../../../api/in-good-hands.api';
 
 import { IUserAd } from '../../../interfaces/profile.interfaces';
 import { AppDispatch, RootState } from '../../../store';
@@ -48,4 +48,15 @@ export class MyAdsService {
       dispatch(fetchMyAdsRejected(error.message));
     }
   };
+
+  deletePost =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await deletePost(id);
+        console.log(response);
+      } catch (error: any) {
+        console.log(error);
+      }
+    };
 }

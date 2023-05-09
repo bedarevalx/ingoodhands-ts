@@ -29,7 +29,7 @@ export const MyAdsList = (props: IMyAdsListProps) => {
   };
 
   const handleDelete = (id: number) => {
-    alert('delete ' + id);
+    myAdsController.handleDeletePost(id);
   };
 
   const isNoAds = !myAds.isLoading && myAds.ads.length === 0 && myAds.page;

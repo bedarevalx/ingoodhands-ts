@@ -45,7 +45,9 @@ const UserAd = (props: IUserAdProps) => {
   const handleCloseMenu = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
-    event.stopPropagation();
+    if (event) {
+      event.stopPropagation();
+    }
     setAnchorEl(null);
   };
 
@@ -57,6 +59,7 @@ const UserAd = (props: IUserAdProps) => {
   const handleDelete = (event: React.MouseEvent<HTMLLIElement>) => {
     event.stopPropagation();
     props.onDelete && props.onDelete(props.id);
+    setAnchorEl(null);
   };
   return (
     <Link
