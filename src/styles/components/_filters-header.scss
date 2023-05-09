@@ -112,26 +112,23 @@
     margin-top: 4px;
   }
   &__city-select.select {
-    max-width: 200px;
-    width: 100%;
     margin-bottom: 0;
     height: 40px;
     & .MuiInputBase-root {
+      max-width: 200px;
+      width: 100%;
       border-radius: 8px 0px 0px 8px;
       border: 0;
-      height: 40px;
       box-sizing: border-box;
     }
     & .MuiSelect-select {
       border-radius: 8px 0px 0px 8px;
       border: 0;
-      height: 40px;
       box-sizing: border-box;
     }
 
     & .MuiOutlinedInput-notchedOutline {
       border: 0;
-      height: 40px;
     }
   }
 
@@ -150,6 +147,22 @@
     @include color-hover(white);
     max-width: 100px;
     width: 100%;
+    @media screen and (max-width: $media-sm) {
+      width: unset;
+    }
+  }
+
+  &__search-btn-title {
+    @media screen and (max-width: $media-sm) {
+      display: none;
+    }
+  }
+  &__search-btn-icon.MuiSvgIcon-root {
+    display: none;
+
+    @media screen and (max-width: $media-sm) {
+      display: block;
+    }
   }
 
   &__sorting {

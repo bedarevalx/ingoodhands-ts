@@ -8,6 +8,7 @@ import { useAppSelector } from '../../hooks/useRedux';
 import CategoryItem from '../CategoryItem';
 import { AdsController } from '../../features/AdvertList/controllers/ads.controller';
 import { useDispatch } from 'react-redux';
+import SearchIcon from '@mui/icons-material/Search';
 import {
   IconButton,
   Menu,
@@ -124,7 +125,8 @@ const FiltersHeader = (props: IFiltersHeaderProps) => {
         <Button
           classNames={['filters-header__search-btn']}
           onClick={controller.handleSearch}>
-          Найти
+          <span className='filters-header__search-btn-title'>Найти</span>
+          <SearchIcon className='filters-header__search-btn-icon' />
         </Button>
       </div>
       <div className='filters-header__sorting'>
