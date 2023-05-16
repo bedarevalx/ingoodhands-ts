@@ -24,6 +24,7 @@ import {
 } from '../slices/edit-ad.slice';
 import { IPickedAddress } from '../../../interfaces/geo.interfaces';
 import { urlsToBase64 } from '../../../helpers/urlsToBase64';
+import { getPostImages } from '../../../api/in-good-hands.api';
 
 export class EditAdController implements IAdsController {
   dispatch: AppDispatch;
@@ -95,14 +96,13 @@ export class EditAdController implements IAdsController {
       this.navigate('/404');
       return;
     }
-    const images = post.imageSet.map((image) => {
-      console.log(image);
-    });
-    await urlsToBase64(post.imageSet);
+    const images = await getPostImages(id);
     this.dispatch(setTitle(post.title));
     this.dispatch(setDescription(post.description));
     this.dispatch(setCategory(String(post.category.id)));
-    this.dispatch(addImages(post.imageSet));
+    this.dispatch(
+      addImages(images.data.map((image) => 'data:image/jpeg;base64,' + image)),
+    );
     const userAddress = user.addresses.filter(
       (address) => address.title === post.address?.title,
     );
