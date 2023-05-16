@@ -31,6 +31,8 @@ const CitiesPage = lazy(() => import('../pages/CitiesPage'));
 const CategoriesPage = lazy(() => import('../pages/CategoriesPage'));
 const AdsSearchPage = lazy(() => import('../pages/AdsSearchPage'));
 const ModerationPage = lazy(() => import('../pages/ModerationPage'));
+const DealsPage = lazy(() => import('../pages/DealsPage'));
+const ReservationsPage = lazy(() => import('../pages/ReservationsPage'));
 
 export const routes = createBrowserRouter([
   {
@@ -68,6 +70,14 @@ export const routes = createBrowserRouter([
           {
             path: ROUTES.FAVORTIES,
             element: <PrivateRoute children={<FavoritesPage />} />,
+          },
+          {
+            path: ROUTES.DEALS,
+            element: <PrivateRoute children={<DealsPage />} />,
+          },
+          {
+            path: ROUTES.RESERVATIONS,
+            element: <PrivateRoute children={<ReservationsPage />} />,
           },
         ],
       },

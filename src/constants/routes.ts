@@ -16,4 +16,6 @@ export const ROUTES = {
   CITIES: 'cities',
   POST: 'post',
   ADS_SEARCH: 'ads-search',
+  DEALS: 'deals',
+  RESERVATIONS: 'reservations',
 };

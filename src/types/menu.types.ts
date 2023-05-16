@@ -2,7 +2,10 @@ export type ProfilePageMenuTypes =
   | 'profile'
   | 'profile/my-ads'
   | 'profile/favorites'
-  | 'profile/reviews';
+  | 'profile/reviews'
+  | 'profile/reservations'
+  | 'profile/deals';
+
 export type AdminMenuTypes =
   | 'admin'
   | 'admin/pending'
