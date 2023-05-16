@@ -27,6 +27,7 @@ import {
   fetchReviewsFulfilled,
   fetchReviewsPending,
   fetchReviewsRejected,
+  setTotalPages,
 } from '../slices/reviews.slice';
 
 export class ProfileService {
@@ -90,7 +91,12 @@ export class ProfileService {
       try {
         dispatch(fetchReviewsPending());
         const user = getState().auth.user;
-        const response = await getReviews(Number(user.id), 1, 5);
+        const reviewsState = getState().reviews;
+        const response = await getReviews(
+          Number(user.id),
+          reviewsState.page,
+          reviewsState.limit,
+        );
         const reviews: IReview[] = response.data.data.map((review) => ({
           id: review.id,
           text: review.text,
@@ -99,6 +105,7 @@ export class ProfileService {
           idReservation: review.id_reservation,
           writenBy: review.user_writer.name,
         }));
+        dispatch(setTotalPages(response.data.total_pages));
         dispatch(fetchReviewsFulfilled(reviews));
       } catch (error: any) {
         console.log(error);

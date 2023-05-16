@@ -7,6 +7,7 @@ interface IReviewsState {
   reviews: IReview[];
   page: number;
   totalPages: number;
+  limit: number;
 }
 
 const initialState: IReviewsState = {
@@ -15,6 +16,7 @@ const initialState: IReviewsState = {
   reviews: [],
   page: 1,
   totalPages: 0,
+  limit: 6,
 };
 
 export const reviewsSlice = createSlice({

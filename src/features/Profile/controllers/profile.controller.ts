@@ -16,6 +16,7 @@ import {
   setPhoneInput,
   startEditing,
 } from '../slices/profile.slice';
+import { setPage } from '../slices/reviews.slice';
 
 export class ProfileController implements IProfileController {
   dispatch: AppDispatch;
@@ -78,5 +79,12 @@ export class ProfileController implements IProfileController {
   getMyReviews = () => {
     this.dispatch(this.profileService.getMyReviews());
   };
-  handleReviewsPageChange = () => {};
+  handleReviewsPageChange = (_: any, page: number) => {
+    const state = this.getState().reviews;
+    if (state.page === page) {
+      return;
+    }
+    this.dispatch(setPage(page));
+    this.getMyReviews();
+  };
 }

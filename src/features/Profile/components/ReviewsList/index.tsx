@@ -38,7 +38,12 @@ export const ReviewsList = (props: IReviewsListProps) => {
           />
         ))}
 
-      <Pagination className='reviews-list__pagination' />
+      <Pagination
+        className='reviews-list__pagination'
+        count={reviews.totalPages}
+        page={reviews.page}
+        onChange={controller.handleReviewsPageChange}
+      />
     </div>
   );
 };
