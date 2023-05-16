@@ -219,3 +219,7 @@ export const getPostImages = async (id: string) => {
   const query = parseQueryParams({ id_post: id });
   return await axios.get<string[]>(`/api/get_post_photos?${query}`);
 };
+
+export const sendReservation = async (id: string, days: number) => {
+  return await axios.post(`/api/send_bid`, { id_post: id, days });
+};

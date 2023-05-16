@@ -181,7 +181,7 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
         </div>
         <div className='profile-info__block-content'>
           <Rating max={5} precision={0.1} value={user.rating} readOnly />
-          <p>Итоговый рейтинг: {user.rating}</p>
+          <p>Ваш рейтинг: {user.rating.toFixed(2)}</p>
         </div>
       </div>
       {profile.isEditing && (

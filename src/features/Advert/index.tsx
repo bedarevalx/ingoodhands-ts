@@ -1,3 +1,4 @@
+export { ReservationModal } from './components/ReservationModal';
 export { Advert } from './components/Advert';
 export { Carousel } from './components/Carousel';
 export { AdvertMap } from './components/AdvertMap';

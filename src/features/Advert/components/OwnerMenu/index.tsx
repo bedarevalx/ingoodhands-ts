@@ -27,6 +27,7 @@ interface IOwnerMenuProps {
   reviews: IReview[];
   reviewsPage: number;
   setReviewsLoading: (isLoading: boolean) => void;
+  handleOpenReservation: () => void;
   isHaveMoreReviews: boolean;
 }
 
@@ -103,7 +104,9 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
               <p>{props.phoneNumber}</p>
             </a>
           </div>
-          <Button classNames={['owner-menu__reserve']}>
+          <Button
+            classNames={['owner-menu__reserve']}
+            onClick={props.handleOpenReservation}>
             <CalendarMonthIcon />
             Забронировать
           </Button>

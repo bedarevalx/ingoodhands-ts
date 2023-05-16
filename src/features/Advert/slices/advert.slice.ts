@@ -36,6 +36,8 @@ interface IAdvertState {
   reviewsPage: number;
   reviewsLimit: number;
   isLastReviewsPage: boolean;
+  isReservationLoading: boolean;
+  isReservationModalOpen: boolean;
 }
 
 const initialState: IAdvertState = {
@@ -59,6 +61,8 @@ const initialState: IAdvertState = {
   reviewsPage: 1,
   reviewsLimit: 5,
   isLastReviewsPage: false,
+  isReservationLoading: false,
+  isReservationModalOpen: false,
 };
 
 export const advertSlice = createSlice({
@@ -132,6 +136,12 @@ export const advertSlice = createSlice({
     setReviewsPage: (state, action: PayloadAction<number>) => {
       state.reviewsPage = action.payload;
     },
+    setIsReservationLoading: (state, action: PayloadAction<boolean>) => {
+      state.isReservationLoading = action.payload;
+    },
+    setIsReservationModalOpen: (state, action: PayloadAction<boolean>) => {
+      state.isReservationModalOpen = action.payload;
+    },
 
     clearState: (state) => {
       state.isLoading = true;
@@ -171,5 +181,7 @@ export const {
   setReviewsLoading,
   setIsLastReviewsPage,
   setReviewsPage,
+  setIsReservationLoading,
+  setIsReservationModalOpen,
 } = advertSlice.actions;
 export const reducer = advertSlice.reducer;

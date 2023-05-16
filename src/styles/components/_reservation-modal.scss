@@ -1,0 +1,72 @@
+.reservation-modal {
+  position: relative;
+  & .modal__container {
+    padding: 24px 38px;
+    border-radius: 12px;
+    // height: 600px;
+  }
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  &__close-btn.MuiButtonBase-root {
+    position: absolute;
+    top: 14px;
+    right: 4px;
+  }
+
+  &__spinner-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__period-selector.MuiToggleButtonGroup-root {
+    gap: 12px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__period-btn.MuiButtonBase-root.MuiToggleButton-root {
+    padding: 4px 12px;
+    text-transform: none;
+    color: black;
+    border-radius: 6px !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    transition: $default-transition;
+  }
+
+  &__period-btn.MuiButtonBase-root.MuiToggleButton-root.Mui-selected {
+    border: 1px solid $color-primary !important;
+    background: $color-primary;
+    color: white;
+  }
+
+  &__period-title {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &__helper {
+    opacity: 0.5;
+    line-height: 20px;
+    font-size: 15px;
+  }
+
+  &__reserve-wrapper {
+    margin-top: 24px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__reserve.MuiButtonBase-root {
+    color: white;
+    background: $color-primary;
+    @include color-hover($color-primary);
+    margin: 0 auto;
+    width: 200px;
+  }
+}

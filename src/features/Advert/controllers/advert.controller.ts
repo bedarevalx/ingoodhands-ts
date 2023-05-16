@@ -6,6 +6,7 @@ import {
   fetchPostFulfilled,
   fetchPostPending,
   fetchPostRejected,
+  setIsReservationModalOpen,
   setReviewsLoading,
 } from '../slices/advert.slice';
 
@@ -43,9 +44,16 @@ export class AdvertController implements IAdvertController {
   };
 
   setReviewsLoading = async (isLoading: boolean) => {
-    console.log(isLoading);
-
     this.dispatch(setReviewsLoading(isLoading));
+  };
+
+  reserveAdvert = async (days: number) => {
+    await this.dispatch(this.advertService.reserveAdvert(days));
+    this.setIsReservationModalOpen(false);
+  };
+
+  setIsReservationModalOpen = (open: boolean) => {
+    this.dispatch(setIsReservationModalOpen(open));
   };
 
   clearState = () => {

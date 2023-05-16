@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AdvertController } from '../../controllers/advert.controller';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AdvertMap, AdvertPictures, Carousel, OwnerMenu } from '../..';
+import {
+  AdvertMap,
+  AdvertPictures,
+  Carousel,
+  OwnerMenu,
+  ReservationModal,
+} from '../..';
 import FullscreenSpinner from '../../../../components/FullscreenSpinner';
 import { SimilarPosts } from '../SimilarAdverts';
 import { IconButton } from '@mui/material';
@@ -17,9 +23,16 @@ export const Advert = () => {
   const advert = useAppSelector((state) => state.advert);
   const { user } = useAppSelector((state) => state.auth);
   const favorites = useAppSelector((state) => state.favorites);
-
   const isOwner = String(advert.user?.id) === String(user.id);
   const isFavorite = favorites.favoritesId.includes(Number(advert.id));
+
+  const handleOpenReservationModal = () => {
+    controller.setIsReservationModalOpen(true);
+  };
+
+  const handleCloseResevationModal = () => {
+    controller.setIsReservationModalOpen(false);
+  };
 
   useEffect(() => {
     (async () => {
@@ -88,6 +101,7 @@ export const Advert = () => {
               isHaveMoreReviews={advert.isLastReviewsPage}
               reviewsPage={advert.reviewsPage}
               isReviewsLoading={advert.isReviewsLoading}
+              handleOpenReservation={handleOpenReservationModal}
             />
           </div>
           <AdvertMap
@@ -97,6 +111,12 @@ export const Advert = () => {
             longitude={advert.address?.longitude}
           />
           <SimilarPosts similarPosts={advert.similarPosts} />
+          <ReservationModal
+            isOpen={advert.isReservationModalOpen}
+            handleReserve={controller.reserveAdvert}
+            isLoading={advert.isReservationLoading}
+            handleClose={handleCloseResevationModal}
+          />
         </>
       )}
     </div>

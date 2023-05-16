@@ -3,6 +3,7 @@ import {
   getPost,
   getReviews,
   getSimilarPosts,
+  sendReservation,
 } from '../../../api/in-good-hands.api';
 import {
   IAdPreview,
@@ -19,6 +20,7 @@ import {
   fetchSimilarPostsPending,
   fetchSimilarPostsRejected,
   setIsLastReviewsPage,
+  setIsReservationLoading,
   setReviews,
   setReviewsLoading,
   setReviewsPage,
@@ -142,6 +144,21 @@ export class AdvertService {
         dispatch(setReviewsLoading(false));
       } catch (error) {
         dispatch(setReviewsLoading(false));
+        console.log(error);
+      }
+    };
+
+  reserveAdvert =
+    (days: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        dispatch(setIsReservationLoading(true));
+        const state = getState().advert;
+        const response = await sendReservation(String(state.id), days);
+        console.log(response);
+
+        dispatch(setIsReservationLoading(false));
+      } catch (error) {
         console.log(error);
       }
     };
