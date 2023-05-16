@@ -9,6 +9,7 @@ interface IMyAdsState {
   page: number;
   totalPages: number;
   favoritesId: number[];
+  limit: number;
 }
 
 const initialState: IMyAdsState = {
@@ -17,6 +18,7 @@ const initialState: IMyAdsState = {
   ads: [],
   page: 1,
   totalPages: 0,
+  limit: 6,
   favoritesId: [],
 };
 

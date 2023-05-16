@@ -7,6 +7,7 @@ interface IMyAdsState {
   ads: IUserAd[];
   page: number;
   totalPages: number;
+  limit: number;
 }
 
 const initialState: IMyAdsState = {
@@ -15,6 +16,7 @@ const initialState: IMyAdsState = {
   ads: [],
   page: 1,
   totalPages: 0,
+  limit: 6,
 };
 
 export const myAdsSlice = createSlice({

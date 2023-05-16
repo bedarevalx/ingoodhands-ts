@@ -57,7 +57,7 @@ export class FavoritesService {
       try {
         const favorites = getState().favorites;
         dispatch(fetchFavoritesPending());
-        const response = await getFavorites(favorites.page);
+        const response = await getFavorites(favorites.page, favorites.limit);
 
         const userAds: IUserAd[] = response.data.data.map((ad) => {
           return {

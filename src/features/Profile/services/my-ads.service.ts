@@ -19,7 +19,7 @@ export class MyAdsService {
     try {
       const myAds = getState().myAds;
       dispatch(fetchMyAdsPending());
-      const response = await getUserPosts(myAds.page);
+      const response = await getUserPosts(myAds.page, myAds.limit);
       const userAds: IUserAd[] = response.data.data.map((ad) => ({
         title: ad.title,
         address: ad.address.title,

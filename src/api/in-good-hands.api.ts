@@ -101,13 +101,13 @@ export const editProfile = async (body: IEditProfileBody) => {
   return await axios.patch<IGetProfileResponse>('/api/change_user_info', body);
 };
 
-export const getUserPosts = async (page: number) => {
-  const query = parseQueryParams({ page });
+export const getUserPosts = async (page: number, limit: number) => {
+  const query = parseQueryParams({ page, limit });
   return await axios.get<IGetUserPostsResponse>(`/api/my_posts?${query}`);
 };
 
-export const getFavorites = async (page: number) => {
-  const query = parseQueryParams({ page });
+export const getFavorites = async (page: number, limit: number) => {
+  const query = parseQueryParams({ page, limit });
   return await axios.get<IListResponse<IUserPostResponse>>(
     `/api/all_favorite_posts?${query}`,
   );
