@@ -5,17 +5,30 @@ import CloseIcon from '@mui/icons-material/Close';
 import { ReviewItem } from '../..';
 import { IReview } from '../../../../interfaces/ads.interfaces';
 import Spinner from '../../../../UI/Spinner';
+import { useInfiniteScroll } from '../../../../hooks/useInfiniteScroll';
 
 interface IReviewsModalProps {
   classNames?: string[];
   children?: JSX.Element | JSX.Element[] | any;
   handleClose?: () => void;
+  setIsLoading: (isLoading: boolean) => void;
+  fetchReviews: () => void;
   open?: boolean;
   reviews: IReview[];
+  page: number;
+  isLastPage: boolean;
   isReviewsLoading: boolean;
 }
 
 export const ReviewsModal = (props: IReviewsModalProps) => {
+  const { loadMoreCallback } = useInfiniteScroll(
+    props.fetchReviews,
+    props.isReviewsLoading,
+    props.setIsLoading,
+    props.isLastPage,
+    props.reviews,
+    props.page,
+  );
   return (
     <Modal
       open={props.open}
@@ -28,12 +41,6 @@ export const ReviewsModal = (props: IReviewsModalProps) => {
         <CloseIcon className='reviews-modal__close-icon' />
       </IconButton>
       <div className='reviews-modal__reviews-list'>
-        {props.isReviewsLoading && (
-          <div className='reviews-modal__spinner-wrapper'>
-            <Spinner />
-          </div>
-        )}
-
         {!props.isReviewsLoading && props.reviews.length === 0 && (
           <h3 className=''>Отзывов нет</h3>
         )}
@@ -46,6 +53,13 @@ export const ReviewsModal = (props: IReviewsModalProps) => {
             score={review.score}
           />
         ))}
+        {!props.isLastPage && (
+          <div
+            ref={loadMoreCallback}
+            className='reviews-modal__spinner-wrapper'>
+            <Spinner />
+          </div>
+        )}
       </div>
     </Modal>
   );

@@ -25,6 +25,9 @@ interface IOwnerMenuProps {
   isOwner: boolean;
   isReviewsLoading: boolean;
   reviews: IReview[];
+  reviewsPage: number;
+  setReviewsLoading: (isLoading: boolean) => void;
+  isHaveMoreReviews: boolean;
 }
 
 export const OwnerMenu = (props: IOwnerMenuProps) => {
@@ -42,11 +45,6 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
 
   const handleReviewsOpen = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    console.log(props.reviews.length, props.user?.rating);
-
-    if (props.reviews.length === 0 && props.user?.rating !== 0) {
-      props.getReviews();
-    }
     setIsReviewsOpened(true);
   };
 
@@ -124,6 +122,10 @@ export const OwnerMenu = (props: IOwnerMenuProps) => {
       <ReviewsModal
         reviews={props.reviews}
         open={isReviewsOpened}
+        fetchReviews={props.getReviews}
+        page={props.reviewsPage}
+        isLastPage={props.isHaveMoreReviews}
+        setIsLoading={props.setReviewsLoading}
         handleClose={handleReviewsClose}
         isReviewsLoading={props.isReviewsLoading}
       />

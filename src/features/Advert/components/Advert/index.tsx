@@ -84,6 +84,9 @@ export const Advert = () => {
               isOwner={isOwner}
               reviews={advert.reviews}
               getReviews={controller.getReviews}
+              setReviewsLoading={controller.setReviewsLoading}
+              isHaveMoreReviews={advert.isLastReviewsPage}
+              reviewsPage={advert.reviewsPage}
               isReviewsLoading={advert.isReviewsLoading}
             />
           </div>

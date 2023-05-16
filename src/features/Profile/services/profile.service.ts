@@ -90,8 +90,8 @@ export class ProfileService {
       try {
         dispatch(fetchReviewsPending());
         const user = getState().auth.user;
-        const response = await getReviews(Number(user.id));
-        const reviews: IReview[] = response.data.map((review) => ({
+        const response = await getReviews(Number(user.id), 1, 5);
+        const reviews: IReview[] = response.data.data.map((review) => ({
           id: review.id,
           text: review.text,
           score: review.score,

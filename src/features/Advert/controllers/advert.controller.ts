@@ -6,6 +6,7 @@ import {
   fetchPostFulfilled,
   fetchPostPending,
   fetchPostRejected,
+  setReviewsLoading,
 } from '../slices/advert.slice';
 
 export class AdvertController implements IAdvertController {
@@ -39,6 +40,12 @@ export class AdvertController implements IAdvertController {
 
   getReviews = async () => {
     this.dispatch(this.advertService.getReviews());
+  };
+
+  setReviewsLoading = async (isLoading: boolean) => {
+    console.log(isLoading);
+
+    this.dispatch(setReviewsLoading(isLoading));
   };
 
   clearState = () => {

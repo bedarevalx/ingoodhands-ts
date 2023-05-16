@@ -194,9 +194,11 @@ export const getFavoritesId = async () => {
   return await axios.get<number[]>(`/api/all_favorite_posts_id`);
 };
 
-export const getReviews = async (id: number) => {
-  const query = parseQueryParams({ id_user_owner: id });
-  return await axios.get<IReviewResponse[]>(`/api/get_user_reviews?${query}`);
+export const getReviews = async (id: number, page: number, limit: number) => {
+  const query = parseQueryParams({ id_user_owner: id, page, limit });
+  return await axios.get<IListResponse<IReviewResponse>>(
+    `/api/get_user_reviews?${query}`,
+  );
 };
 
 export const getPendingAds = async (limit: number, page: number) => {

@@ -33,6 +33,9 @@ interface IAdvertState {
   category: ICategory | null;
   phoneNumber?: string;
   reviews: IReview[];
+  reviewsPage: number;
+  reviewsLimit: number;
+  isLastReviewsPage: boolean;
 }
 
 const initialState: IAdvertState = {
@@ -53,6 +56,9 @@ const initialState: IAdvertState = {
   category: null,
   city: null,
   reviews: [],
+  reviewsPage: 1,
+  reviewsLimit: 5,
+  isLastReviewsPage: false,
 };
 
 export const advertSlice = createSlice({
@@ -118,7 +124,13 @@ export const advertSlice = createSlice({
       state.isReviewsLoading = action.payload;
     },
     setReviews: (state, action: PayloadAction<IReview[]>) => {
-      state.reviews = action.payload;
+      state.reviews = [...state.reviews, ...action.payload];
+    },
+    setIsLastReviewsPage: (state, action: PayloadAction<boolean>) => {
+      state.isLastReviewsPage = action.payload;
+    },
+    setReviewsPage: (state, action: PayloadAction<number>) => {
+      state.reviewsPage = action.payload;
     },
 
     clearState: (state) => {
@@ -136,6 +148,9 @@ export const advertSlice = createSlice({
       state.category = null;
       state.city = null;
       state.phoneNumber = undefined;
+      state.reviews = [];
+      state.isLastReviewsPage = true;
+      state.reviewsPage = 1;
     },
   },
 });
@@ -154,5 +169,7 @@ export const {
   setPost,
   setReviews,
   setReviewsLoading,
+  setIsLastReviewsPage,
+  setReviewsPage,
 } = advertSlice.actions;
 export const reducer = advertSlice.reducer;

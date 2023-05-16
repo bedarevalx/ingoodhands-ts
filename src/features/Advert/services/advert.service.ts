@@ -18,8 +18,10 @@ import {
   fetchSimilarPostsFulFilled,
   fetchSimilarPostsPending,
   fetchSimilarPostsRejected,
+  setIsLastReviewsPage,
   setReviews,
   setReviewsLoading,
+  setReviewsPage,
 } from '../slices/advert.slice';
 import { parseDate } from '../../../helpers/parseDate';
 
@@ -113,8 +115,21 @@ export class AdvertService {
           return;
         }
         dispatch(setReviewsLoading(true));
-        const response = await getReviews(state.user?.id);
-        const reviews: IReview[] = response.data.map((review) => ({
+        const response = await getReviews(
+          state.user?.id,
+          state.reviewsPage,
+          state.reviewsLimit,
+        );
+        console.log(response);
+
+        if (response.data.page === response.data.total_pages) {
+          dispatch(setIsLastReviewsPage(true));
+        } else {
+          dispatch(setIsLastReviewsPage(false));
+          dispatch(setReviewsPage(state.reviewsPage + 1));
+        }
+
+        const reviews: IReview[] = response.data.data.map((review) => ({
           id: review.id,
           text: review.text,
           score: review.score,
@@ -122,6 +137,7 @@ export class AdvertService {
           idReservation: review.id_reservation,
           writenBy: review.user_writer.name,
         }));
+
         dispatch(setReviews(reviews));
         dispatch(setReviewsLoading(false));
       } catch (error) {
