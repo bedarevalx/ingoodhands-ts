@@ -7,3 +7,9 @@ export type AdReservationStatusTypes =
   | 'confirm_sent'
   | 'order'
   | 'overdue';
+export type ReservationSearchParamTypes = 'outcoming' | 'incoming';
+export type DealsSearchParamTypes =
+  | 'overdue'
+  | 'order'
+  | 'confirm_sent'
+  | 'completed';

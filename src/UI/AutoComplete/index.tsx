@@ -17,7 +17,6 @@ import MuiAutoComplete, {
 } from '@mui/material/Autocomplete';
 import { IAddress } from '../../interfaces/general.interfaces';
 import Input from '../Input';
-import { log } from 'console';
 
 interface IAutoCompleteProps {
   classNames?: string[];

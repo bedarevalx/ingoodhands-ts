@@ -2,6 +2,7 @@ import React from 'react';
 import HeaderLayout from '../../layouts/HeaderLayout';
 import SideMenu from '../../components/SideMenu';
 import { ProfileMenuMocks } from '../../mocks/profile-menu.mocks';
+import { ReservationsList } from '../../features/Profile';
 
 const ReservationsPage = () => {
   return (
@@ -14,6 +15,7 @@ const ReservationsPage = () => {
           classNames={['reservations-page__side-menu']}
           menuItems={ProfileMenuMocks}
         />
+        <ReservationsList classNames={['reservations-page__list']} />
       </div>
     </HeaderLayout>
   );

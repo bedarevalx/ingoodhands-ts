@@ -2,25 +2,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from '../axios/in-good-hands.axios';
 import { ICategory, ICity } from '../interfaces/general.interfaces';
 
-// export const fetchUserProfile = createAsyncThunk<
-//   string,
-//   { rejectValue: string }
-// >('garantee/createPlacecount', async function (_, { rejectWithValue }) {
-//   try {
-//     const response = await axios.post('/api/placecount');
-//     if (response.status !== 201) {
-//       alert('Something went wrong!');
-//       return rejectWithValue('Server error!');
-//     }
-//     const data = response.data;
-//     alert('Success!');
-
-//     return data;
-//   } catch (error) {
-//     alert('server error!!');
-//     return rejectWithValue('Server error!');
-//   }
-// });
 interface IErrors {
   auth: string;
 }
@@ -30,7 +11,6 @@ interface IAuthState {
   categories: ICategory[];
   cities: ICity[];
 }
-//TODO: Сделать типизированными категории
 const initialState: IAuthState = {
   isAppLoading: true,
   categories: [],

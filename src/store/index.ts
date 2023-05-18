@@ -9,6 +9,8 @@ import {
   profileReducer,
   favoritesReducer,
   reviewsReducer,
+  reservationsReducer,
+  dealsReducer,
 } from '../features/Profile';
 import {
   categoriesReducer,
@@ -39,6 +41,8 @@ export const store = configureStore({
     adminAds: adminAdsReducer,
     moderation: moderationReducer,
     reviews: reviewsReducer,
+    reservations: reservationsReducer,
+    deals: dealsReducer,
   },
 });
 

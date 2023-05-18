@@ -19,6 +19,10 @@ export class MyAdsController implements IMyAdsController {
   };
 
   handlePageChange = (_: any, page: number) => {
+    const state = this.getState().myAds;
+    if (state.page === page) {
+      return;
+    }
     this.dispatch(setPage(page));
     this.getMyAds();
   };

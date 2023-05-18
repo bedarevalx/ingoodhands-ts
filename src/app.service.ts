@@ -52,37 +52,4 @@ export class AppService {
         console.log(e);
       }
     };
-
-  //   auth: Auth = getAuth(firebaseApp);
-  //   signIn = async (email: string, password: string): Promise<UserCredential> => {
-  //     return signInWithEmailAndPassword(this.auth, email, password);
-  //   };
-  //   signOut = async (): Promise<void> => signOut(this.auth);
-  //   listenAuthStateChange =
-  //     (fetchUserProfileCallback: () => Promise<void>) =>
-  //     async (dispatch: AppDispatch) => {
-  //       dispatch(authenticatePending());
-  //       try {
-  //         const unsubscribe = onAuthStateChanged(
-  //           this.auth,
-  //           async (user: User | null) => {
-  //             if (user) {
-  //               const accessToken = await user.getIdToken();
-  //               await localStorage.setItem('accessToken', accessToken);
-  //               localStorage.refreshToken = user.refreshToken;
-  //               dispatch(setUserUid(user.uid));
-  //               await fetchUserProfileCallback();
-  //               dispatch(authenticateSuccess(accessToken));
-  //             } else {
-  //               await localStorage.removeItem('accessToken');
-  //               dispatch(authenticateError('User is not exist'));
-  //             }
-  //           },
-  //         );
-  //       } catch (e: any) {
-  //         await localStorage.removeItem('accessToken');
-  //         dispatch(authenticateError(e.message));
-  //         console.error(e);
-  //       }
-  //     };
 }

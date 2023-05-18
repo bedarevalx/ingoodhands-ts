@@ -1,5 +1,7 @@
+import { DealsSearchParamTypes } from '../types/ads.types';
 import { AdsStatusTypes, UserPrivilegeTypes } from '../types/general.types';
 import { IAddress } from './general.interfaces';
+import { IUserAd } from './profile.interfaces';
 
 export interface ICityResponse {
   id: number;
@@ -196,4 +198,26 @@ export interface IReviewResponse {
 export interface IStartModerationResponse {
   checking_id: number;
   post: IAdvertResponse;
+}
+
+export interface IGetReservationResponse {
+  id: number;
+  created_at: string;
+  days: number;
+  user: IOwnerAdResponse;
+  post: IAdvertResponse;
+}
+
+export interface IGetDealsResponse {
+  id: number;
+  created_at: string;
+  expired_at: string;
+  days: number;
+  user: IOwnerAdResponse;
+  post: IAdvertResponse;
+  status: DealsSearchParamTypes;
+  contacts?: {
+    phone: string;
+    address: { latitude: string; longitude: string; title: string };
+  };
 }

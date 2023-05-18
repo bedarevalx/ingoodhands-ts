@@ -58,6 +58,10 @@
 @import './components/filters-header';
 @import './components/category-item';
 @import './components/reservation-modal';
+@import './components/reservations-list';
+@import './components/deals-list';
+@import './components/reservation-item';
+@import './components/deals-list';
 
 //pages
 @import './pages/profile-page';
@@ -70,6 +74,8 @@
 @import './pages/users-page';
 @import './pages/advert-page';
 @import './pages/ads-search-page';
+@import './pages/reservations-page';
+@import './pages/deals-page';
 
 //layouts
 @import './layouts/header-layout';

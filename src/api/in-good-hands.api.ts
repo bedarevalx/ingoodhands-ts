@@ -18,8 +18,10 @@ import {
   IContactResponse,
   IGetAdsResponse,
   IGetAdvertResponse,
+  IGetDealsResponse,
   IGetFavoritesResponse,
   IGetProfileResponse,
+  IGetReservationResponse,
   IGetUserPostsResponse,
   IReviewResponse,
   ISearchUserResponse,
@@ -36,6 +38,10 @@ import {
   IEditCityBody,
   IUserSearchParams,
 } from '../interfaces/admin.interfaces';
+import {
+  DealsSearchParamTypes,
+  ReservationSearchParamTypes,
+} from '../types/ads.types';
 
 export const refreshToken = async () => {
   const refreshToken = localStorage['refreshToken'];
@@ -222,4 +228,31 @@ export const getPostImages = async (id: string) => {
 
 export const sendReservation = async (id: string, days: number) => {
   return await axios.post(`/api/send_bid`, { id_post: id, days });
+};
+
+export const getReservations = async (
+  limit: number,
+  page: number,
+  param: ReservationSearchParamTypes,
+) => {
+  const query = parseQueryParams({ limit, page, filter: param });
+  return await axios.get<IListResponse<IGetReservationResponse>>(
+    `/api/get_bids?${query}`,
+  );
+};
+
+export const getDeals = async (
+  limit: number,
+  page: number,
+  param: DealsSearchParamTypes[],
+) => {
+  const query = parseQueryParams({ limit, page });
+  return await axios.get<IListResponse<IGetDealsResponse>>(
+    `/api/get_reservations?${query}`,
+    {
+      params: {
+        statuses: param,
+      },
+    },
+  );
 };
