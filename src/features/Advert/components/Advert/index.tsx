@@ -73,18 +73,19 @@ export const Advert = () => {
               <p className='advert__city'>{advert.city?.title}</p>
               <h3 className='advert__sub-header'>Дата публикации</h3>
               <p className='advert__city'>{advert.createdAt}</p>
-              <RequiredRole>
-                <IconButton
-                  // onClick={handleAddToFavorite}
-                  className='advert__favorite-btn'>
-                  <FavoriteIcon
-                    className={`advert__favorite-icon ${
-                      isFavorite ? 'favorited' : ''
-                    }`}
-                  />
-                </IconButton>
-              </RequiredRole>
-              <IconButton></IconButton>
+              {!isOwner && (
+                <RequiredRole>
+                  <IconButton
+                    // onClick={handleAddToFavorite}
+                    className='advert__favorite-btn'>
+                    <FavoriteIcon
+                      className={`advert__favorite-icon ${
+                        isFavorite ? 'favorited' : ''
+                      }`}
+                    />
+                  </IconButton>
+                </RequiredRole>
+              )}
             </div>
             <OwnerMenu
               adId={advert.id}

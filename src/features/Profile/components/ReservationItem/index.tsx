@@ -124,14 +124,14 @@ export const ReservationItem = (props: IReservationItemProps) => {
 
           {props.variant === 'order' && (
             <>
+              <IconButton className='reservation-item__button'>
+                <Map className='reservation-item__icon' />
+              </IconButton>
               <a href={`tel:${props.phoneNumber}`}>
                 <IconButton className='reservation-item__button'>
                   <LocalPhoneIcon className='reservation-item__icon' />
                 </IconButton>
               </a>
-              <IconButton className='reservation-item__button'>
-                <Map className='reservation-item__icon' />
-              </IconButton>
             </>
           )}
 
