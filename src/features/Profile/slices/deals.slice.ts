@@ -14,6 +14,9 @@ interface IDealsState {
   totalPages: number;
   limit: number;
   param: string;
+  isReviewModalOpened: boolean;
+  isReviewLodaing: boolean;
+  idReservation?: number;
 }
 
 const initialState: IDealsState = {
@@ -21,6 +24,8 @@ const initialState: IDealsState = {
   error: '',
   deals: [],
   param: JSON.stringify(['order', 'confirm_sent']),
+  isReviewModalOpened: false,
+  isReviewLodaing: false,
   page: 1,
   totalPages: 0,
   limit: 4,
@@ -62,6 +67,15 @@ export const dealsSlice = createSlice({
       state.deals = [];
       state.error = '';
     },
+    setReviewModalOpened: (state, action: PayloadAction<boolean>) => {
+      state.isReviewModalOpened = action.payload;
+    },
+    setIsReviewLoading: (state, action: PayloadAction<boolean>) => {
+      state.isReviewLodaing = action.payload;
+    },
+    setIdReservation: (state, action: PayloadAction<number>) => {
+      state.idReservation = action.payload;
+    },
   },
 });
 
@@ -73,5 +87,8 @@ export const {
   setTotalPages,
   setSearchParam,
   clearState,
+  setIdReservation,
+  setIsReviewLoading,
+  setReviewModalOpened,
 } = dealsSlice.actions;
 export const reducer = dealsSlice.reducer;

@@ -1,7 +1,8 @@
 import { AppDispatch, RootState, store } from '../../../store';
 import { IMyAdsController } from '../../../interfaces/profile.interfaces';
 import { MyAdsService } from '../services/my-ads.service';
-import { clearState, setPage } from '../slices/my-ads.slice';
+import { clearState, setPage, setParam } from '../slices/my-ads.slice';
+import { AdsStatusTypes } from '../../../types/general.types';
 
 export class MyAdsController implements IMyAdsController {
   dispatch: AppDispatch;
@@ -30,6 +31,25 @@ export class MyAdsController implements IMyAdsController {
   handleDeletePost = (id: number) => {
     this.dispatch(this.myAdsService.deletePost(id));
     this.getMyAds();
+  };
+
+  handleParamChange = (_: any, param: AdsStatusTypes | '') => {
+    if (param === null) {
+      return;
+    }
+    this.dispatch(setParam(param));
+    this.dispatch(setPage(1));
+    this.getMyAds();
+  };
+
+  handleConfirmDeal = async (id: number) => {
+    console.log(id);
+
+    const response = await this.dispatch(this.myAdsService.confirmDeal(id));
+
+    if (!!response) {
+      this.getMyAds();
+    }
   };
 
   clearValues = () => {

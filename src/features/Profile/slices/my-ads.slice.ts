@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUserAd } from '../../../interfaces/profile.interfaces';
+import { AdsStatusTypes } from '../../../types/general.types';
 
 interface IMyAdsState {
   isLoading: boolean;
@@ -7,12 +8,14 @@ interface IMyAdsState {
   ads: IUserAd[];
   page: number;
   totalPages: number;
+  param: AdsStatusTypes | '';
   limit: number;
 }
 
 const initialState: IMyAdsState = {
   isLoading: true,
   error: '',
+  param: '',
   ads: [],
   page: 1,
   totalPages: 0,
@@ -42,6 +45,9 @@ export const myAdsSlice = createSlice({
     setTotalPages: (state, action: PayloadAction<number>) => {
       state.totalPages = action.payload;
     },
+    setParam: (state, action: PayloadAction<AdsStatusTypes | ''>) => {
+      state.param = action.payload;
+    },
 
     clearState: (state) => {
       state.page = 1;
@@ -59,6 +65,7 @@ export const {
   fetchMyAdsRejected,
   setPage,
   setTotalPages,
+  setParam,
   clearState,
 } = myAdsSlice.actions;
 export const reducer = myAdsSlice.reducer;

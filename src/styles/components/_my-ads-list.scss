@@ -1,6 +1,6 @@
 .my-ads-list {
+  width: 100%;
   &__title {
-    margin-bottom: 18px;
   }
   &__list {
     max-width: 700px;
@@ -10,5 +10,45 @@
     justify-content: center;
   }
   &__pagination.MuiPagination-root {
+  }
+
+  &__filters.MuiToggleButtonGroup-root {
+    display: flex;
+    overflow-x: scroll;
+    align-items: center;
+    gap: 8px;
+    -webkit-scrollbar: 6px;
+    padding: 14px 0;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  &__filter-btn.MuiButtonBase-root {
+    text-transform: none;
+    white-space: nowrap;
+    padding: 0;
+    border: 1px solid black !important;
+    background: white;
+    color: black;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 24px;
+
+    @include color-hover(white);
+    transition: $default-transition;
+  }
+
+  &__filter-btn.MuiButtonBase-root.MuiToggleButton-root.Mui-selected {
+    color: $color-primary;
+    opacity: 1;
+    border: 1px solid $color-primary !important;
+    background-color: $color-primary;
+    color: white;
+    box-shadow: 0 0px 8px white;
+    & .filters-header__category-title {
+      opacity: 1;
+    }
   }
 }

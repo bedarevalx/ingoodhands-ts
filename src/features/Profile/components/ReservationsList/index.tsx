@@ -67,17 +67,19 @@ export const ReservationsList = (props: IReservationsListProps) => {
             id={reservation.id}
             variant={reservations.param}
             days={reservation.days}
+            onConfirmReservation={controller.handleConfirmReservation}
+            onDeclineReservation={controller.handleDeclineReservation}
             address={'г. Барнаул ул. Речная 25'}
             postId={reservation.post.id}
           />
         ))}
-      </div>
-      <div className='reservations-list__pagination-wrapper'>
-        <Pagination
-          count={reservations.totalPages}
-          page={reservations.page}
-          onChange={controller.handlePageChange}
-        />
+        <div className='reservations-list__pagination-wrapper'>
+          <Pagination
+            count={reservations.totalPages}
+            page={reservations.page}
+            onChange={controller.handlePageChange}
+          />
+        </div>
       </div>
     </div>
   );

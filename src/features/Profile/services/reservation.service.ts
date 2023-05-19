@@ -1,4 +1,11 @@
-import { getDeals, getReservations } from '../../../api/in-good-hands.api';
+import {
+  changeDealStatus,
+  confirmReservation,
+  createReview,
+  declineReservation,
+  getDeals,
+  getReservations,
+} from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
 import {
   IDeal,
@@ -10,6 +17,7 @@ import {
   fetchDealsFulfilled,
   fetchDealsPending,
   setTotalPages as setDealsTotalPages,
+  setIsReviewLoading,
 } from '../slices/deals.slice';
 import {
   fetchReservationsFulfilled,
@@ -101,6 +109,7 @@ export class ReservationService {
           },
         },
         expiredAt: parseDate(deal.expired_at),
+        score: deal.review?.score,
         user: {
           createdAt: parseDate(deal.user.created_at),
           id: deal.user.id,
@@ -116,4 +125,58 @@ export class ReservationService {
       console.log(error);
     }
   };
+
+  confirmReservation =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await confirmReservation(id);
+        console.log(response);
+        return response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+  declineReservation =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await declineReservation(id);
+        console.log(response);
+        return response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+  confirmDeal =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await changeDealStatus(id, 'completed');
+        console.log(response);
+        return response.data;
+      } catch (error) {}
+    };
+
+  createReview =
+    (score: number, text: string) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        dispatch(setIsReviewLoading(true));
+        const state = getState().deals;
+        if (!state.idReservation) {
+          throw new Error('Произошла ошибка');
+        }
+        const response = await createReview(state.idReservation, score, text);
+        console.log(response);
+
+        dispatch(setIsReviewLoading(false));
+      } catch (error) {
+        console.log(error);
+      } finally {
+        dispatch(setIsReviewLoading(false));
+      }
+    };
 }

@@ -13,6 +13,8 @@ import {
   clearState as clearDealsState,
   setPage as setDealsPage,
   setSearchParam as setDealsSearchParam,
+  setIdReservation,
+  setReviewModalOpened,
 } from '../slices/deals.slice';
 
 export class ReservationController {
@@ -34,10 +36,31 @@ export class ReservationController {
     this.dispatch(this.reservationService.getDeals());
   };
 
+  handleConfirmReservation = async (id: number) => {
+    const response = await this.dispatch(
+      this.reservationService.confirmReservation(id),
+    );
+    if (!!response) {
+      this.getReservations();
+    }
+  };
+
+  handleDeclineReservation = async (id: number) => {
+    const response = this.dispatch(
+      this.reservationService.declineReservation(id),
+    );
+    if (!!response) {
+      this.getReservations();
+    }
+  };
+
   handleReservationParamsChange = (
     _: any,
     param: ReservationSearchParamTypes,
   ) => {
+    if (!param) {
+      return;
+    }
     this.dispatch(setSearchParam(param));
     this.dispatch(setPage(1));
     this.getReservations();
@@ -62,7 +85,11 @@ export class ReservationController {
   };
 
   handleDealsParamChange = (_: any, param: string) => {
+    if (!param) {
+      return;
+    }
     this.dispatch(setDealsSearchParam(param));
+    this.dispatch(setDealsPage(1));
     this.getDeals();
   };
 
@@ -72,5 +99,29 @@ export class ReservationController {
 
   clearValues = () => {
     this.dispatch(clearState());
+  };
+
+  handleConfirmDeal = async (id: number) => {
+    const response = await this.dispatch(
+      this.reservationService.confirmDeal(id),
+    );
+    if (!!response) {
+      this.getDeals();
+    }
+  };
+
+  onReviewModalOpen = async (id: number) => {
+    this.dispatch(setReviewModalOpened(true));
+    this.dispatch(setIdReservation(id));
+  };
+
+  onReviewModalClose = async () => {
+    this.dispatch(setReviewModalOpened(false));
+  };
+
+  onCreateReview = async (score: number, text: string) => {
+    await this.dispatch(this.reservationService.createReview(score, text));
+    this.dispatch(setReviewModalOpened(false));
+    this.getDeals();
   };
 }

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
-import { Pagination } from '@mui/material';
+import { Pagination, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { MyAdsController } from '../../controllers/my-ads.controller';
 import UserAd from '../UserAd';
 import Spinner from '../../../../UI/Spinner';
 import { useNavigate } from 'react-router-dom';
+import { MyAdsFilters } from '../../../../mocks/my-ads-filters.mocks';
 
 interface IMyAdsListProps {
   classNames?: string[];
@@ -15,12 +16,12 @@ export const MyAdsList = (props: IMyAdsListProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const myAds = useAppSelector((state) => state.myAds);
-  const myAdsController = new MyAdsController(dispatch);
+  const controller = new MyAdsController(dispatch);
   useEffect(() => {
-    myAdsController.getMyAds();
+    controller.getMyAds();
 
     return () => {
-      myAdsController.clearValues();
+      controller.clearValues();
     };
   }, []);
 
@@ -29,7 +30,7 @@ export const MyAdsList = (props: IMyAdsListProps) => {
   };
 
   const handleDelete = (id: number) => {
-    myAdsController.handleDeletePost(id);
+    controller.handleDeletePost(id);
   };
 
   const isNoAds = !myAds.isLoading && myAds.ads.length === 0 && myAds.page;
@@ -37,6 +38,20 @@ export const MyAdsList = (props: IMyAdsListProps) => {
   return (
     <div className={classNamesParser('my-ads-list', props.classNames)}>
       <h3 className='my-ads-list__title'>Мои объявления</h3>
+      <ToggleButtonGroup
+        value={myAds.param}
+        exclusive
+        onChange={controller.handleParamChange}
+        className='my-ads-list__filters'>
+        {MyAdsFilters.map((filter) => (
+          <ToggleButton
+            key={filter.value}
+            className='my-ads-list__filter-btn'
+            value={filter.value}>
+            {filter.title}
+          </ToggleButton>
+        ))}
+      </ToggleButtonGroup>
       <div className='my-ads-list__list'>
         {myAds.isLoading && <Spinner />}
         {isNoAds ? <p>У вас нет созданных объявлений</p> : null}
@@ -55,14 +70,16 @@ export const MyAdsList = (props: IMyAdsListProps) => {
               variant={'my-ads'}
               isFavorited={false}
               onDelete={handleDelete}
+              reservation={ad.reservation}
               onEdit={handleEdit}
+              onConfirmDeal={controller.handleConfirmDeal}
             />
           ))}
         <div className='my-ads-list__pagination-wrapper'>
           <Pagination
             page={myAds.page}
             count={myAds.totalPages}
-            onChange={myAdsController.handlePageChange}
+            onChange={controller.handlePageChange}
             className='my-ads-list__pagination'
           />
         </div>

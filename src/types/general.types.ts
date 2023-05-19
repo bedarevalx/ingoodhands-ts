@@ -12,6 +12,7 @@ export type AdsStatusTypes =
   | 'closed'
   | 'banned'
   | 'pending'
+  | 'reserved'
   | 'rejected';
 
 export type UserPrivilegeTypes = 'moderator' | 'admin';

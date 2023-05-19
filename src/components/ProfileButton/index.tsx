@@ -11,6 +11,8 @@ import { useAppDispatch } from '../../hooks/useRedux';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RequiredRole from '../../hoc/RequiredRole';
 import BuildIcon from '@mui/icons-material/Build';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import { MEDIA } from '../../constants/app';
 
 interface IProfileButtonProps {
@@ -66,6 +68,19 @@ const ProfileButton = (props: IProfileButtonProps) => {
   const handleProfile = () => {
     onMenuClose();
     navigate('/profile', {
+      state: {},
+    });
+  };
+
+  const handleReservations = () => {
+    onMenuClose();
+    navigate('/profile/reservations', {
+      state: {},
+    });
+  };
+  const handleDeals = () => {
+    onMenuClose();
+    navigate('/profile/deals', {
       state: {},
     });
   };
@@ -139,6 +154,18 @@ const ProfileButton = (props: IProfileButtonProps) => {
                   onClick={handleReviews}>
                   <GradeOutlinedIcon className='profile-button__item-icon' />
                   {'Мои отзывы'}
+                </MenuItem>
+                <MenuItem
+                  className='profile-button__menu-item'
+                  onClick={handleReservations}>
+                  <EventAvailableIcon className='profile-button__item-icon' />
+                  {'Бронирования'}
+                </MenuItem>
+                <MenuItem
+                  className='profile-button__menu-item'
+                  onClick={handleDeals}>
+                  <Inventory2OutlinedIcon className='profile-button__item-icon' />
+                  {'Сделки'}
                 </MenuItem>
               </>
             )}

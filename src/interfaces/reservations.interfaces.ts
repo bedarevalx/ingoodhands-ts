@@ -40,5 +40,13 @@ export interface IDeal {
     phone: string;
     address: { latitude: string; longitude: string; title: string };
   };
+  score?: number;
+  user: IReservationUser;
+}
+
+export interface IPostReservation {
+  expiredAt: string;
+  id: number;
+  status: DealsSearchParamTypes;
   user: IReservationUser;
 }

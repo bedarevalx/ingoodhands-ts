@@ -6,6 +6,8 @@ import { ICategory } from '../../../../interfaces/general.interfaces';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { MoreVert } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import CheckIcon from '@mui/icons-material/Check';
+import { IPostReservation } from '../../../../interfaces/reservations.interfaces';
 
 interface IUserAdProps {
   classNames?: string[];
@@ -26,6 +28,8 @@ interface IUserAdProps {
   onEdit?: (id: number) => void;
   onDelete?: (id: number) => void;
   handleFavoriteClick?: (id: number, isFavorited: boolean) => void;
+  onConfirmDeal?: (id: number) => void;
+  reservation?: IPostReservation;
 }
 
 const UserAd = (props: IUserAdProps) => {
@@ -61,9 +65,17 @@ const UserAd = (props: IUserAdProps) => {
     props.onDelete && props.onDelete(props.id);
     setAnchorEl(null);
   };
+
+  const handleConfirmDeal = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    props.onConfirmDeal &&
+      !!props.reservation &&
+      props.onConfirmDeal(props.reservation?.id);
+  };
   return (
     <Link
       to={'/post/' + props.id}
+      target='_blank'
       style={{ textDecoration: 'none', color: 'black' }}>
       <div className='user-ad'>
         <div className='user-ad__image-wrapper'>
@@ -116,11 +128,20 @@ const UserAd = (props: IUserAdProps) => {
               />
             </IconButton>
           ) : null}
-          {props.variant === 'my-ads' ? (
+          {props.variant === 'my-ads' && props.state !== 'reserved' ? (
             <IconButton onClick={handleOpenMenu} className='user-ad__more-btn'>
               <MoreVert></MoreVert>
             </IconButton>
           ) : null}
+
+          {props.state === 'reserved' &&
+            props.reservation?.status === 'order' && (
+              <IconButton
+                onClick={handleConfirmDeal}
+                className='user-ad__reservation-btn'>
+                <CheckIcon className='user-ad__confirm' />
+              </IconButton>
+            )}
           <p className='user-ad__date'>{props.date}</p>
         </div>
         <Menu

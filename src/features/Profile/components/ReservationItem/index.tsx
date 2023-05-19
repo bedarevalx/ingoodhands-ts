@@ -8,7 +8,8 @@ import {
 } from '../../../../types/ads.types';
 import { Link } from 'react-router-dom';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import { Map } from '@mui/icons-material';
+import StarBorderPurple500OutlinedIcon from '@mui/icons-material/StarBorderPurple500Outlined';
+import { Map, Star } from '@mui/icons-material';
 interface IReservationItemProps {
   id: number;
   postId: number;
@@ -21,9 +22,30 @@ interface IReservationItemProps {
   variant: ReservationSearchParamTypes | DealsSearchParamTypes;
   expiredAt?: string;
   address: string;
+  phoneNumber?: string;
+  onCreateReview?: (id: number) => void;
+  onConfirmDeal?: (id: number) => void;
+  onConfirmReservation?: (id: number) => void;
+  onDeclineReservation?: (id: number) => void;
+  score?: number;
   days?: number;
 }
 export const ReservationItem = (props: IReservationItemProps) => {
+  const handleConfirmReservation = () => {
+    props.onConfirmReservation && props.onConfirmReservation(props.id);
+  };
+  const handleDeclineReservation = () => {
+    props.onDeclineReservation && props.onDeclineReservation(props.id);
+  };
+
+  const handleConfirmDeal = () => {
+    props.onConfirmDeal && props.onConfirmDeal(props.id);
+  };
+
+  const handleCreateReview = () => {
+    props.onCreateReview && props.onCreateReview(props.id);
+  };
+
   return (
     <div className='reservation-item'>
       <div className='reservation-item__header'>
@@ -72,10 +94,14 @@ export const ReservationItem = (props: IReservationItemProps) => {
         <div className='reservation-item__buttons'>
           {props.variant === 'incoming' && (
             <>
-              <IconButton className='reservation-item__button'>
+              <IconButton
+                className='reservation-item__button'
+                onClick={handleConfirmReservation}>
                 <CheckIcon className='reservation-item__confirm' />
               </IconButton>
-              <IconButton className='reservation-item__button'>
+              <IconButton
+                className='reservation-item__button'
+                onClick={handleDeclineReservation}>
                 <CloseIcon className='reservation-item__decline' />
               </IconButton>
             </>
@@ -83,25 +109,45 @@ export const ReservationItem = (props: IReservationItemProps) => {
 
           {props.variant === 'confirm_sent' && (
             <>
-              <IconButton className='reservation-item__button'>
-                <CheckIcon className='reservation-item__confirm' />
+              <IconButton
+                className='reservation-item__button'
+                onClick={handleConfirmDeal}>
+                <CheckIcon className='reservation-item__icon' />
               </IconButton>
-              <IconButton className='reservation-item__button'>
-                <LocalPhoneIcon className='reservation-item__confirm' />
-              </IconButton>
+              <a href={`tel:${props.phoneNumber}`}>
+                <IconButton className='reservation-item__button'>
+                  <LocalPhoneIcon className='reservation-item__icon' />
+                </IconButton>
+              </a>
             </>
           )}
 
           {props.variant === 'order' && (
             <>
+              <a href={`tel:${props.phoneNumber}`}>
+                <IconButton className='reservation-item__button'>
+                  <LocalPhoneIcon className='reservation-item__icon' />
+                </IconButton>
+              </a>
               <IconButton className='reservation-item__button'>
-                <CheckIcon className='reservation-item__confirm' />
-              </IconButton>
-              <IconButton className='reservation-item__button'>
-                <Map className='reservation-item__confirm' />
+                <Map className='reservation-item__icon' />
               </IconButton>
             </>
           )}
+
+          {props.variant === 'completed' &&
+            (!!props.score ? (
+              <div className='reservation-item__score-wrapper'>
+                <span className='reservation-item__score'>{props.score}</span>
+                <Star className='reservation-item__score-icon' />
+              </div>
+            ) : (
+              <IconButton
+                className='reservation-item__button'
+                onClick={handleCreateReview}>
+                <StarBorderPurple500OutlinedIcon className='reservation-item__icon' />
+              </IconButton>
+            ))}
         </div>
       </div>
       <p className='reservation-item__date'>{props.date} </p>

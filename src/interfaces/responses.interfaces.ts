@@ -57,6 +57,12 @@ export interface IUserPostResponse {
   like_count: number;
   created_at: string;
   updated_at: string;
+  reservation_data?: {
+    expired_at: string;
+    id: number;
+    status: DealsSearchParamTypes;
+    user: IOwnerAdResponse;
+  };
 }
 
 export interface IUserCity {
@@ -219,5 +225,8 @@ export interface IGetDealsResponse {
   contacts?: {
     phone: string;
     address: { latitude: string; longitude: string; title: string };
+  };
+  review?: {
+    score: number;
   };
 }

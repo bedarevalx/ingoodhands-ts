@@ -26,24 +26,27 @@ export const ReviewsList = (props: IReviewsListProps) => {
     <div className={classNamesParser('reviews-list', props.classNames)}>
       <h3>Мои отзывы</h3>
       {reviews.isLoading && <Spinner />}
-      {isNoReviews && <p>У вас нет ни одного отзыва</p>}
-      {!reviews.isLoading &&
-        reviews.reviews.map((review) => (
-          <ReviewItem
-            key={review.id}
-            writtenBy={review.writenBy}
-            score={review.score}
-            text={review.text}
-            createdAt={review.createdAt}
-          />
-        ))}
+      <div className='reviews-list__list'>
+        {isNoReviews && <p>У вас нет ни одного отзыва</p>}
+        {!reviews.isLoading &&
+          reviews.reviews.map((review) => (
+            <ReviewItem
+              key={review.id}
+              writtenBy={review.writenBy}
+              score={review.score}
+              text={review.text}
+              createdAt={review.createdAt}
+              classNames={['reviews-list__item']}
+            />
+          ))}
 
-      <Pagination
-        className='reviews-list__pagination'
-        count={reviews.totalPages}
-        page={reviews.page}
-        onChange={controller.handleReviewsPageChange}
-      />
+        <Pagination
+          className='reviews-list__pagination'
+          count={reviews.totalPages}
+          page={reviews.page}
+          onChange={controller.handleReviewsPageChange}
+        />
+      </div>
     </div>
   );
 };

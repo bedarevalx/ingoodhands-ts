@@ -88,4 +88,21 @@
     border-radius: 8px;
     padding: 4px;
   }
+
+  &__score-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__score {
+    position: relative;
+    top: 2px;
+    font-weight: 600;
+  }
+
+  &__score-icon.MuiSvgIcon-root {
+    fill: orange;
+    width: 20px;
+    height: 20px;
+  }
 }

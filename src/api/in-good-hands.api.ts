@@ -42,6 +42,7 @@ import {
   DealsSearchParamTypes,
   ReservationSearchParamTypes,
 } from '../types/ads.types';
+import { AdsStatusTypes } from '../types/general.types';
 
 export const refreshToken = async () => {
   const refreshToken = localStorage['refreshToken'];
@@ -107,8 +108,12 @@ export const editProfile = async (body: IEditProfileBody) => {
   return await axios.patch<IGetProfileResponse>('/api/change_user_info', body);
 };
 
-export const getUserPosts = async (page: number, limit: number) => {
-  const query = parseQueryParams({ page, limit });
+export const getUserPosts = async (
+  page: number,
+  limit: number,
+  param?: AdsStatusTypes,
+) => {
+  const query = parseQueryParams({ page, limit, status: param });
   return await axios.get<IGetUserPostsResponse>(`/api/my_posts?${query}`);
 };
 
@@ -241,6 +246,15 @@ export const getReservations = async (
   );
 };
 
+export const confirmReservation = async (id: number) => {
+  return await axios.post(`/api/confirm_bid`, { id_bid: id });
+};
+
+export const declineReservation = async (id: number) => {
+  const query = parseQueryParams({ id_bid: id });
+  return await axios.delete(`/api/delete_bid?${query}`);
+};
+
 export const getDeals = async (
   limit: number,
   page: number,
@@ -255,4 +269,19 @@ export const getDeals = async (
       },
     },
   );
+};
+
+export const changeDealStatus = async (
+  id: number,
+  status: DealsSearchParamTypes,
+) => {
+  return await axios.patch(`/api/change_reservation_status`, {
+    id_reservation: id,
+    status,
+  });
+};
+
+export const createReview = async (id: number, score: number, text: string) => {
+  const body = { id_reservation: id, score, text };
+  return await axios.post('/api/create_review', body);
 };

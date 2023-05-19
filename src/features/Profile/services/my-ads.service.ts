@@ -1,4 +1,8 @@
-import { deletePost, getUserPosts } from '../../../api/in-good-hands.api';
+import {
+  changeDealStatus,
+  deletePost,
+  getUserPosts,
+} from '../../../api/in-good-hands.api';
 
 import { IUserAd } from '../../../interfaces/profile.interfaces';
 import { AppDispatch, RootState } from '../../../store';
@@ -19,7 +23,11 @@ export class MyAdsService {
     try {
       const myAds = getState().myAds;
       dispatch(fetchMyAdsPending());
-      const response = await getUserPosts(myAds.page, myAds.limit);
+      const response = await getUserPosts(
+        myAds.page,
+        myAds.limit,
+        !!myAds.param ? myAds.param : undefined,
+      );
       const userAds: IUserAd[] = response.data.data.map((ad) => ({
         title: ad.title,
         address: ad.address.title,
@@ -39,6 +47,17 @@ export class MyAdsService {
         status: ad.status,
         description: ad.description,
         isFavorited: false,
+        reservation: ad.reservation_data && {
+          expiredAt: ad.reservation_data?.expired_at,
+          id: ad.reservation_data?.id,
+          status: ad.reservation_data?.status,
+          user: {
+            createdAt: ad.reservation_data?.user.created_at,
+            id: ad.reservation_data?.user.id,
+            name: ad.reservation_data?.user.name,
+            rating: ad.reservation_data?.user.rating,
+          },
+        },
       }));
 
       dispatch(setTotalPages(response.data.total_pages));
@@ -56,6 +75,20 @@ export class MyAdsService {
         const response = await deletePost(id);
         console.log(response);
       } catch (error: any) {
+        console.log(error);
+      }
+    };
+
+  confirmDeal =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      console.log(id);
+
+      try {
+        const response = await changeDealStatus(id, 'confirm_sent');
+        console.log(response);
+        return response.data;
+      } catch (error) {
         console.log(error);
       }
     };

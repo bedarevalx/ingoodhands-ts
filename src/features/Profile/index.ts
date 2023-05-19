@@ -1,5 +1,6 @@
-export { DealsList } from './components/DealsList';
+export { MakeReviewModal } from './components/MakeReviewModal';
 
+export { DealsList } from './components/DealsList';
 export { ReservationController } from './controllers/reservation.controller';
 
 export { ReservationsList } from './components/ReservationsList';

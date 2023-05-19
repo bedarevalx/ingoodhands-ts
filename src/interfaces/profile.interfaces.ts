@@ -1,6 +1,7 @@
 import { AppDispatch } from '../store';
 import { AdsStatusTypes } from '../types/general.types';
 import { ICategory } from './general.interfaces';
+import { IPostReservation } from './reservations.interfaces';
 
 export interface IProfileController {
   dispatch: AppDispatch;
@@ -38,4 +39,5 @@ export interface IUserAd {
   description: string;
   id: number;
   isFavorited: boolean;
+  reservation?: IPostReservation;
 }

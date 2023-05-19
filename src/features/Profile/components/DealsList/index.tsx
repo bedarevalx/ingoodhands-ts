@@ -2,7 +2,7 @@ import { Pagination, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import React, { useEffect } from 'react';
 import { DealsFilters } from '../../../../mocks/deals-filters.mocks';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
-import { ReservationController, ReservationItem } from '../..';
+import { MakeReviewModal, ReservationController, ReservationItem } from '../..';
 import Spinner from '../../../../UI/Spinner';
 
 export const DealsList = () => {
@@ -51,19 +51,29 @@ export const DealsList = () => {
             date={deal.createdAt}
             id={deal.id}
             expiredAt={deal.expiredAt}
+            phoneNumber={deal.contacts?.phone}
             variant={deal.status}
             address={'г. Барнаул ул. Речная 25'}
             postId={deal.post.id}
+            onConfirmDeal={controller.handleConfirmDeal}
+            onCreateReview={controller.onReviewModalOpen}
+            score={deal.score}
           />
         ))}
+        <div className='reservations-list__pagination-wrapper'>
+          <Pagination
+            count={deals.totalPages}
+            page={deals.page}
+            onChange={controller.handleDealsPageChange}
+          />
+        </div>
       </div>
-      <div className='reservations-list__pagination-wrapper'>
-        <Pagination
-          count={deals.totalPages}
-          page={deals.page}
-          onChange={controller.handleDealsPageChange}
-        />
-      </div>
+      <MakeReviewModal
+        open={deals.isReviewModalOpened}
+        isLoading={deals.isReviewLodaing}
+        handleClose={controller.onReviewModalClose}
+        handleCreateReview={controller.onCreateReview}
+      />
     </div>
   );
 };
