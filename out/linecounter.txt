@@ -3525,3 +3525,308 @@ src/UI/TextArea/index.tsx, code is 25, comment is 0, blank is 3.
 src/utils/errors.ts, code is 8, comment is 1, blank is 0.
 tsconfig.json, code is 25, comment is 0, blank is 2.
 ===============================================================================
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2023-05-19 21:10:25
+count workspace : /Users/bedarevalx/Desktop/Projects/ingoodhands
+total files : 279
+total code lines : 14049
+total comment lines : 139
+total blank lines : 1217
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .ts|           5838|             33|            542|     42|
+   |           .tsx|           4867|             32|            369|     35|
+   |          .scss|           3067|             42|            275|     22|
+   |          .json|            134|              0|              6|   0.95|
+   |               |             24|              1|              5|   0.17|
+   |          .html|             20|             23|              0|   0.14|
+   |           .txt|              3|              1|              0|  0.021|
+   |            .md|             26|              6|             20|   0.19|
+   |         .cache|             67|              0|              0|   0.48|
+   |         .local|              3|              1|              0|  0.021|
+   -------------------------------------------------------------------------
+.env.local, code is 3, comment is 1, blank is 0.
+.firebase/hosting.YnVpbGQ.cache, code is 67, comment is 0, blank is 0.
+.firebaserc, code is 5, comment is 0, blank is 0.
+.gitignore, code is 19, comment is 1, blank is 5.
+custom.d.ts, code is 12, comment is 0, blank is 0.
+firebase.json, code is 15, comment is 0, blank is 1.
+package.json, code is 69, comment is 0, blank is 3.
+public/favicon.ico, it is a binary file.
+public/index.html, code is 20, comment is 23, blank is 0.
+public/logo192.png, it is a binary file.
+public/logo512.png, it is a binary file.
+public/manifest.json, code is 25, comment is 0, blank is 0.
+public/robots.txt, code is 3, comment is 1, blank is 0.
+README.md, code is 26, comment is 6, blank is 20.
+src/api/dadata.api.ts, code is 21, comment is 0, blank is 2.
+src/api/in-good-hands.api.ts, code is 245, comment is 0, blank is 42.
+src/app.service.ts, code is 48, comment is 4, blank is 3.
+src/app.tsx, code is 30, comment is 2, blank is 5.
+src/axios/dadata.axios.ts, code is 12, comment is 1, blank is 3.
+src/axios/in-good-hands.axios.ts, code is 32, comment is 1, blank is 4.
+src/components/CategoryItem/index.tsx, code is 20, comment is 0, blank is 3.
+src/components/FiltersHeader/index.tsx, code is 139, comment is 6, blank is 7.
+src/components/Footer/index.tsx, code is 14, comment is 0, blank is 3.
+src/components/FullscreenSpinner/index.tsx, code is 10, comment is 0, blank is 2.
+src/components/Header/index.tsx, code is 49, comment is 1, blank is 6.
+src/components/MobileHeader/index.tsx, code is 102, comment is 1, blank is 6.
+src/components/ProfileButton/index.tsx, code is 180, comment is 0, blank is 15.
+src/components/SideMenu/index.tsx, code is 51, comment is 0, blank is 3.
+src/components/SkeletonLoader/index.tsx, code is 7, comment is 0, blank is 2.
+src/configs/app.config.ts, code is 4, comment is 0, blank is 0.
+src/constants/app.ts, code is 11, comment is 0, blank is 1.
+src/constants/errors.ts, code is 3, comment is 0, blank is 0.
+src/constants/media.ts, code is 0, comment is 0, blank is 0.
+src/constants/regexs.ts, code is 8, comment is 1, blank is 0.
+src/constants/routes.ts, code is 21, comment is 0, blank is 0.
+src/features/Admin/components/AdminPanel/index.tsx, code is 7, comment is 0, blank is 2.
+src/features/Admin/components/AdSearchItem/index.tsx, code is 42, comment is 0, blank is 2.
+src/features/Admin/components/AdsSearchForm/index.tsx, code is 105, comment is 0, blank is 8.
+src/features/Admin/components/CategoriesList/index.tsx, code is 109, comment is 0, blank is 7.
+src/features/Admin/components/CategoryAddModal/index.tsx, code is 74, comment is 0, blank is 4.
+src/features/Admin/components/CitiesList/index.tsx, code is 103, comment is 0, blank is 7.
+src/features/Admin/components/CityAddModal/index.tsx, code is 66, comment is 0, blank is 3.
+src/features/Admin/components/ModerationForm/index.tsx, code is 66, comment is 0, blank is 5.
+src/features/Admin/components/ModerationMap/index.tsx, code is 69, comment is 1, blank is 10.
+src/features/Admin/components/PendingList/index.tsx, code is 53, comment is 0, blank is 4.
+src/features/Admin/components/UserSearchForm/index.tsx, code is 90, comment is 0, blank is 5.
+src/features/Admin/components/UserSearchItem/index.tsx, code is 33, comment is 0, blank is 1.
+src/features/Admin/controllers/ads.controller.ts, code is 28, comment is 0, blank is 3.
+src/features/Admin/controllers/dicitonaries.controller.ts, code is 180, comment is 0, blank is 24.
+src/features/Admin/controllers/moderation.controller.ts, code is 25, comment is 3, blank is 7.
+src/features/Admin/controllers/search.controller.ts, code is 69, comment is 0, blank is 9.
+src/features/Admin/index.ts, code is 22, comment is 0, blank is 3.
+src/features/Admin/services/ads.service.ts, code is 32, comment is 0, blank is 4.
+src/features/Admin/services/dictionaries.service.ts, code is 155, comment is 0, blank is 15.
+src/features/Admin/services/moderation.service.ts, code is 65, comment is 0, blank is 5.
+src/features/Admin/services/search.service.ts, code is 127, comment is 0, blank is 3.
+src/features/Admin/slices/ads-search.slice.ts, code is 81, comment is 1, blank is 4.
+src/features/Admin/slices/ads.slice.ts, code is 38, comment is 1, blank is 4.
+src/features/Admin/slices/categories.slice.ts, code is 90, comment is 1, blank is 4.
+src/features/Admin/slices/cities.slice.ts, code is 84, comment is 1, blank is 4.
+src/features/Admin/slices/moderation.slice.ts, code is 61, comment is 1, blank is 4.
+src/features/Admin/slices/user-search.slice.ts, code is 84, comment is 1, blank is 4.
+src/features/Advert/components/Advert/index.tsx, code is 118, comment is 1, blank is 6.
+src/features/Advert/components/AdvertMap/index.tsx, code is 77, comment is 1, blank is 10.
+src/features/Advert/components/AdvertPictures/index.tsx, code is 54, comment is 0, blank is 6.
+src/features/Advert/components/Carousel/index.tsx, code is 38, comment is 0, blank is 3.
+src/features/Advert/components/OwnerMenu/index.tsx, code is 131, comment is 0, blank is 6.
+src/features/Advert/components/ReservationModal/index.tsx, code is 63, comment is 0, blank is 4.
+src/features/Advert/components/ReviewItem/index.tsx, code is 33, comment is 0, blank is 1.
+src/features/Advert/components/ReviewsModal/index.tsx, code is 63, comment is 0, blank is 3.
+src/features/Advert/components/SimilarAdverts/index.tsx, code is 77, comment is 0, blank is 3.
+src/features/Advert/controllers/advert.controller.ts, code is 56, comment is 0, blank is 10.
+src/features/Advert/index.tsx, code is 10, comment is 0, blank is 2.
+src/features/Advert/services/advert.service.ts, code is 154, comment is 1, blank is 10.
+src/features/Advert/slices/advert.slice.ts, code is 179, comment is 0, blank is 8.
+src/features/AdvertList/components/AdPreview/index.tsx, code is 69, comment is 0, blank is 4.
+src/features/AdvertList/components/AdPreviewList/index.tsx, code is 57, comment is 0, blank is 3.
+src/features/AdvertList/controllers/ads.controller.ts, code is 98, comment is 0, blank is 11.
+src/features/AdvertList/index.ts, code is 3, comment is 0, blank is 1.
+src/features/AdvertList/services/ads.service.ts, code is 65, comment is 0, blank is 5.
+src/features/AdvertList/slices/ads.slice.ts, code is 131, comment is 0, blank is 5.
+src/features/Auth/components/PasswordIndicator/index.tsx, code is 13, comment is 0, blank is 3.
+src/features/Auth/components/SignInForm/index.tsx, code is 59, comment is 0, blank is 3.
+src/features/Auth/components/SignUpForm/index.tsx, code is 102, comment is 0, blank is 3.
+src/features/Auth/controllers/auth.controller.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/controllers/sign-in.controller.ts, code is 133, comment is 0, blank is 15.
+src/features/Auth/controllers/sign-up.controller.ts, code is 254, comment is 5, blank is 21.
+src/features/Auth/helpers/validator.ts, code is 23, comment is 0, blank is 4.
+src/features/Auth/index.ts, code is 6, comment is 0, blank is 1.
+src/features/Auth/services/auth.service.ts, code is 152, comment is 3, blank is 9.
+src/features/Auth/services/signin.service.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/services/signup.service.ts, code is 0, comment is 0, blank is 0.
+src/features/Auth/slices/auth.slice.ts, code is 91, comment is 1, blank is 4.
+src/features/Auth/slices/signin.slice.ts, code is 70, comment is 0, blank is 5.
+src/features/Auth/slices/signup.slice.ts, code is 117, comment is 0, blank is 5.
+src/features/EditAdvert/components/EditForm/index.tsx, code is 137, comment is 0, blank is 7.
+src/features/EditAdvert/components/FileLoader/index.tsx, code is 84, comment is 2, blank is 8.
+src/features/EditAdvert/components/ImageLoader/index.tsx, code is 11, comment is 0, blank is 3.
+src/features/EditAdvert/components/PhotoPreview/index.tsx, code is 30, comment is 0, blank is 2.
+src/features/EditAdvert/controllers/edit-ad.controller.ts, code is 130, comment is 0, blank is 17.
+src/features/EditAdvert/index.tsx, code is 2, comment is 0, blank is 1.
+src/features/EditAdvert/services/edit-ad.service.ts, code is 140, comment is 0, blank is 6.
+src/features/EditAdvert/slices/edit-ad.slice.ts, code is 113, comment is 1, blank is 4.
+src/features/Profile/components/ConfirmEmailForm/index.tsx, code is 90, comment is 0, blank is 3.
+src/features/Profile/components/DealsList/index.tsx, code is 74, comment is 0, blank is 5.
+src/features/Profile/components/FavoritesList/index.tsx, code is 57, comment is 0, blank is 4.
+src/features/Profile/components/MakeReviewModal/index.tsx, code is 66, comment is 0, blank is 5.
+src/features/Profile/components/MyAdsList/index.tsx, code is 82, comment is 0, blank is 7.
+src/features/Profile/components/ProfileInfo/index.tsx, code is 210, comment is 0, blank is 7.
+src/features/Profile/components/ReservationItem/index.tsx, code is 148, comment is 0, blank is 8.
+src/features/Profile/components/ReservationsList/index.tsx, code is 81, comment is 0, blank is 5.
+src/features/Profile/components/ReviewsList/index.tsx, code is 48, comment is 0, blank is 4.
+src/features/Profile/components/UserAd/index.tsx, code is 153, comment is 0, blank is 10.
+src/features/Profile/controllers/favorites.controller.ts, code is 55, comment is 0, blank is 8.
+src/features/Profile/controllers/my-ads.controller.ts, code is 48, comment is 0, blank is 10.
+src/features/Profile/controllers/profile.controller.ts, code is 78, comment is 0, blank is 12.
+src/features/Profile/controllers/reservation.controller.ts, code is 111, comment is 0, blank is 16.
+src/features/Profile/index.ts, code is 17, comment is 0, blank is 4.
+src/features/Profile/services/favorites.service.ts, code is 81, comment is 0, blank is 7.
+src/features/Profile/services/my-ads.service.ts, code is 88, comment is 0, blank is 7.
+src/features/Profile/services/profile.service.ts, code is 108, comment is 0, blank is 7.
+src/features/Profile/services/reservation.service.ts, code is 167, comment is 0, blank is 15.
+src/features/Profile/slices/deals.slice.ts, code is 88, comment is 0, blank is 6.
+src/features/Profile/slices/favorites.slice.ts, code is 93, comment is 0, blank is 5.
+src/features/Profile/slices/my-ads.slice.ts, code is 66, comment is 0, blank is 5.
+src/features/Profile/slices/profile.slice.ts, code is 160, comment is 0, blank is 9.
+src/features/Profile/slices/reservations.slice.ts, code is 74, comment is 0, blank is 6.
+src/features/Profile/slices/reviews.slice.ts, code is 59, comment is 0, blank is 5.
+src/features/SearchMap/components/AddressPicker/index.tsx, code is 129, comment is 4, blank is 12.
+src/features/SearchMap/controllers/geo.controller.ts, code is 32, comment is 0, blank is 5.
+src/features/SearchMap/index.tsx, code is 3, comment is 0, blank is 0.
+src/features/SearchMap/services/geo.service.ts, code is 37, comment is 0, blank is 3.
+src/features/SearchMap/slices/geo.slice.ts, code is 56, comment is 1, blank is 4.
+src/helpers/blobToBase64.ts, code is 7, comment is 0, blank is 0.
+src/helpers/classNamesParser.ts, code is 3, comment is 0, blank is 0.
+src/helpers/compressor.ts, code is 32, comment is 0, blank is 3.
+src/helpers/errorsParser.ts, code is 0, comment is 0, blank is 0.
+src/helpers/fileLoaderHelper.ts, code is 48, comment is 0, blank is 4.
+src/helpers/parseDate.ts, code is 4, comment is 0, blank is 1.
+src/helpers/parseQueryParams.ts, code is 10, comment is 0, blank is 3.
+src/helpers/urlsToBase64.ts, code is 11, comment is 0, blank is 0.
+src/hoc/LoaderHoc.tsx, code is 10, comment is 0, blank is 3.
+src/hoc/PrivateRoute.tsx, code is 31, comment is 0, blank is 6.
+src/hoc/RequiredRole.tsx, code is 22, comment is 0, blank is 6.
+src/hooks/useDebounce.ts, code is 19, comment is 0, blank is 6.
+src/hooks/useErrors.ts, code is 9, comment is 0, blank is 3.
+src/hooks/useInfiniteScroll.ts, code is 50, comment is 0, blank is 8.
+src/hooks/useRedux.ts, code is 4, comment is 0, blank is 1.
+src/hooks/useScrollDirection.ts, code is 29, comment is 0, blank is 4.
+src/index.tsx, code is 20, comment is 0, blank is 2.
+src/interfaces/admin.interfaces.ts, code is 54, comment is 0, blank is 10.
+src/interfaces/ads.interfaces.ts, code is 66, comment is 0, blank is 8.
+src/interfaces/auth.interfaces.ts, code is 51, comment is 4, blank is 7.
+src/interfaces/general.interfaces.ts, code is 49, comment is 0, blank is 8.
+src/interfaces/geo.interfaces.ts, code is 15, comment is 0, blank is 2.
+src/interfaces/profile.interfaces.ts, code is 37, comment is 0, blank is 6.
+src/interfaces/reservations.interfaces.ts, code is 47, comment is 0, blank is 5.
+src/interfaces/responses.interfaces.ts, code is 210, comment is 0, blank is 22.
+src/layouts/HeaderLayout/index.tsx, code is 36, comment is 0, blank is 4.
+src/layouts/LogoLayout/index.tsx, code is 27, comment is 0, blank is 4.
+src/mocks/admin-menu.mocks.ts, code is 10, comment is 0, blank is 1.
+src/mocks/deals-filters.mocks.ts, code is 10, comment is 0, blank is 2.
+src/mocks/my-ads-filters.mocks.ts, code is 12, comment is 0, blank is 2.
+src/mocks/profile-menu.mocks.ts, code is 10, comment is 0, blank is 1.
+src/mocks/reservations-filters.mocks.ts, code is 9, comment is 0, blank is 2.
+src/mocks/select-ads-search-type.ts, code is 0, comment is 0, blank is 0.
+src/pages/AdminPage/index.tsx, code is 21, comment is 0, blank is 2.
+src/pages/AdsSearchPage/index.tsx, code is 22, comment is 0, blank is 2.
+src/pages/AdvertPage/index.tsx, code is 14, comment is 0, blank is 3.
+src/pages/CategoriesPage/index.tsx, code is 22, comment is 0, blank is 2.
+src/pages/CitiesPage/index.tsx, code is 22, comment is 0, blank is 2.
+src/pages/DealsPage/index.tsx, code is 20, comment is 0, blank is 2.
+src/pages/EditAdvertPage/index.tsx, code is 14, comment is 0, blank is 3.
+src/pages/FavoritesPage/index.tsx, code is 20, comment is 0, blank is 2.
+src/pages/HomePage/index.tsx, code is 21, comment is 3, blank is 4.
+src/pages/ModerationPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/MyAdsPage/index.tsx, code is 20, comment is 0, blank is 2.
+src/pages/PendingPage/index.tsx, code is 23, comment is 0, blank is 2.
+src/pages/ProfilePage/index.tsx, code is 20, comment is 0, blank is 2.
+src/pages/ReservationsPage/index.tsx, code is 22, comment is 0, blank is 2.
+src/pages/ReviewsPage/index.tsx, code is 20, comment is 0, blank is 2.
+src/pages/SignInPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/SignUpPage/index.tsx, code is 11, comment is 0, blank is 2.
+src/pages/UsersPage/index.tsx, code is 21, comment is 0, blank is 2.
+src/routes/index.tsx, code is 178, comment is 6, blank is 6.
+src/store/app.slice.ts, code is 37, comment is 0, blank is 3.
+src/store/index.ts, code is 49, comment is 0, blank is 1.
+src/styles/colors.scss, code is 12, comment is 0, blank is 0.
+src/styles/components/_ad-preview-list.scss, code is 56, comment is 13, blank is 7.
+src/styles/components/_ad-preview.scss, code is 90, comment is 1, blank is 3.
+src/styles/components/_ad-search-item.scss, code is 58, comment is 0, blank is 3.
+src/styles/components/_address-picker.scss, code is 90, comment is 3, blank is 13.
+src/styles/components/_ads-search-form.scss, code is 50, comment is 0, blank is 4.
+src/styles/components/_advert-map.scss, code is 39, comment is 0, blank is 3.
+src/styles/components/_advert-pictures.scss, code is 43, comment is 2, blank is 4.
+src/styles/components/_advert.scss, code is 57, comment is 0, blank is 1.
+src/styles/components/_carousel.scss, code is 64, comment is 0, blank is 6.
+src/styles/components/_categories-list.scss, code is 42, comment is 0, blank is 8.
+src/styles/components/_category-add-modal.scss, code is 28, comment is 0, blank is 2.
+src/styles/components/_category-item.scss, code is 23, comment is 0, blank is 0.
+src/styles/components/_cities-list.scss, code is 45, comment is 0, blank is 8.
+src/styles/components/_confirm-email.scss, code is 38, comment is 0, blank is 0.
+src/styles/components/_container.scss, code is 6, comment is 0, blank is 0.
+src/styles/components/_deals-list.scss, code is 54, comment is 0, blank is 6.
+src/styles/components/_edit-form.scss, code is 61, comment is 0, blank is 6.
+src/styles/components/_favorites-list.scss, code is 14, comment is 0, blank is 0.
+src/styles/components/_file-loader.scss, code is 29, comment is 0, blank is 3.
+src/styles/components/_filters-header.scss, code is 184, comment is 7, blank is 19.
+src/styles/components/_footer.scss, code is 7, comment is 0, blank is 0.
+src/styles/components/_fullscreen-spinner.scss, code is 7, comment is 0, blank is 0.
+src/styles/components/_header-mobile.scss, code is 87, comment is 0, blank is 7.
+src/styles/components/_header.scss, code is 34, comment is 1, blank is 2.
+src/styles/components/_make-review-modal.scss, code is 38, comment is 1, blank is 6.
+src/styles/components/_moderation-form.scss, code is 38, comment is 0, blank is 4.
+src/styles/components/_moderation-map.scss, code is 24, comment is 0, blank is 3.
+src/styles/components/_my-ads-list.scss, code is 50, comment is 0, blank is 4.
+src/styles/components/_owner-menu.scss, code is 104, comment is 0, blank is 6.
+src/styles/components/_password-indicator.scss, code is 14, comment is 0, blank is 0.
+src/styles/components/_pending-list.scss, code is 19, comment is 0, blank is 3.
+src/styles/components/_photo-preview.scss, code is 44, comment is 0, blank is 1.
+src/styles/components/_profile-button.scss, code is 49, comment is 0, blank is 7.
+src/styles/components/_profile-info.scss, code is 103, comment is 1, blank is 7.
+src/styles/components/_reservation-item.scss, code is 91, comment is 3, blank is 15.
+src/styles/components/_reservation-modal.scss, code is 61, comment is 1, blank is 10.
+src/styles/components/_reservations-list.scss, code is 54, comment is 0, blank is 6.
+src/styles/components/_review-item.scss, code is 51, comment is 0, blank is 3.
+src/styles/components/_reviews-list.scss, code is 10, comment is 0, blank is 2.
+src/styles/components/_reviews-modal.scss, code is 27, comment is 0, blank is 4.
+src/styles/components/_side-menu.scss, code is 34, comment is 0, blank is 2.
+src/styles/components/_sign-in-form.scss, code is 46, comment is 0, blank is 5.
+src/styles/components/_sign-up-form.scss, code is 44, comment is 0, blank is 6.
+src/styles/components/_similar-adverts.scss, code is 30, comment is 0, blank is 5.
+src/styles/components/_user-ad.scss, code is 128, comment is 1, blank is 11.
+src/styles/components/_user-search-form.scss, code is 32, comment is 0, blank is 2.
+src/styles/components/_user-search-item.scss, code is 63, comment is 0, blank is 3.
+src/styles/constants.scss, code is 5, comment is 1, blank is 1.
+src/styles/fonts.scss, code is 22, comment is 0, blank is 3.
+src/styles/general.scss, code is 6, comment is 0, blank is 0.
+src/styles/index.scss, code is 76, comment is 4, blank is 4.
+src/styles/layouts/_header-layout.scss, code is 29, comment is 0, blank is 2.
+src/styles/layouts/_logo-layout.scss, code is 31, comment is 0, blank is 1.
+src/styles/mixins.scss, code is 20, comment is 0, blank is 2.
+src/styles/pages/_ads-search-page.scss, code is 28, comment is 0, blank is 1.
+src/styles/pages/_advert-page.scss, code is 5, comment is 0, blank is 0.
+src/styles/pages/_categories-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/pages/_cities-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/pages/_deals-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/pages/_favorites-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/pages/_my-ads-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/pages/_new-ad-page.scss, code is 0, comment is 0, blank is 0.
+src/styles/pages/_pending-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/pages/_profile-page.scss, code is 19, comment is 0, blank is 0.
+src/styles/pages/_reservations-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/pages/_reviews-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/pages/_users-page.scss, code is 22, comment is 0, blank is 0.
+src/styles/reset.scss, code is 7, comment is 0, blank is 0.
+src/styles/UI/_auto-complete.scss, code is 19, comment is 0, blank is 3.
+src/styles/UI/_button.scss, code is 68, comment is 1, blank is 16.
+src/styles/UI/_input.scss, code is 79, comment is 1, blank is 14.
+src/styles/UI/_loaded-button.scss, code is 7, comment is 0, blank is 0.
+src/styles/UI/_modal.scss, code is 40, comment is 0, blank is 4.
+src/styles/UI/_select.scss, code is 19, comment is 0, blank is 4.
+src/styles/UI/_spinner.scss, code is 0, comment is 0, blank is 0.
+src/styles/UI/_textarea.scss, code is 17, comment is 1, blank is 0.
+src/types/admin.types.ts, code is 1, comment is 0, blank is 0.
+src/types/ads.types.ts, code is 15, comment is 0, blank is 0.
+src/types/general.types.ts, code is 17, comment is 0, blank is 1.
+src/types/menu.types.ts, code is 14, comment is 0, blank is 1.
+src/UI/AutoComplete/index.tsx, code is 79, comment is 0, blank is 6.
+src/UI/Button/index.tsx, code is 20, comment is 0, blank is 2.
+src/UI/Input/index.tsx, code is 87, comment is 0, blank is 5.
+src/UI/LoadedButton/index.tsx, code is 30, comment is 0, blank is 2.
+src/UI/MaskedInput/index.tsx, code is 70, comment is 0, blank is 4.
+src/UI/Modal/index.tsx, code is 20, comment is 0, blank is 3.
+src/UI/Select/index.tsx, code is 62, comment is 4, blank is 6.
+src/UI/Spinner/index.tsx, code is 27, comment is 0, blank is 6.
+src/UI/TextArea/index.tsx, code is 25, comment is 0, blank is 3.
+src/utils/errors.ts, code is 8, comment is 1, blank is 0.
+tsconfig.json, code is 25, comment is 0, blank is 2.
+===============================================================================
