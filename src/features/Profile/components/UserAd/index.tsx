@@ -37,7 +37,10 @@ interface IUserAdProps {
 const UserAd = (props: IUserAdProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+
     props.handleFavoriteClick &&
       props.handleFavoriteClick(props.id, props?.isFavorited);
   };

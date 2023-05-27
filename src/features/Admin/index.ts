@@ -1,4 +1,4 @@
-export { AdminPanel } from './components/AdminPanel';
+export { HistoryList } from './components/HistoryList';
 export { CategoriesList } from './components/CategoriesList';
 export { CitiesList } from './components/CitiesList';
 export { AdsSearchForm } from './components/AdsSearchForm';
@@ -23,3 +23,4 @@ export { reducer as adsSearchReducer } from './slices/ads-search.slice';
 export { reducer as userSearchReducer } from './slices/user-search.slice';
 export { reducer as adminAdsReducer } from './slices/ads.slice';
 export { reducer as moderationReducer } from './slices/moderation.slice';
+export { reducer as historyReducer } from './slices/history.slice';

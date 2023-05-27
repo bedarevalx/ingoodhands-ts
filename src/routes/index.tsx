@@ -25,7 +25,7 @@ const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
 const AdvertPage = lazy(() => import('../pages/AdvertPage'));
 
 //Admin Feature
-const AdminPage = lazy(() => import('../pages/AdminPage'));
+const HistoryPage = lazy(() => import('../pages/HistoryPage'));
 const PendingPage = lazy(() => import('../pages/PendingPage'));
 const UsersPage = lazy(() => import('../pages/UsersPage'));
 const CitiesPage = lazy(() => import('../pages/CitiesPage'));
@@ -131,15 +131,6 @@ export const routes = createBrowserRouter([
             element: (
               <PrivateRoute
                 requiredRole={'moderator'}
-                children={<AdminPage />}
-              />
-            ),
-          },
-          {
-            path: ROUTES.PENDING,
-            element: (
-              <PrivateRoute
-                requiredRole={'moderator'}
                 children={<PendingPage />}
               />
             ),
@@ -151,6 +142,12 @@ export const routes = createBrowserRouter([
                 requiredRole={'admin'}
                 children={<CategoriesPage />}
               />
+            ),
+          },
+          {
+            path: ROUTES.HISTORY,
+            element: (
+              <PrivateRoute requiredRole={'admin'} children={<HistoryPage />} />
             ),
           },
           {

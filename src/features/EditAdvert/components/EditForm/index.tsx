@@ -15,6 +15,7 @@ import Button from '../../../../UI/Button';
 import LoadedButton from '../../../../UI/LoadedButton';
 import { PhotoPreview } from '../PhotoPreview';
 import Spinner from '../../../../UI/Spinner';
+import { useSnackbar } from '../../../../hooks/useSnackbar';
 
 interface IEditFormProps {
   classNames?: string[];
@@ -22,6 +23,7 @@ interface IEditFormProps {
 }
 
 export const EditForm = (props: IEditFormProps) => {
+  const { showError, showSuccess } = useSnackbar();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const editAd = useAppSelector((state) => state.editAd);
@@ -36,6 +38,10 @@ export const EditForm = (props: IEditFormProps) => {
   ].filter((address) => address !== null) as IUserAddress[];
 
   useEffect(() => {
+    if (!auth.user.isEmailVerified) {
+      showError('Для публикации объявлений необходимо подтвердить почту');
+      navigate('/profile');
+    }
     if (props.isEditing && !!params.id) {
       controller.getPost(params.id);
     }

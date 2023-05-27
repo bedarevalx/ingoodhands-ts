@@ -4,6 +4,7 @@ import {
   signIn,
   signUp,
 } from '../../../api/in-good-hands.api';
+import { useSnackbar } from '../../../hooks/useSnackbar';
 import {
   IAuthService,
   IUser,
@@ -37,6 +38,9 @@ import {
 export class AuthService {
   dispatch: AppDispatch;
   favoritesService: FavoritesService;
+  showError: (text: string) => void = useSnackbar().showError;
+  showSuccess: (text: string) => void = useSnackbar().showSuccess;
+
   constructor(dispatch: AppDispatch) {
     this.dispatch = dispatch;
     this.favoritesService = new FavoritesService();
@@ -66,7 +70,7 @@ export class AuthService {
       this.fetchUserProfile();
       dispatch(signUpFullfilled());
     } catch (e: any) {
-      console.error(e);
+      this.showError(e.response.data);
       dispatch(signUpRejected(e?.response?.data?.message) || 'default_error');
     }
   };

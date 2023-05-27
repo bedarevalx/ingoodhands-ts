@@ -19,6 +19,7 @@ import {
   userSearchReducer,
   adminAdsReducer,
   moderationReducer,
+  historyReducer,
 } from '../features/Admin';
 import { advertReducer } from '../features/Advert';
 export const store = configureStore({
@@ -43,6 +44,7 @@ export const store = configureStore({
     reviews: reviewsReducer,
     reservations: reservationsReducer,
     deals: dealsReducer,
+    history: historyReducer,
   },
 });
 

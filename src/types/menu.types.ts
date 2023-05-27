@@ -8,7 +8,7 @@ export type ProfilePageMenuTypes =
 
 export type AdminMenuTypes =
   | 'admin'
-  | 'admin/pending'
+  | 'admin/history'
   | 'admin/users'
   | 'admin/categories'
   | 'admin/cities'

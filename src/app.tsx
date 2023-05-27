@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { useAppDispatch, useAppSelector } from './hooks/useRedux';
 import LoaderHoc from './hoc/LoaderHoc';
 import { AuthService } from './features/Auth';
+import Snackbar from './components/Snackbar';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -28,7 +29,10 @@ function App() {
   return (
     <div className='app'>
       <LoaderHoc isLoading={app.isAppLoading || auth.isLoading}>
-        <Outlet />
+        <>
+          <Outlet />
+          <Snackbar />
+        </>
       </LoaderHoc>
     </div>
   );

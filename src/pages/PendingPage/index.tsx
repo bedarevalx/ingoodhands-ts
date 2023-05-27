@@ -11,7 +11,7 @@ const PendingPage = () => {
       menuType='admin-panel'>
       <div className='pending-page__wrapper'>
         <SideMenu
-          currentMenu='admin/pending'
+          currentMenu='admin'
           classNames={['pending-page__side-menu']}
           menuItems={AdminMenuMocks}
         />

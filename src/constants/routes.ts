@@ -19,4 +19,5 @@ export const ROUTES = {
   DEALS: 'deals',
   RESERVATIONS: 'reservations',
   RECOVER_PASSWORD: 'reset-password',
+  HISTORY: 'history',
 };
