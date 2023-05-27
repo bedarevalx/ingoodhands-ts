@@ -290,3 +290,15 @@ export const createReview = async (id: number, score: number, text: string) => {
   const body = { id_reservation: id, score, text };
   return await axios.post('/api/create_review', body);
 };
+
+export const sendResetPasswordEmail = async (email: string) => {
+  return await axios.post('api/send_password_reset_token', { email });
+};
+
+export const checkResetPasswordCode = async (token: string) => {
+  return await axios.post('api/is_valid_token', { token });
+};
+
+export const resetPassword = async (password: string, token: string) => {
+  return await axios.post('api/password_reset', { password, token });
+};

@@ -9,11 +9,12 @@ interface ILoadedButtonProps {
   isLoading: boolean;
   onClick?: () => void;
   variant?: 'outlined' | 'contained' | 'text';
+  disabled?: boolean;
 }
 const LoadedButton = (props: ILoadedButtonProps) => {
   return (
     <MUIButton
-      disabled={props.isLoading}
+      disabled={props.isLoading || props.disabled}
       onClick={props.onClick}
       variant={props.variant || 'outlined'}
       className={classNamesParser('button loaded-button', props.classNames)}>

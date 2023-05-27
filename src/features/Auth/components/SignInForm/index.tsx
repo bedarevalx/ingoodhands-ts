@@ -46,7 +46,7 @@ export const SignInForm = () => {
         onBlur={controller.onPasswordBlur}
       />
       <div className='sign-in-form__no-account'>
-        <Link to={'/recover-password'} className={'sign-in-form__link'}>
+        <Link to={'/reset-password'} className={'sign-in-form__link'}>
           Забыли пароль?
         </Link>
       </div>

@@ -76,7 +76,7 @@ export const SignUpForm = () => {
         onInput={controller.onPasswordChange}
         error={signUp.errors.password}
         onBlur={controller.onPasswordBlur}>
-        <PasswordIndicator />
+        <PasswordIndicator passwordStrength={signUp.passwordStrength} />
       </Input>
       <Input
         label='Подтвердите пароль'
