@@ -64,7 +64,7 @@ export const MyAdsList = (props: IMyAdsListProps) => {
         ))}
       </ToggleButtonGroup>
       <div className='my-ads-list__list'>
-        {myAds.isLoading && <Spinner />}
+        {myAds.isLoading && <Spinner classNames={['my-ads-list__spinner']} />}
         {isNoAds ? (
           <NotFoundItems icon='😔' text={getNotFoundParamTitle()} />
         ) : null}
@@ -88,14 +88,14 @@ export const MyAdsList = (props: IMyAdsListProps) => {
               onConfirmDeal={controller.handleConfirmDeal}
             />
           ))}
-        <div className='my-ads-list__pagination-wrapper'>
-          <Pagination
-            page={myAds.page}
-            count={myAds.totalPages}
-            onChange={controller.handlePageChange}
-            className='my-ads-list__pagination'
-          />
-        </div>
+      </div>
+      <div className='my-ads-list__pagination-wrapper'>
+        <Pagination
+          page={myAds.page}
+          count={myAds.totalPages}
+          onChange={controller.handlePageChange}
+          className='my-ads-list__pagination'
+        />
       </div>
     </div>
   );

@@ -141,6 +141,7 @@ export const RecoverPasswordForm = () => {
             placeholder='Введите новый пароль'
             value={passwordInput}
             error={passwordError}
+            type='password'
             classNames={['recover-password-form__password-input']}
             onInput={handlePasswordChange}
             onBlur={onPasswordBlur}
