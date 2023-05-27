@@ -7,6 +7,7 @@
   }
 
   &__list {
+    height: 640px;
     max-width: 600px;
     @media screen and (max-width: $media-sm) {
       max-width: 100%;
@@ -57,5 +58,13 @@
   &__pagination-wrapper {
     display: flex;
     justify-content: center;
+  }
+
+  &__spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 }

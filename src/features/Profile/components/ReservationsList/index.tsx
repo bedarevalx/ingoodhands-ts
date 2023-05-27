@@ -58,15 +58,18 @@ export const ReservationsList = (props: IReservationsListProps) => {
           </ToggleButton>
         ))}
       </ToggleButtonGroup>
-      {reservations.isLoading && <Spinner />}
-      {!reservations.isLoading && reservations.reservations.length === 0 && (
-        <NotFoundItems
-          classNames={['reservations-list__list']}
-          icon='😔'
-          text={`У вас еще нет ${getNotFoundParamTitle()} запросов на бронирование`}
-        />
-      )}
+
       <div className='reservations-list__list'>
+        {reservations.isLoading && (
+          <Spinner classNames={['reservations-list__spinner']} />
+        )}
+        {!reservations.isLoading && reservations.reservations.length === 0 && (
+          <NotFoundItems
+            classNames={['reservations-list__list']}
+            icon='😔'
+            text={`У вас еще нет ${getNotFoundParamTitle()} запросов на бронирование`}
+          />
+        )}
         {reservations.reservations.map((reservation) => (
           <ReservationItem
             key={reservation.id}
@@ -89,13 +92,13 @@ export const ReservationsList = (props: IReservationsListProps) => {
             postId={reservation.post.id}
           />
         ))}
-        <div className='reservations-list__pagination-wrapper'>
-          <Pagination
-            count={reservations.totalPages}
-            page={reservations.page}
-            onChange={controller.handlePageChange}
-          />
-        </div>
+      </div>
+      <div className='reservations-list__pagination-wrapper'>
+        <Pagination
+          count={reservations.totalPages}
+          page={reservations.page}
+          onChange={controller.handlePageChange}
+        />
       </div>
     </div>
   );

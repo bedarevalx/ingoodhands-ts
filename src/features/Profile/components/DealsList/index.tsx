@@ -50,17 +50,16 @@ export const DealsList = () => {
         ))}
       </ToggleButtonGroup>
 
-      {deals.isLoading && <Spinner />}
+      <div className='deals-list__list'>
+        {deals.isLoading && <Spinner classNames={['deals-list__spinner']} />}
+        {!deals.isLoading && deals.deals.length === 0 && (
+          <NotFoundItems
+            classNames={['deals-list__not-found']}
+            icon='😔'
+            text={`У вас еще нет ${getNotFoundParamTitle()} сделок`}
+          />
+        )}
 
-      {!deals.isLoading && deals.deals.length === 0 && (
-        <NotFoundItems
-          classNames={['deals-list__list']}
-          icon='😔'
-          text={`У вас еще нет ${getNotFoundParamTitle()} сделок`}
-        />
-      )}
-
-      <div className='reservations-list__list'>
         {deals.deals.map((deal) => (
           <ReservationItem
             key={deal.id}
@@ -81,13 +80,13 @@ export const DealsList = () => {
             score={deal.score}
           />
         ))}
-        <div className='reservations-list__pagination-wrapper'>
-          <Pagination
-            count={deals.totalPages}
-            page={deals.page}
-            onChange={controller.handleDealsPageChange}
-          />
-        </div>
+      </div>
+      <div className='reservations-list__pagination-wrapper'>
+        <Pagination
+          count={deals.totalPages}
+          page={deals.page}
+          onChange={controller.handleDealsPageChange}
+        />
       </div>
       <MakeReviewModal
         open={deals.isReviewModalOpened}

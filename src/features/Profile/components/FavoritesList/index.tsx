@@ -27,7 +27,9 @@ export const FavoritesList = (props: IFavoritesListProps) => {
     <div className={classNamesParser('favorites-list', props.classNames)}>
       <h3 className='favorites-list__title'>Избранное</h3>
       <div className='favorites-list__list'>
-        {favorites.isLoading && <Spinner />}
+        {favorites.isLoading && (
+          <Spinner classNames={['favorites-list__spinner']} />
+        )}
         {!favorites.isLoading && favorites.ads.length === 0 ? (
           <NotFoundItems
             icon='❤️‍🩹'
@@ -51,14 +53,14 @@ export const FavoritesList = (props: IFavoritesListProps) => {
               handleFavoriteClick={favoritesController.handleFavoriteClick}
             />
           ))}
-        <div className='favorites-list__pagination-wrapper'>
-          <Pagination
-            page={favorites.page}
-            count={favorites.totalPages}
-            onChange={favoritesController.handlePageChange}
-            className='favorites-list__pagination'
-          />
-        </div>
+      </div>
+      <div className='favorites-list__pagination-wrapper'>
+        <Pagination
+          page={favorites.page}
+          count={favorites.totalPages}
+          onChange={favoritesController.handlePageChange}
+          className='favorites-list__pagination'
+        />
       </div>
     </div>
   );
