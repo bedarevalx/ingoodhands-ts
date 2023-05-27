@@ -1,5 +1,9 @@
-import { startModeration } from '../../../api/in-good-hands.api';
+import {
+  cancelModeration,
+  startModeration,
+} from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
+import { useSnackbar } from '../../../hooks/useSnackbar';
 import { IAdvert } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState } from '../../../store';
 import {
@@ -7,9 +11,12 @@ import {
   setFetchError,
   setIsConfirming,
   setPost,
+  setModerationId,
 } from '../slices/moderation.slice';
 
 export class ModerationService {
+  showError: (text: string) => void = useSnackbar().showError;
+  showSuccess: (text: string) => void = useSnackbar().showSuccess;
   startModeration =
     (id: string) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
@@ -52,6 +59,8 @@ export class ModerationService {
           },
         };
 
+        dispatch(setModerationId(response.data.checking_id));
+
         dispatch(setPost(advert));
         dispatch(setIsLoading(false));
       } catch (error) {
@@ -67,4 +76,13 @@ export class ModerationService {
   publishAdvert =
     (id: string) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {};
+
+  cancelModeration =
+    (moderationId: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await cancelModeration(moderationId);
+        this.showSuccess('Модерация отмена успешно');
+      } catch (error) {}
+    };
 }

@@ -302,3 +302,28 @@ export const checkResetPasswordCode = async (token: string) => {
 export const resetPassword = async (password: string, token: string) => {
   return await axios.post('api/password_reset', { password, token });
 };
+
+export const cancelModeration = async (moderationId: number) => {
+  return await axios.patch('api/admin/cancel_review', {
+    id_checking: moderationId,
+  });
+};
+
+export const rejectAdvert = async (moderationId: number, reason: string) => {
+  return await axios.patch('api/end_checking', {
+    id_checking: moderationId,
+    result: {
+      is_public: false,
+      text: reason,
+    },
+  });
+};
+
+export const publishAdvert = async (moderationId: number) => {
+  return await axios.patch('api/end_checking', {
+    id_checking: moderationId,
+    result: {
+      is_public: true,
+    },
+  });
+};

@@ -17,6 +17,7 @@ interface IModerationSlice {
   city: string;
   address?: IAddress;
   imageSet: string[];
+  moderationId: number | null;
 }
 
 const initialState: IModerationSlice = {
@@ -27,7 +28,7 @@ const initialState: IModerationSlice = {
   category: '',
   categoryIcon: '',
   city: '',
-  address: undefined,
+  moderationId: null,
   imageSet: [],
   errors: {
     errorConfirm: '',
@@ -48,6 +49,9 @@ export const moderationSlice = createSlice({
     setIsConfirming: (state, action: PayloadAction<boolean>) => {
       state.isConfirming = action.payload;
     },
+    setModerationId: (state, action: PayloadAction<number>) => {
+      state.moderationId = action.payload;
+    },
     setPost: (state, action: PayloadAction<IAdvert>) => {
       state.address = action.payload.address;
       state.category = action.payload.category.title;
@@ -60,7 +64,12 @@ export const moderationSlice = createSlice({
   },
 });
 
-export const { setFetchError, setIsConfirming, setIsLoading, setPost } =
-  moderationSlice.actions;
+export const {
+  setFetchError,
+  setIsConfirming,
+  setIsLoading,
+  setPost,
+  setModerationId,
+} = moderationSlice.actions;
 export const reducer = moderationSlice.reducer;
 // export authSlice.reducer;

@@ -25,7 +25,14 @@ export class ModerationController implements IAdminAdsController {
     this.dispatch(this.moderationService.publishAdvert(id));
   };
 
-  onCancelModeration = () => {};
+  onCancelModeration = async (callback: () => void) => {
+    const state = this.getState().moderation;
+    state.moderationId &&
+      (await this.dispatch(
+        this.moderationService.cancelModeration(state.moderationId),
+      ));
+    callback();
+  };
 
   clearState = () => {
     // this.dispatch(setPage(1));

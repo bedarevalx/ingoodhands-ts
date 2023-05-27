@@ -23,6 +23,22 @@
     position: absolute;
     top: -10px;
     left: 0;
+    @media screen and(max-width:$media-sm) {
+      display: none;
+    }
+  }
+
+  &__cancel-btn-mobile.MuiButtonBase-root {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    @media screen and(min-width:$media-sm) {
+      display: none;
+    }
+  }
+
+  &__back-icon.MuiSvgIcon-root {
+    color: $color-primary;
   }
 
   &__header {
@@ -38,5 +54,25 @@
 
   &__image {
     width: 100%;
+  }
+
+  &__conclusion {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  &__reject.MuiButtonBase-root {
+    color: white;
+    background-color: $color-error;
+    width: 150px;
+    @include color-hover($color-error);
+  }
+  &__publish.MuiButtonBase-root {
+    color: white;
+    width: 150px;
+
+    background-color: $color-primary;
+    @include color-hover($color-primary);
   }
 }

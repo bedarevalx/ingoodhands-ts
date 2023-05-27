@@ -4,6 +4,9 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import { ModerationController, ModerationMap } from '../..';
 import FullscreenSpinner from '../../../../components/FullscreenSpinner';
 import Button from '../../../../UI/Button';
+import LoadedButton from '../../../../UI/LoadedButton';
+import { IconButton } from '@mui/material';
+import BackIcon from '@mui/icons-material/ArrowBackIos';
 
 export const ModerationForm = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +22,10 @@ export const ModerationForm = () => {
     controller.startModeration(params.id);
   }, []);
 
+  const handleCancelModeration = () => {
+    controller.onCancelModeration(() => navigate('/admin'));
+  };
+
   return moderation.isLoading ? (
     <FullscreenSpinner />
   ) : (
@@ -26,9 +33,14 @@ export const ModerationForm = () => {
       <h3 className='moderation-form__title'>Модерация объявления</h3>
       <Button
         classNames={['moderation-form__cancel-btn']}
-        onClick={controller.onCancelModeration}>
+        onClick={handleCancelModeration}>
         Отменить проверку
       </Button>
+      <IconButton
+        onClick={handleCancelModeration}
+        className='moderation-form__cancel-btn-mobile'>
+        <BackIcon className='moderation-form__back-icon' />
+      </IconButton>
 
       <div className='moderation-form__block'>
         <h4 className='moderation-form__block-header'>Заголовок и описание</h4>
@@ -65,7 +77,18 @@ export const ModerationForm = () => {
         ))}
       </div>
 
-      <div className='moderation-form__conclusion'></div>
+      <div className='moderation-form__conclusion'>
+        <LoadedButton
+          classNames={['moderation-form__reject']}
+          label='Отклонить'
+          isLoading={false}
+        />
+        <LoadedButton
+          classNames={['moderation-form__publish']}
+          label='Опубликовать'
+          isLoading={false}
+        />
+      </div>
     </div>
   );
 };

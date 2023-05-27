@@ -40,4 +40,3 @@ export const historySlice = createSlice({
 export const { setAds, setPage, setIsLoading, setTotalPages } =
   historySlice.actions;
 export const reducer = historySlice.reducer;
-// export authSlice.reducer;
