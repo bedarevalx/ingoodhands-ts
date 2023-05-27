@@ -45,6 +45,12 @@ export const SignInForm = () => {
         onInput={controller.onPasswordChange}
         onBlur={controller.onPasswordBlur}
       />
+      <div className='sign-in-form__no-account'>
+        <Link to={'/recover-password'} className={'sign-in-form__link'}>
+          Забыли пароль?
+        </Link>
+      </div>
+
       <LoadedButton
         isLoading={signIn.isLoading}
         classNames={['sign-in-form__sign-in']}

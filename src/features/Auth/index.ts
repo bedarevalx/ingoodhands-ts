@@ -1,3 +1,4 @@
+export { RecoverPasswordForm } from './components/RecoverPasswordForm';
 export { SignUpForm } from './components/SignUpForm';
 export { SignInForm } from './components/SignInForm';
 

@@ -88,7 +88,6 @@ export class AdvertService {
         if (state.id) {
           dispatch(fetchSimilarPostsPending());
           const response = await getSimilarPosts(state.id);
-          console.log(response);
 
           const ads: IAdPreview[] = response.data.map((ad) => {
             return {
@@ -122,7 +121,6 @@ export class AdvertService {
           state.reviewsPage,
           state.reviewsLimit,
         );
-        console.log(response);
 
         if (response.data.page === response.data.total_pages) {
           dispatch(setIsLastReviewsPage(true));
@@ -155,8 +153,6 @@ export class AdvertService {
         dispatch(setIsReservationLoading(true));
         const state = getState().advert;
         const response = await sendReservation(String(state.id), days);
-        console.log(response);
-
         dispatch(setIsReservationLoading(false));
       } catch (error) {
         console.log(error);

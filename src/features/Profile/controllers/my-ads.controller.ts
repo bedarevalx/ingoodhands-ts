@@ -33,7 +33,7 @@ export class MyAdsController implements IMyAdsController {
     this.getMyAds();
   };
 
-  handleParamChange = (_: any, param: AdsStatusTypes | '') => {
+  handleParamChange = (_: any, param: string) => {
     if (param === null) {
       return;
     }
@@ -43,8 +43,6 @@ export class MyAdsController implements IMyAdsController {
   };
 
   handleConfirmDeal = async (id: number) => {
-    console.log(id);
-
     const response = await this.dispatch(this.myAdsService.confirmDeal(id));
 
     if (!!response) {

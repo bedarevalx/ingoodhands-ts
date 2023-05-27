@@ -26,7 +26,7 @@ export class MyAdsService {
       const response = await getUserPosts(
         myAds.page,
         myAds.limit,
-        !!myAds.param ? myAds.param : undefined,
+        JSON.parse(myAds.param),
       );
       const userAds: IUserAd[] = response.data.data.map((ad) => ({
         title: ad.title,
@@ -73,7 +73,6 @@ export class MyAdsService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await deletePost(id);
-        console.log(response);
       } catch (error: any) {
         console.log(error);
       }
@@ -82,11 +81,8 @@ export class MyAdsService {
   confirmDeal =
     (id: number) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
-      console.log(id);
-
       try {
         const response = await changeDealStatus(id, 'confirm_sent');
-        console.log(response);
         return response.data;
       } catch (error) {
         console.log(error);

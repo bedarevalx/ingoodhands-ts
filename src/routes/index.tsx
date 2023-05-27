@@ -14,6 +14,7 @@ const HomePage = lazy(() => import('../pages/HomePage'));
 //Auth Feature
 const SignInPage = lazy(() => import('../pages/SignInPage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));
+const RecoverPasswordPage = lazy(() => import('../pages/RecoverPasswordPage'));
 
 //Profile Feature
 const ProfilePage = lazy(() => import('../pages/ProfilePage'));
@@ -102,6 +103,12 @@ export const routes = createBrowserRouter([
       {
         path: ROUTES.SIGNUP,
         element: <PrivateRoute children={<SignUpPage />} reverseAuth />,
+      },
+      {
+        path: ROUTES.RECOVER_PASSWORD,
+        element: (
+          <PrivateRoute children={<RecoverPasswordPage />} reverseAuth />
+        ),
       },
       {
         path: `${ROUTES.POST}/:id`,

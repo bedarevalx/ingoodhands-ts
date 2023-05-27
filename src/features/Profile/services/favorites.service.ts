@@ -44,7 +44,6 @@ export class FavoritesService {
     () => async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await getFavoritesId();
-        console.log(response);
 
         dispatch(setFavoritesId(response.data));
       } catch (error) {

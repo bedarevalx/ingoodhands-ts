@@ -18,4 +18,5 @@ export const ROUTES = {
   ADS_SEARCH: 'ads-search',
   DEALS: 'deals',
   RESERVATIONS: 'reservations',
+  RECOVER_PASSWORD: 'recover-password',
 };

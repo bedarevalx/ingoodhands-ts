@@ -45,9 +45,9 @@ export const MyAdsList = (props: IMyAdsListProps) => {
         className='my-ads-list__filters'>
         {MyAdsFilters.map((filter) => (
           <ToggleButton
-            key={filter.value}
+            key={JSON.stringify(filter.value)}
             className='my-ads-list__filter-btn'
-            value={filter.value}>
+            value={JSON.stringify(filter.value)}>
             {filter.title}
           </ToggleButton>
         ))}

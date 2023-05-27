@@ -44,7 +44,6 @@ export class DictionariesService {
           icon,
         };
         const response = await createCategory(body);
-        console.log(response);
         this.dispatch(this.getAllCategories());
       } catch (e: any) {
         console.error(e.message);
@@ -62,7 +61,6 @@ export class DictionariesService {
           id_category: id,
         };
         const response = await editCategory(body);
-        console.log(response);
 
         this.dispatch(this.getAllCategories());
       } catch (e: any) {
@@ -75,7 +73,6 @@ export class DictionariesService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await deleteCategory(id);
-        console.log(response);
         this.dispatch(this.getAllCategories());
       } catch (e: any) {
         console.error(e.message);
@@ -91,7 +88,6 @@ export class DictionariesService {
           is_active: isActive,
         };
         const response = await createCity(body);
-        console.log(response);
         this.dispatch(this.getAllCities());
       } catch (e: any) {
         console.error(e.message);
@@ -108,7 +104,6 @@ export class DictionariesService {
           id_city: id,
         };
         const response = await editCity(body);
-        console.log(response);
         this.dispatch(this.getAllCities());
       } catch (e: any) {
         console.error(e.message);
@@ -120,7 +115,6 @@ export class DictionariesService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await deleteCity(id);
-        console.log(response);
         this.dispatch(this.getAllCities());
       } catch (e: any) {
         console.error(e.message);

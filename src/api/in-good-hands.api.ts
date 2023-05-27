@@ -111,10 +111,15 @@ export const editProfile = async (body: IEditProfileBody) => {
 export const getUserPosts = async (
   page: number,
   limit: number,
-  param?: AdsStatusTypes,
+  param?: string,
 ) => {
-  const query = parseQueryParams({ page, limit, status: param });
-  return await axios.get<IGetUserPostsResponse>(`/api/my_posts?${query}`);
+  return await axios.get<IGetUserPostsResponse>('/api/my_posts', {
+    params: {
+      page,
+      limit,
+      statuses: param,
+    },
+  });
 };
 
 export const getFavorites = async (page: number, limit: number) => {

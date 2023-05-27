@@ -86,8 +86,6 @@ export class ReservationService {
         JSON.parse(state.param) as DealsSearchParamTypes[],
       );
 
-      console.log(response);
-
       const deals: IDeal[] = response.data.data.map((deal) => ({
         id: deal.id,
         createdAt: parseDate(deal.created_at),
@@ -117,7 +115,6 @@ export class ReservationService {
           rating: deal.user.rating,
         },
       }));
-      console.log(deals);
 
       dispatch(fetchDealsFulfilled(deals));
       dispatch(setDealsTotalPages(response.data.total_pages));
@@ -131,7 +128,6 @@ export class ReservationService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await confirmReservation(id);
-        console.log(response);
         return response.data;
       } catch (error) {
         console.log(error);
@@ -143,7 +139,6 @@ export class ReservationService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await declineReservation(id);
-        console.log(response);
         return response.data;
       } catch (error) {
         console.log(error);
@@ -155,7 +150,6 @@ export class ReservationService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await changeDealStatus(id, 'completed');
-        console.log(response);
         return response.data;
       } catch (error) {}
     };
@@ -170,7 +164,6 @@ export class ReservationService {
           throw new Error('Произошла ошибка');
         }
         const response = await createReview(state.idReservation, score, text);
-        console.log(response);
 
         dispatch(setIsReviewLoading(false));
       } catch (error) {

@@ -6,6 +6,5 @@ export const urlsToBase64 = (urls: string[]) =>
         withCredentials: false,
         responseType: 'arraybuffer',
       });
-      console.log(response);
     }),
   );

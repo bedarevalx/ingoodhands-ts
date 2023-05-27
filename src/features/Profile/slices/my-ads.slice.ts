@@ -8,14 +8,14 @@ interface IMyAdsState {
   ads: IUserAd[];
   page: number;
   totalPages: number;
-  param: AdsStatusTypes | '';
+  param: string;
   limit: number;
 }
 
 const initialState: IMyAdsState = {
   isLoading: true,
   error: '',
-  param: '',
+  param: JSON.stringify([]),
   ads: [],
   page: 1,
   totalPages: 0,
@@ -45,7 +45,7 @@ export const myAdsSlice = createSlice({
     setTotalPages: (state, action: PayloadAction<number>) => {
       state.totalPages = action.payload;
     },
-    setParam: (state, action: PayloadAction<AdsStatusTypes | ''>) => {
+    setParam: (state, action: PayloadAction<string>) => {
       state.param = action.payload;
     },
 
