@@ -9,7 +9,10 @@ export class AdsService {
     () => async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const state = getState().adminAds;
+        dispatch(setAds([]));
+
         dispatch(setIsLoading(true));
+
         const response = await getPendingAds(state.limit, state.page);
 
         const ads: IAdPreview[] = response.data.data.map((ad) => {

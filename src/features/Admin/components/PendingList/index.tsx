@@ -30,7 +30,9 @@ export const PendingList = (props: IPendingListProps) => {
     <div className={classNamesParser('pending-list', props.classNames)}>
       <h3 className='pending-list__title'>Ожидают проверки</h3>
       <div className='pending-list__list'>
-        {pending.isLoading ? <Spinner /> : null}
+        {pending.isLoading ? (
+          <Spinner classNames={['pending-list__spinner']} />
+        ) : null}
         {!pending.isLoading &&
           pending.ads.length === 0 &&
           pending.page === 1 && (
