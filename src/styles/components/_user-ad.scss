@@ -144,5 +144,14 @@
     font-size: 14px;
     border-radius: 6px;
     background: white;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__reject-info.MuiSvgIcon-root {
+    opacity: 0.6;
+    height: 18px;
+    width: 18px;
   }
 }

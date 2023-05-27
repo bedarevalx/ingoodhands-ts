@@ -3,13 +3,14 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { AdsStatusTypes } from '../../../../types/general.types';
 import { ICategory } from '../../../../interfaces/general.interfaces';
-import { IconButton, Menu, MenuItem } from '@mui/material';
+import { IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import { MoreVert } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import CheckIcon from '@mui/icons-material/Check';
 import { IPostReservation } from '../../../../interfaces/reservations.interfaces';
 import { getLocaleAdsState } from '../../../../helpers/getLocaleAdsState';
 import { getStateColor } from '../../../../helpers/getStateColor';
+import InfoIcon from '@mui/icons-material/Info';
 
 interface IUserAdProps {
   classNames?: string[];
@@ -114,6 +115,14 @@ const UserAd = (props: IUserAdProps) => {
                     <span style={{ color: getStateColor(props.state) }}>
                       {getLocaleAdsState(props.state)}
                     </span>
+                    {props.state === 'rejected' && (
+                      <Tooltip
+                        title={
+                          'Мы отправили вам всю информацию о проверке вашего объявления на вашу электронную почту'
+                        }>
+                        <InfoIcon className='user-ad__reject-info' />
+                      </Tooltip>
+                    )}
                   </div>
                 )}
               </>
