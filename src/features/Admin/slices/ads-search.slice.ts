@@ -24,7 +24,7 @@ const initialState: IAdsSearchSlice = {
   offset: 0,
   page: 1,
   totalPages: 0,
-  limit: 6,
+  limit: 5,
   error: '',
 };
 
