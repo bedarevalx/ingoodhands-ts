@@ -1,5 +1,6 @@
 import { IAdvertController } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState, store } from '../../../store';
+import { FavoritesService } from '../../Profile';
 import { AdvertService } from '../services/advert.service';
 import {
   clearState,
@@ -14,11 +15,13 @@ export class AdvertController implements IAdvertController {
   dispatch: AppDispatch;
   getState: () => RootState;
   advertService: AdvertService;
+  favoritesService: FavoritesService;
 
   constructor(dispatch: AppDispatch) {
     this.dispatch = dispatch;
     this.getState = store.getState;
     this.advertService = new AdvertService();
+    this.favoritesService = new FavoritesService();
   }
 
   getAdvertById = async (id: string) => {
@@ -54,6 +57,18 @@ export class AdvertController implements IAdvertController {
 
   setIsReservationModalOpen = (open: boolean) => {
     this.dispatch(setIsReservationModalOpen(open));
+  };
+
+  onAddFavorite = () => {
+    const state = this.getState().advert;
+    this.dispatch(this.favoritesService.addToFavorites(state.id as number));
+  };
+
+  onRemoveFavorite = () => {
+    const state = this.getState().advert;
+    this.dispatch(
+      this.favoritesService.removeFromFavorites(state.id as number),
+    );
   };
 
   clearState = () => {

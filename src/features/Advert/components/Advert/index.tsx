@@ -34,6 +34,14 @@ export const Advert = () => {
     controller.setIsReservationModalOpen(false);
   };
 
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      controller.onRemoveFavorite();
+    } else {
+      controller.onAddFavorite();
+    }
+  };
+
   useEffect(() => {
     (async () => {
       if (params.id) {
@@ -76,7 +84,7 @@ export const Advert = () => {
               {!isOwner && (
                 <RequiredRole>
                   <IconButton
-                    // onClick={handleAddToFavorite}
+                    onClick={handleFavoriteClick}
                     className='advert__favorite-btn'>
                     <FavoriteIcon
                       className={`advert__favorite-icon ${

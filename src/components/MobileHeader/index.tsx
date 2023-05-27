@@ -93,7 +93,7 @@ export const MobileHeader = (props: IMobileHeaderProps) => {
               </RequiredRole>
             ))}
           </ul>
-          {props.menuType === 'profile' && (
+          {props.menuType === 'profile' && auth.isAuthenticate && (
             <div className='header-mobile__place-ad-wrapper'>
               <Button
                 classNames={['header-mobile__place-ad']}
@@ -101,6 +101,20 @@ export const MobileHeader = (props: IMobileHeaderProps) => {
                 Разместить объявление
               </Button>
             </div>
+          )}
+          {!auth.isAuthenticate && (
+            <>
+              <Button
+                classNames={['header-mobile__unauth-btn']}
+                onClick={() => handleLinkClick('sign-in')}>
+                Вход
+              </Button>
+              <Button
+                classNames={['header-mobile__unauth-btn']}
+                onClick={() => handleLinkClick('sign-up')}>
+                Регистрация
+              </Button>
+            </>
           )}
         </div>
       </Drawer>

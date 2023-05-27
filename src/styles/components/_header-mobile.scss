@@ -56,9 +56,18 @@
     margin-bottom: 12px;
   }
 
+  &__unauth-btn.MuiButtonBase-root {
+    width: 100%;
+    margin-bottom: 12px;
+    background: $color-primary;
+    color: white;
+    @include color-hover($color-primary);
+  }
+
   &__navigation-content {
     position: relative;
     padding: 32px;
+    padding-top: 52px;
   }
   &__navigation-close.MuiButtonBase-root {
     position: absolute;
