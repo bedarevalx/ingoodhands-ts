@@ -18,9 +18,15 @@ interface IModerationSlice {
   address?: IAddress;
   imageSet: string[];
   moderationId: number | null;
+  reason: string;
+  isRejectModalOpened: boolean;
+  isRejecting: boolean;
+  isPublishing: boolean;
 }
 
 const initialState: IModerationSlice = {
+  isRejectModalOpened: false,
+  reason: '',
   isLoading: true,
   isConfirming: false,
   title: '',
@@ -34,6 +40,8 @@ const initialState: IModerationSlice = {
     errorConfirm: '',
     errorFetch: '',
   },
+  isRejecting: false,
+  isPublishing: false,
 };
 
 export const moderationSlice = createSlice({
@@ -52,6 +60,19 @@ export const moderationSlice = createSlice({
     setModerationId: (state, action: PayloadAction<number>) => {
       state.moderationId = action.payload;
     },
+    setReason: (state, action: PayloadAction<string>) => {
+      state.reason = action.payload;
+    },
+    setIsRejecting: (state, action: PayloadAction<boolean>) => {
+      state.isRejecting = action.payload;
+    },
+    setIsPublishing: (state, action: PayloadAction<boolean>) => {
+      state.isPublishing = action.payload;
+    },
+
+    setRejectModalOpened: (state, action: PayloadAction<boolean>) => {
+      state.isRejectModalOpened = action.payload;
+    },
     setPost: (state, action: PayloadAction<IAdvert>) => {
       state.address = action.payload.address;
       state.category = action.payload.category.title;
@@ -69,6 +90,10 @@ export const {
   setIsConfirming,
   setIsLoading,
   setPost,
+  setReason,
+  setRejectModalOpened,
+  setIsPublishing,
+  setIsRejecting,
   setModerationId,
 } = moderationSlice.actions;
 export const reducer = moderationSlice.reducer;

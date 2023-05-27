@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
-import { ModerationController, ModerationMap } from '../..';
+import { ModerationController, ModerationMap, RejectModal } from '../..';
 import FullscreenSpinner from '../../../../components/FullscreenSpinner';
 import Button from '../../../../UI/Button';
 import LoadedButton from '../../../../UI/LoadedButton';
@@ -13,18 +13,18 @@ export const ModerationForm = () => {
   const params = useParams();
   const navigate = useNavigate();
   const moderation = useAppSelector((state) => state.moderation);
-  const controller = new ModerationController(dispatch);
+  const controller = new ModerationController(dispatch, navigate);
   useEffect(() => {
     if (!params.id) {
       navigate('/404');
       return;
     }
     controller.startModeration(params.id);
-  }, []);
 
-  const handleCancelModeration = () => {
-    controller.onCancelModeration(() => navigate('/admin'));
-  };
+    return () => {
+      controller.clearState();
+    };
+  }, []);
 
   return moderation.isLoading ? (
     <FullscreenSpinner />
@@ -33,11 +33,11 @@ export const ModerationForm = () => {
       <h3 className='moderation-form__title'>Модерация объявления</h3>
       <Button
         classNames={['moderation-form__cancel-btn']}
-        onClick={handleCancelModeration}>
+        onClick={controller.onCancelModeration}>
         Отменить проверку
       </Button>
       <IconButton
-        onClick={handleCancelModeration}
+        onClick={controller.onCancelModeration}
         className='moderation-form__cancel-btn-mobile'>
         <BackIcon className='moderation-form__back-icon' />
       </IconButton>
@@ -79,16 +79,26 @@ export const ModerationForm = () => {
 
       <div className='moderation-form__conclusion'>
         <LoadedButton
+          onClick={controller.showRejectModal}
           classNames={['moderation-form__reject']}
           label='Отклонить'
-          isLoading={false}
+          isLoading={moderation.isRejecting}
         />
         <LoadedButton
+          onClick={controller.onPublish}
           classNames={['moderation-form__publish']}
           label='Опубликовать'
-          isLoading={false}
+          isLoading={moderation.isPublishing}
         />
       </div>
+      <RejectModal
+        isLoading={moderation.isRejecting}
+        open={moderation.isRejectModalOpened}
+        onClose={controller.hideRejectModal}
+        onReject={controller.onReject}
+        onReasonChange={controller.onReasonChange}
+        reason={moderation.reason}
+      />
     </div>
   );
 };

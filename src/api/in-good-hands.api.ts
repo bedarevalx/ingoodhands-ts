@@ -310,7 +310,7 @@ export const cancelModeration = async (moderationId: number) => {
 };
 
 export const rejectAdvert = async (moderationId: number, reason: string) => {
-  return await axios.patch('api/end_checking', {
+  return await axios.patch('api/admin/end_checking', {
     id_checking: moderationId,
     result: {
       is_public: false,
@@ -320,7 +320,7 @@ export const rejectAdvert = async (moderationId: number, reason: string) => {
 };
 
 export const publishAdvert = async (moderationId: number) => {
-  return await axios.patch('api/end_checking', {
+  return await axios.patch('api/admin/end_checking', {
     id_checking: moderationId,
     result: {
       is_public: true,

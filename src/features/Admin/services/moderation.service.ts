@@ -1,5 +1,7 @@
 import {
   cancelModeration,
+  publishAdvert,
+  rejectAdvert,
   startModeration,
 } from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
@@ -60,7 +62,6 @@ export class ModerationService {
         };
 
         dispatch(setModerationId(response.data.checking_id));
-
         dispatch(setPost(advert));
         dispatch(setIsLoading(false));
       } catch (error) {
@@ -70,12 +71,26 @@ export class ModerationService {
     };
 
   rejectAdvert =
-    (id: string, reason: string) =>
-    async (dispatch: AppDispatch, getState: () => RootState) => {};
+    (moderationId: number, reason: string) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await rejectAdvert(moderationId, reason);
+        this.showSuccess('Объявлению отказано в публикации');
+      } catch (error) {
+        this.showError('Не удалось отказать объявлению в публикации');
+      }
+    };
 
   publishAdvert =
-    (id: string) =>
-    async (dispatch: AppDispatch, getState: () => RootState) => {};
+    (moderationId: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await publishAdvert(moderationId);
+        this.showSuccess('Объявление успешно опубликовано');
+      } catch (error) {
+        this.showError('Не удалось опубликовать объявление');
+      }
+    };
 
   cancelModeration =
     (moderationId: number) =>
@@ -83,6 +98,8 @@ export class ModerationService {
       try {
         const response = await cancelModeration(moderationId);
         this.showSuccess('Модерация отмена успешно');
-      } catch (error) {}
+      } catch (error) {
+        this.showError('Не удалось отменить модерацию');
+      }
     };
 }

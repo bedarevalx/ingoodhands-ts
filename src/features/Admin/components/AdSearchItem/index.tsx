@@ -3,6 +3,8 @@ import { IAdvertOnwer } from '../../../../interfaces/ads.interfaces';
 import { AdsStatusTypes } from '../../../../types/general.types';
 import { IconButton } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { getLocaleAdsState } from '../../../../helpers/getLocaleAdsState';
+import { getStateColor } from '../../../../helpers/getStateColor';
 
 interface IAdSearchItemProps {
   title: string;
@@ -29,8 +31,12 @@ export const AdSearchItem = (props: IAdSearchItemProps) => {
       <div className='ad-search-item__info'>
         <h4 className='ad-search-item__title'>{props.title}</h4>
         <p className='ad-search-item__description'>{props.description}</p>
-        {props.variant === 'search' && (
-          <p className='ad-search-item__state'>{props.status}</p>
+        {props.variant === 'search' && props.status && (
+          <p
+            className='ad-search-item__state'
+            style={{ color: getStateColor(props.status) }}>
+            {getLocaleAdsState(props.status)}
+          </p>
         )}
         <p className='ad-search-item__date'>{props.createdAt}</p>
       </div>

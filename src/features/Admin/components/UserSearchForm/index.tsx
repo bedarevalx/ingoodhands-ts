@@ -7,6 +7,7 @@ import Input from '../../../../UI/Input';
 import LoadedButton from '../../../../UI/LoadedButton';
 import { Menu, MenuItem, Pagination } from '@mui/material';
 import { UserSearchItem } from '../..';
+import Spinner from '../../../../UI/Spinner';
 
 interface IUserSearchFormProps {
   classNames?: string[];
@@ -62,6 +63,9 @@ export const UserSearchForm = (props: IUserSearchFormProps) => {
         {searchState.users.length === 0 && !searchState.isLoading && (
           <p>Ничего не найдено</p>
         )}
+        {searchState.isLoading && (
+          <Spinner classNames={['user-search-form__spinner']} />
+        )}
         {searchState.users.map((user) => (
           <UserSearchItem
             key={user.id}
@@ -76,11 +80,15 @@ export const UserSearchForm = (props: IUserSearchFormProps) => {
           />
         ))}
       </div>
-      <Pagination
-        page={searchState.page}
-        count={searchState.totalPages}
-        onChange={controller.handleChangeUsersPage}
-      />
+
+      <div className='user-search-form__pagination-wrapper'>
+        <Pagination
+          page={searchState.page}
+          count={searchState.totalPages}
+          onChange={controller.handleChangeUsersPage}
+        />
+      </div>
+
       <Menu
         anchorEl={anchorEl}
         open={open}

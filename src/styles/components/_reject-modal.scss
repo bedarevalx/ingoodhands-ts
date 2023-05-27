@@ -1,0 +1,19 @@
+.reject-modal {
+  & .modal__container {
+    padding: 24px 38px;
+    border-radius: 12px;
+    // height: 600px;
+  }
+
+  &__reject.MuiButtonBase-root {
+    color: white;
+    background-color: $color-error;
+    border: 0;
+    @include color-hover($color-error);
+  }
+
+  &__reject-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}

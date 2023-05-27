@@ -9,6 +9,7 @@ import Button from '../../../../UI/Button';
 import LoadedButton from '../../../../UI/LoadedButton';
 import { AdSearchItem } from '../..';
 import FullscreenSpinner from '../../../../components/FullscreenSpinner';
+import Spinner from '../../../../UI/Spinner';
 
 interface IAdsSearchFormProps {
   classNames?: string[];
@@ -66,12 +67,9 @@ export const AdsSearchForm = (props: IAdsSearchFormProps) => {
         />
       </div>
       <div className='ads-search-form__list'>
-        {searchState.isLoading &&
-          new Array(searchState.limit).fill(null).map((_: any, id: number) => (
-            <div key={id} className='ads-search-form__skeleton-wrapper'>
-              <Skeleton className='ads-search-form__skeleton' />
-            </div>
-          ))}
+        {searchState.isLoading && (
+          <Spinner classNames={['ads-search-form__spinner']} />
+        )}
 
         {searchState.ads.length === 0 && !searchState.isLoading && (
           <p>Ничего не найдено</p>

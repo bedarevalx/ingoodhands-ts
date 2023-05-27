@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { getPendingAds } from '../../../../api/in-good-hands.api';
 import { AdsController } from '../../controllers/ads.controller';
 import { Pagination } from '@mui/material';
+import NotFoundItems from '../../../../components/NotFoundItems';
 
 interface IPendingListProps {
   classNames?: string[];
@@ -30,6 +31,15 @@ export const PendingList = (props: IPendingListProps) => {
       <h3 className='pending-list__title'>Ожидают проверки</h3>
       <div className='pending-list__list'>
         {pending.isLoading ? <Spinner /> : null}
+        {!pending.isLoading &&
+          pending.ads.length === 0 &&
+          pending.page === 1 && (
+            <NotFoundItems
+              icon='😟'
+              text='Нет объявлений, ожидающих проверки'
+            />
+          )}
+
         {pending.ads.map((ad) => {
           const handleClick = () => {
             navigate('/admin/moderation/' + ad.id);

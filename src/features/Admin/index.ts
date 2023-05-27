@@ -1,3 +1,4 @@
+export { RejectModal } from './components/RejectModal';
 export { HistoryList } from './components/HistoryList';
 export { CategoriesList } from './components/CategoriesList';
 export { CitiesList } from './components/CitiesList';
