@@ -78,6 +78,10 @@ const UserAd = (props: IUserAdProps) => {
       !!props.reservation &&
       props.onConfirmDeal(props.reservation?.id);
   };
+
+  const handleTooltipClick = (event: MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
   return (
     <Link
       to={'/post/' + props.id}
@@ -117,6 +121,8 @@ const UserAd = (props: IUserAdProps) => {
                     </span>
                     {props.state === 'rejected' && (
                       <Tooltip
+                        onClick={handleTooltipClick}
+                        enterTouchDelay={0}
                         title={
                           'Мы отправили вам всю информацию о проверке вашего объявления на вашу электронную почту'
                         }>
