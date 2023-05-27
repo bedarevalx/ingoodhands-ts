@@ -8,6 +8,8 @@ import { MoreVert } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import CheckIcon from '@mui/icons-material/Check';
 import { IPostReservation } from '../../../../interfaces/reservations.interfaces';
+import { getLocaleAdsState } from '../../../../helpers/getLocaleAdsState';
+import { getStateColor } from '../../../../helpers/getStateColor';
 
 interface IUserAdProps {
   classNames?: string[];
@@ -104,9 +106,13 @@ const UserAd = (props: IUserAdProps) => {
                     {props.likeCount}
                   </span>
                 </div>
-                <div className='user-ad__state'>
-                  <span>{props.state}</span>
-                </div>
+                {props.state && (
+                  <div className='user-ad__state'>
+                    <span style={{ color: getStateColor(props.state) }}>
+                      {getLocaleAdsState(props.state)}
+                    </span>
+                  </div>
+                )}
               </>
             </div>
           ) : (
