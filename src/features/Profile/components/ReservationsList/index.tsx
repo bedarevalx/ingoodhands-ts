@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import { ReservationController, ReservationItem } from '../..';
 import { ReservationsFilters } from '../../../../mocks/reservations-filters.mocks';
 import Spinner from '../../../../UI/Spinner';
+import NotFoundItems from '../../../../components/NotFoundItems';
 
 interface IReservationsListProps {
   classNames?: string[];
@@ -29,6 +30,14 @@ export const ReservationsList = (props: IReservationsListProps) => {
       controller.clearValues();
     };
   }, []);
+
+  const getNotFoundParamTitle = () => {
+    if (reservations.param === 'incoming') {
+      return 'входящих';
+    } else {
+      return 'исходящих';
+    }
+  };
 
   return (
     <div className={classNamesParser('reservations-list', props.classNames)}>
@@ -50,6 +59,13 @@ export const ReservationsList = (props: IReservationsListProps) => {
         ))}
       </ToggleButtonGroup>
       {reservations.isLoading && <Spinner />}
+      {!reservations.isLoading && reservations.reservations.length === 0 && (
+        <NotFoundItems
+          classNames={['reservations-list__list']}
+          icon='😔'
+          text={`У вас еще нет ${getNotFoundParamTitle()} запросов на бронирование`}
+        />
+      )}
       <div className='reservations-list__list'>
         {reservations.reservations.map((reservation) => (
           <ReservationItem

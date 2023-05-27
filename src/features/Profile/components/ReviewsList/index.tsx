@@ -6,6 +6,7 @@ import { ProfileController } from '../../controllers/profile.controller';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from '@mui/material';
 import { ReviewItem } from '../../../Advert';
+import NotFoundItems from '../../../../components/NotFoundItems';
 
 interface IReviewsListProps {
   classNames?: string[];
@@ -19,15 +20,20 @@ export const ReviewsList = (props: IReviewsListProps) => {
   useEffect(() => {
     controller.getMyReviews();
   }, []);
-  const isNoReviews =
-    !reviews.isLoading && reviews.reviews.length === 0 && reviews.page;
 
   return (
     <div className={classNamesParser('reviews-list', props.classNames)}>
       <h3>Мои отзывы</h3>
       {reviews.isLoading && <Spinner />}
+      {!reviews.isLoading && reviews.reviews.length === 0 && (
+        <NotFoundItems
+          classNames={['reservations-list__list']}
+          icon='😔'
+          text={`У вас еще нет отзывов`}
+        />
+      )}
+
       <div className='reviews-list__list'>
-        {isNoReviews && <p>У вас нет ни одного отзыва</p>}
         {!reviews.isLoading &&
           reviews.reviews.map((review) => (
             <ReviewItem

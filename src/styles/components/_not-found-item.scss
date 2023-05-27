@@ -1,0 +1,13 @@
+.not-found-item {
+  text-align: center;
+  &__icon {
+    font-size: 56px;
+  }
+
+  &__text {
+    font-weight: 700;
+    opacity: 0.6;
+  }
+  &__helper {
+  }
+}

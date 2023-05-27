@@ -7,6 +7,7 @@ import UserAd from '../UserAd';
 import Spinner from '../../../../UI/Spinner';
 import { useNavigate } from 'react-router-dom';
 import { MyAdsFilters } from '../../../../mocks/my-ads-filters.mocks';
+import NotFoundItems from '../../../../components/NotFoundItems';
 
 interface IMyAdsListProps {
   classNames?: string[];
@@ -35,6 +36,16 @@ export const MyAdsList = (props: IMyAdsListProps) => {
 
   const isNoAds = !myAds.isLoading && myAds.ads.length === 0 && myAds.page;
 
+  const getNotFoundParamTitle = () => {
+    const params = JSON.parse(myAds.param) as string[];
+    if (params.length === 0) return 'Вы еще не создали объявления';
+    if (params.length === 3)
+      return 'У вас нет объявлений, ожидающих публикации';
+    if (params[0] === 'active') return 'У вас нет активных объявлений';
+    if (params[0] === 'closed') return 'У вас нет завершенных объявлений';
+    else return 'У вас нет забронированных объявлений';
+  };
+
   return (
     <div className={classNamesParser('my-ads-list', props.classNames)}>
       <h3 className='my-ads-list__title'>Мои объявления</h3>
@@ -54,7 +65,9 @@ export const MyAdsList = (props: IMyAdsListProps) => {
       </ToggleButtonGroup>
       <div className='my-ads-list__list'>
         {myAds.isLoading && <Spinner />}
-        {isNoAds ? <p>У вас нет созданных объявлений</p> : null}
+        {isNoAds ? (
+          <NotFoundItems icon='😔' text={getNotFoundParamTitle()} />
+        ) : null}
         {!myAds.isLoading &&
           myAds.ads.map((ad) => (
             <UserAd

@@ -4,6 +4,7 @@ import { DealsFilters } from '../../../../mocks/deals-filters.mocks';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import { MakeReviewModal, ReservationController, ReservationItem } from '../..';
 import Spinner from '../../../../UI/Spinner';
+import NotFoundItems from '../../../../components/NotFoundItems';
 
 export const DealsList = () => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,18 @@ export const DealsList = () => {
       controller.clearDealsValues();
     };
   }, []);
+
+  const getNotFoundParamTitle = () => {
+    const params = JSON.parse(deals.param) as string[];
+    if (params.length > 1) {
+      return 'активных';
+    }
+    if (params[0] === 'completed') {
+      return 'завершенных';
+    } else {
+      return 'просроченных';
+    }
+  };
   return (
     <div className='deals-list'>
       <div className='deals-list__header'>
@@ -38,6 +51,14 @@ export const DealsList = () => {
       </ToggleButtonGroup>
 
       {deals.isLoading && <Spinner />}
+
+      {!deals.isLoading && deals.deals.length === 0 && (
+        <NotFoundItems
+          classNames={['deals-list__list']}
+          icon='😔'
+          text={`У вас еще нет ${getNotFoundParamTitle()} сделок`}
+        />
+      )}
 
       <div className='reservations-list__list'>
         {deals.deals.map((deal) => (

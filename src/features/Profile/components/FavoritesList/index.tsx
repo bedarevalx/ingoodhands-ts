@@ -5,6 +5,7 @@ import Spinner from '../../../../UI/Spinner';
 import UserAd from '../UserAd';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import { FavoritesController } from '../../controllers/favorites.controller';
+import NotFoundItems from '../../../../components/NotFoundItems';
 
 export interface IFavoritesListProps {
   classNames?: string[];
@@ -28,7 +29,10 @@ export const FavoritesList = (props: IFavoritesListProps) => {
       <div className='favorites-list__list'>
         {favorites.isLoading && <Spinner />}
         {!favorites.isLoading && favorites.ads.length === 0 ? (
-          <p>Список избранного пуст</p>
+          <NotFoundItems
+            icon='❤️‍🩹'
+            text={`Вы еще не добавили объявления в избранное`}
+          />
         ) : null}
         {!favorites.isLoading &&
           favorites.ads.map((ad) => (
