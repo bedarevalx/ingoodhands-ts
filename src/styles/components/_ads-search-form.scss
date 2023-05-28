@@ -8,6 +8,12 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 12px;
+    @media screen and (max-width: $media-xsm) {
+      font-size: 14px;
+      gap: 0px;
+      white-space: nowrap;
+      overflow: scroll;
+    }
   }
   &__search-param {
     cursor: pointer;
