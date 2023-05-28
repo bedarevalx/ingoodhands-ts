@@ -7,6 +7,7 @@ import { useInfiniteScroll } from '../../../../hooks/useInfiniteScroll';
 import { AdsController } from '../../controllers/ads.controller';
 import SkeletonLoader from '../../../../components/SkeletonLoader';
 import { Skeleton } from '@mui/material';
+import NotFoundItems from '../../../../components/NotFoundItems';
 
 interface IAdPreviewListProps {
   classNames?: string[];
@@ -28,6 +29,12 @@ export const AdPreviewList = (props: IAdPreviewListProps) => {
 
   return (
     <div className={classNamesParser('ad-preview-list', props.classNames)}>
+      {!ads.isLoading && ads.ads.length === 0 && (
+        <div className='ad-preview-list__not-found'>
+          <NotFoundItems icon='🥲' text='Ничего не найдено' />
+        </div>
+      )}
+
       <div className='ad-preview-list__grid-container'>
         {ads.ads?.map((ad, i) => (
           <AdPreview
