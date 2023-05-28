@@ -19,11 +19,6 @@
     justify-content: center;
   }
 
-  & .ad-search-item {
-    cursor: pointer;
-    @include color-hover(white);
-  }
-
   &__spinner {
     display: flex;
     height: 100%;
