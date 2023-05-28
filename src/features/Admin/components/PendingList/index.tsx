@@ -6,8 +6,9 @@ import { AdSearchItem } from '../AdSearchItem';
 import { useNavigate } from 'react-router-dom';
 import { getPendingAds } from '../../../../api/in-good-hands.api';
 import { AdsController } from '../../controllers/ads.controller';
-import { Pagination } from '@mui/material';
+import { Pagination, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import NotFoundItems from '../../../../components/NotFoundItems';
+import { PendingFilters } from '../../../../mocks/pending-list-filters.mocks';
 
 interface IPendingListProps {
   classNames?: string[];
@@ -29,6 +30,20 @@ export const PendingList = (props: IPendingListProps) => {
   return (
     <div className={classNamesParser('pending-list', props.classNames)}>
       <h3 className='pending-list__title'>Ожидают проверки</h3>
+      <ToggleButtonGroup
+        value={pending.param}
+        exclusive
+        onChange={controller.onParamChange}
+        className='pending-list__filters'>
+        {PendingFilters.map((filter) => (
+          <ToggleButton
+            key={filter.value}
+            className='pending-list__filter-btn'
+            value={filter.value}>
+            {filter.title}
+          </ToggleButton>
+        ))}
+      </ToggleButtonGroup>
       <div className='pending-list__list'>
         {pending.isLoading ? (
           <Spinner classNames={['pending-list__spinner']} />

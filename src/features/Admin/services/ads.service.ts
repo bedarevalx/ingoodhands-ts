@@ -1,4 +1,4 @@
-import { getPendingAds } from '../../../api/in-good-hands.api';
+import { getPendingAds, getReviewingAds } from '../../../api/in-good-hands.api';
 import { IAdPreview } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState } from '../../../store';
 import { setAds, setIsLoading, setTotalPages } from '../slices/ads.slice';
@@ -34,5 +34,15 @@ export class AdsService {
 
         console.log(error);
       }
+    };
+
+  getReviewingAds =
+    () => async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const state = getState().adminAds;
+        dispatch(setAds([]));
+        dispatch(setIsLoading(true));
+        const response = await getReviewingAds(state.limit, state.page);
+      } catch (error) {}
     };
 }

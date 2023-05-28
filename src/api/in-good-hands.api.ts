@@ -327,3 +327,8 @@ export const publishAdvert = async (moderationId: number) => {
     },
   });
 };
+
+export const getReviewingAds = async (limit: number, page: number) => {
+  const query = parseQueryParams({ limit, page });
+  return await axios.get(`api/admin/get_review_posts?${query}`);
+};

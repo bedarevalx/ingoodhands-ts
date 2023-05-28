@@ -2,12 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICategory } from '../../../interfaces/general.interfaces';
 import { IAdPreview } from '../../../interfaces/ads.interfaces';
 
+type IParamType = 'pending' | 'review';
+
 interface IAdsSlice {
   isLoading: boolean;
   ads: IAdPreview[];
   limit: number;
   page: number;
   totalPages: number;
+  param: IParamType;
 }
 
 const initialState: IAdsSlice = {
@@ -16,6 +19,7 @@ const initialState: IAdsSlice = {
   limit: 5,
   page: 1,
   totalPages: 0,
+  param: 'pending',
 };
 
 export const adsAdminSlice = createSlice({
@@ -31,13 +35,16 @@ export const adsAdminSlice = createSlice({
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
+    setParam: (state, action: PayloadAction<IParamType>) => {
+      state.param = action.payload;
+    },
     setTotalPages: (state, action: PayloadAction<number>) => {
       state.totalPages = action.payload;
     },
   },
 });
 
-export const { setAds, setPage, setIsLoading, setTotalPages } =
+export const { setAds, setPage, setIsLoading, setTotalPages, setParam } =
   adsAdminSlice.actions;
 export const reducer = adsAdminSlice.reducer;
 // export authSlice.reducer;
