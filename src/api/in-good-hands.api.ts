@@ -1,25 +1,18 @@
 import axios from '../axios/in-good-hands.axios';
 import { parseQueryParams } from '../helpers/parseQueryParams';
-import {
-  IAdPreview,
-  ICreatePost,
-  IFetchAdParams,
-} from '../interfaces/ads.interfaces';
+import { ICreatePost, IFetchAdParams } from '../interfaces/ads.interfaces';
 import { IUserSignIn, IUserSignUp } from '../interfaces/auth.interfaces';
 import {
   ICheckCodeBody,
   IEditProfileBody,
-  IUserAd,
 } from '../interfaces/profile.interfaces';
 import {
   IAdvertResponse,
   ICategoryResponse,
   ICityResponse,
   IContactResponse,
-  IGetAdsResponse,
   IGetAdvertResponse,
   IGetDealsResponse,
-  IGetFavoritesResponse,
   IGetProfileResponse,
   IGetReservationResponse,
   IGetReviewingPostResponse,
@@ -43,7 +36,6 @@ import {
   DealsSearchParamTypes,
   ReservationSearchParamTypes,
 } from '../types/ads.types';
-import { AdsStatusTypes } from '../types/general.types';
 
 export const refreshToken = async () => {
   const refreshToken = localStorage['refreshToken'];
@@ -348,4 +340,11 @@ export const banAdvert = async (id: number) => {
     id_post: id,
     status: 'banned',
   });
+};
+//TODO: переделать по дроут
+export const getHistoryAds = async (limit: number, page: number) => {
+  const query = parseQueryParams({ limit, page });
+  return await axios.get<IListResponse<IGetReviewingPostResponse>>(
+    `api/admin/get_review_posts?${query}`,
+  );
 };

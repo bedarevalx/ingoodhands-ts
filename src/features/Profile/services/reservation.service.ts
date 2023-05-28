@@ -18,11 +18,13 @@ import {
   fetchDealsPending,
   setTotalPages as setDealsTotalPages,
   setIsReviewLoading,
+  setPage as setDealsPage,
 } from '../slices/deals.slice';
 import {
   fetchReservationsFulfilled,
   fetchReservationsPending,
   setTotalPages,
+  setPage as setReservationsPage,
 } from '../slices/reservations.slice';
 
 export class ReservationService {
@@ -70,6 +72,10 @@ export class ReservationService {
 
         dispatch(fetchReservationsFulfilled(reservations));
         dispatch(setTotalPages(response.data.total_pages));
+        if (reservations.length === 0 && state.page > 1) {
+          dispatch(setReservationsPage(state.page - 1));
+          dispatch(this.getReservations());
+        }
       } catch (error) {
         console.log(error);
       }
@@ -118,6 +124,10 @@ export class ReservationService {
 
       dispatch(fetchDealsFulfilled(deals));
       dispatch(setDealsTotalPages(response.data.total_pages));
+      if (deals.length === 0 && state.page > 1) {
+        dispatch(setDealsPage(state.page - 1));
+        dispatch(this.getDeals());
+      }
     } catch (error) {
       console.log(error);
     }

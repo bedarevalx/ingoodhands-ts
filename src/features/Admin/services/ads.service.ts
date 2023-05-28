@@ -72,6 +72,7 @@ export class AdsService {
           };
         });
         dispatch(setAds(ads));
+        dispatch(setTotalPages(response.data.total_pages));
         dispatch(setIsLoading(false));
         if (ads.length === 0 && state.page > 1) {
           dispatch(setPage(state.page - 1));
