@@ -10,7 +10,6 @@ export class AdsService {
       try {
         const state = getState().adminAds;
         dispatch(setAds([]));
-
         dispatch(setIsLoading(true));
 
         const response = await getPendingAds(state.limit, state.page);

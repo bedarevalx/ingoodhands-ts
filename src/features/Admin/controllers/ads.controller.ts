@@ -16,7 +16,7 @@ export class AdsController implements IAdminAdsController {
   getPendingAds = () => {
     this.dispatch(this.adsService.getPendingAds());
   };
-  onChangePage = (page: number) => {
+  onChangePage = (_: any, page: number) => {
     const state = this.getState().adminAds;
     if (page === state.page) return;
     this.dispatch(setPage(page));

@@ -5,6 +5,9 @@
   &__list {
     max-width: 700px;
     height: 692px;
+    @media screen and (max-width: $media-sm) {
+      max-width: unset;
+    }
   }
   &__pagination-wrapper {
     display: flex;

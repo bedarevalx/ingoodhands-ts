@@ -63,6 +63,7 @@ export const PendingList = (props: IPendingListProps) => {
         className='pending-list__pagination'
         count={pending.totalPages}
         page={pending.page}
+        onChange={controller.onChangePage}
       />
     </div>
   );

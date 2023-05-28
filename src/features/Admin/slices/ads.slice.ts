@@ -13,7 +13,7 @@ interface IAdsSlice {
 const initialState: IAdsSlice = {
   isLoading: false,
   ads: [],
-  limit: 6,
+  limit: 5,
   page: 1,
   totalPages: 0,
 };

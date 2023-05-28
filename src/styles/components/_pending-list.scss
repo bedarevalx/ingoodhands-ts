@@ -1,6 +1,10 @@
 .pending-list {
   max-width: 600px;
   width: 100%;
+
+  @media screen and (max-width: $media-sm) {
+    max-width: unset;
+  }
   &__title {
     margin-bottom: 24px;
   }

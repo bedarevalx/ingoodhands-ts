@@ -1,5 +1,8 @@
 .ads-search-form {
   max-width: 600px;
+  @media screen and (max-width: $media-sm) {
+    max-width: unset;
+  }
   &__header {
     display: flex;
     align-items: center;

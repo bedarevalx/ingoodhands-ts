@@ -12,6 +12,9 @@
         opacity: 1;
       }
     }
+    @media screen and (max-width: $media-sm) {
+      max-width: unset;
+    }
   }
   &__block-editing {
     padding-bottom: 0px;

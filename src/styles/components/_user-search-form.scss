@@ -1,6 +1,9 @@
 .user-search-form {
   max-width: 600px;
   width: 100%;
+  @media screen and (max-width: $media-sm) {
+    max-width: unset;
+  }
   &__header {
     display: flex;
     align-items: center;
