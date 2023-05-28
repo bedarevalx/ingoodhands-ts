@@ -14,6 +14,11 @@ export class AdsController implements IAdminAdsController {
     this.getState = store.getState;
     this.adsService = new AdsService();
   }
+
+  getAds = () => {
+    const state = this.getState().adminAds;
+    state.param === 'pending' ? this.getPendingAds() : this.getReviewingAds();
+  };
   getPendingAds = () => {
     this.dispatch(this.adsService.getPendingAds());
   };

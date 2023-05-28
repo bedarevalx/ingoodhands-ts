@@ -1,5 +1,5 @@
 import { getPendingAds, getReviewingAds } from '../../../api/in-good-hands.api';
-import { IAdPreview } from '../../../interfaces/ads.interfaces';
+import { IAdPreview, IPendingAds } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState } from '../../../store';
 import { setAds, setIsLoading, setTotalPages } from '../slices/ads.slice';
 import { parseDate } from '../../../helpers/parseDate';
@@ -14,7 +14,7 @@ export class AdsService {
 
         const response = await getPendingAds(state.limit, state.page);
 
-        const ads: IAdPreview[] = response.data.data.map((ad) => {
+        const ads: IPendingAds[] = response.data.data.map((ad) => {
           return {
             id: ad.id,
             title: ad.title,
@@ -22,7 +22,6 @@ export class AdsService {
             imagePath: ad.image_set[0],
             date: parseDate(ad.created_at),
             city: ad.city.name,
-            isFavorite: false,
           };
         });
 
@@ -43,6 +42,21 @@ export class AdsService {
         dispatch(setAds([]));
         dispatch(setIsLoading(true));
         const response = await getReviewingAds(state.limit, state.page);
+        const ads: IPendingAds[] = response.data.data.map((ad) => {
+          return {
+            id: ad.id,
+            title: ad.title,
+            descripton: ad.description,
+            imagePath: ad.image_set[0],
+            date: parseDate(ad.created_at),
+            city: ad.city.name,
+            idChecking: ad.id_checking,
+            moderatorEmail: ad.moderator_email,
+          };
+        });
+        console.log(response);
+        dispatch(setAds(ads));
+        dispatch(setIsLoading(false));
       } catch (error) {}
     };
 }

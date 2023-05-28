@@ -20,12 +20,17 @@ export const PendingList = (props: IPendingListProps) => {
   const controller = new AdsController(dispatch);
 
   useEffect(() => {
-    controller.getPendingAds();
+    controller.getAds();
 
     return () => {
       controller.clearState();
     };
   }, []);
+
+  const getNotFoundParamTitlte = () =>
+    pending.param === 'pending'
+      ? 'ожиидающих проверки'
+      : 'находящихся на проверке';
 
   return (
     <div className={classNamesParser('pending-list', props.classNames)}>
@@ -52,8 +57,8 @@ export const PendingList = (props: IPendingListProps) => {
           pending.ads.length === 0 &&
           pending.page === 1 && (
             <NotFoundItems
-              icon='😟'
-              text='Нет объявлений, ожидающих проверки'
+              icon='😄'
+              text={`Нет объявлений ${getNotFoundParamTitlte()}`}
             />
           )}
 
@@ -63,13 +68,16 @@ export const PendingList = (props: IPendingListProps) => {
           };
           return (
             <AdSearchItem
+              key={ad.id}
               title={ad.title}
               description={ad.descripton}
               createdAt={ad.date}
               imagePath={ad.imagePath}
               id={ad.id}
               handleClick={handleClick}
-              variant='pending'
+              variant={pending.param}
+              moderatorEmail={ad.moderatorEmail}
+              idReview={ad.idChecking}
             />
           );
         })}

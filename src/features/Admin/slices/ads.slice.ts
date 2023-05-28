@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICategory } from '../../../interfaces/general.interfaces';
-import { IAdPreview } from '../../../interfaces/ads.interfaces';
+import { IPendingAds } from '../../../interfaces/ads.interfaces';
 
 type IParamType = 'pending' | 'review';
 
 interface IAdsSlice {
   isLoading: boolean;
-  ads: IAdPreview[];
+  ads: IPendingAds[];
   limit: number;
   page: number;
   totalPages: number;
@@ -29,7 +29,7 @@ export const adsAdminSlice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
-    setAds: (state, action: PayloadAction<IAdPreview[]>) => {
+    setAds: (state, action: PayloadAction<IPendingAds[]>) => {
       state.ads = action.payload;
     },
     setIsLoading: (state, action: PayloadAction<boolean>) => {

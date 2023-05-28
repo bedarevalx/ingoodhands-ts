@@ -230,3 +230,21 @@ export interface IGetDealsResponse {
     score: number;
   };
 }
+
+export interface IGetReviewingPostResponse {
+  id: number;
+  title: string;
+  address: IAddressResponse;
+  category: ICategoryResponse;
+  city: IUserCity;
+  date: string;
+  description: string;
+  image_set: string[];
+  status: AdsStatusTypes;
+  view_count: number;
+  like_count: number;
+  created_at: string;
+  updated_at: string;
+  id_checking: number;
+  moderator_email: string;
+}

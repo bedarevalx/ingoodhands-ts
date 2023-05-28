@@ -72,3 +72,14 @@ export interface IReview {
   idReservation: number;
   writenBy: string;
 }
+
+export interface IPendingAds {
+  id: number;
+  title: string;
+  city: string;
+  imagePath: string;
+  descripton: string;
+  date: string;
+  idChecking?: number;
+  moderatorEmail?: string;
+}
