@@ -16,7 +16,8 @@ export class HistoryController {
     this.dispatch(this.historyService.getHistoryAds());
   };
   onChangePage = (_: any, page: number) => {
-    const state = this.getState().adminAds;
+    const state = this.getState().history;
+    console.log(page, state.page);
     if (page === state.page) return;
     this.dispatch(setPage(page));
     this.getHistoryAds();
@@ -28,5 +29,8 @@ export class HistoryController {
     this.dispatch(setAds([]));
   };
 
-  onSendToModeration = (id: number) => {};
+  onSendToModeration = async (id: number) => {
+    await this.dispatch(this.historyService.onSendToModeration(id));
+    this.getHistoryAds();
+  };
 }

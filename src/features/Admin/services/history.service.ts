@@ -1,4 +1,8 @@
-import { getHistoryAds, getReviewingAds } from '../../../api/in-good-hands.api';
+import {
+  getHistoryAds,
+  getReviewingAds,
+  sendToModeration,
+} from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
 import { useSnackbar } from '../../../hooks/useSnackbar';
 import { IHistoryAd } from '../../../interfaces/ads.interfaces';
@@ -12,6 +16,8 @@ export class HistoryService {
   getHistoryAds =
     () => async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
+        dispatch(setAds([]));
+        dispatch(setIsLoading(true));
         const state = getState().history;
         const response = await getHistoryAds(state.limit, state.page);
         const ads: IHistoryAd[] = response.data.data.map((item) => {
@@ -32,5 +38,16 @@ export class HistoryService {
         dispatch(setTotalPages(response.data.total_pages));
         dispatch(setIsLoading(false));
       } catch (error) {}
+    };
+
+  onSendToModeration =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await sendToModeration(id);
+        this.showSuccess('Объявление отправлено на модерацию');
+      } catch (error: any) {
+        this.showError(error.response.data);
+      }
     };
 }
