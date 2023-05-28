@@ -29,9 +29,12 @@ import {
   createAdRejected,
   setFetchingPost,
 } from '../slices/edit-ad.slice';
+import { useSnackbar } from '../../../hooks/useSnackbar';
 
 export class EditAdService {
   dispatch: AppDispatch;
+  showSuccess: (text: string) => void = useSnackbar().showSuccess;
+  showError: (text: string) => void = useSnackbar().showError;
   constructor(dispatch: AppDispatch) {
     this.dispatch = dispatch;
   }
@@ -72,9 +75,11 @@ export class EditAdService {
         };
         const response = await createAd(body);
         this.dispatch(createAdFulfilled());
+        this.showSuccess('Объявление отправлено на проверку');
         callback();
       } catch (error: any) {
         console.log(error);
+        this.showError(error.response.data);
         this.dispatch(createAdRejected(error.message));
       }
     };
