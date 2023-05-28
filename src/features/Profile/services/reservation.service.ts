@@ -7,6 +7,7 @@ import {
   getReservations,
 } from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
+import { useSnackbar } from '../../../hooks/useSnackbar';
 import {
   IDeal,
   IReservation,
@@ -28,6 +29,8 @@ import {
 } from '../slices/reservations.slice';
 
 export class ReservationService {
+  showSuccess: (text: string) => void = useSnackbar().showSuccess;
+  showError: (text: string) => void = useSnackbar().showError;
   getReservations =
     () => async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
@@ -138,8 +141,10 @@ export class ReservationService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await confirmReservation(id);
+        this.showSuccess('Бронирование успешно подтверждено');
         return response.data;
-      } catch (error) {
+      } catch (error: any) {
+        this.showError(error.response.data);
         console.log(error);
       }
     };
@@ -149,8 +154,10 @@ export class ReservationService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await declineReservation(id);
+        this.showSuccess('Бронирование успешно отклонено');
         return response.data;
-      } catch (error) {
+      } catch (error: any) {
+        this.showError(error.response.data);
         console.log(error);
       }
     };
@@ -160,8 +167,11 @@ export class ReservationService {
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await changeDealStatus(id, 'completed');
+        this.showSuccess('Сделка успешно подтверждена');
         return response.data;
-      } catch (error) {}
+      } catch (error: any) {
+        this.showError(error.response.data);
+      }
     };
 
   createReview =
@@ -176,7 +186,9 @@ export class ReservationService {
         const response = await createReview(state.idReservation, score, text);
 
         dispatch(setIsReviewLoading(false));
-      } catch (error) {
+        this.showSuccess('Отзыв создан успешно');
+      } catch (error: any) {
+        this.showError(error.response.data);
         console.log(error);
       } finally {
         dispatch(setIsReviewLoading(false));
