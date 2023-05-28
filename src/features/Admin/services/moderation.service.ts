@@ -1,3 +1,4 @@
+import { NavigateFunction } from 'react-router-dom';
 import {
   cancelModeration,
   publishAdvert,
@@ -20,7 +21,7 @@ export class ModerationService {
   showError: (text: string) => void = useSnackbar().showError;
   showSuccess: (text: string) => void = useSnackbar().showSuccess;
   startModeration =
-    (id: string) =>
+    (id: string, errorCallback: () => void) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         dispatch(setIsLoading(true));
@@ -64,7 +65,9 @@ export class ModerationService {
         dispatch(setModerationId(response.data.checking_id));
         dispatch(setPost(advert));
         dispatch(setIsLoading(false));
-      } catch (error) {
+      } catch (error: any) {
+        this.showError(error.response.data);
+        errorCallback();
         dispatch(setIsLoading(false));
         console.log(error);
       }

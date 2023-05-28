@@ -32,7 +32,9 @@ export class ModerationController implements IAdminAdsController {
   };
 
   startModeration = (id: string) => {
-    this.dispatch(this.moderationService.startModeration(id));
+    this.dispatch(
+      this.moderationService.startModeration(id, () => this.navigate('/admin')),
+    );
   };
 
   onReject = async () => {

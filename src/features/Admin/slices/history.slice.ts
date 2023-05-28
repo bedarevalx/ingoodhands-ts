@@ -13,7 +13,7 @@ interface IHistorySlice {
 const initialState: IHistorySlice = {
   isLoading: false,
   ads: [],
-  limit: 6,
+  limit: 5,
   page: 1,
   totalPages: 0,
 };
