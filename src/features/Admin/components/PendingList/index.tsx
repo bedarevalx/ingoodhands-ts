@@ -78,6 +78,7 @@ export const PendingList = (props: IPendingListProps) => {
               variant={pending.param}
               moderatorEmail={ad.moderatorEmail}
               idReview={ad.idChecking}
+              onCancelModeration={controller.onCancelModeration}
             />
           );
         })}

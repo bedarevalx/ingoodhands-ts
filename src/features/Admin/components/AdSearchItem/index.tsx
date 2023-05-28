@@ -49,7 +49,9 @@ export const AdSearchItem = (props: IAdSearchItemProps) => {
   };
 
   const handleCancelModeration = () => {
-    props.onCancelModeration && props.onCancelModeration(props.id);
+    props.onCancelModeration &&
+      props.idReview &&
+      props.onCancelModeration(props.idReview);
   };
 
   return (

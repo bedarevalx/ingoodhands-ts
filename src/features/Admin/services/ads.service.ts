@@ -1,10 +1,23 @@
-import { getPendingAds, getReviewingAds } from '../../../api/in-good-hands.api';
+import {
+  cancelModeration,
+  getPendingAds,
+  getReviewingAds,
+} from '../../../api/in-good-hands.api';
 import { IAdPreview, IPendingAds } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState } from '../../../store';
-import { setAds, setIsLoading, setTotalPages } from '../slices/ads.slice';
+import {
+  setAds,
+  setIsLoading,
+  setPage,
+  setTotalPages,
+} from '../slices/ads.slice';
 import { parseDate } from '../../../helpers/parseDate';
+import { useSnackbar } from '../../../hooks/useSnackbar';
 
 export class AdsService {
+  showSuccess: (text: string) => void = useSnackbar().showSuccess;
+  showError: (text: string) => void = useSnackbar().showError;
+
   getPendingAds =
     () => async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
@@ -24,10 +37,14 @@ export class AdsService {
             city: ad.city.name,
           };
         });
-
         dispatch(setTotalPages(response.data.total_pages));
         dispatch(setAds(ads));
         dispatch(setIsLoading(false));
+
+        if (ads.length === 0 && state.page > 1) {
+          dispatch(setPage(state.page - 1));
+          dispatch(this.getPendingAds());
+        }
       } catch (error) {
         dispatch(setIsLoading(false));
 
@@ -54,9 +71,23 @@ export class AdsService {
             moderatorEmail: ad.moderator_email,
           };
         });
-        console.log(response);
         dispatch(setAds(ads));
         dispatch(setIsLoading(false));
+        if (ads.length === 0 && state.page > 1) {
+          dispatch(setPage(state.page - 1));
+          dispatch(this.getReviewingAds());
+        }
       } catch (error) {}
+    };
+
+  cancelModeration =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await cancelModeration(id);
+        this.showSuccess('Проверка объявления отменена успешно');
+      } catch (error: any) {
+        this.showError(error.response.data);
+      }
     };
 }

@@ -42,6 +42,11 @@ export class AdsController implements IAdminAdsController {
     param === 'pending' ? this.getPendingAds() : this.getReviewingAds();
   };
 
+  onCancelModeration = async (id: number) => {
+    await this.dispatch(this.adsService.cancelModeration(id));
+    this.getReviewingAds();
+  };
+
   clearState = () => {
     this.dispatch(setPage(1));
     this.dispatch(setTotalPages(0));
