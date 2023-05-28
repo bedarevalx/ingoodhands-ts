@@ -75,4 +75,17 @@ export class SearchController implements ISearchController {
   onUsersSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     this.dispatch(setUserSearchValue(e.target.value));
   };
+
+  onBanAdvert = async (id: number) => {
+    await this.dispatch(this.searchService.onBanAdvert(id));
+    this.dispatch(this.searchService.searchAds());
+  };
+  onUnbanAdvert = async (id: number) => {
+    await this.dispatch(this.searchService.onUnbanAdvert(id));
+    this.dispatch(this.searchService.searchAds());
+  };
+  onSendToModeration = async (id: number) => {
+    await this.dispatch(this.searchService.onSendToModeration(id));
+    this.dispatch(this.searchService.searchAds());
+  };
 }

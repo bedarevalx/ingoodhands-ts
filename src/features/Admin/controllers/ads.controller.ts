@@ -38,6 +38,7 @@ export class AdsController implements IAdminAdsController {
       return;
     }
     this.dispatch(setParam(param));
+    this.dispatch(setTotalPages(1));
     this.dispatch(setPage(1));
     param === 'pending' ? this.getPendingAds() : this.getReviewingAds();
   };

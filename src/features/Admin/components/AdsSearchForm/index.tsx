@@ -85,6 +85,9 @@ export const AdsSearchForm = (props: IAdsSearchFormProps) => {
             id={ad.id}
             status={ad.status}
             variant='search'
+            onBan={controller.onBanAdvert}
+            onUnban={controller.onUnbanAdvert}
+            onUnpublish={controller.onSendToModeration}
           />
         ))}
       </div>

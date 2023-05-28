@@ -335,3 +335,17 @@ export const getReviewingAds = async (limit: number, page: number) => {
     `api/admin/get_review_posts?${query}`,
   );
 };
+
+export const sendToModeration = async (id: number) => {
+  return await axios.patch('/api/admin/change_post_status', {
+    id_post: id,
+    status: 'pending',
+  });
+};
+
+export const banAdvert = async (id: number) => {
+  return await axios.patch('/api/admin/change_post_status', {
+    id_post: id,
+    status: 'banned',
+  });
+};

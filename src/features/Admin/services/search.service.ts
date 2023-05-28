@@ -1,5 +1,11 @@
-import { searchAds, searchUsers } from '../../../api/in-good-hands.api';
+import {
+  banAdvert,
+  searchAds,
+  searchUsers,
+  sendToModeration,
+} from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
+import { useSnackbar } from '../../../hooks/useSnackbar';
 import {
   IAdsSearchParams,
   ISearchedUser,
@@ -21,6 +27,8 @@ import {
 } from '../slices/user-search.slice';
 
 export class SearchService {
+  showSuccess: (text: string) => void = useSnackbar().showSuccess;
+  showError: (text: string) => void = useSnackbar().showError;
   searchAds =
     () => async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
@@ -125,6 +133,39 @@ export class SearchService {
         );
       } catch (error) {
         console.log(error);
+      }
+    };
+
+  onBanAdvert =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await banAdvert(id);
+        this.showSuccess('Объявление успешно заблокировано');
+      } catch (error: any) {
+        this.showError(error.response.data);
+      }
+    };
+
+  onUnbanAdvert =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await sendToModeration(id);
+        this.showSuccess('Объявление успешно разблокировано');
+      } catch (error: any) {
+        this.showError(error.response.data);
+      }
+    };
+
+  onSendToModeration =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await sendToModeration(id);
+        this.showSuccess('Объявление отправлено на модерацию');
+      } catch (error: any) {
+        this.showError(error.response.data);
       }
     };
 }
