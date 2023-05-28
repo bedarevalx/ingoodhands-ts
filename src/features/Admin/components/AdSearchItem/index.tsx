@@ -14,9 +14,11 @@ interface IAdSearchItemProps {
   status?: AdsStatusTypes;
   imagePath: string;
   id: number;
-  variant: 'search' | 'pending' | 'review';
+  variant: 'search' | 'pending' | 'review' | 'history';
   idReview?: number;
   moderatorEmail?: string;
+  resultText?: string;
+  isPublished?: boolean;
   handleClick?: () => void;
   onUnpublish?: (id: number) => void;
   onBan?: (id: number) => void;
@@ -54,6 +56,13 @@ export const AdSearchItem = (props: IAdSearchItemProps) => {
       props.onCancelModeration(props.idReview);
   };
 
+  const isCanBeSendedToModeration =
+    (props.variant === 'search' &&
+      (props.status === 'active' ||
+        props.status === 'rejected' ||
+        props.status === 'banned')) ||
+    props.variant === 'history';
+
   return (
     <div
       className='ad-search-item'
@@ -75,10 +84,20 @@ export const AdSearchItem = (props: IAdSearchItemProps) => {
             {getLocaleAdsState(props.status)}
           </p>
         )}
+        {props.isPublished && (
+          <p className={`ad-search-item__is-published`}>Опубликовано</p>
+        )}
+        {props.variant === 'history' && props.isPublished === false && (
+          <p className='ad-search-item__reason'>{props.resultText}</p>
+        )}
         <p className='ad-search-item__date'>{props.createdAt}</p>
-        {props.variant === 'review' && <p>{props.moderatorEmail}</p>}
+        {(props.variant === 'review' || props.variant === 'history') && (
+          <p className='ad-search-item__email'>{props.moderatorEmail}</p>
+        )}
       </div>
-      {(props.variant === 'search' || props.variant === 'review') && (
+      {(props.variant === 'search' ||
+        props.variant === 'review' ||
+        props.variant === 'history') && (
         <IconButton
           className='ad-search-item__more-btn'
           onClick={handleMenuOpen}>
@@ -98,14 +117,9 @@ export const AdSearchItem = (props: IAdSearchItemProps) => {
             Отменить проверку
           </MenuItem>
         )}
-        {props.variant === 'search' &&
-          (props.status === 'active' ||
-            props.status === 'rejected' ||
-            props.status === 'banned') && (
-            <MenuItem onClick={handleUnpublish}>
-              Отправить на модерацию
-            </MenuItem>
-          )}
+        {isCanBeSendedToModeration && (
+          <MenuItem onClick={handleUnpublish}>Отправить на модерацию</MenuItem>
+        )}
         {props.variant === 'search' &&
           (props.status === 'banned' ? (
             <MenuItem onClick={handleUnban}>Разблокировать</MenuItem>

@@ -13,6 +13,7 @@ import {
   IContactResponse,
   IGetAdvertResponse,
   IGetDealsResponse,
+  IGetHistoryModeration,
   IGetProfileResponse,
   IGetReservationResponse,
   IGetReviewingPostResponse,
@@ -344,7 +345,7 @@ export const banAdvert = async (id: number) => {
 //TODO: переделать по дроут
 export const getHistoryAds = async (limit: number, page: number) => {
   const query = parseQueryParams({ limit, page });
-  return await axios.get<IListResponse<IGetReviewingPostResponse>>(
-    `api/admin/get_review_posts?${query}`,
+  return await axios.get<IListResponse<IGetHistoryModeration>>(
+    `api/admin/get_checking_history?${query}`,
   );
 };

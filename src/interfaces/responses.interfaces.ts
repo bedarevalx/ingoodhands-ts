@@ -248,3 +248,13 @@ export interface IGetReviewingPostResponse {
   id_checking: number;
   moderator_email: string;
 }
+
+export interface IGetHistoryModeration {
+  result: {
+    is_public: boolean;
+    text?: string;
+  };
+  created_at: string;
+  moderator_email: string;
+  post: IGetReviewingPostResponse;
+}

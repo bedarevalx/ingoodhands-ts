@@ -83,3 +83,16 @@ export interface IPendingAds {
   idChecking?: number;
   moderatorEmail?: string;
 }
+
+export interface IHistoryAd {
+  id: number;
+  title: string;
+  city: string;
+  imagePath: string;
+  descripton: string;
+  date: string;
+  isPublished: boolean;
+  moderatorEmail: string;
+  moderatedAt: string;
+  resultText?: string;
+}

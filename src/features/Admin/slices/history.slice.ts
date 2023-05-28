@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICategory } from '../../../interfaces/general.interfaces';
-import { IAdPreview } from '../../../interfaces/ads.interfaces';
+import { IAdPreview, IHistoryAd } from '../../../interfaces/ads.interfaces';
 
 interface IHistorySlice {
   isLoading: boolean;
-  ads: IAdPreview[];
+  ads: IHistoryAd[];
   limit: number;
   page: number;
   totalPages: number;
@@ -25,7 +25,7 @@ export const historySlice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
-    setAds: (state, action: PayloadAction<IAdPreview[]>) => {
+    setAds: (state, action: PayloadAction<IHistoryAd[]>) => {
       state.ads = action.payload;
     },
     setIsLoading: (state, action: PayloadAction<boolean>) => {

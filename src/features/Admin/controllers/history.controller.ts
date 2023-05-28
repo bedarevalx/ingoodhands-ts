@@ -27,4 +27,6 @@ export class HistoryController {
     this.dispatch(setTotalPages(0));
     this.dispatch(setAds([]));
   };
+
+  onSendToModeration = (id: number) => {};
 }
