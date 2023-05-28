@@ -30,7 +30,7 @@ export class AdsController implements IAdminAdsController {
     const state = this.getState().adminAds;
     if (page === state.page) return;
     this.dispatch(setPage(page));
-    this.getPendingAds();
+    this.getAds();
   };
 
   onParamChange = (_: any, param: 'pending' | 'review') => {
