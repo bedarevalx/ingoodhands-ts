@@ -14,6 +14,7 @@ import { SimilarPosts } from '../SimilarAdverts';
 import { IconButton } from '@mui/material';
 import RequiredRole from '../../../../hoc/RequiredRole';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import NotFoundItems from '../../../../components/NotFoundItems';
 
 export const Advert = () => {
   const dispatch = useAppDispatch();
@@ -62,6 +63,8 @@ export const Advert = () => {
       {/* //TODO: Доделать отображение спиннера нормально */}
       {advert.isLoading ? (
         <FullscreenSpinner />
+      ) : !!advert.error ? (
+        <NotFoundItems icon='🔒' text={advert.error} />
       ) : (
         <>
           <AdvertPictures

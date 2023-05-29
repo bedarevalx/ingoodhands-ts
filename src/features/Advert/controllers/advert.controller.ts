@@ -28,9 +28,12 @@ export class AdvertController implements IAdvertController {
     try {
       this.dispatch(fetchPostPending());
       const post = await this.dispatch(this.advertService.getAdvertById(id));
-      this.dispatch(fetchPostFulfilled(post));
+      if (post) this.dispatch(fetchPostFulfilled(post));
+      console.log(post);
     } catch (e: any) {
-      fetchPostRejected(e.message);
+      this.dispatch(
+        fetchPostRejected('К сожалению объявление уже не доступно'),
+      );
     }
   };
 
