@@ -77,6 +77,10 @@ export const UserSearchForm = (props: IUserSearchFormProps) => {
             id={user.id}
             phoneNumber={user.phoneNumber}
             rating={user.rating}
+            roles={user.roles}
+            onBanUser={controller.onBanUser}
+            onUnbanUser={controller.onBanUser}
+            onSetRole={controller.onSetUserRole}
           />
         ))}
       </div>

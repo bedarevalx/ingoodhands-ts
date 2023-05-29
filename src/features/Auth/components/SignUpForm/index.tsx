@@ -9,6 +9,8 @@ import LoadedButton from '../../../../UI/LoadedButton';
 import MaskedInput from '../../../../UI/MaskedInput';
 import PasswordIndicator from '../PasswordIndicator';
 import SignUpBg from '../../../../assets/vector/signup-bg.svg';
+import { Tooltip } from '@mui/material';
+import InfoIcon from '@mui/icons-material/Info';
 
 export const SignUpForm = () => {
   const dispatch = useAppDispatch();
@@ -68,7 +70,18 @@ export const SignUpForm = () => {
         error={signUp.errors.city}
       />
       <Input
-        label='Пароль'
+        label={
+          <>
+            Пароль{' '}
+            <Tooltip
+              enterTouchDelay={0}
+              title={
+                'Минимальные требования для пароля: 6 символов, 1 заглавная буква, 1 цифра. Надежный пароль должен содержать минимум 9 символов'
+              }>
+              <InfoIcon className='sign-up-form__info-icon' />
+            </Tooltip>
+          </>
+        }
         type='password'
         placeholder='Введите пароль'
         value={signUp.password}

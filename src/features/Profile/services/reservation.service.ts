@@ -63,6 +63,9 @@ export class ReservationService {
                 name: reservation.post.user.name,
                 rating: reservation.post.user.rating,
               },
+              address:
+                reservation.contacts?.address?.title ||
+                reservation.post.city.name,
             },
             user: {
               createdAt: parseDate(reservation.user.created_at),
@@ -114,6 +117,7 @@ export class ReservationService {
             name: deal.post.user.name,
             rating: deal.post.user.rating,
           },
+          address: deal.contacts?.address.title || deal.post.city.name,
         },
         expiredAt: parseDate(deal.expired_at),
         score: deal.review?.score,

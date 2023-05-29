@@ -60,7 +60,6 @@ export const Advert = () => {
 
   return (
     <div className='advert'>
-      {/* //TODO: Доделать отображение спиннера нормально */}
       {advert.isLoading ? (
         <FullscreenSpinner />
       ) : !!advert.error ? (

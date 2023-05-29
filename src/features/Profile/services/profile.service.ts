@@ -2,15 +2,17 @@ import {
   checkConfirmEmailCode,
   editProfile,
   getReviews,
+  getUserProfile,
   sendConfirmEmail,
 } from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
 import { IReview } from '../../../interfaces/ads.interfaces';
+import { IUser } from '../../../interfaces/auth.interfaces';
 
 import { IEditProfileBody } from '../../../interfaces/profile.interfaces';
 import { AppDispatch, RootState } from '../../../store';
 import { AuthService } from '../../Auth';
-import { updateEmailConfirm } from '../../Auth/slices/auth.slice';
+import { setUser, updateEmailConfirm } from '../../Auth/slices/auth.slice';
 import {
   checkCodeFullfiled,
   checkCodePending,
@@ -37,6 +39,36 @@ export class ProfileService {
     this.dispatch = dispatch;
     this.authService = new AuthService(dispatch);
   }
+
+  updateProfile =
+    () => async (dispatch: AppDispatch, getState: () => RootState) => {
+      const response = await getUserProfile();
+      const user: IUser = {
+        isBanned: response.data.blocked_admin,
+        isEmailVerified: !!response.data.email_verified_at,
+        city: {
+          id: response.data.city.id,
+          name: response.data.city.name,
+          isActive: response.data.city.is_active,
+        },
+        isAdmin: response.data.is_admin,
+        privileges: response.data.permissions,
+        phoneNumber: response.data.phone_number,
+        email: response.data.email,
+        name: response.data.name,
+        id: response.data.id,
+        balance: response.data.balance,
+        rating: response.data.rating,
+        addresses: response.data.addresses.map((address) => ({
+          title: address.title,
+          id: address.id as string,
+          value: address.id as string,
+          longitude: address.longitude,
+          latitude: address.latitude,
+        })),
+      };
+      dispatch(setUser(user));
+    };
 
   sendConfirmEmail =
     () => async (dispatch: AppDispatch, getState: () => RootState) => {

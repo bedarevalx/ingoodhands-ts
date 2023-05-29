@@ -88,7 +88,7 @@ export const ReservationsList = (props: IReservationsListProps) => {
             days={reservation.days}
             onConfirmReservation={controller.handleConfirmReservation}
             onDeclineReservation={controller.handleDeclineReservation}
-            address={'г. Барнаул ул. Речная 25'}
+            address={reservation.post.address}
             postId={reservation.post.id}
           />
         ))}

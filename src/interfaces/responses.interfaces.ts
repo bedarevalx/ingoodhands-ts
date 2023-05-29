@@ -212,6 +212,11 @@ export interface IGetReservationResponse {
   days: number;
   user: IOwnerAdResponse;
   post: IAdvertResponse;
+  contacts: {
+    address: {
+      title: string;
+    };
+  };
 }
 
 export interface IGetDealsResponse {

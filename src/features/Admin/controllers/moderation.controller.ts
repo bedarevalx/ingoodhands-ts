@@ -42,10 +42,13 @@ export class ModerationController implements IAdminAdsController {
     this.dispatch(setIsRejecting(true));
     state.moderationId &&
       (await this.dispatch(
-        this.moderationService.rejectAdvert(state.moderationId, state.reason),
+        this.moderationService.rejectAdvert(
+          state.moderationId,
+          state.reason,
+          () => this.navigate('/admin'),
+        ),
       ));
     this.dispatch(setIsRejecting(false));
-    this.navigate('/admin');
   };
 
   onPublish = async () => {
@@ -54,10 +57,11 @@ export class ModerationController implements IAdminAdsController {
 
     state.moderationId &&
       (await this.dispatch(
-        this.moderationService.publishAdvert(state.moderationId),
+        this.moderationService.publishAdvert(state.moderationId, () =>
+          this.navigate('/admin'),
+        ),
       ));
     this.dispatch(setIsPublishing(false));
-    this.navigate('/admin');
   };
 
   onReasonChange = (e: ChangeEvent<HTMLInputElement>) => {

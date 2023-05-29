@@ -87,4 +87,8 @@ export class ProfileController implements IProfileController {
     this.dispatch(setPage(page));
     this.getMyReviews();
   };
+
+  updateProfile = () => {
+    this.dispatch(this.profileService.updateProfile());
+  };
 }

@@ -15,4 +15,4 @@ export type AdsStatusTypes =
   | 'reserved'
   | 'rejected';
 
-export type UserPrivilegeTypes = 'moderator' | 'admin';
+export type UserPrivilegeTypes = 'moderator' | 'admin' | 'user';

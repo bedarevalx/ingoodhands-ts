@@ -66,7 +66,11 @@ export const AdSearchItem = (props: IAdSearchItemProps) => {
   return (
     <div
       className='ad-search-item'
-      onClick={props.variant === 'pending' ? props.handleClick : undefined}>
+      onClick={
+        props.variant === 'pending' || props.variant === 'review'
+          ? props.handleClick
+          : undefined
+      }>
       <div className='ad-search-item__image-container'>
         <img
           src={props.imagePath}

@@ -47,4 +47,13 @@
   &__link {
     color: $color-primary;
   }
+
+  &__info-icon.MuiSvgIcon-root {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    margin-left: 4px;
+    position: relative;
+    top: -1px;
+  }
 }

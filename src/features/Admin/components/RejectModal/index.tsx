@@ -27,6 +27,7 @@ export const RejectModal = (props: IRejectModalProps) => {
       />
       <div className='reject-modal__reject-wrapper'>
         <LoadedButton
+          disabled={props.reason.length === 0}
           onClick={props.onReject}
           isLoading={props.isLoading}
           classNames={['reject-modal__reject']}

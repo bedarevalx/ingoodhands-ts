@@ -10,6 +10,7 @@ import { classNamesParser } from '../../helpers/classNamesParser';
 import { useErros } from '../../hooks/useErrors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { JsxElement } from 'typescript';
 
 interface IInputProps {
   classNames?: string[];
@@ -19,7 +20,7 @@ interface IInputProps {
   type?: 'text' | 'password' | 'number';
   placeholder?: string;
   disabled?: boolean;
-  label?: string;
+  label?: string | ReactNode;
   multiline?: boolean;
   handleKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => void;
   variant?: 'standard' | 'outlined';

@@ -1,4 +1,5 @@
 import { AppDispatch } from '../store';
+import { UserPrivilegeTypes } from '../types/general.types';
 
 export interface IDictionariesController {
   dispatch: AppDispatch;
@@ -61,4 +62,5 @@ export interface ISearchedUser {
   rating: number;
   createdAt: string;
   isBanned: boolean;
+  roles: UserPrivilegeTypes[];
 }

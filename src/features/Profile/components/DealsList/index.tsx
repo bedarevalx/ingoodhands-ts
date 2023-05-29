@@ -73,10 +73,10 @@ export const DealsList = () => {
             expiredAt={deal.expiredAt}
             phoneNumber={deal.contacts?.phone}
             variant={deal.status}
-            address={'г. Барнаул ул. Речная 25'}
             postId={deal.post.id}
             onConfirmDeal={controller.handleConfirmDeal}
             onCreateReview={controller.onReviewModalOpen}
+            address={deal.post.address}
             score={deal.score}
           />
         ))}

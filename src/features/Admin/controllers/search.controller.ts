@@ -18,6 +18,7 @@ import {
   setTotalPages as setUserTotalPages,
 } from '../slices/user-search.slice';
 import { UsersSearchParamsTypes } from '../../../types/admin.types';
+import { UserPrivilegeTypes } from '../../../types/general.types';
 
 export class SearchController implements ISearchController {
   dispatch: AppDispatch;
@@ -87,5 +88,18 @@ export class SearchController implements ISearchController {
   onSendToModeration = async (id: number) => {
     await this.dispatch(this.searchService.onSendToModeration(id));
     this.dispatch(this.searchService.searchAds());
+  };
+
+  onBanUser = async (id: number) => {
+    await this.dispatch(this.searchService.onBanUser(id));
+    this.dispatch(this.searchService.searchUsers());
+  };
+  onUnbanUser = async (id: number) => {
+    await this.dispatch(this.searchService.onUnbanUser(id));
+    this.dispatch(this.searchService.searchUsers());
+  };
+  onSetUserRole = async (id: number, role: UserPrivilegeTypes) => {
+    await this.dispatch(this.searchService.onSetUserRole(id, role));
+    this.dispatch(this.searchService.searchUsers());
   };
 }

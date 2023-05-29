@@ -40,18 +40,14 @@ export class ReservationController {
     const response = await this.dispatch(
       this.reservationService.confirmReservation(id),
     );
-    if (!!response) {
-      this.getReservations();
-    }
+    this.getReservations();
   };
 
   handleDeclineReservation = async (id: number) => {
     const response = this.dispatch(
       this.reservationService.declineReservation(id),
     );
-    if (!!response) {
-      this.getReservations();
-    }
+    this.getReservations();
   };
 
   handleReservationParamsChange = (
@@ -105,9 +101,7 @@ export class ReservationController {
     const response = await this.dispatch(
       this.reservationService.confirmDeal(id),
     );
-    if (!!response) {
-      this.getDeals();
-    }
+    this.getDeals();
   };
 
   onReviewModalOpen = async (id: number) => {

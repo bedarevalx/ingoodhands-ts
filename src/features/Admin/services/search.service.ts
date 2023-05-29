@@ -1,8 +1,11 @@
 import {
   banAdvert,
+  banUser,
   searchAds,
   searchUsers,
   sendToModeration,
+  setUserRole,
+  unbanUser,
 } from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
 import { useSnackbar } from '../../../hooks/useSnackbar';
@@ -13,6 +16,7 @@ import {
 } from '../../../interfaces/admin.interfaces';
 import { IAdPreview, IAdvert } from '../../../interfaces/ads.interfaces';
 import { AppDispatch, RootState } from '../../../store';
+import { UserPrivilegeTypes } from '../../../types/general.types';
 
 import {
   fetchSearchAdsFulfilled,
@@ -124,6 +128,7 @@ export class SearchService {
           rating: user.rating,
           createdAt: parseDate(user.created_at),
           isBanned: user.blocked_admin,
+          roles: user.permissions,
         }));
         dispatch(fetchSearchUsersFulfilled(users));
         dispatch(
@@ -166,6 +171,40 @@ export class SearchService {
         this.showSuccess('Объявление отправлено на модерацию');
       } catch (error: any) {
         this.showError(error.response.data);
+      }
+    };
+
+  onBanUser =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await banUser(id);
+        this.showSuccess('Пользователь успешно заблокирован');
+      } catch (error) {
+        this.showError('Не удалось заблокировать пользователя');
+      }
+    };
+
+  onUnbanUser =
+    (id: number) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await unbanUser(id);
+        this.showSuccess('Пользователь успешно разблокирован');
+      } catch (error) {
+        this.showError('Не удалось разблокировать пользователя');
+      }
+    };
+
+  onSetUserRole =
+    (id: number, role: UserPrivilegeTypes) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await setUserRole(id, role);
+        this.showSuccess('Роль пользователя изменена');
+      } catch (error) {
+        console.error(error);
+        this.showError('Не удалось изменить роль пользователя');
       }
     };
 }

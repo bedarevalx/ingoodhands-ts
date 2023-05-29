@@ -27,6 +27,7 @@ export interface IReservationPost {
   imagePath: string;
   title: string;
   user: IReservationUser;
+  address: string;
 }
 
 export interface IDeal {

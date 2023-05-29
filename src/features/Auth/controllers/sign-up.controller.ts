@@ -190,6 +190,7 @@ export class SignUpController implements ISignUpController {
           message: 'invalid_password_repeat',
         }),
       );
+      return;
     }
     if (value.length === 0) {
       this.dispatch(

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { classNamesParser } from '../../../../helpers/classNamesParser';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useRedux';
 import Button from '../../../../UI/Button';
@@ -25,6 +25,10 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
   const profile = useAppSelector((state) => state.profile);
   const app = useAppSelector((state) => state.app);
   const profileController = new ProfileController(dispatch, navigate);
+
+  useEffect(() => {
+    profileController.updateProfile();
+  }, []);
 
   return (
     <section className={classNamesParser('profile-info', props.classNames)}>
@@ -164,6 +168,7 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
           <p className='profile-info__block-title'>
             Баллы{' '}
             <Tooltip
+              enterTouchDelay={0}
               title={
                 'Баллы используются для получения контактов пользователя, разместившего объявление. Для того, чтобы получить баллы, необходимо разместить объявление и подтвердить передачу вещей другому пользователю'
               }>

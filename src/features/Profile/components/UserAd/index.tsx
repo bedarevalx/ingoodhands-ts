@@ -176,7 +176,9 @@ const UserAd = (props: IUserAdProps) => {
             vertical: 'bottom',
             horizontal: 'left',
           }}>
-          <MenuItem onClick={handleEdit}>Редактировать</MenuItem>
+          {props.state !== 'closed' && (
+            <MenuItem onClick={handleEdit}>Редактировать</MenuItem>
+          )}
           <MenuItem onClick={handleDelete}>Удалить</MenuItem>
         </Menu>
       </div>

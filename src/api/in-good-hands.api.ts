@@ -37,6 +37,7 @@ import {
   DealsSearchParamTypes,
   ReservationSearchParamTypes,
 } from '../types/ads.types';
+import { UserPrivilegeTypes } from '../types/general.types';
 
 export const refreshToken = async () => {
   const refreshToken = localStorage['refreshToken'];
@@ -348,4 +349,23 @@ export const getHistoryAds = async (limit: number, page: number) => {
   return await axios.get<IListResponse<IGetHistoryModeration>>(
     `api/admin/get_checking_history?${query}`,
   );
+};
+
+export const banUser = async (id: number) => {
+  return await axios.patch('/api/admin/change_user_status', {
+    id_user: id,
+    status: 'banned',
+  });
+};
+export const unbanUser = async (id: number) => {
+  return await axios.patch('/api/admin/change_user_status', {
+    id_user: id,
+    status: 'active',
+  });
+};
+export const setUserRole = async (id: number, role: UserPrivilegeTypes) => {
+  return await axios.patch('/api/admin/change_user_role', {
+    id_user: id,
+    role,
+  });
 };

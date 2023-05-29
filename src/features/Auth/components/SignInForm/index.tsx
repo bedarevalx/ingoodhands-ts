@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { SignInController } from '../../controllers/sign-in.controller';
 import LoadedButton from '../../../../UI/LoadedButton';
 import SignInBg from '../../../../assets/vector/signup-bg.svg';
+import { Tooltip } from '@mui/material';
 
 export const SignInForm = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ export const SignInForm = () => {
         onBlur={controller.onEmailBlur}
       />
       <Input
-        label='Пароль'
+        label={'Пароль'}
         placeholder='Введите пароль'
         type='password'
         value={signIn.password}

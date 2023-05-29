@@ -74,18 +74,19 @@ export class ModerationService {
     };
 
   rejectAdvert =
-    (moderationId: number, reason: string) =>
+    (moderationId: number, reason: string, callback: () => void) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await rejectAdvert(moderationId, reason);
         this.showSuccess('Объявлению отказано в публикации');
+        callback();
       } catch (error) {
         this.showError('Не удалось отказать объявлению в публикации');
       }
     };
 
   publishAdvert =
-    (moderationId: number) =>
+    (moderationId: number, callback: () => void) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
       try {
         const response = await publishAdvert(moderationId);
