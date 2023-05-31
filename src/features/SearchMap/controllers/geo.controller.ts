@@ -18,7 +18,7 @@ export class GeoController implements IAdsController {
   constructor(dispatch: AppDispatch) {
     this.dispatch = dispatch;
     this.getState = store.getState;
-    this.geoService = new GeoService();
+    this.geoService = new GeoService(dispatch);
   }
 
   searchByInput = async () => {
@@ -50,5 +50,9 @@ export class GeoController implements IAdsController {
     this.dispatch(setPickedAddress({ title: '', latitude: 0, longitude: 0 }));
     this.dispatch(setCity(value));
     this.dispatch(setSearchedItems([]));
+  };
+
+  onSaveAddress = () => {
+    this.dispatch(this.geoService.saveAddress());
   };
 }

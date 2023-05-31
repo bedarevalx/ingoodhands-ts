@@ -14,6 +14,7 @@ import LoadedButton from '../../../../UI/LoadedButton';
 import Select from '../../../../UI/Select';
 import MaskedInput from '../../../../UI/MaskedInput';
 import InfoIcon from '@mui/icons-material/Info';
+import { AddressList } from '../AddressList';
 interface IProfileInfoProps {
   classNames?: string[];
 }
@@ -189,6 +190,13 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
           <p>Ваш рейтинг: {user.rating.toFixed(2)}</p>
         </div>
       </div>
+      <div className='profile-info__block'>
+        <Button
+          classNames={['profile-info__addresses-btn']}
+          onClick={profileController.openAddressModal}>
+          Мои адреса
+        </Button>
+      </div>
       {profile.isEditing && (
         <div className='profile-info__edit-buttons'>
           <Button onClick={profileController.handleEdit}>Отменить</Button>
@@ -215,6 +223,16 @@ export const ProfileInfo = (props: IProfileInfoProps) => {
           email={user.email}
           emailCode={profile.emailCode}
           error={profile.errors.checkCodeError}
+        />
+      </Modal>
+      <Modal
+        classNames={['profile-info__confirm-modal']}
+        handleClose={profileController.closeAddressModal}
+        open={profile.modalsVisible.isAddressesModalOpened}>
+        <AddressList
+          handleClose={profileController.closeAddressModal}
+          addresses={user.addresses}
+          handleDeleteAddress={profileController.onDeleteAddress}
         />
       </Modal>
     </section>

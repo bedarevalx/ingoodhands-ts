@@ -1,11 +1,13 @@
 import {
   checkConfirmEmailCode,
+  deleteAddress,
   editProfile,
   getReviews,
   getUserProfile,
   sendConfirmEmail,
 } from '../../../api/in-good-hands.api';
 import { parseDate } from '../../../helpers/parseDate';
+import { useSnackbar } from '../../../hooks/useSnackbar';
 import { IReview } from '../../../interfaces/ads.interfaces';
 import { IUser } from '../../../interfaces/auth.interfaces';
 
@@ -35,6 +37,8 @@ import {
 export class ProfileService {
   dispatch: AppDispatch;
   authService: AuthService;
+  showSuccess: (text: string) => void = useSnackbar().showSuccess;
+  showError: (text: string) => void = useSnackbar().showError;
   constructor(dispatch: AppDispatch) {
     this.dispatch = dispatch;
     this.authService = new AuthService(dispatch);
@@ -142,6 +146,17 @@ export class ProfileService {
       } catch (error: any) {
         console.log(error);
         dispatch(fetchReviewsRejected(error));
+      }
+    };
+
+  deleteAddress =
+    (id: string) =>
+    async (dispatch: AppDispatch, getState: () => RootState) => {
+      try {
+        const response = await deleteAddress(id);
+        this.showSuccess('Адрес удален успешно');
+      } catch (error) {
+        this.showSuccess('Не удалось удалить адрес');
       }
     };
 }

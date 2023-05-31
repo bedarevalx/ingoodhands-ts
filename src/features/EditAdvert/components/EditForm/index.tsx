@@ -16,6 +16,7 @@ import LoadedButton from '../../../../UI/LoadedButton';
 import { PhotoPreview } from '../PhotoPreview';
 import Spinner from '../../../../UI/Spinner';
 import { useSnackbar } from '../../../../hooks/useSnackbar';
+import { APP_CONSTANTS } from '../../../../constants/app';
 
 interface IEditFormProps {
   classNames?: string[];
@@ -81,13 +82,24 @@ export const EditForm = (props: IEditFormProps) => {
             }))}
             onChange={controller.onCategoryChange}
           />
-          <p className='edit-form__block-title'>Название</p>
+          <div className='edit-form__block-title'>
+            <p>Название</p>
+            <p className='edit-form__input-counter'>
+              {editAd.title.length} / {APP_CONSTANTS.MAX_TITLE_LENGTH}
+            </p>
+          </div>
           <Input
             placeholder='Введите название'
             value={editAd.title}
             onInput={controller.onTitleChange}
           />
-          <p className='edit-form__block-title'>Описание</p>
+          <div className='edit-form__block-title'>
+            <p>Описание</p>
+            <p className='edit-form__input-counter'>
+              {editAd.description.length} /{' '}
+              {APP_CONSTANTS.MAX_DESCRIPTION_LENGTH}
+            </p>
+          </div>
           <TextArea
             placeholder='Введите описание'
             value={editAd.description}
@@ -142,6 +154,7 @@ export const EditForm = (props: IEditFormProps) => {
             onAddressPick={controller.onPickNewAddress}
             isOpen={editAd.isAddressSearchOpen}
             handleClose={controller.closeAddressPicker}
+            onChangeCity={controller.onChangeCity}
           />
         </>
       )}

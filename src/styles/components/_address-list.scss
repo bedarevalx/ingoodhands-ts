@@ -1,0 +1,27 @@
+.address-list {
+  position: relative;
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  &__close-btn.MuiButtonBase-root {
+    position: absolute;
+    top: -24px;
+    right: -32px;
+  }
+  &__header {
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 8px;
+    background-color: $color-substrate;
+    border-radius: 8px;
+  }
+}

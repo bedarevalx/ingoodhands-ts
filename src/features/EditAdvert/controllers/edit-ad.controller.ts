@@ -40,10 +40,14 @@ export class EditAdController implements IAdsController {
   }
 
   onTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > APP_CONSTANTS.MAX_TITLE_LENGTH) return;
     this.dispatch(setTitle(event.target.value));
   };
 
   onDescriptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    if (event.target.value.length > APP_CONSTANTS.MAX_DESCRIPTION_LENGTH)
+      return;
+
     this.dispatch(setDescription(event.target.value));
   };
 
@@ -143,5 +147,9 @@ export class EditAdController implements IAdsController {
 
   clearState = () => {
     this.dispatch(clearState());
+  };
+
+  onChangeCity = () => {
+    this.dispatch(setPickedAddress('-1'));
   };
 }

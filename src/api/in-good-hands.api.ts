@@ -113,6 +113,8 @@ export const getUserPosts = async (
       page,
       limit,
       statuses: param,
+      sort_by: 'date',
+      sort_type: 'desc',
     },
   });
 };
@@ -367,5 +369,24 @@ export const setUserRole = async (id: number, role: UserPrivilegeTypes) => {
   return await axios.patch('/api/admin/change_user_role', {
     id_user: id,
     role,
+  });
+};
+
+export const deleteAddress = async (id: string) => {
+  const query = parseQueryParams({ id_address: id });
+  return await axios.delete(`/api/delete_address?${query}`);
+};
+
+export const createAddress = async (
+  title: string,
+  idCity: string,
+  latitude: number,
+  longitude: number,
+) => {
+  return await axios.post(`/api/add_new_address`, {
+    title,
+    id_city: idCity,
+    latitude,
+    longitude,
   });
 };

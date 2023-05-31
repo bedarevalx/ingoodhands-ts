@@ -111,4 +111,11 @@
     position: absolute;
     margin-left: 4px;
   }
+
+  &__addresses-btn.MuiButtonBase-root {
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 600;
+  }
 }

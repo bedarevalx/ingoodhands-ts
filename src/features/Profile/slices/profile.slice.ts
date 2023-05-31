@@ -9,6 +9,7 @@ interface ILoaders {
 }
 interface IModalsOpened {
   isConfirmModalVisible: boolean;
+  isAddressesModalOpened: boolean;
 }
 
 interface IErrors {
@@ -35,6 +36,7 @@ interface IProfileState {
 
 const modalsVisible: IModalsOpened = {
   isConfirmModalVisible: false,
+  isAddressesModalOpened: false,
 };
 
 const errors: IErrors = {
@@ -141,6 +143,9 @@ export const profileSlice = createSlice({
       state.loaders.isEditSending = false;
       state.errors.editProfileError = action.payload;
     },
+    setIsAddressesModalOpened: (state, action: PayloadAction<boolean>) => {
+      state.modalsVisible.isAddressesModalOpened = action.payload;
+    },
   },
 });
 
@@ -154,6 +159,7 @@ export const {
   closeConfirmModal,
   checkCodeFullfiled,
   checkCodePending,
+  setIsAddressesModalOpened,
   checkCodeRejected,
   setEmailCode,
   setIsEditing,

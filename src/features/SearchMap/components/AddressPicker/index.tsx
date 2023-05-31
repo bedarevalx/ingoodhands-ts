@@ -17,6 +17,7 @@ import { store } from '../../../../store';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { IPickedAddress } from '../../../../interfaces/geo.interfaces';
 import Select from '../../../../UI/Select';
+import { Save, SaveOutlined } from '@mui/icons-material';
 
 interface IAddressPickerProps {
   classNames?: string[];
@@ -24,6 +25,7 @@ interface IAddressPickerProps {
   onClick?: (longitude: number, latitude: number) => void;
   handleClose?: () => void;
   onAddressPick?: (address: IPickedAddress) => void;
+  onChangeCity: () => void;
 }
 
 const DEFAULT_VALUES = {
@@ -66,6 +68,7 @@ export const AddressPicker = (props: IAddressPickerProps) => {
 
   const onCityChange = (e: SelectChangeEvent) => {
     controller.onCityChange(e.target.value);
+    props.onChangeCity();
   };
 
   const onAddressPick = () => {
@@ -146,8 +149,12 @@ export const AddressPicker = (props: IAddressPickerProps) => {
               <span className='address-picker__address-text'>
                 {geo.pickedAddress.title}
               </span>
+              <IconButton onClick={controller.onSaveAddress}>
+                <Save className='address-picker__save-icon' />
+              </IconButton>
             </div>
           </div>
+
           <Button
             className='button button_blue'
             variant='contained'

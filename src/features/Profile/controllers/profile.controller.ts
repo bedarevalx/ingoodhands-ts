@@ -11,6 +11,7 @@ import {
   setCitySelect,
   setEmailCode,
   setEmailInput,
+  setIsAddressesModalOpened,
   setIsEditing,
   setNameInput,
   setPhoneInput,
@@ -89,6 +90,18 @@ export class ProfileController implements IProfileController {
   };
 
   updateProfile = () => {
+    this.dispatch(this.profileService.updateProfile());
+  };
+
+  openAddressModal = () => {
+    this.dispatch(setIsAddressesModalOpened(true));
+  };
+  closeAddressModal = () => {
+    this.dispatch(setIsAddressesModalOpened(false));
+  };
+
+  onDeleteAddress = async (id: string) => {
+    await this.dispatch(this.profileService.deleteAddress(id));
     this.dispatch(this.profileService.updateProfile());
   };
 }

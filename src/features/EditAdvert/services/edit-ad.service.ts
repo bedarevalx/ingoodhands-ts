@@ -50,18 +50,18 @@ export class EditAdService {
 
         if (editAd.pickedAddress === editAd.newAddress?.title) {
           address = {
-            title: editAd.newAddress.title,
-            latitude: editAd.newAddress.latitude,
-            longitude: editAd.newAddress.longitude,
+            title: editAd.newAddress?.title,
+            latitude: editAd.newAddress?.latitude,
+            longitude: editAd.newAddress?.longitude,
           };
         } else {
           const userAddress = user.addresses.find(
             (userAddress) => userAddress.id === editAd.pickedAddress,
           ) as IUserAddress;
           address = {
-            title: userAddress.title,
-            longitude: userAddress.longitude,
-            latitude: userAddress.latitude,
+            title: userAddress?.title,
+            longitude: userAddress?.longitude,
+            latitude: userAddress?.latitude,
           };
         }
         const body: ICreatePost = {
@@ -78,8 +78,7 @@ export class EditAdService {
         this.showSuccess('Объявление отправлено на проверку');
         callback();
       } catch (error: any) {
-        console.log(error);
-        this.showError(error.response.data);
+        this.showError(error?.response?.data || '');
         this.dispatch(createAdRejected(error.message));
       }
     };

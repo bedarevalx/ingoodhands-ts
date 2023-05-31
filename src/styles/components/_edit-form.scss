@@ -8,6 +8,11 @@
     margin-bottom: 18px;
   }
 
+  &__input-counter {
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
   &__address-block {
     display: flex;
     align-items: center;
@@ -29,6 +34,9 @@
 
   &__block-title {
     margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   &__publish-wrapper {
     margin-top: 22px;
