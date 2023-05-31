@@ -25,8 +25,8 @@ axiosInstance.interceptors.response.use(
       const response = await refreshToken();
       const access = response.data.access_token;
       const refresh = response.data.refresh_token;
-      localStorage.token = access;
-      localStorage.refresh = refresh;
+      localStorage.accessToken = access;
+      localStorage.refreshToken = refresh;
       originalRequest.headers.Authorization = 'Bearer ' + access;
       return axiosInstance(originalRequest);
     }

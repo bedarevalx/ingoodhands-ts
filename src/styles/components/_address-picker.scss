@@ -33,22 +33,34 @@
   //     margin-right: 18px;
   //   }
 
+  &__city-select {
+    height: 40px;
+
+    & .MuiInputBase-root.MuiOutlinedInput-root {
+      border-radius: 8px 0 0 8px;
+      height: 40px;
+    }
+    & .MuiSelect-select.MuiSelect-outlined {
+      border-radius: 8px 0 0 8px;
+    }
+  }
+
   &__address-wrapper {
     z-index: 99;
     position: absolute;
     display: flex;
-    gap: 15px;
     top: 40px;
     left: 40px;
     width: 100%;
     max-width: calc(100% - 80px);
     display: flex;
-    align-items: center;
   }
   &__close-btn.MuiButtonBase-root {
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.3);
     @include color-hover(rgb(255, 255, 255));
+    border-radius: 0 8px 8px 0;
+    height: 40px;
   }
 
   &__input {
@@ -59,7 +71,7 @@
     background-color: white;
     height: 40px;
     width: 40px;
-    border-radius: 50%;
+    border-radius: 8px 0 0 8px;
     display: flex;
     align-items: center;
     justify-content: center;

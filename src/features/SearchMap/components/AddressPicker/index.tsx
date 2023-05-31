@@ -16,6 +16,7 @@ import { GeoController } from '../../controllers/geo.controller';
 import { store } from '../../../../store';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { IPickedAddress } from '../../../../interfaces/geo.interfaces';
+import Select from '../../../../UI/Select';
 
 interface IAddressPickerProps {
   classNames?: string[];
@@ -32,6 +33,8 @@ const DEFAULT_VALUES = {
 
 export const AddressPicker = (props: IAddressPickerProps) => {
   const dispatch = useAppDispatch();
+  const app = useAppSelector((state) => state.app);
+  const user = useAppSelector((state) => state.auth);
   const geo = useAppSelector((state) => state.geo);
   const controller = new GeoController(dispatch);
   const debouncedAddress = useDebounce({ value: geo.inputValue, delay: 500 });
@@ -40,6 +43,10 @@ export const AddressPicker = (props: IAddressPickerProps) => {
   useEffect(() => {
     controller.searchByInput();
   }, [debouncedAddress]);
+
+  useEffect(() => {
+    controller.onCityChange(String(user.user.city.id));
+  }, []);
 
   const onSelect = (value: string | null) => {
     controller.onAddressSelect(value);
@@ -56,6 +63,10 @@ export const AddressPicker = (props: IAddressPickerProps) => {
   // const onClear = () => {
   //   props.onClear && props.onClear();
   // };
+
+  const onCityChange = (e: SelectChangeEvent) => {
+    controller.onCityChange(e.target.value);
+  };
 
   const onAddressPick = () => {
     props.onAddressPick && props.onAddressPick(geo.pickedAddress);
@@ -80,6 +91,12 @@ export const AddressPicker = (props: IAddressPickerProps) => {
       handleClose={props.handleClose}
       classNames={['address-picker', 'address-picker__modal']}>
       <div className='address-picker__address-wrapper'>
+        <Select
+          value={geo.cityValue}
+          onChange={onCityChange}
+          classNames={['address-picker__city-select']}
+          options={app.cities}
+        />
         <AutoComplete
           classNames={['address-picker__auto-complete']}
           items={geo.searchedItems}

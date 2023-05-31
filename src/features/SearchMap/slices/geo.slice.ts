@@ -16,6 +16,7 @@ interface IEditAdState {
   latitude: string;
   longitude: string;
   searchedItems: ISearchedAddress[];
+  cityValue?: string;
 }
 
 const initialState: IEditAdState = {
@@ -47,6 +48,9 @@ export const geoSlice = createSlice({
     setTitle: (state, action: PayloadAction<string>) => {
       state.title = action.payload;
     },
+    setCity: (state, action: PayloadAction<string>) => {
+      state.cityValue = action.payload;
+    },
   },
 });
 
@@ -56,6 +60,7 @@ export const {
   setInputValue,
   setPickedAddress,
   setSearchedItems,
+  setCity,
 } = geoSlice.actions;
 export const reducer = geoSlice.reducer;
 // export authSlice.reducer;
