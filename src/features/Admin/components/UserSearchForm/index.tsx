@@ -79,7 +79,7 @@ export const UserSearchForm = (props: IUserSearchFormProps) => {
             rating={user.rating}
             roles={user.roles}
             onBanUser={controller.onBanUser}
-            onUnbanUser={controller.onBanUser}
+            onUnbanUser={controller.onUnbanUser}
             onSetRole={controller.onSetUserRole}
           />
         ))}

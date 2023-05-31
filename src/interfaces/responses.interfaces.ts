@@ -179,6 +179,7 @@ export interface ISearchUserResponse {
   permissions: UserPrivilegeTypes[];
   phone_number: string;
   rating: number;
+  status: 'active' | 'banned';
 }
 
 export interface IContactResponse {

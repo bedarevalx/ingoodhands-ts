@@ -119,6 +119,8 @@ export class SearchService {
           page: searchState.page,
         };
         const response = await searchUsers(params);
+        console.log(response.data.data);
+
         const users: ISearchedUser[] = response.data.data.map((user) => ({
           id: user.id,
           email: user.email,
@@ -127,9 +129,10 @@ export class SearchService {
           city: user.city.name,
           rating: user.rating,
           createdAt: parseDate(user.created_at),
-          isBanned: user.blocked_admin,
+          isBanned: user.status === 'banned',
           roles: user.permissions,
         }));
+
         dispatch(fetchSearchUsersFulfilled(users));
         dispatch(
           setUserTotalPages(

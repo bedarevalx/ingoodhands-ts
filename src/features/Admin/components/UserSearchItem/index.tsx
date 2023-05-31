@@ -50,6 +50,13 @@ export const UserSearchItem = (props: IUserSearchItemProps) => {
     props.onUnbanUser && props.onUnbanUser(props.id);
   };
 
+  const getUserRoleKey = () => {
+    if (props.roles.length === 0) return '';
+    else
+      return getLocaleUserRole(
+        props.roles.length === 2 ? 'admin' : 'moderator',
+      );
+  };
   return (
     <div className='user-search-item'>
       <div className='user-search-item__image-container'>
@@ -62,9 +69,7 @@ export const UserSearchItem = (props: IUserSearchItemProps) => {
         <h4 className='user-search-item__email'>{props.email}</h4>
         <p className='user-search-item__phone-number'>{props.phoneNumber}</p>
         <p className='user-search-item__city'>{props.city}</p>
-        <p className='user-search-item__role'>
-          {getLocaleUserRole(props.roles[props.roles?.length - 1] || '')}
-        </p>
+        <p className='user-search-item__role'>{getUserRoleKey()}</p>
         <p className='user-search-item__date'>{props.createdAt}</p>
       </div>
       <IconButton
@@ -88,7 +93,7 @@ export const UserSearchItem = (props: IUserSearchItemProps) => {
         )}
         <MenuItem onClick={handleSetUser}>Сделать пользователем</MenuItem>
         <MenuItem onClick={handleSetModerator}>Сделать модератором</MenuItem>
-        <MenuItem onClick={handleSetAdmin}>Сделать администраторомр</MenuItem>
+        <MenuItem onClick={handleSetAdmin}>Сделать администратором</MenuItem>
       </Menu>
     </div>
   );
