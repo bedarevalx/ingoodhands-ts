@@ -92,6 +92,7 @@ export class AuthService {
         dispatch(signInFullfilled());
         callback();
       } catch (e: any) {
+        this.showError(e?.response?.data);
         console.error(e);
         dispatch(signInRejected(e?.response?.data?.message || 'default_error'));
       }
