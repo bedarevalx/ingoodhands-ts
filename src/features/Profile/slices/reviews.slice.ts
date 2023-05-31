@@ -16,7 +16,7 @@ const initialState: IReviewsState = {
   reviews: [],
   page: 1,
   totalPages: 0,
-  limit: 6,
+  limit: 5,
 };
 
 export const reviewsSlice = createSlice({

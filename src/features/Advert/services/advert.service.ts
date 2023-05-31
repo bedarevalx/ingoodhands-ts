@@ -26,8 +26,11 @@ import {
   setReviewsPage,
 } from '../slices/advert.slice';
 import { parseDate } from '../../../helpers/parseDate';
+import { useSnackbar } from '../../../hooks/useSnackbar';
 
 export class AdvertService {
+  showSuccess: (text: string) => void = useSnackbar().showSuccess;
+  showError: (text: string) => void = useSnackbar().showError;
   getAdvertById =
     (id: string) =>
     async (dispatch: AppDispatch, getState: () => RootState) => {
@@ -153,9 +156,11 @@ export class AdvertService {
         dispatch(setIsReservationLoading(true));
         const state = getState().advert;
         const response = await sendReservation(String(state.id), days);
-        dispatch(setIsReservationLoading(false));
-      } catch (error) {
+        this.showSuccess('Запрос на бронирование отправлен владельцу');
+      } catch (error: any) {
+        this.showError(error?.response?.data || 'Произошла ошибка');
         console.log(error);
       }
+      dispatch(setIsReservationLoading(false));
     };
 }

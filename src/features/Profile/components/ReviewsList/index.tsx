@@ -24,7 +24,6 @@ export const ReviewsList = (props: IReviewsListProps) => {
   return (
     <div className={classNamesParser('reviews-list', props.classNames)}>
       <h3>Мои отзывы</h3>
-      {reviews.isLoading && <Spinner />}
       {!reviews.isLoading && reviews.reviews.length === 0 && (
         <NotFoundItems
           classNames={['reservations-list__list']}
@@ -34,6 +33,10 @@ export const ReviewsList = (props: IReviewsListProps) => {
       )}
 
       <div className='reviews-list__list'>
+        {reviews.isLoading && (
+          <Spinner classNames={['reviews-list__spinner']} />
+        )}
+
         {!reviews.isLoading &&
           reviews.reviews.map((review) => (
             <ReviewItem
@@ -45,7 +48,8 @@ export const ReviewsList = (props: IReviewsListProps) => {
               classNames={['reviews-list__item']}
             />
           ))}
-
+      </div>
+      <div className='reviews-list__pagination-wrapper'>
         <Pagination
           className='reviews-list__pagination'
           count={reviews.totalPages}

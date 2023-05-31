@@ -116,8 +116,13 @@ export class ProfileService {
 
         this.authService.setUserProfile(response.data);
         dispatch(editFulfilled());
+        this.showSuccess('Профиль успешно обновлен');
       } catch (error: any) {
         console.error(error);
+        this.showError(
+          'Не удалось обновить профиль, проверьте введенные данные',
+        );
+
         dispatch(editRejected(error.message));
       }
     };
